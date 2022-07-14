@@ -33,12 +33,10 @@ include "api/toprated.php"; // On va chercher les infos
 echo "<h2>Top rated SF movies</h2><div style='display: flex;'>";
 foreach($toprated->results as $p){
     echo '<div class="column" style="width:200px; margin:5px;">
-            <div class="row" style="text-align:center;">
-            <a href="#"><img src="'.$imgurl_1.''. $p->poster_path . '" width="140" height="180" ></a>
-            <h4>'. $p->original_title . " (" . substr($p->release_date, 0, 4) .")</h4>"
-            ."<b>Rate : </b>" . $p->vote_average . "/10<br> 
-            <b>Abstract : </b>" . $p->overview ." <br>
-               </div>
+            <a href="film.php?id='.$p->id.'"><img src="'.$imgurl_1.''. $p->poster_path . '" width="150" height="225"" ></a>
+            <div class="row" style="text-align:center;"><h4>'. $p->title . " (" . substr($p->release_date, 0, 4) .")</h4></div>"
+            ."<div class='row' style='text-align:center;'><b>Rate : </b>" . $p->vote_average . "/10<br></div>
+               
             </div>";
            
   }
@@ -51,10 +49,9 @@ echo "<h2>SF movies</h2><div style='display: flex;'>";
 foreach($sf->results as $p){
     echo '<div class="column" style="width:200px; margin:5px;">
             <div class="row" style="text-align:center;">
-            <a href="#"><img src="'.$imgurl_1.''. $p->poster_path . '" width="140" height="180" ></a>
-            <h4>'. $p->original_title . " (" . substr($p->release_date, 0, 4) .")</h4>"
-            ."<b>Rate : </b>" . $p->vote_average . "/10<br> 
-            <b>Abstract : </b>" . $p->overview ." <br>
+            <a href="film.php?id='.$p->id.'"><img src="'.$imgurl_1.''. $p->poster_path . '" width="150" height="225"" ></a>
+            <h4>'. $p->title . " (" . substr($p->release_date, 0, 4) .")</h4>"
+            ."<b>Rate : </b>" . $p->vote_average . "/10<br>
                </div>
             </div>";
            
@@ -70,10 +67,9 @@ echo "<h2>Top rated SF series</h2><div style='display: flex;'>";
 foreach($topseries->results as $p){
     echo '<div class="column" style="width:200px; margin:5px;">
             <div class="row" style="text-align:center;">
-            <a href="#"><img src="'.$imgurl_1.''. $p->poster_path . '" width="140" height="180" ></a>
+            <a href="film.php?id='.$p->id.'"><img src="'.$imgurl_1.''. $p->poster_path . '" width="150" height="225" ></a>
             <h4>'. $p->name . " (" . substr($p->first_air_date, 0, 4) .")</h4>"
-            ."<b>Rate : </b>" . $p->vote_average . "/10<br> 
-            <b>Abstract : </b>" . $p->overview ." <br>
+            ."<b>Rate : </b>" . $p->vote_average . "/10<br>
                </div>
             </div>";
            
@@ -87,10 +83,9 @@ echo "<h2>SF & Fantasy series</h2><div style='display: flex;'>";
 foreach($series->results as $p){
     echo '<div class="column" style="width:200px; margin:5px;">
             <div class="row" style="text-align:center;">
-            <a href="#"><img src="'.$imgurl_1.''. $p->poster_path . '" width="140" height="180" ></a>
+            <a href="film.php?id='.$p->id.'"><img src="'.$imgurl_1.''. $p->poster_path . '" width="150" height="225" ></a>
             <h4>'. $p->name . " (" . substr($p->first_air_date, 0, 4) .")</h4>"
             ."<b>Rate : </b>" . $p->vote_average . "/10<br> 
-            <b>Abstract : </b>" . $p->overview ." <br>
                </div>
             </div>";
            

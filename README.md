@@ -7,7 +7,7 @@
   - Like we want - >TBC
 - Team members : 
   - frontend: [Timur](https://github.com/TimurKaramenderes) :man:	
-  - backend: [Arnold](https://github.com/arnoldhaub), [Anthony](https://github.com/AnthonyVanDeyck) and [Guillaume](https://github.com/Guillaume1060) :bald_man: :adult: :adult:	
+  - backend: [Arnold](https://github.com/arnoldhaub) :bald_man:, [Anthony](https://github.com/AnthonyVanDeyck) :adult: and [Guillaume](https://github.com/Guillaume1060) :adult:	
   - project management : [Arnold](https://github.com/arnoldhaub) :bald_man:		
 
  

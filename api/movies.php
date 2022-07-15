@@ -1,3 +1,5 @@
+<!-- API - LISTE DES FILMS DE SCIENCE-FICTION - GENRE = 878 -->
+
 <?php
 
 $ct = curl_init();
@@ -5,6 +7,6 @@ curl_setopt($ct, CURLOPT_URL, "https://api.themoviedb.org/3/discover/movie?api_k
 curl_setopt($ct, CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt($ct, CURLOPT_HEADER, FALSE);
 curl_setopt($ct, CURLOPT_HTTPHEADER, array("Accept: application/json"));
-$response5 = curl_exec($ct);
+$response = curl_exec($ct);
 curl_close($ct);
-$sf = json_decode($response5);
+$movies = json_decode($response);

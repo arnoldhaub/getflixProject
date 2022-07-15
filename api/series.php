@@ -1,3 +1,5 @@
+<!-- API - LISTE DES SERIES DE SCIENCE-FICTION - GENRE = 10765-->
+
 <?php
 
 $ct = curl_init();
@@ -5,7 +7,7 @@ curl_setopt($ct, CURLOPT_URL, "http://api.themoviedb.org/3/tv/on_the_air?api_key
 curl_setopt($ct, CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt($ct, CURLOPT_HEADER, FALSE);
 curl_setopt($ct, CURLOPT_HTTPHEADER, array("Accept: application/json"));
-$response5 = curl_exec($ct);
+$response = curl_exec($ct);
 curl_close($ct);
-$series = json_decode($response5);
+$series = json_decode($response);
 

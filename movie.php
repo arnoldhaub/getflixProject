@@ -26,6 +26,12 @@ if(isset($infoMovie->videos->results[0]->key)){
     echo    '<iframe id="ytplayer" type="text/html" width="100%" height="500px" src="https://www.youtube.com/embed/' 
             .$infoMovie->videos->results[0]->key. '"?autoplay=1&loop=1&modestbranding=1" frameborder="0" allowfullscreen></iframe>';
 }
+else if(isset($infoMovie->poster_path)){
+    echo "<div  style='overflow: hidden; height:500px; '><img src='".$imgurl . $infoMovie->poster_path ."' width='100%'  ></div><br>";
+}
+else if(isset($infoMovie->backdrop_path)){
+    echo "<div  style='overflow: hidden; height:500px; '><img src='".$imgurl . $infoMovie->backdrop_path ."' width='100%'  ></div><br>";
+}
 else{
     echo "/ ! \ Movie not available for the moment, please come back later. / ! \ ";
 }
@@ -44,11 +50,11 @@ echo    '<b>Abstract: </b>'.$infoMovie->overview.'</p>';
 // MOVIES RECOMMANDATIONS
 //-----------------------------------------------------
 
-if (!empty($recommandations)) {
+if (!empty($moviesRecommandations)) {
     echo    "<h2>You are going to like :</h2>
             <div style='display: flex;'>";
             
-    foreach($recommandations->results as $p){
+    foreach($moviesRecommandations->results as $p){
         echo '<div class="column" style="width:200px; margin:5px;">
                 <div class="row">
                     <a href="movie.php?id='.$p->id.'"style="text-align:center;"><img src="'.$imgurl_500.''. $p->poster_path . '" width="200px"  ></a>

@@ -12,9 +12,10 @@ include "api/info.php"; // Info db
 // On affiche les films les mieux notés.
 include "api/movie_info.php"; // On va chercher les infos
 echo "<h1>".$infoMovie->title."</h1>";
-
-
-echo    '<img src="https://image.tmdb.org/t/p/original/'.$infoMovie->belongs_to_collection->backdrop_path.'"><br>';
+echo    '<iframe id="ytplayer" type="text/html" width="100%" height="500px" src="https://www.youtube.com/embed/' .$infoMovie->videos->results[0]->key. '"?autoplay=1&loop=1&modestbranding=1"
+    frameborder="0" allowfullscreen></iframe>';
+// echo    '<iframe id="video" src="https://www.youtube.com/watch?v=' .$infoMovie->videos->results[0]->key. '?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>';
+// echo    '<img src="https://image.tmdb.org/t/p/original/'.$infoMovie->belongs_to_collection->backdrop_path.'"><br>';
 echo    '<p><b>Original name: </b>'.$infoMovie->original_title.'</p>';
 echo    '<p><b>Genre: </b>';
         foreach($infoMovie->genres as $i){
@@ -22,8 +23,8 @@ echo    '<p><b>Genre: </b>';
         }
 echo    '</p><p><b>Release date: </b>'.$infoMovie->release_date.' | <b>Rating: </b>'.$infoMovie->vote_average.'</p>';
 echo    '<b>Abstract: </b>'.$infoMovie->overview.'</p>';
-echo    '<a href="https://www.youtube.com/watch?v='.$infoMovie->videos->results[0]->key.'">Watch trailer</a>';
-
+echo    '<a href="https://www.youtube.com/embed/'.$infoMovie->videos->results[0]->key.'">Watch trailer</a>';
+// echo    '<a href="watch.php?id='.$id. '">Watch trailer</a>';
 
 // PARTIE RECOMMANDATION
 

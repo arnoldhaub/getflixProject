@@ -1,0 +1,268 @@
+@font-face {
+    font-family: Circular;
+    src: url(./CircularStd-Black.otf) format("opentype");
+}
+
+
+body {
+left: 0px;
+top: 0px;
+background: linear-gradient(180deg, #000000 0%, #7B8BB4 100%);
+}
+
+h1 {
+    font-family: Circular;
+    color: white;
+    letter-spacing: -0.1rem;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+.txt1 {
+    color: white;
+
+}
+
+.container1 {
+position: fixed;
+padding:0;
+margin: 0;
+left: 0px;
+top: 0px;
+background: linear-gradient(180deg, #000000 0%, #7B8BB4 100%);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100%;
+width: 100%;
+} 
+
+html {
+   background: linear-gradient(180deg, #000000 0%, #7B8BB4 100%); 
+}
+
+.buttons1 {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5%;
+    align-items: center;
+    justify-content: center;
+}
+
+.Register0{
+flex:1;
+border: none;
+max-width: 100%;
+height: 50px;
+background-color: transparent;
+border-radius: 100px;
+outline: 1px solid white;
+color: white;
+cursor: pointer;
+padding-top: 5%;
+padding-bottom: 5%;
+padding-right: 130px;
+padding-left: 130px;
+text-align: center;
+margin-bottom:-14px;
+}
+
+.Register1{
+flex:1;
+border: none;
+max-width: 100%;
+height: 50px;
+background-color: transparent;
+border-radius: 100px;
+outline: 1px solid white;
+color: white;
+cursor: pointer;
+padding-top: 5%;
+padding-bottom: 5%;
+padding-right: 140px;
+padding-left: 140px;
+text-align: center;
+margin-bottom: 10px;
+}
+
+
+
+svg{
+width: 70px;
+max-width: 100%;
+height: auto;
+margin: 5px;
+margin-left: 1px;
+} 
+/* LOGO NOVA */
+
+
+
+
+
+/* START LOGIN_FORM.HTML */
+p.txt1{
+margin: 0px;
+font-size: xx-small;
+}
+
+.buttons1_loginForm {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5%;
+    align-items: center;
+    justify-content: center;
+}
+
+.Register0_loginForm{
+flex:1;
+border: none;
+width: 320px;
+max-width: 180%;
+height: 50px;
+background-color: transparent;
+border-radius: 100px;
+outline: 1px solid white;
+color: white;
+cursor: pointer;
+padding-top: 6%;
+padding-bottom: 6%;
+text-align: left;
+ margin-bottom:-14px;
+padding-left: 25px;
+}
+
+.Register1_loginForm{
+flex:1;
+border: none;
+width: 320px;
+max-width: 180%;
+height: 50px;
+background-color: transparent;
+border-radius: 100px;
+outline: 1px solid white;
+color: white;
+cursor: pointer;
+padding-top: 6%;
+padding-bottom: 6%;
+text-align: left;
+padding-left: 25px;
+margin-bottom: 50px;
+
+}
+
+::placeholder {
+  color: rgb(168, 168, 168);
+  font-size: 0.9em;
+}
+
+.container2{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.Register_loginEnter{
+border: none;
+width: 320px;
+max-width: 120%;
+height: 55px;
+background-color: transparent;
+border-radius: 100px;
+outline: 1px solid white;
+color: white;
+cursor: pointer;
+padding-top: 5%;
+padding-bottom: 5%;
+text-align: center;
+margin-bottom: 10px;
+}
+
+.arrowBack{
+display: flex;
+position: absolute;
+top: 0;
+left: 0;
+width: 50px;
+height: auto;
+max-width: 100%;
+margin-top: 2vh;
+margin-left: 2vh;
+}
+
+/* Margin Hello Sunshin Login_forn */
+.txtHello{
+    font-family: Circular;
+    color: white;
+    letter-spacing: -0.1rem;
+    margin: 0px;
+    margin-bottom: 20px;
+    font-size: 2.9rem;
+}
+
+/* END LOGIN_FORM.HTML */
+
+
+
+
+
+
+/* START REGISTER_FORM.HTML */
+.buttons1_RegisterForm {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5%;
+    align-items: center;
+    justify-content: center;
+}
+
+.Register0_RegisterForm, .Register1_RegisterForm {
+flex:1;
+border: none;
+width: 320px;
+max-width: 180%;
+height: 50px;
+background-color: transparent;
+border-radius: 100px;
+outline: 1px solid white;
+color: white;
+cursor: pointer;
+padding-top: 6%;
+padding-bottom: 6%;
+text-align: left;
+padding-left: 25px;
+margin-bottom:-14px;
+}
+.Register2_RegisterForm{
+flex:1;
+border: none;
+width: 320px;
+max-width: 180%;
+height: 50px;
+background-color: transparent;
+border-radius: 100px;
+outline: 1px solid white;
+color: white;
+cursor: pointer;
+padding-top: 6%;
+padding-bottom: 6%;
+text-align: left;
+padding-left: 25px;
+margin-bottom: 50px;
+
+}
+
+.txtHelloRegister{
+    font-family: Circular;
+    color: white;
+    letter-spacing: -0.1rem;
+    margin: 0px;
+    margin-bottom: 20px;
+    font-size: 2.6rem;
+    text-align: center;
+
+}
+
+/* START REGISTER_FORM.HTML */

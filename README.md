@@ -19,7 +19,8 @@ How to use: (work in progress) :movie_camera:
 
 Following PHP BECODE studies we must in this exercise create a Streaming site in html / css, javascript and php.
 Get inspired by Netflix, Amazon Prime Video and other Popcorn Time, Stremio ...
-We have decided to create a platform specialized in the science-fiction films or series. :flying_saucer:
+We have decided to create a platform specialized in the science-fiction films or series. :flying_saucer:  
+
 ![Gif Awsome](https://media.giphy.com/media/EqjqXkrEb9XNEJam1A/giphy.gif)
 
 ##### Must-have features
@@ -51,11 +52,9 @@ We have decided to create a platform specialized in the science-fiction films or
 Ici faut rajouter des print figma ;)
 
 ## Pending things to do :
-coming son..
+coming soon..
 
 
 
-**We really hope you enjoyed our platform !** :space_invader:	
+**We really hope you enjoyed our platform !** :space_invader:  
 ![Gif Awsome](https://media.giphy.com/media/crQe212qPHGfu/giphy.gif)
-
-

@@ -1,3 +1,68 @@
+<?php
+
+	session_start();
+	require('log.php');
+
+	// Here we check a session is already ON
+	if (isset($_SESSION['connect']))
+	{
+		header('location: index_login.php');
+		exit();
+	}
+
+	
+	if (!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['password_two']))
+	{
+		include('src/connect.php');
+		// variables
+		$email 					= htmlspecialchars($_POST['email']);
+		$password 				= htmlspecialchars($_POST['password']);
+		$password_two  			= htmlspecialchars($_POST['password_two']);
+		 
+		// password = password_two ?
+		if ($password != $password_two)
+		{
+			header('location: register_form.php?error=1&message=Non identical password.');
+			exit();
+		}
+
+
+		// email adress valid ?
+		if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+		{
+			header('location : register_form.php?error=1&message=Email adress invalid');
+			exit();
+		}
+
+		// email already exists ?
+		$req = $db->prepare("SELECT count(*) as numberEmail FROM user WHERE email = ?");
+		$req->execute(array($email));
+
+		while($email_verification = $req->fetch())
+		{
+			if ($email_verification['numberEmail'] != 0)
+			{
+				header('location: register_form.php?error=1&message=Email already used.');
+				exit();
+			}
+		}
+
+		// hash
+		$secret = sha1($email);
+
+		// encryption password ?
+
+		// sending
+		$req = $db->prepare("INSERT INTO user(email, password, secret) VALUES (?,?,?)");
+		$req->execute(array($email,$password,$secret));
+		header('location: register_form.php?success=1');
+		exit();
+
+	}
+?>
+
+
+
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -36,20 +101,34 @@
         <h1 class="txtHelloRegister">You're a star,<br> join our Galaxy!</h1>
 
 
+<!-- HERE PHP  -->
+<?php if (isset($_GET['error']))
+			{
+				if (isset($_GET['message']))
+				{
+					echo'<div>'.htmlspecialchars($_GET['message']).'</div>';
+				}
+			} else if (isset($_GET['success']))
+			{
+				echo'<div>Welcome in Nova !<a href="login_form.php">Connect</a></div>';
+			}
 
-    <form>
-    <div class="buttons1_RegisterForm">
-            <input type="text" class="Register0_RegisterForm" name="Register" label="email" id="Register0_RegisterForm" placeholder="your email here..." ></button><br>
-            <input type="password" class="Register1_RegisterForm" name="password1" label="Register" id="Register1_RegisterForm" placeholder="type your password..."></button><br>
-            <input type="password" class="Register2_RegisterForm" name="password2" label="Register" id="Register2_RegisterForm" placeholder="check your password..."></button>
-    <div class="container2">
+
+?>
+
+
+
+    <form method="post" action=register_form.php class="buttons1_RegisterForm">
+            <input type="email" class="Register0_RegisterForm" name="email" label="email" id="Register0_RegisterForm" placeholder="your email here..." /></button><br>
+            <input type="password" class="Register1_RegisterForm" name="password" label="Register" id="Register1_RegisterForm" placeholder="type your password..."/></button><br>
+            <input type="password" class="Register2_RegisterForm" name="password_two" label="Register" id="Register2_RegisterForm" placeholder="check your password..."/></button>
+
             <button type="submit" class="Register_loginEnter" name="RegisterEnter" label="Register" id="RegisterRegister_loginEnter">Register</button>
-    </div>
     </form>
 
 
 
-    <div class="arrowBack" onclick="location.href='./index_login.html'">
+    <div class="arrowBack" onclick="location.href='./index_login.php'">
             <svg version="1.1" id="Calque_1"   x="0px" y="0px"
 	 width="97.411px" height="97.68px" viewBox="0 0 97.411 97.68" enable-background="new 0 0 97.411 97.68" xml:space="preserve">
 <g>
@@ -63,8 +142,8 @@
                 </svg>
     </div>
     <div class="disclaimer">
-<p class="txt1">Already an account: <a href="./login_form.html">Click here to login!</a></p>
-<p class="txt1"> Having trouble to connect? Reset <a href="./login_form.html">password</a></p>
+<p class="txt1">Already an account: <a href="./login_form.php">Click here to login!</a></p>
+<p class="txt1"> Having trouble to connect? Reset <a href="./login_form.php">password</a></p>
 </div>
 
 </div>

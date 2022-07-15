@@ -1,3 +1,68 @@
+<?php
+
+	session_start();
+
+	// ci dessous gesion des cookies
+	require('log.php');
+	// ci dessus gestion des cookies
+
+	if (!empty($_POST['email'] && !empty($_POST['password'])))
+	{
+		include('src/connect.php');
+		$email 		= htmlspecialchars($_POST['email']);
+		$password 	= htmlspecialchars(($_POST['password']));
+
+		// check email syntax
+		if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+		{
+			header('location: login_form.php?error=1&message=Email adress invalid');
+			exit ();
+		}
+
+		// decryption password ?
+
+		// check if email already exists
+		$req = $db->prepare("SELECT count(*) as numberEmail FROM user WHERE email = ?");
+		$req->execute(array($email));
+
+		while($email_verification = $req->fetch())
+		{
+			if ($email_verification['numberEmail'] != 1)
+			{
+				header('location: login_form.php?error=1&message=Impossible to connect, try again.');
+				exit();
+			}
+		}
+
+		// connection
+		$req = $db->prepare("SELECT * FROM user WHERE email = ?");
+		$req->execute(array($email));
+
+		while ($user = $req->fetch())
+		{
+			if ($password == $user['password'])
+			{
+				$_SESSION['connect'] 	= 1;
+				$_SESSION['email']		= $user['email'];
+
+				// gestion des cookis (se souvenir de moi)
+				if (isset($_POST['auto']))
+				{
+					// creation du cookie
+					setcookie('auth', $user['secret'], time() + 364*24*3600, '/', null, false, true);
+				}
+				// ci dessous il faudra mettre le le lien vers le catalogue une fois logger
+				header('location: login_form.php?success=1');
+				exit ();
+			}
+			else {
+				header('location: login_form.php?error=1&message=Impossible to connect, try again!');
+				exit();
+			}	
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -32,17 +97,39 @@
 </svg>
     </div>
         <h1 class="txtHello">Hello sunshine!</h1>
-    <form>
+
+<!-- Here we check if the user is connected. If yes, no need to ask him to suscribe -->
+<?php if (isset($_SESSION['connect']))
+			{ ?>
+					<h1>Bienvenue</h1>
+			<?php
+				if (isset($_GET['success']))
+						{
+							echo'<div class="alert success">You are connected.</div>';
+						}
+			?>
+					<p> On se mate quoi aujourd'hui ?</p>
+					<small><a href="logout.php">Deconnexion</a></small>
+
+	<?php	} else { 
+                    if (isset($_GET['error'])) {
+					    if (isset($_GET['message'])) {
+						    echo'<div class="alert error">'.htmlspecialchars($_GET['message']).'</div>';
+					}
+				}
+?>
+
+    <form method="post" action=login_form.php>
     <div class="buttons1_loginForm">
         
-            <input type="text" class="Register0_loginForm" name="Register" label="Register" id="Register0_loginForm" placeholder="your email here..." ></button><br>
-            <input type="password" class="Register1_loginForm" name="Register" label="Register" id="Register1_loginForm" placeholder="type your password..."></button>
+            <input type="text" class="Register0_loginForm" name="email" label="Register" id="Register0_loginForm" placeholder="your email here..." /></button><br>
+            <input type="password" class="Register1_loginForm" name="password" label="Register" id="Register1_loginForm" placeholder="type your password..."/></button>
     <div class="container2">
             <button type="submit" class="Register_loginEnter" name="RegisterEnter" label="Register" id="RegisterRegister_loginEnter">Login</button>
     </div>
     </form>
     
-    <div class="arrowBack" onclick="location.href='./index_login.html'">
+    <div class="arrowBack" onclick="location.href='./index_login.php'">
             <svg version="1.1" id="Calque_1"   x="0px" y="0px"
 	 width="97.411px" height="97.68px" viewBox="0 0 97.411 97.68" enable-background="new 0 0 97.411 97.68" xml:space="preserve">
 <g>
@@ -57,10 +144,10 @@
         </div>
 
             <div class="disclaimer">
-<p class="txt1">Not yet in our Galaxy? <a href="./login_form.html">Click here to join!</a></p>
+<p class="txt1">Not yet in our Galaxy? <a href="register_form.php">Click here to join!</a></p>
 </div>
 
-      
+<?php } ?>
 
 
     

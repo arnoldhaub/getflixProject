@@ -33,8 +33,8 @@
         <h1>Welcome to Nova!</h1>
         
     <div class="buttons1">
-            <button type="button_register" class="Register0" name="Register" label="Register" id="Register" onclick="location.href='./register_form.html'">Register</button><br>
-            <button type="button_login" class="Register1" name="Register" label="Register" id="Register" onclick="location.href='./login_form.html'">Login</button>            
+            <button type="button_register" class="Register0" name="Register" label="Register" id="Register" onclick="location.href='./register_form.php'">Register</button><br>
+            <button type="button_login" class="Register1" name="Register" label="Register" id="Register" onclick="location.href='./login_form.php'">Login</button>            
     </div>
        <div class="disclaimer">
 <p class="txt1">Sci-Fi streaming Solution</p>

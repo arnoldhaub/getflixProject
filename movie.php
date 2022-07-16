@@ -35,15 +35,14 @@ else if(isset($infoMovie->backdrop_path)){
 else{
     echo "/ ! \ Movie not available for the moment, please come back later. / ! \ ";
 }
-// echo    '<img src="https://image.tmdb.org/t/p/original/'.$infoMovie->belongs_to_collection->backdrop_path.'"><br>';
 echo    '<p><b>Original name: </b>'.$infoMovie->original_title.'</p>';
-echo    '<p><b>Genre: </b>';
-        foreach($infoMovie->genres as $i){
-            echo $i->name.', ';
-        }
-echo    '</p><p><b>Release date: </b>'.$infoMovie->release_date.' | <b>Rating: </b>'.$infoMovie->vote_average.'</p>';
 echo    '<b>Abstract: </b>'.$infoMovie->overview.'</p>';
-
+echo    '</p><p><b>Release date: </b>'.$infoMovie->release_date.' | <b>Rating: </b>'.$infoMovie->vote_average.'</p>';
+echo    '<p><b>Genre: </b><ul>';
+        foreach($infoMovie->genres as $i){
+            echo '<li>'. $i->name.' </li>';
+        }
+echo    '</ul>';
 
 
 //-----------------------------------------------------
@@ -57,11 +56,9 @@ if (!empty($moviesRecommandations)) {
     foreach($moviesRecommandations->results as $p){
         echo '<div class="column" style="width:200px; margin:5px;">
                 <div class="row">
-                    <a href="movie.php?id='.$p->id.'"style="text-align:center;"><img src="'.$imgurl_500.''. $p->poster_path . '" width="200px"  ></a>
-                    <p style="padding:10px;"><b>'. $p->title ."</b><br>"
-                    ."<b>Rate : </b>" . $p->vote_average . "/10</p>
+                    <a href="movie.php?id='.$p->id.'"style="text-align:center;"><img src="'.$imgurl_500.''. $p->poster_path . '" width="200px height="300px"  ></a>
                 </div>
-            </div>";
+            </div>';
                
     }
     echo    "</div>";

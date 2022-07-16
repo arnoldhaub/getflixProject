@@ -32,15 +32,20 @@ else if(isset($infoSerie->poster_path)){
 else{
     echo "/ ! \ Movie not available for the moment, please come back later. / ! \ ";
 }
-// echo    '<img src="https://image.tmdb.org/t/p/original/'.$infoSerie->belongs_to_collection->backdrop_path.'"><br>';
+
 echo    '<p><b>Original name: </b>'.$infoSerie->original_name.'</p>';
-echo    '<p><b>Genre: </b>';
-        foreach($infoSerie->genres as $i){
-            echo $i->name.', ';
-        }
-echo    '<p><b>Seasons:</b> '.$infoSerie->number_of_seasons. ' | <b>Episodes: </b>' .$infoSerie->number_of_episodes.'</p>';
-echo    '</p><p><b>Release date: </b>'.$infoSerie->first_air_date.' | <b>Rating: </b>'.$infoSerie->vote_average.'</p>';
 echo    '<b>Abstract: </b>'.$infoSerie->overview.'</p>';
+echo    '</p><b>Rating: </b>'.$infoSerie->vote_average.' | <b>Release date: </b>'.$infoSerie->first_air_date;
+echo    '</p><p><b>Release date: </b>'.$infoSerie->first_air_date.' | <b>Rating: </b>'.$infoSerie->vote_average.'</p>';
+echo    '<p><b>Seasons:</b> '.$infoSerie->number_of_seasons. ' | <b>Episodes: </b>' .$infoSerie->number_of_episodes.'</p>';
+echo    '<p><b>Genre: </b><ul>';
+        foreach($infoSerie->genres as $i){
+            echo '<li>'. $i->name.' </li>';
+        }
+echo    '</ul>';
+
+
+
 
 //-----------------------------------------------------
 // DISPLAY SEASONS + EPISODE
@@ -49,7 +54,7 @@ echo    '<b>Abstract: </b>'.$infoSerie->overview.'</p>';
 if (!empty($infoSerie->seasons)) {
     foreach($infoSerie->seasons as $p){
         $season = $p->season_number;
-        echo    "<h2>".$p->name.":</h2>
+        echo    "<hr style='margin-top:40px;border-top: 1px dashed red;'><h2>".$p->name."</h2>
                 <div style='display: flex;'>";
         include "api/episodeInfo.php"; 
         foreach($episodeInfo->episodes as $i){
@@ -65,7 +70,7 @@ if (!empty($infoSerie->seasons)) {
                 </div>";
                 
         }
-    echo    "</div>";
+    echo    "</div><hr style='border-top: 1px dashed red;'>";
     }
 }
 
@@ -82,10 +87,9 @@ if (!empty($seriesRecommandations)) {
         echo '<div class="column" style="width:200px; margin:5px;">
                 <div class="row">
                     <a href="serie.php?id='.$p->id.'"style="text-align:center;"><img src="'.$imgurl_500.''. $p->poster_path . '" width="200px"  ></a>
-                    <p style="padding:10px;"><b>'. $p->name ."</b><br>"
-                    ."<b>Rate : </b>" . $p->vote_average . "/10</p>
+                   
                 </div>
-            </div>";
+            </div>';
                
     }
     echo    "</div>";

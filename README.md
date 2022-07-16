@@ -17,7 +17,10 @@
  
 ## Project's page :
 
+https://novaflix.herokuapp.com
+
 How to use: (work in progress) :movie_camera:	
+
 
 ## What is the project ?
 

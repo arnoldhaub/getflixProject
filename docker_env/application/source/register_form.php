@@ -50,7 +50,8 @@
 		// hash
 		$secret = sha1($email);
 
-		// encryption password ?
+		// encryption password 
+		$password = "aq1".sha1($password."123")."25";
 
 		// sending
 		$req = $db->prepare("INSERT INTO user(email, password, secret) VALUES (?,?,?)");

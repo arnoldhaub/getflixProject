@@ -19,7 +19,8 @@
 			exit ();
 		}
 
-		// decryption password ?
+		// decryption password
+		$password = "aq1".sha1($password."123")."25";
 
 		// check if email already exists
 		$req = $db->prepare("SELECT count(*) as numberEmail FROM user WHERE email = ?");
@@ -101,7 +102,7 @@
 <!-- Here we check if the user is connected. If yes, no need to ask him to suscribe -->
 <?php if (isset($_SESSION['connect']))
 			{ ?>
-					<h1>Bienvenue</h1>
+					<h1>Bienvenue <?php echo $email ?></h1>
 			<?php
 				if (isset($_GET['success']))
 						{
@@ -123,10 +124,11 @@
     <div class="buttons1_loginForm">
         
             <input type="text" class="Register0_loginForm" name="email" label="Register" id="Register0_loginForm" placeholder="your email here..." /></button><br>
-            <input type="password" class="Register1_loginForm" name="password" label="Register" id="Register1_loginForm" placeholder="type your password..."/></button>
+            <input type="password" class="Register1_loginForm" name="password" label="Register" id="Register1_loginForm" placeholder="type your password..."/>
     <div class="container2">
-            <button type="submit" class="Register_loginEnter" name="RegisterEnter" label="Register" id="RegisterRegister_loginEnter">Login</button>
+            <button type="submit" class="Register_loginEnter" name="RegisterEnter" label="Register" id="RegisterRegister_loginEnter">Login</button>	
     </div>
+	<label id="option"><input type="checkbox" name="auto" checked />Remember me</label></button>
     </form>
     
     <div class="arrowBack" onclick="location.href='./index_login.php'">

@@ -102,7 +102,7 @@
 <!-- Here we check if the user is connected. If yes, no need to ask him to suscribe -->
 <?php if (isset($_SESSION['connect']))
 			{ ?>
-					<h1>Bienvenue <?php echo $email ?></h1>
+					<h1>Bienvenue <?php echo $pseudo ?></h1>
 			<?php
 				if (isset($_GET['success']))
 						{

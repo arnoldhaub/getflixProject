@@ -5,7 +5,6 @@ include("api/info.php");
     @$submit=$_GET["submit"];
     @$type=$_GET["type"];
     if(isset($submit) && !empty(trim($keywords))){
-        
         include("api/search.php");
 
         if($type == "movie"){
@@ -33,7 +32,7 @@ include("api/info.php");
                 <input type="submit" name="submit" />
             </p>
             <p> 
-                <input type="radio" name="type" value="movie" required> Movie 
+                <input type="radio" name="type" value="movie" required checked="checked"> Movie 
                 <input type="radio" name="type" value="serie"> Serie 
             </p>
         </form>
@@ -57,12 +56,9 @@ include("api/info.php");
                         }
                         else if($type == "serie"){
                             foreach($searchKeywordsSerie->results as $p){
-                                echo    " <li style='margin: 10px;'><a href='serie.php?id=".$p->id."'><img src='".$imgurl_300 . $p->poster_path . "' width='100' style='margin-right: 10px;'></a>";
+                                echo    "<li style='margin: 10px;'><a href='serie.php?id=".$p->id."'><img src='".$imgurl_300 . $p->poster_path . "' width='100' style='margin-right: 10px;'></a>";
                                 echo    "<a href='serie.php?id=".$p->id."'>" .$p->name. "</a></li>";  
                                 
-                            }
-                            if($searchKeywordsSerie->page < $searchKeywordsSerie->total_pages) {
-                                echo "see more";
                             }
                         }
 

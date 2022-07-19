@@ -1,5 +1,8 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+
 require('src/connect.php');
 
 ?>
@@ -72,32 +75,43 @@ require('src/connect.php');
 </footer>
 </html>
 
-
 <?php
 
 if (isset($_POST['email']))
-{
-    echo $_POST['email'];
+    {
     $newPassword = uniqid();
     $hashedNewPassword = "aq1".sha1($newPassword."123")."25";
 
-    $message = "Hello, Here is you new password : $password";
-    $headers = 'Content-Type: text/plain; charset="utf-8"'."";
+    $sql = "UPDATE user SET password = ? WHERE email = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([$hashedNewPassword, $_POST['email']]);
+    try
+        {    
+    // envoi du mail
+    require "src/Exception.php";
+    require "src/PHPMailer.php";
+    require_once "src/SMTP.php";
 
-    if (mail($_POST['email'], 'Forgotten Password', $message, $headers))
-    {
-        $sql = "UPDATE user SET password = ? WHERE email = ?";
-        $stmt = $db->prepare($sql);
-        $stmt->execute([$hashedNewPassword, $_POST['email']]);
-        echo 'mail enyoyé';
+    $mail = new PHPMailer(true);
+    //configuration
+
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER; // information de debug
+    $mail->isSMTP();
+    $mail->Host = "localhost";
+    $mail->Port = 80;
+    $mail->CharSet = "utf-8";
+    $mail->addAddress($_POST['email']);
+    $mail->setFrom("novaflixbecode@gmail.com");
+    $mail->Subject = "New password - NOVA";
+    $mail->Body = "Hello, here is the new password : .$newPassword.";
+
+    $mail->send();
+    echo 'new password just sent';
+        }
+    catch (Exception $e)
+        {
+    echo "message non envoyé. Erreur: {$mail->ErrorInfo}";
+        }
     }
-    else
-    {
-        echo 'error';   
-    }
-}
-
-
-
-
+    
 ?>

@@ -11,11 +11,10 @@
 	}
 
 	
-	if (!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['password_two']))
+	if (!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['password_two']))
 	{
 		include('src/connect.php');
 		// variables
-		$pseudo 					= htmlspecialchars($_POST['pseudo']);
 		$email 					= htmlspecialchars($_POST['email']);
 		$password 				= htmlspecialchars($_POST['password']);
 		$password_two  			= htmlspecialchars($_POST['password_two']);
@@ -54,8 +53,8 @@
 		$password = "aq1".sha1($password."123")."25";
 
 		// sending
-		$req = $db->prepare("INSERT INTO user(pseudo, email, password, secret) VALUES (?,?,?,?)");
-		$req->execute(array($pseudo, $email,$password,$secret));
+		$req = $db->prepare("INSERT INTO user(email, password, secret) VALUES (?,?,?)");
+		$req->execute(array($email,$password,$secret));
 		header('location: register_form.php?success=1');
 		exit();
 
@@ -113,14 +112,9 @@
 			{
 				echo'<div>Welcome in Nova !<a href="login_form.php">Connect</a></div>';
 			}
-
-
 ?>
 
-
-
     <form method="post" action=register_form.php class="buttons1_RegisterForm">
-			<input type="texte" class="Register0_RegisterForm" name="pseudo" id="Register0_RegisterForm" placeholder="your pseudo..." /></button><br>
             <input type="email" class="Register0_RegisterForm" name="email" label="email" id="Register0_RegisterForm" placeholder="your email here..." /></button><br>
             <input type="password" class="Register1_RegisterForm" name="password" label="Register" id="Register1_RegisterForm" placeholder="type your password..."/></button><br>
             <input type="password" class="Register2_RegisterForm" name="password_two" label="Register" id="Register2_RegisterForm" placeholder="check your password..."/></button>
@@ -150,20 +144,8 @@
 
 </div>
 
-
-
-
-
-
 </body>
-<script>
-
-
-</script>
-
-
 <footer>
-    
 
 </footer>
 </html>

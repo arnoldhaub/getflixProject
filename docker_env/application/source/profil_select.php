@@ -9,8 +9,11 @@
 		// sending (ajouter les droits/accès Adulte ou enfant)
 		$req = $db->prepare("INSERT INTO profile(pseudo, categorie, email) VALUES (?, ?, ?)");
 		$req->execute(array($pseudo, $categorie, $_GET['email']));
-		// header('location: register_form.php?success=1');
-		// exit();
+		
+        // calcul du nombre de pseudo créé
+        // $compteur = $db->execute('SELECT COUNT pseudo FROM profile WHERE email =$_GET['email']');
+        $compteur = $db->query("SELECT COUNT pseudo FROM profile WHERE email=$_GET[email]");
+    
 	}
 ?>
 
@@ -46,9 +49,11 @@
     </div>
         
         <h1>Who are you ?</h1>
+        <?php echo 'coucou'.$compteur ?>
 
 <!--ici code si aucun PSEUDO créé -->
 <?php
+
 
 // Ci dessous il faudrait conditionner -> lorque 4 pseudos ont été créé, pas possible d'ne créér un supplémentaire
 if(empty($donnees['pseudo']))
@@ -69,7 +74,6 @@ if(empty($donnees['pseudo']))
 
 
 require('src/connect.php');
-// ci dessous, je n'arrive pas à récupérer l'adresse mail permettant de récupérer les pseudos liés au mail
 $requete = $db->prepare('SELECT * FROM profile WHERE email = ?');
 $requete->execute(array($_GET['email']));
 ?>
@@ -79,7 +83,7 @@ $requete->execute(array($_GET['email']));
             while ($donnees = $requete->fetch())
             { ?>
                     <li>
-                            <a href="catalogue.php"><h1 class="pseudo"><?php echo $donnees['pseudo']?></h1><h4><?php echo $donnees['categorie']?></h4></a>
+                        <a href="catalogue.php"><h1 class="pseudo"><?php echo $donnees['pseudo']?></h1><h4><?php echo $donnees['categorie']?></h4></a>
                     </li>
     <?php   } ?> 
 

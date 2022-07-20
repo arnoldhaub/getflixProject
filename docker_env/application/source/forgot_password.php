@@ -1,67 +1,10 @@
 <?php
 
-	session_start();
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 
-	// ci dessous gesion des cookies
-	require('log.php');
-	// ci dessus gestion des cookies
+require('src/connect.php');
 
-	if (!empty($_POST['email'] && !empty($_POST['password'])))
-	{
-		include('src/connect.php');
-		$email 		= htmlspecialchars($_POST['email']);
-		$password 	= htmlspecialchars(($_POST['password']));
-
-		// check email syntax
-		if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-		{
-			header('location: login_form.php?error=1&message=Email adress invalid');
-			exit ();
-		}
-
-		// decryption password
-		$password = "aq1".sha1($password."123")."25";
-
-		// check if email already exists
-		$req = $db->prepare("SELECT count(*) as numberEmail FROM user WHERE email = ?");
-		$req->execute(array($email));
-
-		while($email_verification = $req->fetch())
-		{
-			if ($email_verification['numberEmail'] != 1)
-			{
-				header('location: login_form.php?error=1&message=Impossible to connect, try again.');
-				exit();
-			}
-		}
-
-		// connection
-		$req = $db->prepare("SELECT * FROM user WHERE email = ?");
-		$req->execute(array($email));
-
-		while ($user = $req->fetch())
-		{
-			if ($password == $user['password'])
-			{
-				$_SESSION['connect'] 	= 1;
-				$_SESSION['email']		= $user['email'];
-
-				// gestion des cookis (se souvenir de moi)
-				if (isset($_POST['auto']))
-				{
-					// creation du cookie
-					setcookie('auth', $user['secret'], time() + 364*24*3600, '/', null, false, true);
-				}
-				// ci dessous il faudra mettre le le lien vers le catalogue une fois logger
-				header("location: profil_select.php?email=$email");
-				exit ();
-			}
-			else {
-				header('location: login_form.php?error=1&message=Impossible to connect, try again!');
-				exit();
-			}	
-		}
-	}
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +15,6 @@
     <link href="./styles/styles.css" rel="stylesheet">
 </head>
 <body>
-
 
 
 <div class="container1">
@@ -97,38 +39,15 @@
 <rect x="0.118" y="0.11" fill="none" width="115.712" height="106.615"/>
 </svg>
     </div>
-        <h1 class="txtHello">Hello sunshine!</h1>
-
-<!-- Here we check if the user is connected. If yes, no need to ask him to suscribe -->
-<?php if (isset($_SESSION['connect']))
-			{ ?>
-					<h1>Bienvenue <?php echo $pseudo ?></h1>
-			<?php
-				if (isset($_GET['success']))
-						{
-							echo'<div class="alert success">You are connected.</div>';
-						}
-			?>
-					<p> On se mate quoi aujourd'hui ?</p>
-					<small><a href="logout.php">Deconnexion</a></small>
-
-	<?php	} else { 
-                    if (isset($_GET['error'])) {
-					    if (isset($_GET['message'])) {
-						    echo'<div class="alert error">'.htmlspecialchars($_GET['message']).'</div>';
-					}
-				}
-?>
-
-    <form method="post" action=login_form.php>
-    <div class="buttons1_loginForm">
-        
-            <input type="text" class="Register0_loginForm" name="email" label="Register" id="Register0_loginForm" placeholder="your email here..." /></button><br>
-            <input type="password" class="Register1_loginForm" name="password" label="Register" id="Register1_loginForm" placeholder="type your password..."/>
-    <div class="container2">
-            <button type="submit" class="Register_loginEnter" name="RegisterEnter" label="Register" id="RegisterRegister_loginEnter">Login</button>	
-    </div>
-	<label id="option"><input type="checkbox" name="auto" checked />Remember me</label></button>
+        <br/>
+        <h1 class="txtHello">Lost in our Galaxy ?</h1>
+        <h2 class="txtHello">Yes, send me a new password please !</h2>
+    <form method="post">
+            <input type="email" class="Register1_loginForm" name="email" label="Register" id="Register1_loginForm" placeholder="type your email adress..."/>
+        <div class="container2">
+            <button type="submit" name="forgot_password">Click Here</button>	
+        </div>
+	
     </form>
     
     <div class="arrowBack" onclick="location.href='./index_login.php'">
@@ -148,26 +67,51 @@
             <div class="disclaimer">
 <p class="txt1">Not yet in our Galaxy? <a href="register_form.php">Click here to join!</a></p>
 </div>
-
-<?php } ?>
-
-
-    
-    
-
 </div>
-
-
-
 </body>
 <script>
-
-
 </script>
-
-
 <footer>
-    
-
 </footer>
 </html>
+
+<?php
+
+if (isset($_POST['email']))
+    {
+    $newPassword = uniqid();
+    $hashedNewPassword = "aq1".sha1($newPassword."123")."25";
+
+    $sql = "UPDATE user SET password = ? WHERE email = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([$hashedNewPassword, $_POST['email']]);
+    try
+        {    
+    // envoi du mail
+    require "src/Exception.php";
+    require "src/PHPMailer.php";
+    require_once "src/SMTP.php";
+
+    $mail = new PHPMailer(true);
+    //configuration
+
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER; // information de debug
+    $mail->isSMTP();
+    $mail->Host = "localhost";
+    $mail->Port = 80;
+    $mail->CharSet = "utf-8";
+    $mail->addAddress($_POST['email']);
+    $mail->setFrom("novaflixbecode@gmail.com");
+    $mail->Subject = "New password - NOVA";
+    $mail->Body = "Hello, here is the new password : .$newPassword.";
+
+    $mail->send();
+    echo 'new password just sent';
+        }
+    catch (Exception $e)
+        {
+    echo "message non envoyé. Erreur: {$mail->ErrorInfo}";
+        }
+    }
+    
+?>

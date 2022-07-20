@@ -26,7 +26,6 @@
 			exit();
 		}
 
-
 		// email adress valid ?
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL))
 		{
@@ -113,11 +112,7 @@
 			{
 				echo'<div>Welcome in Nova !<a href="login_form.php">Connect</a></div>';
 			}
-
-
 ?>
-
-
 
     <form method="post" action=register_form.php class="buttons1_RegisterForm">
             <input type="email" class="Register0_RegisterForm" name="email" label="email" id="Register0_RegisterForm" placeholder="your email here..." /></button><br>
@@ -149,20 +144,8 @@
 
 </div>
 
-
-
-
-
-
 </body>
-<script>
-
-
-</script>
-
-
 <footer>
-    
 
 </footer>
 </html>

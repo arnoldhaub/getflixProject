@@ -7,8 +7,8 @@
         $categorie = htmlspecialchars($_POST['categorie']);
 		
 		// sending (ajouter les droits/accès Adulte ou enfant)
-		$req = $db->prepare("INSERT INTO profile(pseudo, categorie) VALUES (?, ?)");
-		$req->execute(array($pseudo, $categorie));
+		$req = $db->prepare("INSERT INTO profile(pseudo, categorie, email) VALUES (?, ?, ?)");
+		$req->execute(array($pseudo, $categorie, $_GET['email']));
 		// header('location: register_form.php?success=1');
 		// exit();
 	}
@@ -71,7 +71,7 @@ if(empty($donnees['pseudo']))
 require('src/connect.php');
 // ci dessous, je n'arrive pas à récupérer l'adresse mail permettant de récupérer les pseudos liés au mail
 $requete = $db->prepare('SELECT * FROM profile WHERE email = ?');
-$requete->execute(array('test@test.be'));
+$requete->execute(array($_GET['email']));
 ?>
     <div class="buttons1">
         <ul class="profile">

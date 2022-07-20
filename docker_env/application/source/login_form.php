@@ -53,7 +53,7 @@
 					setcookie('auth', $user['secret'], time() + 364*24*3600, '/', null, false, true);
 				}
 				// ci dessous il faudra mettre le le lien vers le catalogue une fois logger
-				header("location: profil_select.php?email='$email'");
+				header("location: profil_select.php?email=$email");
 				exit ();
 			}
 			else {

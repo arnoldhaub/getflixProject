@@ -9,7 +9,7 @@ const swiper = new Swiper(".swiper-container", {
       },
     breakpoints: {
         100: {
-      slidesPerView: 2,
+      slidesPerView: 1,
       slidesPerGroup: 1,
       spaceBetween: 5,
       centeredSlides: false
@@ -17,10 +17,10 @@ const swiper = new Swiper(".swiper-container", {
     },
     // when window width is >= 600px
     600: {
-      slidesPerView: 2,
-      slidesPerGroup: 2,
-      spaceBetween: 8,
-      centeredSlides: true
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      spaceBetween: 2,
+      centeredSlides: false
       
     },
      // when window width is >= 900px
@@ -41,9 +41,9 @@ const swiper = new Swiper(".swiper-container", {
      
      // when window width is >= 1500px
      1500: {
-       slidesPerView: 5         ,
-       slidesPerGroup: 8,
-       spaceBetween: 5,
+       slidesPerView: 7,
+       slidesPerGroup: 7,
+       spaceBetween: 12,
        centeredSlides: false
      },
      

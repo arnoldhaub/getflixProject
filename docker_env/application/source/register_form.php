@@ -139,7 +139,7 @@
     </div>
     <div class="disclaimer">
 <p class="txt1">Already an account: <a href="./login_form.php">Click here to login!</a></p>
-<p class="txt1"> Having trouble to connect? Reset <a href="./login_form.php">password</a></p>
+<p class="txt1"> Having trouble to connect? Reset <a href="./forgot_password.php">password</a></p>
 </div>
 
 </div>

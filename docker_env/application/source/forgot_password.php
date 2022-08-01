@@ -97,8 +97,8 @@ if (isset($_POST['email']))
 
     $mail->SMTPDebug = SMTP::DEBUG_SERVER; // information de debug
     $mail->isSMTP();
-    $mail->Host = "localhost";
-    $mail->Port = 80;
+    $mail->Host = "sql11.freesqldatabase.com";
+    $mail->Port = 3306;
     $mail->CharSet = "utf-8";
     $mail->addAddress($_POST['email']);
     $mail->setFrom("novaflixbecode@gmail.com");

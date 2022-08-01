@@ -40,7 +40,7 @@
             </div>
         </header>
 
-<div class="container_content">
+<div class="bootstrap-iso">
         <div id="carouselHome" class="carousel slide" data-ride="carousel">
 
 
@@ -107,7 +107,7 @@
                                     MOVIES
         //======================================================================-->
 
-        <p>Nouveauté</p>
+        <p class="title_slide">Nouveauté</p>
         <div class="container">
             <div class="swiper-container">
                 <div class="swiper-wrapper">

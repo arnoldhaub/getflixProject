@@ -42,8 +42,12 @@ left: 10px;
 padding: 10px;
 }
 
+.nav_links li a {
+text-decoration: none;
+color: white;
+}
 .nav_links {
-list-style: none;
+list-style: none !important;
 }
 
 .nav_links li {
@@ -153,7 +157,7 @@ width: 100%;
 
 /* ↓ CONTENT BODY↓ */
 
-.container_content{
+.bootstrap-iso{
 display: flex;
 flex-direction: column;
 justify-content: space-between;
@@ -181,10 +185,9 @@ margin-right: 3vh;
 #carouselHome .carousel-item img{
   object-fit: cover;
   object-position: center;
-  height: 50vh; 
   overflow: hidden;
   border-radius: 7px;
-  height: 50vh;
+  height: 50vh !important;
   background: linear-gradient(150deg, #000000 0%, #7B8BB4 100%); 
 }
 
@@ -383,7 +386,6 @@ padding: 10px;
   .span_div{display: none;}
   .logo_resp_bottom{display:flex;}
   #carouselHome .carousel-item img{height: 15vh;}
-
  }
 
 

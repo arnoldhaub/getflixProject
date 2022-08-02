@@ -21,6 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="./styles/styles.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e48c77929d.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -63,10 +64,10 @@ if($nbDePseudos[0]<4)
 			<form method="post">
     <div class="buttons1_loginForm">
             <input type="text" class="Register0_loginForm" name="pseudo" label="Register" id="Register0_loginForm" placeholder="ADD YOUR PSEUDO" /></button><br>
-                    <select class="form-select" name="categorie" aria-label="Default select example">
+                    <select class="form-select mb-2" name="categorie" aria-label="Default select example">
                         <option selected value="adulte">Adulte</option>
                         <option value="enfant">Enfant</option>
-                    </select><br/>
+                    </select>
             <button type="submit" class="Register_loginEnter" name="RegisterEnter" label="Register" id="RegisterRegister_loginEnter">CREATE</button>	
     </div>
             </form>
@@ -81,7 +82,7 @@ $requete->execute(array($_GET['email']));
             while ($donnees = $requete->fetch())
             { ?>
                     <li>
-                    <a href="profil_delete.php?id=<?php echo $donnees['id']?>&email=<?php echo $donnees['email']?>" style="text-decoration:none">Delete</a>
+                    <a class="fa-solid fa-trash-can" href="profil_delete.php?id=<?php echo $donnees['id']?>&email=<?php echo $donnees['email']?>"style="text-decoration:none; opacity:0.2; color:white"></a>
                         <a href="catalogue.php">
                             <div class="container">
                                 <div class="row">

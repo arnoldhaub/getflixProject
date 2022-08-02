@@ -44,8 +44,8 @@ require('src/connect.php');
         <h2 class="txtHello">Yes, send me a new password please !</h2>
     <form method="post">
             <input type="email" class="Register1_loginForm" name="email" label="Register" id="Register1_loginForm" placeholder="type your email adress..."/>
-        <div class="container2">
-            <button type="submit" name="forgot_password">Click Here</button>	
+        <div class="mx-auto" style="width:100px";>
+            <button type="submit" name="forgot_password" class="btn btn-secondary">Click Here</button>	
         </div>
 	
     </form>
@@ -66,13 +66,10 @@ require('src/connect.php');
 
             <div class="disclaimer">
 <p class="txt1">Not yet in our Galaxy? <a href="register_form.php">Click here to join!</a></p>
-</div>
+            </div>
 </div>
 </body>
-<script>
-</script>
-<footer>
-</footer>
+
 </html>
 
 <?php
@@ -100,6 +97,7 @@ if (isset($_POST['email']))
     $mail->Host = "sql11.freesqldatabase.com";
     $mail->Port = 3306;
     $mail->CharSet = "utf-8";
+    $mail->SMTPSecure = 'ssl';
     $mail->addAddress($_POST['email']);
     $mail->setFrom("novaflixbecode@gmail.com");
     $mail->Subject = "New password - NOVA";

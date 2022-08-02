@@ -1,0 +1,77 @@
+@font-face {
+  font-family: Circular;
+  src: url(CircularStd-Black.otf) format("opentype");
+}
+
+* {
+margin: 0;
+padding: 0;
+color: white;
+}
+
+h1 {
+    font-family: Circular;
+    color: white;
+
+}
+
+.headerMovie{
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    margin-left: 4vh;
+    margin-right: 4vh;
+    margin-top: 3vh;
+    gap: 3px;
+}
+
+.infosMovie{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: baseline;
+    gap: 5px;
+}
+
+.infosMovie button{
+border-radius: 3px;
+padding: 3px;
+font-size: 0.5rem;
+}
+
+.description{
+    margin-right: 6vh;
+}
+
+.buttonsMovie{
+    margin-bottom: 10px;
+}
+
+.play {
+    padding: 10px;
+    width: 150px;
+    border-radius: 7px;
+    border: none;
+    background-color: transparent;
+    outline: 1px solid white;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+}
+
+.buttonsMovie button:hover{
+    color:rgb(255, 255, 255);
+
+}
+ 
+.play:hover{
+    background-color: white;
+    color: black;
+
+}
+
+
+.fa-play{
+color: #ffffff;
+margin-right: 10px;
+}

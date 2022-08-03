@@ -6,9 +6,9 @@
         <title>Movie</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"  media="screen">      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"  media="screen">
+  <link href="./styles/styles_movie_preview.css" rel="stylesheet">
         <link href="./styles/styles_nav_footer.css" rel="stylesheet">
-        <link href="./styles/styles_movie_preview.css" rel="stylesheet">
         
     </head>
 
@@ -19,10 +19,10 @@
             <img class="logo_minia" src="../images/logo_planete.svg" alt="logo_minia">
             <nav>
                 <ul class="nav_links">
-                    <li><a href="#"><i class="fa-solid fa-house"></i> HOME</a></li>
-                    <li><a href="#"><i class="fa-solid fa-film"></i></i> FILMS</a></li>
-                    <li><a href="#"><i class="fa-solid fa-tv"></i></i> SERIES</a></li>
-                    <li><a href="#"></a><i class="fa-solid fa-magnifying-glass"></i></i> RECHERCHE</a></li>
+                    <li><a href="/Home/home.php"> HOME</a></li>
+                    <li><a href="#">FILMS</a></li>
+                    <li><a href="#">SERIES</a></li>
+                    <li><a href="#"></a>RECHERCHE</a></li>
                 </ul>
 
                 <ul class="nav_links_responsive">
@@ -41,7 +41,10 @@
                 <img class="userImage" name="userImage" src="../images/CN.jpg" alt="userImage">
             </div>
         </header>
-<div class="headerMovie">
+ <div class="BackgroundImage">
+    <img src="../images/Only-Murders-In-The-Building-Star-Plus.jpeg" id="testImage">
+    <div class="headerMovie">
+   
     <div class="nameMovie">
                     <h1>Movie's Name</h1>
     </div>
@@ -61,20 +64,41 @@
 
 
     <div class="buttonsMovie">
-        <button class="play"><i class="fa-solid fa-play"></i>LECTURE</button>
+        <button class="play" id="playButton"><i class="fa-solid fa-play" id="fa-play"></i>LECTURE</button>
     </div>
 
 
     <div class="descriptionMovie">
         <p class="description"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid cumque suscipit animi, nihil tenetur quidem! Nihil eius optio quas ex assumenda voluptate, magnam quod. Eius quis illum architecto quisquam nihil.</p>
+        <p class="empty"></p>
     </div>
 
     
 </div>
-
+</div> 
 
 
      
+    <p class="title_slide">Nouveauté</p>
+        <div class="container">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+
+                    <?php
+                    include "./../api/api/info.php";
+                    foreach ($moviesLatest->results as $p) { // RECENT SF MOVIE
+                        if (!empty($p->poster_path)) {
+                            echo  "<div class='swiper-slide'>
+                            <a href='movie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                        </div>";
+                        }
+                    } ?>
+
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
         </div>
 
         <footer>
@@ -100,6 +124,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="./script.js"></script>
+<script src="./movie_preview_script.js"></script>
+<script src="/Home/script.js"></script>
     </body>
 </html>

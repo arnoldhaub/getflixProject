@@ -1,0 +1,162 @@
+@font-face {
+  font-family: Circular;
+  src: url(CircularStd-Black.otf) format("opentype");
+}
+
+* {
+margin: 0;
+padding: 0;
+color: white;
+}
+
+.BackgroundImage{
+    position: relative;
+    width: 100%;
+}
+
+h1 {
+    font-family: Circular;
+    color: rgb(255, 255, 255);
+
+}
+#testImage{
+    position: absolute;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+    background-size: 100%;
+    background-position: top;
+    height: auto;
+   -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    mask-image: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0,0,0,0));
+}
+
+
+.headerMovie{
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    margin-left: 4vh;
+    margin-right: 4vh;
+    margin-top: 3vh;
+    gap: 3px;
+}
+
+.infosMovie{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: baseline;
+    gap: 5px;
+}
+
+.infosMovie button{
+border-radius: 5px;
+padding: 5px;
+font-size: 0.8rem;
+background-color: #656973;
+border: none;
+}
+
+
+.descriptionMovie{
+    display: flex;
+    flex-direction: row;
+    gap: 30vh;
+
+}
+.description{
+    text-align: left;
+}
+
+.typeMovie{
+    margin-bottom: 2vh;
+}
+.buttonsMovie{
+    margin-bottom: 3vh;
+}
+
+.play {
+    padding: 10px;
+    width: 150px;
+    border-radius: 7px;
+    border: none;
+    background-color: transparent;
+    outline: 1px solid white;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+ 
+.play:hover{
+    background-color: rgb(255, 255, 255);
+    color: #27242B;
+}
+
+
+.fa-play{
+color: #ffffff;
+margin-right: 10px;
+}
+
+
+body {
+height: 800px;
+object-fit: cover;
+object-position: center;
+overflow: hidden;
+}
+
+footer{
+    position: absolute;
+}
+
+/* HAUT PAGE */
+
+
+
+
+/* SLIDE RECOMMENDATION */
+
+.title_slide{
+  margin-left: 4vh;
+  margin-bottom: 15px;
+}
+
+.container {
+margin-top: 45vh;
+margin-left: 3vh;
+margin-right: 3vh;
+}
+
+.swiper-container {
+  overflow: visible;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.swiper-wrapper{
+display: flex;
+flex-direction: row;
+margin-bottom: 20px;
+gap: 2.3vh;
+}
+
+.swiper-slide {
+  transition: all 105ms ease-out;
+  border-radius: 15px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+
+.swiper-slide img {
+  border-radius: 5px;
+  max-width: 17.5rem;
+  cursor: grab;
+   border: solid 0.1px rgba(0, 0, 0, 0);
+   height: 300px;
+}

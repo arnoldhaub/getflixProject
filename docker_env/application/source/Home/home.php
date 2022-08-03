@@ -13,14 +13,14 @@
 
     <body>  
         <header>
-            <img class="logo" src="images/logo.svg" alt="logo">
-            <img class="logo_minia" src="images/logo_planete.svg" alt="logo_minia">
+            <img class="logo" src="/images/logo.svg" alt="logo">
+            <img class="logo_minia" src="/images/logo_planete.svg" alt="logo_minia">
             <nav>
                 <ul class="nav_links">
-                    <li><a href="#"><i class="fa-solid fa-house"></i> HOME</a></li>
-                    <li><a href="#"><i class="fa-solid fa-film"></i></i> FILMS</a></li>
-                    <li><a href="#"><i class="fa-solid fa-tv"></i></i> SERIES</a></li>
-                    <li><a href="#"></a><i class="fa-solid fa-magnifying-glass"></i></i> RECHERCHE</a></li>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">SERIES</a></li>
+                    <li><a href="#">FILMS</a></li>
+                    <li><a href="#"></a>RECHERCHE</a></li>
                 </ul>
 
                 <ul class="nav_links_responsive">
@@ -36,7 +36,7 @@
             </div> -->
             <div class="user">
                 <p class="p_username">USER</p>
-                <img class="userImage" name="userImage" src="images/CN.jpg" alt="userImage">
+                <img class="userImage" name="userImage" src="/images/CN.jpg" alt="userImage">
             </div>
         </header>
 
@@ -242,10 +242,10 @@
 
         <footer>
             <div class="footer_div">
-                <img class="logo_bottom" src="images/logo.svg" alt="logo"> 
+                <img class="logo_bottom" src="/images/logo.svg" alt="logo"> 
                 </div>
             <div>
-                <img class="logo_resp_bottom" src="images/logo_planete_resp.svg" alt="logo">
+                <img class="logo_resp_bottom" src="/images/logo_planete_resp.svg" alt="logo">
             </div>
            <div class="span_div">
                 <span class="span_footer">SCI-FI STREAMING SOLUTION</span>

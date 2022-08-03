@@ -1,7 +1,7 @@
 <?php
 	if (!empty($_POST['pseudo']))
 	{
-		include('src/connect.php');
+		include('../src/connect.php');
 		// variables
 		$pseudo = htmlspecialchars($_POST['pseudo']);
         $categorie = htmlspecialchars($_POST['categorie']);
@@ -52,7 +52,7 @@
 <!--ici code si aucun PSEUDO créé -->
 <?php
 
-require('src/connect.php');
+require('../src/connect.php');
 
 // Calcul du nombres de pseudos de l'adresse mail
         $email = htmlspecialchars($_GET['email']);
@@ -89,11 +89,11 @@ $requete->execute(array($_GET['email']));
                     <?php
                             if ($donnees['categorie']=='adulte')
                             {
-                                echo '<img class="w-25 mb-4" src="images/adulte.png" alt="profil">';
+                                echo '<img class="w-25 mb-4" src="../images/adulte.png" alt="profil">';
                             }
                             else
                             {
-                                echo '<img class="w-25 mb-4" src="images/enfant.png" alt="profil">';
+                                echo '<img class="w-25 mb-4" src="../images/enfant.png" alt="profil">';
                             }
                             
                     ?>

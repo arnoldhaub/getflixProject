@@ -1,5 +1,5 @@
 <?php
-include('src/connect.php');
+include('../src/connect.php');
 
 if (isset($_GET['id']) AND !empty($_GET['id']))
 {

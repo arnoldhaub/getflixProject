@@ -12,7 +12,7 @@ include "../api/api/movies.php";
 include "../api/api/series.php"; 
 
 include "../api/api/topMovies.php"; 
-include "../api/api/topSeries.php"; 
+// include "../api/api/topSeries.php"; 
 
 include "../api/api/moviesRecommandations.php"; 
 include "../api/api/seriesRecommandations.php"; 

@@ -1,7 +1,7 @@
 <?php
 	if (!empty($_POST['pseudo']))
 	{
-		include('src/connect.php');
+		include('../src/connect.php');
 		// variables
 		$pseudo = htmlspecialchars($_POST['pseudo']);
         $categorie = htmlspecialchars($_POST['categorie']);
@@ -10,10 +10,9 @@
 		$req = $db->prepare("INSERT INTO profile(pseudo, categorie, email) VALUES (?, ?, ?)");
 		$req->execute(array($pseudo, $categorie, $_GET['email']));
 		
-        // calcul du nombre de pseudo créé
-        /*$compteur = $db->prepare("COUNT * FROM profile WHERE email = $_GET['email']")*/
-    
+        header('location: profil_select.php?email='.$_GET['email'].'');
 	}
+    
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="./styles/styles.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e48c77929d.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -47,43 +47,65 @@
 </svg>
     </div>
         
-        <h1>Who are you ?</h1>
+        <h1>Who are you ? </h1>
 
 <!--ici code si aucun PSEUDO créé -->
 <?php
 
+require('../src/connect.php');
 
-// Ci dessous il faudrait conditionner -> lorque 4 pseudos ont été créé, pas possible d'ne créér un supplémentaire
-if(empty($donnees['pseudo']))
+// Calcul du nombres de pseudos de l'adresse mail
+        $email = htmlspecialchars($_GET['email']);
+        $requete = $db->query("SELECT COUNT(*) AS nbPseudo FROM profile WHERE email='$email'");
+        $nbDePseudos = $requete->fetch();
+
+if($nbDePseudos[0]<4)
 		{ ?>
 			<form method="post">
     <div class="buttons1_loginForm">
             <input type="text" class="Register0_loginForm" name="pseudo" label="Register" id="Register0_loginForm" placeholder="ADD YOUR PSEUDO" /></button><br>
-                    <select name="categorie" aria-label="Default select example">
+                    <select class="form-select mb-2" name="categorie" aria-label="Default select example">
                         <option selected value="adulte">Adulte</option>
                         <option value="enfant">Enfant</option>
-                    </select><br/>
+                    </select>
             <button type="submit" class="Register_loginEnter" name="RegisterEnter" label="Register" id="RegisterRegister_loginEnter">CREATE</button>	
     </div>
             </form>
-<?php   }  
+<?php   }
 
-        
-
-
-require('src/connect.php');
 $requete = $db->prepare('SELECT * FROM profile WHERE email = ?');
 $requete->execute(array($_GET['email']));
 ?>
     <div class="buttons1">
-        <ul class="profile">
+        <ul class="list-unstyled">
             <?php
             while ($donnees = $requete->fetch())
             { ?>
                     <li>
-                        <a href="catalogue.php"><h1 class="pseudo"><?php echo $donnees['pseudo']?></h1><h4><?php echo $donnees['categorie']?></h4></a>
+                    <a class="fa-solid fa-trash-can" href="profil_delete.php?id=<?php echo $donnees['id']?>&email=<?php echo $donnees['email']?>"style="text-decoration:none; opacity:0.2; color:white"></a>
+                        <a href="catalogue.php">
+                            <div class="container">
+                                <div class="row">
+                    <?php
+                            if ($donnees['categorie']=='adulte')
+                            {
+                                echo '<img class="w-25 mb-4" src="../images/adulte.png" alt="profil">';
+                            }
+                            else
+                            {
+                                echo '<img class="w-25 mb-4" src="../images/enfant.png" alt="profil">';
+                            }
+                            
+                    ?>
+                            <h1 class="mt-2 col text-center align-self-center"><?php echo $donnees['pseudo']?> <span style="font-size:20px"><?php echo $donnees['categorie']?></span></h1>
+                            
+                            
+                                </div>
+                                
+                            </div>
+                        </a>
                     </li>
-    <?php   } ?> 
+            <?php   } ?> 
 
         </ul>
     </div>

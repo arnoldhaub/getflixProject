@@ -6,7 +6,7 @@ if (isset($_COOKIE['auth']) && !isset($_SESSION['connect']))
     $secret = htmlspecialchars($_COOKIE['auth']);
 
     /// on verifie si ce cookie est lié à un compte
-    require('src/connect.php');
+    require('../src/connect.php');
 
     // 1er requete pour verifier que l'utilisateur existe :
     $req = $db->prepare("SELECT count(*) as numberAccount FROM user WHERE secret = ?");

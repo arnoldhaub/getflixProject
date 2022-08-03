@@ -8,7 +8,7 @@
 
 	if (!empty($_POST['email'] && !empty($_POST['password'])))
 	{
-		include('src/connect.php');
+		include('../src/connect.php');
 		$email 		= htmlspecialchars($_POST['email']);
 		$password 	= htmlspecialchars(($_POST['password']));
 

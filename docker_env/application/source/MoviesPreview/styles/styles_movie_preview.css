@@ -1,6 +1,6 @@
 @font-face {
   font-family: Circular;
-  src: url(CircularStd-Black.otf) format("opentype");
+  src: url(./CircularStd-Black.otf) format("opentype");
 }
 
 * {
@@ -15,7 +15,7 @@ color: white;
 }
 
 h1 {
-    font-family: Circular;
+    font-family: 'Circular', sans-serif;
     color: rgb(255, 255, 255);
 
 }

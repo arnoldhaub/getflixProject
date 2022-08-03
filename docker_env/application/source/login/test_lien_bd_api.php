@@ -17,7 +17,7 @@
 
 // ici on affiche tous les commentaires de la DB lié à l'ID du film
 $id = $_GET['id'];
-include "api/api/info.php";
+include "../api/api/info.php";
 
 
 include('../src/connect.php');

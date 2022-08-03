@@ -3,23 +3,24 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edege">
-        <title>Navbar</title>
+        <title>Home</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"  media="screen">
         <link href="styles/styles_home.css" rel="stylesheet">
     </head>
 
 
-    <body>
+    <body>  
         <header>
-            <img class="logo" src="images/logo.svg" alt="logo">
-            <img class="logo_minia" src="images/logo_planete.svg" alt="logo_minia">
+            <img class="logo" src="/images/logo.svg" alt="logo">
+            <img class="logo_minia" src="/images/logo_planete.svg" alt="logo_minia">
             <nav>
                 <ul class="nav_links">
-                    <li><a href="#"><i class="fa-solid fa-house"></i> HOME</a></li>
-                    <li><a href="#"><i class="fa-solid fa-film"></i></i> FILMS</a></li>
-                    <li><a href="#"><i class="fa-solid fa-tv"></i></i> SERIES</a></li>
-                    <li><a href="#"></a><i class="fa-solid fa-magnifying-glass"></i></i> RECHERCHE</a></li>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">SERIES</a></li>
+                    <li><a href="#">FILMS</a></li>
+                    <li><a href="#"></a>RECHERCHE</a></li>
                 </ul>
 
                 <ul class="nav_links_responsive">
@@ -35,13 +36,60 @@
             </div> -->
             <div class="user">
                 <p class="p_username">USER</p>
-                <img class="userImage" name="userImage" src="images/CN.jpg" alt="userImage">
+                <img class="userImage" name="userImage" src="/images/CN.jpg" alt="userImage">
             </div>
         </header>
 
-        <div class="container_content">
-            <div class="jumbotron"></div>
+<div class="bootstrap-iso">
+        <div id="carouselHome" class="carousel slide" data-ride="carousel">
+
+
+            <ol class="carousel-indicators">
+               <li data-target="#carouselHome" data-slide-to="0" class="active"></li>
+               <li data-target="#carouselHome" data-slide-to="1"></li>
+               <li data-target="#carouselHome" data-slide-to="2"></li>
+            </ol>
+    
+
+            <div class="carousel-inner">
+                     <div class="carousel-item active">
+                         <img class="d-block w-100" src="./images/robin-stohr-JuJq2E9zS9E-unsplash.jpg" alt="First slide">
+                         <div class="carousel-caption d-none d-md-block">
+                       <h5>Title of the movie</h5>
+                       <p>Some explanation about the moovie blablabla</p>
+                     </div>
+                       </div>
+                     <div class="carousel-item">
+                       <img class="d-block w-100" src="./images/caleb-george-iVXfOilGYHA-unsplash.jpg" alt="Second slide">
+                       <div class="carousel-caption d-none d-md-block">
+                       <h5>Title of the movie</h5>
+                       <p>Some explanation about the moovie blablabla</p>
+                     </div>
+                     </div>
+                     <div class="carousel-item">
+                       <img class="d-block w-100" src="./images/travis-yewell-F-B7kWlkxDQ-unsplash.jpg" alt="Third slide">
+                       <div class="carousel-caption d-none d-md-block">
+                       <h5>Title of the movie</h5>
+                       <p>Some explanation about the moovie blablabla</p>
+                     </div>
+                     </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#carouselHome" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+
+
+            <a class="carousel-control-next" href="#carouselHome" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+
+
         </div>
+</div>
+  
 
         <!-- <div class="container_content2">
         <h4>Nouveau sur NovaFlix</h4>
@@ -59,7 +107,7 @@
                                     MOVIES
         //======================================================================-->
 
-        <p>Nouveauté</p>
+        <p class="title_slide">Nouveauté</p>
         <div class="container">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -81,7 +129,7 @@
             </div>
         </div>
 
-        <p>Incontournables</p>
+        <p class="title_slide">Incontournables</p>
         <div class="container">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -102,7 +150,7 @@
             </div>
         </div>
 
-        <p>Populaires</p>
+        <p class="title_slide">Populaires</p>
         <div class="container">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -128,7 +176,7 @@
                                     SERIES
         //======================================================================-->
 
-        <p>Nouveauté</p>
+        <p class="title_slide">Nouveauté</p>
         <div class="container">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -150,7 +198,7 @@
             </div>
         </div>
 
-        <p>Incontournables</p>
+        <p class="title_slide">Incontournables</p>
         <div class="container">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -171,7 +219,7 @@
             </div>
         </div>
 
-        <p>Populaires</p>
+        <p class="title_slide">Populaires</p>
         <div class="container">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -187,17 +235,17 @@
 
                 </div>
                 <!-- Add Arrows -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next">></div>
+                <div class="swiper-button-prev"><</div>
             </div>
         </div>
 
         <footer>
             <div class="footer_div">
-                <img class="logo_bottom" src="images/logo.svg" alt="logo"> 
+                <img class="logo_bottom" src="/images/logo.svg" alt="logo"> 
                 </div>
             <div>
-                <img class="logo_resp_bottom" src="images/logo_planete_resp.svg" alt="logo">
+                <img class="logo_resp_bottom" src="/images/logo_planete_resp.svg" alt="logo">
             </div>
            <div class="span_div">
                 <span class="span_footer">SCI-FI STREAMING SOLUTION</span>
@@ -211,7 +259,10 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
         </style>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js"></script>
-        <script src="./script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="./script.js"></script>
     </body>
 </html>

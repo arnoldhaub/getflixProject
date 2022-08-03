@@ -41,9 +41,9 @@ const swiper = new Swiper(".swiper-container", {
      
      // when window width is >= 1500px
      1500: {
-       slidesPerView: 7,
-       slidesPerGroup: 7,
-       spaceBetween: 12,
+       slidesPerView: 5,
+       slidesPerGroup: 1,
+       spaceBetween: 5,
        centeredSlides: false
      },
      

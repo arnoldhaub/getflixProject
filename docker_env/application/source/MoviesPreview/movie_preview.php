@@ -42,45 +42,46 @@
             </div>
         </header>
  <div class="BackgroundImage">
-    <img src="../images/Only-Murders-In-The-Building-Star-Plus.jpeg" id="testImage">
-    <div class="headerMovie">
+                    <img src="../images/Only-Murders-In-The-Building-Star-Plus.jpeg" id="testImage" style="max-width: 100%;">
+                    <div class="headerMovie">
    
-    <div class="nameMovie">
-                    <h1>Movie's Name</h1>
-    </div>
+                                       <div class="nameMovie">
+                                           <h1>Movie's Name</h1>
+                                       </div>
 
 
-    <div class="infosMovie">
-                     <button disabled>18+</button>
-                     <button disabled>VO</button>
-                     <button disabled>VOSTFR</button>
-                     <p> 2019 - 2 Saisons
-                     </p>
-    </div>
+                                        <div class="infosMovie">
+                                                          <button disabled>18+</button>
+                                                          <button disabled>VO</button>
+                                                          <button disabled>VOSTFR</button>
+                                                          <p> 2019 - 2 Saisons
+                                                          </p>
+                                        </div>
 
-    <div class="typeMovie">
-        <p class="typeMovieDescription">Drames, Thriller, Distopie</p>
-    </div>
-
-
-    <div class="buttonsMovie">
-        <button class="play" id="playButton"><i class="fa-solid fa-play" id="fa-play"></i>LECTURE</button>
-    </div>
+                                        <div class="typeMovie">
+                                            <p class="typeMovieDescription">Drames, Thriller, Distopie</p>
+                                        </div>
 
 
-    <div class="descriptionMovie">
-        <p class="description"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid cumque suscipit animi, nihil tenetur quidem! Nihil eius optio quas ex assumenda voluptate, magnam quod. Eius quis illum architecto quisquam nihil.</p>
-        <p class="empty"></p>
-    </div>
+                                         <div class="buttonsMovie">
+                                             <button class="play" id="playButton"><i class="fa-solid fa-play" id="fa-play"></i>LECTURE</button>
+                                         </div>
+
+
+                                        <div class="descriptionMovie">
+                                            <p class="description"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid cumque suscipit animi, nihil tenetur quidem! Nihil eius optio quas ex assumenda voluptate, magnam quod. Eius quis illum architecto quisquam nihil.</p>
+                                            <p class="empty"></p>
+                                        </div>
 
     
-</div>
+                    </div>
 </div> 
 
 
      
-    <p class="title_slide">Nouveauté</p>
+    
         <div class="container">
+            <p class="title_slide">Vous aimerez peut-etre...</p>  
             <div class="swiper-container">
                 <div class="swiper-wrapper">
 
@@ -100,6 +101,9 @@
                 <div class="swiper-button-prev"></div>
             </div>
         </div>
+        
+        
+
 
         <footer>
             <div class="footer_div">

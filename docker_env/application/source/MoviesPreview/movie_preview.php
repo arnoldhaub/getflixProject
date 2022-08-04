@@ -78,8 +78,8 @@
 </div> 
 
 
-     
     
+    <div class="container_movie">
         <div class="container">
             <p class="title_slide">Vous aimerez peut-etre...</p>  
             <div class="swiper-container">
@@ -102,6 +102,29 @@
             </div>
         </div>
         
+        <div class="container">
+            <p class="title_slide">Vous aimerez peut-etre...</p>  
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+
+                    <?php
+                    include "./../api/api/info.php";
+                    foreach ($moviesLatest->results as $p) { // RECENT SF MOVIE
+                        if (!empty($p->poster_path)) {
+                            echo  "<div class='swiper-slide'>
+                            <a href='movie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                        </div>";
+                        }
+                    } ?>
+
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
+                </div>
         
 
 

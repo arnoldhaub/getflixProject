@@ -142,7 +142,11 @@
                 <span class="span_footer">ACCESSIBILITY</span>
                 <span class="span_footer">REPORT A BUG</span>
             </div>
-        </footer> 
+        </footer>
+        
+        
+
+        
 
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');

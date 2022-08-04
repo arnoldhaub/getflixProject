@@ -34,7 +34,7 @@ include("../api/api/info.php");
 
     <body>
         <header>
-            <img class="logo" src="images/logo.svg" alt="logo">
+            <img class="logo" src="../images/logo.svg" alt="logo">
             <img class="logo_minia" src="images/logo_planete.svg" alt="logo_minia">
             <nav>
                 <ul class="nav_links">
@@ -57,7 +57,7 @@ include("../api/api/info.php");
             </div> -->
             <div class="user">
                 <p class="p_username">USER</p>
-                <img class="userImage" name="userImage" src="images/CN.jpg" alt="userImage">
+                <img class="userImage" name="userImage" src="../images/CN.jpg" alt="userImage">
             </div>
         </header>
 
@@ -109,7 +109,7 @@ include("../api/api/info.php");
                                     if($type == "movie"){
                                         for($i = $searchKeywordsMovie->page; $i < $searchKeywordsMovie->total_pages;$i++){
                                             $page = $i;
-                                            include("api/search.php");
+                                            include("../api/api/search.php");
                                             foreach($searchKeywordsMovie->results as $p){
                                                 if (!empty($p->poster_path)) {
                                                     
@@ -136,7 +136,7 @@ include("../api/api/info.php");
                                     else if($type == "serie"){
                                         for($i = $searchKeywordsMovie->page; $i < $searchKeywordsMovie->total_pages;$i++){
                                             $page = $i;
-                                            include("api/search.php");
+                                            include("../api/api/search.php");
                                             foreach($searchKeywordsSerie->results as $p){
                                                 if (!empty($p->poster_path)) {
                                                     echo    "<div class='swiper-slide' style='text-align: center;'>
@@ -162,10 +162,10 @@ include("../api/api/info.php");
 
         <footer>
             <div class="footer_div">
-                <img class="logo_bottom" src="images/logo.svg" alt="logo"> 
+                <img class="logo_bottom" src="../images/logo.svg" alt="logo"> 
                 </div>
             <div>
-                <img class="logo_resp_bottom" src="images/logo_planete_resp.svg" alt="logo">
+                <img class="logo_resp_bottom" src="../images/logo_planete_resp.svg" alt="logo">
             </div>
            <div class="span_div">
                 <span class="span_footer">SCI-FI STREAMING SOLUTION</span>

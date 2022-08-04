@@ -1,3 +1,6 @@
+<?php
+    include "../api/api/info.php";
+?>
 <!DOCTYPE html>
 
     <head>
@@ -52,27 +55,33 @@
     
 
             <div class="carousel-inner">
-                     <div class="carousel-item active">
-                         <img class="d-block w-100" src="./images/robin-stohr-JuJq2E9zS9E-unsplash.jpg" alt="First slide">
-                         <div class="carousel-caption d-none d-md-block">
-                       <h5>Title of the movie</h5>
-                       <p>Some explanation about the moovie blablabla</p>
-                     </div>
-                       </div>
-                     <div class="carousel-item">
-                       <img class="d-block w-100" src="./images/caleb-george-iVXfOilGYHA-unsplash.jpg" alt="Second slide">
-                       <div class="carousel-caption d-none d-md-block">
-                       <h5>Title of the movie</h5>
-                       <p>Some explanation about the moovie blablabla</p>
-                     </div>
-                     </div>
-                     <div class="carousel-item">
-                       <img class="d-block w-100" src="./images/travis-yewell-F-B7kWlkxDQ-unsplash.jpg" alt="Third slide">
-                       <div class="carousel-caption d-none d-md-block">
-                       <h5>Title of the movie</h5>
-                       <p>Some explanation about the moovie blablabla</p>
-                     </div>
-                     </div>
+                <div class="carousel-item active">
+                    <img class="d-block w-100" <?php echo 'src="'.$imgurl.$latestMovie->results[0]->backdrop_path.'" alt="'.$imgurl.$latestMovie->results[0]->original_title.'"';?>>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5><?php echo $latestMovie->results[0]->original_title; ?></h5>
+                        <p><?php echo substr($latestMovie->results[0]->overview, 0,250 )." (...)"; 
+                            if(strlen($latestMovie->results[1]->overview) > 250)
+                                    { echo '(...)';} ?></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" <?php echo 'src="'.$imgurl.$latestMovie->results[1]->backdrop_path.'" alt="'.$imgurl.$latestMovie->results[1]->original_title.'"';?>>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5><?php echo $latestMovie->results[1]->original_title; ?></h5>
+                        <p><?php echo substr($latestMovie->results[1]->overview, 0,250 );
+                            if(strlen($latestMovie->results[1]->overview) > 250)
+                                    { echo '(...)';} ?></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" <?php echo 'src="'.$imgurl.$latestMovie->results[2]->backdrop_path.'" alt="'.$imgurl.$latestMovie->results[2]->original_title.'"';?>>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5><?php echo $latestMovie->results[2]->original_title; ?></h5>
+                        <p><?php echo substr($latestMovie->results[2]->overview, 0,250 )." (...)";
+                            if(strlen($latestMovie->results[1]->overview) > 250)
+                            { echo '(...)';} ?></p>
+                    </div>
+                </div>
             </div>
 
             <a class="carousel-control-prev" href="#carouselHome" role="button" data-slide="prev">
@@ -113,7 +122,6 @@
                 <div class="swiper-wrapper">
 
                     <?php
-                    include "../api/api/info.php";
                     foreach ($moviesLatest->results as $p) { // RECENT SF MOVIE
                         if (!empty($p->poster_path)) {
                             echo  "<div class='swiper-slide'>

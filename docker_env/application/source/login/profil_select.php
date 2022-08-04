@@ -83,7 +83,7 @@ $requete->execute(array($_GET['email']));
             { ?>
                     <li>
                     <a class="fa-solid fa-trash-can" href="profil_delete.php?id=<?php echo $donnees['id']?>&email=<?php echo $donnees['email']?>"style="text-decoration:none; opacity:0.2; color:white"></a>
-                        <a href="catalogue.php">
+                        <a href="../Home/home.php?id=<?php echo $donnees['id']?>">
                             <div class="container">
                                 <div class="row">
                     <?php

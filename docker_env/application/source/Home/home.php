@@ -119,21 +119,21 @@
         <p class="title_slide">Nouveauté</p>
         <div class="container">
             <div class="swiper-container">
+              
                 <div class="swiper-wrapper">
 
                     <?php
                     foreach ($moviesLatest->results as $p) { // RECENT SF MOVIE
                         if (!empty($p->poster_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='movie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='movie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
                         </div>";
                         }
                     } ?>
 
                 </div>
                 <!-- Add Arrows -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+            
             </div>
         </div>
 
@@ -146,15 +146,15 @@
                     foreach ($moviesTopRated->results as $p) { // TOP-RATED SF MOVIE
                         if (!empty($p->poster_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='movie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='movie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
                         </div>";
                         }
                     } ?>
 
                 </div>
                 <!-- Add Arrows -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next">></div>
+                <div class="swiper-button-prev"><</div>
             </div>
         </div>
 
@@ -272,5 +272,6 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="./script.js"></script>
+<script src="./script_video.js"></script>
     </body>
 </html>

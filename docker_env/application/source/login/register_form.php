@@ -6,7 +6,7 @@
 	// Here we check a session is already ON
 	if (isset($_SESSION['connect']))
 	{
-		header('location: index_login.php');
+		header('location: ./../index.php');
 		exit();
 	}
 
@@ -124,7 +124,7 @@
 
 
 
-    <div class="arrowBack" onclick="location.href='./index_login.php'">
+    <div class="arrowBack" onclick="location.href='./../index.php'">
             <svg version="1.1" id="Calque_1"   x="0px" y="0px"
 	 width="97.411px" height="97.68px" viewBox="0 0 97.411 97.68" enable-background="new 0 0 97.411 97.68" xml:space="preserve">
 <g>

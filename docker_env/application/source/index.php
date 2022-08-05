@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="./styles/styles.css" rel="stylesheet">
+    <link href="./login/styles/styles.css" rel="stylesheet">
 </head>
 <body>
 
@@ -33,8 +33,8 @@
         <h1>Welcome to Nova!</h1>
         
     <div class="buttons1">
-            <button type="button_register" class="Register0" name="Register" label="Register" id="Register" onclick="location.href='./register_form.php'">Register</button><br>
-            <button type="button_login" class="Register1" name="Register" label="Register" id="Register" onclick="location.href='login_form.php'">Login</button>            
+            <button type="button_register" class="Register0" name="Register" label="Register" id="Register" onclick="location.href='./login/register_form.php'">Register</button><br>
+            <button type="button_login" class="Register1" name="Register" label="Register" id="Register" onclick="location.href='./login/login_form.php'">Login</button>            
     </div>
        <div class="disclaimer">
 <p class="txt1">Sci-Fi streaming Solution</p>

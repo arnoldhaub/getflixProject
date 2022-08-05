@@ -12,11 +12,17 @@ if(!empty($_POST['comment']))
     $push-> execute(array($id_film, $pseudo, $_POST['comment']));
 }
 
-$request = $db ->prepare('SELECT * FROM comments WHERE id_film = ?');
-$request ->execute(array($id));
+$request = $db ->query('SELECT * FROM comments /*WHERE id_film = ?*/');
+$request ->execute();
+$comment = $request->fetchAll();
 ?>
 <div name="com">
-    <? echo $request; ?>
+   <?php
+   foreach($comment as $comment)
+   {?>
+    <p> <?= $comment['date'],' ', $comment['pseudo'], ' ' ,$comment['commentaires']; ?> </p>
+    <?php
+   }?>
 </div>
 <div name="form_com">
     <form method="POST">

@@ -126,7 +126,7 @@
                     foreach ($moviesLatest->results as $p) { // RECENT SF MOVIE
                         if (!empty($p->poster_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='movie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
+                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
                         </div>";
                         }
                     } ?>
@@ -146,7 +146,7 @@
                     foreach ($moviesTopRated->results as $p) { // TOP-RATED SF MOVIE
                         if (!empty($p->poster_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='movie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
+                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
                         </div>";
                         }
                     } ?>
@@ -167,7 +167,7 @@
                     foreach ($moviesPopular->results as $p) { // POPULAR SF MOVIE
                         if (!empty($p->poster_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='movie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                         </div>";
                         }
                     } ?>

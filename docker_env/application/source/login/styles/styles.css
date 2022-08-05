@@ -267,7 +267,7 @@ p.txt1 {
 /* Start - 1st new user, emplacement vide avec le plus */
 
 .first_new_user {
-  display: none;
+  display: flex;
 }
 
 .profiles {
@@ -442,7 +442,7 @@ p.txt1 {
 /* 3eme section choix des foto de profil utilisateur */
 
 .third_img_userprofil_choices {
-  display: flex;
+  display: none;
 }
 
 .container_userpicture {
@@ -457,6 +457,11 @@ p.txt1 {
   overflow: hidden;
   box-sizing: border-box;
   margin-top: 30px;
+}
+
+.icon-pen i {
+  color: white;
+  font-size: 40px;
 }
 
 .container_userpicture h1 {

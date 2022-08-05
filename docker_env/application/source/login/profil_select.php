@@ -74,7 +74,7 @@ if (!empty($_POST['pseudo'])) {
         <div class="seconde_who_are_you">
             <div class="img_who_are_you">
                 <div class="profile-pic">
-                    <div class="icon-plus">
+                    <div class="icon-pen">
                         <a href="#">
                             <i class="fa-solid fa-pen"></i>
                         </a>
@@ -104,7 +104,6 @@ if (!empty($_POST['pseudo'])) {
             let seconde = document.querySelector(".seconde_who_are_you");
             first.addEventListener("click", () => {
                 first.classList.add("transition_none");
-
                 seconde.classList.add("transition_flex");
             });
         </script>
@@ -155,6 +154,21 @@ if (!empty($_POST['pseudo'])) {
             </div>
 
             <!-- End code choix des image de profil -->
+
+            <!-- Start - Animation JS pour passer de seconde_who_are_you à third_img_userprofil_choices au clic sur l'icion stylo -->
+
+            <!-- <script>
+                let seconde = document.querySelector(".seconde_who_are_you");
+                let third = document.querySelector(".third_img_userprofil_choices");
+                let penIcon = document.querySelector(".icon-pen")
+
+                penIcon.addEventListener("click", () => {
+                    seconde.classList.add("transition_none");
+                    
+                });
+            </script> -->
+
+            <!-- End- Animation JS pour passer de seconde_who_are_you à third_img_userprofil_choices au clic sur l'icion stylo -->
 
 
 

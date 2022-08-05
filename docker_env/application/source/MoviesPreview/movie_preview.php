@@ -1,6 +1,12 @@
 <?php
 
 //======================================================================
+// connexion DB
+//======================================================================
+
+include('../src/connect.php');
+
+//======================================================================
 // SECURITY - ID VERIFICATION // BACK TO MOVIES INDEX
 //======================================================================
 
@@ -135,7 +141,38 @@ include "../api/api/info.php";
                 </div>
             </div>         
         </div>
-        
+            <?php 
+            $request = $db ->prepare('SELECT * FROM comments WHERE id_film = ?');
+            $request ->execute(array($id));
+            $comment = $request->fetchAll();
+            
+            if(isset($_POST['commentaires'], $_POST['pseudo']))
+            {
+                $commentaire =htmlspecialchars($_POST['commentaires']);
+                $pseudo = htmlspecialchars($_POST['pseudo']);
+                $id_film = htmlspecialchars($id);
+                
+                $push = $db ->prepare('INSERT INTO `comments` (`id`, `id_film`, `pseudo`, `commentaires`, `date`) VALUES (NULL, ?, ?, ?, CURRENT_TIMESTAMP)');
+                $push->execute(array($id_film, $pseudo, $commentaire));
+                //header('location: movie_preview.php');
+            }
+            
+            ?>
+            <div name="com">
+               <?php
+               foreach($comment as $comment)
+               {?>
+                <p> <?= $comment['date'],' ', $comment['pseudo'], ' ' ,$comment['commentaires']; ?> </p>
+                <?php
+               }?>
+            </div>
+            <div name="form_com">
+                <form method="POST">
+                    <input type="text" placeholder="pseudo" name="pseudo"><br/>
+                    <input type="text" placeholder="votre commentaire" name="commentaires"><br/> 
+                    <button type="submit">envoyer</button>
+                </form>
+            </div>
         <footer>
             <div class="footer_div">
                 <img class="logo_bottom" src="../images/logo.svg" alt="logo"> 

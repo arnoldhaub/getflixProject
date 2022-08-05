@@ -267,7 +267,7 @@ p.txt1 {
 /* Start - 1st new user, emplacement vide avec le plus */
 
 .first_new_user {
-  display: none;
+  display: flex;
 }
 
 .profiles {
@@ -316,6 +316,7 @@ p.txt1 {
   flex-shrink: 0;
   height: 70%;
   position: relative;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .profile > .profile-content > .profile-pic > .profile-pic-image {
@@ -340,7 +341,7 @@ p.txt1 {
 /* Start Section who are you ?   */
 
 .seconde_who_are_you {
-  display: flex;
+  display: none;
   width: 600px;
   backdrop-filter: blur(0.75vw);
   background-color: rgba(255, 255, 255, 0.06);
@@ -348,6 +349,7 @@ p.txt1 {
   height: 300px;
   overflow: hidden;
   margin-top: 30px;
+  transition-duration: 10s;
 }
 
 .img_who_are_you {
@@ -396,6 +398,7 @@ p.txt1 {
 
 .userinfo_who_are_you form button:hover {
   background: #282828;
+  transition: background-color 250ms;
   color: white;
   cursor: pointer;
 }
@@ -424,6 +427,18 @@ p.txt1 {
   color: white;
   font-size: 40px;
 }
+
+/* Section Javascript - class pour transition */
+
+.transition_none {
+  display: none;
+}
+
+.transition_flex {
+  display: flex;
+}
+
+/* Section Javascript - class pour transition */
 
 /* .profile-btn-modifier {
   height: 50px;

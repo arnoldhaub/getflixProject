@@ -76,7 +76,7 @@ if (!empty($_POST['pseudo'])) {
                 <div class="profile-pic">
                     <div class="icon-plus">
                         <a href="#">
-                        <i class="fa-solid fa-pen"></i>
+                            <i class="fa-solid fa-pen"></i>
                         </a>
                     </div>
                 </div>
@@ -96,6 +96,20 @@ if (!empty($_POST['pseudo'])) {
             </div>
         </div>
         <!-- End - custome section Who are you ?  -->
+
+        <!-- Start - code JS pour transition de first_new_user vers seconde_who_are_you -->
+
+        <script>
+            let first = document.querySelector(".first_new_user");
+            let seconde = document.querySelector(".seconde_who_are_you");
+            first.addEventListener("click", () => {
+                first.classList.add("transition_none");
+
+                seconde.classList.add("transition_flex");
+            });
+        </script>
+
+        <!-- End - code JS pour transition de first_new_user vers seconde_who_are_you -->
 
         <!-- //////////////////////////////////////////////////////// -->
         <!-- /////////////////// END REDESIGN NORDINE /////////////// -->

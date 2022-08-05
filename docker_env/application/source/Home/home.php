@@ -215,7 +215,7 @@
                     foreach ($seriesTopRated->results as $p) { // TOP RATED - SF & FANTAST - SERIES
                         if (!empty($p->poster_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/serie.phpid=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='../MoviesPreview/serie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                         </div>";
                         }
                     } ?>
@@ -236,7 +236,7 @@
                     foreach ($seriesPopular->results as $p) { // POPULAR - SF & FANTAST - SERIES
                         if (!empty($p->poster_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/serie.phpid=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='../MoviesPreview/serie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                         </div>";
                         }
                     } ?>

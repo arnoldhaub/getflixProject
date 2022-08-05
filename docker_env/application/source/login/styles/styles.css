@@ -559,11 +559,16 @@ p.txt1 {
   color: white;
 }
 
-.container_userinput {
-  display: none;
-  text-align: center;
-}
 
 /* /////////////////////////////////////////////////// */
 /* /////////////// END SECTION NORDINE /////////////// */
 /* /////////////////////////////////////////////////// */
+
+.nordine_box {
+  display: none;
+}
+
+.guillaume_box {
+  display: flex;
+  flex-direction: column;
+}

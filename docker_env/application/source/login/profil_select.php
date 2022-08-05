@@ -111,64 +111,111 @@ if (!empty($_POST['pseudo'])) {
 
         <!-- End - code JS pour transition de first_new_user vers seconde_who_are_you -->
 
-        <!-- //////////////////////////////////////////////////////// -->
-        <!-- /////////////////// END REDESIGN NORDINE /////////////// -->
-        <!-- //////////////////////////////////////////////////////// -->
+        <!-- Start section choix des image de profil -->
 
-        <div class="container_userinput">
-            <h1>Who are you ? </h1>
-            <!--ici code si aucun PSEUDO créé -->
-            <?php
-            require('../src/connect.php');
-            // Calcul du nombres de pseudos de l'adresse mail
-            $email = htmlspecialchars($_GET['email']);
-            $requete = $db->query("SELECT COUNT(*) AS nbPseudo FROM profile WHERE email='$email'");
-            $nbDePseudos = $requete->fetch();
-            if ($nbDePseudos[0] < 4) { ?>
-                <form method="post">
-                    <div class="buttons1">
-                        <input type="text" class="Register0_loginForm" name="pseudo" label="Register" id="Register0_loginForm" placeholder="ADD YOUR PSEUDO" /></button><br>
-                        <select class="form-select mb-2" name="categorie" aria-label="Default select example">
-                            <option selected value="adulte">Adulte</option>
-                            <option value="enfant">Enfant</option>
-                        </select>
-                        <button type="submit" class="Register_loginEnter" name="RegisterEnter" label="Register" id="RegisterRegister_loginEnter">CREATE</button>
-                    </div>
-                </form>
-            <?php   }
-            $requete = $db->prepare('SELECT * FROM profile WHERE email = ?');
-            $requete->execute(array($_GET['email']));
-            ?>
-
-            <div class="profile">
-                <ul class="profile-content">
-                    <?php
-                    while ($donnees = $requete->fetch()) { ?>
-                        <li>
-                            <a class="fa-solid fa-trash-can" href="profil_delete.php?id=<?php echo $donnees['id'] ?>&email=<?php echo $donnees['email'] ?>" style="text-decoration:none; opacity:0.2; color:white"></a>
-                            <a href="catalogue.php">
-                                <div class="profile-pic">
-                                    <div class="row">
-                                        <?php
-                                        if ($donnees['categorie'] == 'adulte') {
-                                            echo '<img class="w-25 mb-4 profile-pic-image" src="../images/adulte.png" alt="profil">';
-                                        } else {
-                                            echo '<img class="w-25 mb-4" src="../images/enfant.png" alt="profil">';
-                                        }
-                                        ?>
-                                        <h1 class="mt-2 col text-center align-self-center profile-name"><?php echo $donnees['pseudo'] ?> <span style="font-size:20px"><?php echo $donnees['categorie'] ?></span></h1>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    <?php   } ?>
-                </ul>
+        <div class="third_img_userprofil_choices">
+            <div class="container_userpicture">
+                <h1>Choose your profil picture</h1>
+                <div class="box_picture1">
+                    <section class="box1">
+                        <h2>Super hero</h2>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard">
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard">
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard">
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard">
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard">
+                        </a>
+                        <h2>Basic Avatard</h2>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard">
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard">
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard">
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard">
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard">
+                        </a>
+                    </section>
+                </div>
             </div>
-            <div class="disclaimer">
-                <p class="txt1">Sci-Fi streaming Solution</p>
+
+            <!-- End code choix des image de profil -->
+
+
+
+            <!-- //////////////////////////////////////////////////////// -->
+            <!-- /////////////////// END REDESIGN NORDINE /////////////// -->
+            <!-- //////////////////////////////////////////////////////// -->
+
+            <div class="container_userinput">
+                <h1>Who are you ? </h1>
+                <!--ici code si aucun PSEUDO créé -->
+                <?php
+                require('../src/connect.php');
+                // Calcul du nombres de pseudos de l'adresse mail
+                $email = htmlspecialchars($_GET['email']);
+                $requete = $db->query("SELECT COUNT(*) AS nbPseudo FROM profile WHERE email='$email'");
+                $nbDePseudos = $requete->fetch();
+                if ($nbDePseudos[0] < 4) { ?>
+                    <form method="post">
+                        <div class="buttons1">
+                            <input type="text" class="Register0_loginForm" name="pseudo" label="Register" id="Register0_loginForm" placeholder="ADD YOUR PSEUDO" /></button><br>
+                            <select class="form-select mb-2" name="categorie" aria-label="Default select example">
+                                <option selected value="adulte">Adulte</option>
+                                <option value="enfant">Enfant</option>
+                            </select>
+                            <button type="submit" class="Register_loginEnter" name="RegisterEnter" label="Register" id="RegisterRegister_loginEnter">CREATE</button>
+                        </div>
+                    </form>
+                <?php   }
+                $requete = $db->prepare('SELECT * FROM profile WHERE email = ?');
+                $requete->execute(array($_GET['email']));
+                ?>
+
+                <div class="profile">
+                    <ul class="profile-content">
+                        <?php
+                        while ($donnees = $requete->fetch()) { ?>
+                            <li>
+                                <a class="fa-solid fa-trash-can" href="profil_delete.php?id=<?php echo $donnees['id'] ?>&email=<?php echo $donnees['email'] ?>" style="text-decoration:none; opacity:0.2; color:white"></a>
+                                <a href="catalogue.php">
+                                    <div class="profile-pic">
+                                        <div class="row">
+                                            <?php
+                                            if ($donnees['categorie'] == 'adulte') {
+                                                echo '<img class="w-25 mb-4 profile-pic-image" src="../images/adulte.png" alt="profil">';
+                                            } else {
+                                                echo '<img class="w-25 mb-4" src="../images/enfant.png" alt="profil">';
+                                            }
+                                            ?>
+                                            <h1 class="mt-2 col text-center align-self-center profile-name"><?php echo $donnees['pseudo'] ?> <span style="font-size:20px"><?php echo $donnees['categorie'] ?></span></h1>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        <?php   } ?>
+                    </ul>
+                </div>
+                <div class="disclaimer">
+                    <p class="txt1">Sci-Fi streaming Solution</p>
+                </div>
             </div>
         </div>
-    </div>
 
 </body>
 

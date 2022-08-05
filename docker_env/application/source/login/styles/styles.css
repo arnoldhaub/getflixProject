@@ -267,7 +267,7 @@ p.txt1 {
 /* Start - 1st new user, emplacement vide avec le plus */
 
 .first_new_user {
-  display: flex;
+  display: none;
 }
 
 .profiles {
@@ -349,7 +349,6 @@ p.txt1 {
   height: 300px;
   overflow: hidden;
   margin-top: 30px;
-  transition-duration: 10s;
 }
 
 .img_who_are_you {
@@ -439,6 +438,64 @@ p.txt1 {
 }
 
 /* Section Javascript - class pour transition */
+
+/* 3eme section choix des foto de profil utilisateur */
+
+.third_img_userprofil_choices {
+  display: flex;
+}
+
+.container_userpicture {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  backdrop-filter: blur(0.75vw);
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  height: 500px;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-top: 30px;
+}
+
+.container_userpicture h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.box_picture1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.box_picture1 h2 {
+  text-align: left;
+  margin-left: 30px;
+  color: white;
+  margin-top: 20px;
+}
+
+.box_picture1 .box1 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  list-style-type: none;
+  text-align: center;
+}
+
+.box_picture1 .box1 a {
+  gap: 10px;
+}
+
+.box_picture1 .box1 a img {
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+}
+
+/* 3eme section choix des foto de profil utilisateur */
 
 /* .profile-btn-modifier {
   height: 50px;

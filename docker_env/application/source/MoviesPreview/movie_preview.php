@@ -35,6 +35,9 @@ include "../api/api/info.php";
         <link href="./styles/styles_nav_footer.css" rel="stylesheet"> 
     </head>
     <body>  
+<!-----------------------------------------------------------------------
+                     HEADER + MENU
+------------------------------------------------------------------------->
         <header>
             <img class="logo" src="../images/logo.svg" alt="logo">
             <img class="logo_minia" src="../images/logo_planete.svg" alt="logo_minia">
@@ -62,26 +65,26 @@ include "../api/api/info.php";
                 <img class="userImage" name="userImage" src="../images/CN.jpg" alt="userImage">
             </div>
         </header>
-        
+<!-----------------------------------------------------------------------
+                     WEBSITE
+------------------------------------------------------------------------->
         <div class="BackgroundImage">
-                <img src="<?php echo $imgurl.$infoMovie->backdrop_path;?>" id="testImage" style="max-width: 100%;">
-                <div class="headerMovie">
+            <img src="<?php echo $imgurl.$infoMovie->backdrop_path;?>" id="testImage" style="max-width: 100%;">
+            <div class="headerMovie">
+                <div class="nameMovie">
+                    <h1><?php echo $infoMovie->title; ?></h1>
+                </div>
 
-                    <div class="nameMovie">
-                        <h1><?php echo $infoMovie->title; ?></h1>
-                    </div>
+                <div class="infosMovie">
+                    <button disabled>18+</button>
+                    <button disabled>VO</button>
+                    <button disabled>VOSTFR</button>
+                    <p><?php echo substr($infoMovie->release_date, 0, 4); ?></p> 
+                </div>
 
-                    <div class="infosMovie">
-                        <button disabled>18+</button>
-                        <button disabled>VO</button>
-                        <button disabled>VOSTFR</button>
-                        <p><?php echo substr($infoMovie->release_date, 0, 4); ?></p> 
-                    </div>
-
-                    <div class="typeMovie">
-                        <p class="typeMovieDescription">
-                            <?php 
-                            
+                <div class="typeMovie">
+                    <p class="typeMovieDescription">
+                        <?php 
                             foreach($infoMovie->genres as $i){
                                 if ($i === end($infoMovie->genres)) {
                                     echo $i->name;
@@ -91,34 +94,36 @@ include "../api/api/info.php";
                                     echo $i->name.', ' ;
                                 }
                             }?>
-                        </p>
-                    </div>
+                    </p>
+                </div>
 
-                    <div class="buttonsMovie">
-                        <button class="play" id="playButton" data-toggle="modal" data-target="#watch2"><i class="fa-solid fa-play" id="fa-play"></i>LECTURE</button>
-                    </div>
-                    <!-- MODAL  -->
-                    <div id="watch2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                </div>
-                                <div class="modal-body">
-                                    <iframe id="watch3" src="https://www.youtube.com/embed/<?php echo $infoMovie->videos->results[0]->key;?>" allow="autoplay;" allowfullscreen>
-                                    </iframe>
-                                </div>
+                <div class="buttonsMovie">
+                    <button class="play" id="playButton" data-toggle="modal" data-target="#watch2"><i class="fa-solid fa-play" id="fa-play"></i>LECTURE</button>
+                </div>
+                <!-- MODAL  -->
+                <div id="watch2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <iframe id="watch3" src="https://www.youtube.com/embed/<?php echo $infoMovie->videos->results[0]->key;?>" allow="autoplay;" allowfullscreen>
+                                </iframe>
                             </div>
                         </div>
                     </div>
-
-                    <div class="descriptionMovie">
-                        <p class="description"><?php echo $infoMovie->overview ?></p>
-                        <p class="empty"></p>
-                    </div>
                 </div>
-        </div> 
 
+                <div class="descriptionMovie">
+                    <p class="description"><?php echo $infoMovie->overview ?></p>
+                    <p class="empty"></p>
+                </div>
+            </div>
+        </div> 
+<!-----------------------------------------------------------------------
+                     SERIES RECOMMANDATIONS
+------------------------------------------------------------------------->
         <div class="container_movie">
             <div class="container">
                 <p class="title_slide">You are going to like...</p>  
@@ -127,7 +132,7 @@ include "../api/api/info.php";
 
                         <?php
                         foreach ($moviesRecommandations->results as $p) { 
-                            if (!empty($p->poster_path)) {
+                            if (!empty($p->poster_path && $p->backdrop_path)) {
                                 echo  "<div class='swiper-slide'>
                                 <a href='movie_preview.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                             </div>";
@@ -141,7 +146,10 @@ include "../api/api/info.php";
                 </div>
             </div>         
         </div>
-            <?php 
+<!-----------------------------------------------------------------------
+                     COMMENTS
+------------------------------------------------------------------------->
+        <?php 
             $request = $db ->prepare('SELECT * FROM comments WHERE id_film = ?');
             $request ->execute(array($id));
             $comment = $request->fetchAll();
@@ -157,22 +165,25 @@ include "../api/api/info.php";
                 //header('location: movie_preview.php');
             }
             
-            ?>
-            <div name="com">
-               <?php
+        ?>
+        <div name="com">
+            <?php
                foreach($comment as $comment)
-               {?>
-                <p> <?= $comment['date'],' ', $comment['pseudo'], ' ' ,$comment['commentaires']; ?> </p>
-                <?php
-               }?>
-            </div>
-            <div name="form_com">
-                <form method="POST">
-                    <input type="text" placeholder="pseudo" name="pseudo"><br/>
-                    <input type="text" placeholder="votre commentaire" name="commentaires"><br/> 
-                    <button type="submit">envoyer</button>
-                </form>
-            </div>
+            {?>
+            <p> <?= $comment['date'],' ', $comment['pseudo'], ' ' ,$comment['commentaires']; ?> </p>
+            <?php
+            }?>
+        </div>
+        <div name="form_com">
+            <form method="POST">
+                <input type="text" placeholder="pseudo" name="pseudo"><br/>
+                <input type="text" placeholder="votre commentaire" name="commentaires"><br/> 
+                <button type="submit">envoyer</button>
+            </form>
+        </div>
+<!-----------------------------------------------------------------------
+                     FOOTER
+------------------------------------------------------------------------->
         <footer>
             <div class="footer_div">
                 <img class="logo_bottom" src="../images/logo.svg" alt="logo"> 

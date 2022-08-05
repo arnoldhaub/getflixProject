@@ -29,6 +29,9 @@ include "../api/api/info.php";
         <link href="./styles/styles_nav_footer.css" rel="stylesheet"> 
     </head>
     <body>  
+<!-----------------------------------------------------------------------
+                     HEADER + MENU
+------------------------------------------------------------------------->
         <header>
             <img class="logo" src="../images/logo.svg" alt="logo">
             <img class="logo_minia" src="../images/logo_planete.svg" alt="logo_minia">
@@ -56,7 +59,9 @@ include "../api/api/info.php";
                 <img class="userImage" name="userImage" src="../images/CN.jpg" alt="userImage">
             </div>
         </header>
-        
+<!-----------------------------------------------------------------------
+                     WEBSITE
+------------------------------------------------------------------------->
         <div class="BackgroundImage">
                 <img src="<?php echo $imgurl.$infoSerie->backdrop_path;?>" id="testImage" style="max-width: 100%;">
                 <div class="headerMovie">
@@ -157,7 +162,7 @@ include "../api/api/info.php";
 
                         <?php
                         foreach ($seriesRecommandations->results as $p) { 
-                            if (!empty($p->poster_path)) {
+                            if (!empty($p->poster_path && $p->backdrop_path)) {
                                 echo  "<div class='swiper-slide'>
                                 <a href='serie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                             </div>";

@@ -72,17 +72,27 @@ if (!empty($_POST['pseudo'])) {
 
         <!-- Start - custome section Who are you ?  -->
         <div class="seconde_who_are_you">
-            <div class="profile">
-                <div class="profiles">
-                    <h1>Who are you ?</h1>
-                    <form action="#" method="post" enctype="multipart/form">
-                        <input type="text" name="NAME" placeholder="NAME" value="" required>
-                        <select class="form-select mb-2" name="categorie" aria-label="Default select example">
-                            <option selected value="adulte">Adulte</option>
-                            <option value="enfant">Enfant</option>
-                        </select>
-                    </form>
+            <div class="img_who_are_you">
+                <div class="profile-pic">
+                    <div class="icon-plus">
+                        <a href="#">
+                        <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </div>
                 </div>
+            </div>
+            <div class="userinfo_who_are_you">
+                <form action="#" methode="POST">
+                    <h1>Who are you ?</h1>
+                    <input type="text" name="name" value="Enter your name here" required>
+                    <select class="form-select mb-2" name="categorie" aria-label="Default select example">
+                        <option selected value="adulte">Adulte</option>
+                        <option value="enfant">Enfant</option>
+                    </select>
+                    <div class="userinfo_btn">
+                        <button type="submit">Save</button>
+                    </div>
+                </form>
             </div>
         </div>
         <!-- End - custome section Who are you ?  -->

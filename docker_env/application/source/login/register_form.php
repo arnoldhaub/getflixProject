@@ -6,7 +6,7 @@
 	// Here we check a session is already ON
 	if (isset($_SESSION['connect']))
 	{
-		header('location: index_login.php');
+		header('location: ../index.php');
 		exit();
 	}
 

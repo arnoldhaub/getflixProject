@@ -25,11 +25,59 @@
             require('../src/connect.php');
             $id_pseudo = $_GET["id"];
             $requete = $db->query("SELECT PSEUDO FROM profile WHERE id='$id_pseudo'");
-            $pseudo = $requete->fetch();
+            $pseudoActif = $requete->fetch();
+            
             ?>
 
-            <div class="user">
-                <p class="p_username"><?php echo $pseudo[0] ?></p>
+            <div id="sectionUser">
+
+            <div class="user mb-2">
+                <p class="p_username"><?php echo $pseudoActif[0] ?></p>
                 <img class="userImage" name="userImage" src="/images/CN.jpg" alt="userImage">
+                <i id="fleche" class="fa-solid fa-angle-down"></i>
             </div>
+
+
+            <div id=listePseudos>
+            <?php
+            $email = $_GET["email"];
+            $requete2 = $db->query("SELECT PSEUDO,ID FROM profile WHERE email='$email'");
+            while($donnees = $requete2->fetch())
+                    { ?>
+                <li class="mb-3 " style="list-style-type:none">
+                    <div class="container">
+                        <div class="row">
+                <img id="photoListeProfil" src="../images/adulte.png" alt="profil">
+                <a style="color:white" href="home.php?id=<?php echo $donnees[1]?>&email=<?php echo $email?>"><?php echo $donnees[0] ?>
+                </a>
+                        </div>
+                    </div>
+                
+            <?php   }
+            ?>
+            <hr style="height:3px">
+             <li class="mb-3" style="list-style-type:none">
+                    <div class="container">
+                        <div class="row">
+                
+                <i class="fa-solid fa-pen"></i>
+                <a style="color:white" href="../login/profil_select.php?email=<?php echo $_GET['email'] ?>" class="ml-2">Settings</a>
+                </a>
+                        </div>
+                    </div>
+            </li>
+               
+            <li class="mb-3" style="list-style-type:none">
+                    <div class="container">
+                        <div class="row">
+                <i class="fa-solid fa-share-from-square"></i>
+                <a style="color:white" href="../login/logout.php" class="ml-2">Disconnect</a>
+                </a>
+                        </div>
+                    </div>
+            </li>
+
+            </div>
+            </div>
+
         </header>

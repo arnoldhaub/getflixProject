@@ -10,38 +10,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"  media="screen">
-        <link href="styles/styles_home.css" rel="stylesheet">
+        <link href="../Home/styles/styles_home.css" rel="stylesheet">
     </head>
 
 
     <body>  
-        <header>
-            <img class="logo" src="/images/logo.svg" alt="logo">
-            <img class="logo_minia" src="/images/logo_planete.svg" alt="logo_minia">
-            <nav>
-                <ul class="nav_links">
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">SERIES</a></li>
-                    <li><a href="#">FILMS</a></li>
-                    <li><a href="#"></a>RECHERCHE</a></li>
-                </ul>
-
-                <ul class="nav_links_responsive">
-                    <li><a href="#"><i class="fa-solid fa-house"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-film"></i></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-tv"></i></i></a></li>
-                    <li><a href="#"></a><i class="fa-solid fa-magnifying-glass"></i></i></a></li>
-                </ul>
-            </nav>
-
-            <!--   <div class="searchbar">
-                        <input type="text" name="searchBar" placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i>
-            </div> -->
-            <div class="user">
-                <p class="p_username">USER</p>
-                <img class="userImage" name="userImage" src="/images/CN.jpg" alt="userImage">
-            </div>
-        </header>
+    <?php   
+    include('header.php');
+    ?>
 
 <div class="bootstrap-iso">
         <div id="carouselHome" class="carousel slide" data-ride="carousel">

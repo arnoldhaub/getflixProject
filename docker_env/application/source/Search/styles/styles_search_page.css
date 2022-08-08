@@ -34,6 +34,7 @@ html{
   margin-top: 0px;
   margin-right: 0px;
   margin-bottom: 0px;
+  margin-right: 3vh;
 }
 
 .choix2, .choix3 , .choix4{
@@ -96,10 +97,10 @@ html{
 
 
 .container-content{
-  right: 0;
-  width: 100%;
   align-items: baseline;
   margin-right: 4vh;
+  opacity: 0%;
+  width: 100%;
 }
 
 
@@ -108,12 +109,15 @@ input[type=text]{
   border-radius: 50px;
   text-align: left;
   padding: 20px;
-  width: 100%;
+  width: 800px; /* change this for the media queries */
+  margin-left: auto;
   background-color: none;
   background: none;
   color: rgb(255, 255, 255);
   height: 60px;
   outline: none;
+  transition: width 2s;
+
 }
 
 input[type=text]:focus,input[type=text]:hover {
@@ -122,10 +126,13 @@ input[type=text]:focus,input[type=text]:hover {
 }
 
 .wrapper_container_search{
+  display: flex;
   position: relative;
+  right: 0;
+  width: 100%;
 }
 
-
+/* Search icon */
 .wrapper_container_search i{ 
 position: absolute; 
 right: 25px; 
@@ -133,3 +140,83 @@ top: 23px;
 color: gray; 
 font-size: 1rem;
 } 
+/* Search icon */
+
+
+
+
+
+/* ========================================== 
+
+          ↓↓↓↓  SLIDER SEARCH ↓↓↓↓↓
+
+============================================== */
+
+
+.container {
+margin: 0px;
+margin-top: 0px;
+padding: 0px;
+
+}
+.swiper-container {
+  overflow: visible;
+
+}
+.swiper-wrapper{
+display: flex;
+flex-direction: row;
+margin-left: 3.4vh;
+margin-right: 3.4vh;
+}
+
+
+
+.title_slide{
+  margin-left: 4vh;
+  font-family: 'Inter';
+}
+
+.swiper-slide {
+  transition: all 105ms ease-out;
+  border-radius: 15px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+   margin-right: 1.3vh;
+   margin-bottom: 1vh;
+  
+}
+
+
+.swiper-slide img {
+   border-radius: 5px;
+  max-width: 13rem;
+  cursor: grab;
+  border: solid 0.1px rgba(0, 0, 0, 0);
+  height:80%;
+  margin: 0;
+
+}
+
+.swiper-slide img:active {
+  cursor: grabbing;
+}
+
+.swiper-slide:hover {
+  transform: scale(1.2);
+  transition: all 300ms ease-out;
+  transition-delay: 0.1ms;
+  z-index: 1;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.swiper-slide:hover img {
+  transition-delay: 1ms;
+  border: solid 0.1px rgb(255, 255, 255);
+  filter: drop-shadow(0px 4px 4px rgb(0, 0, 0));
+}
+
+#nbr {
+  margin-left: 4.3vh;
+}
+
+/* slider SEARCH */

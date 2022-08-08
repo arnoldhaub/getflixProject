@@ -1,0 +1,135 @@
+@font-face {
+  font-family: Circular;
+  src: url(./CircularStd-Black.otf) format("opentype");
+}
+
+* {
+margin: 0;
+padding: 0; 
+color: white;
+}
+
+body{
+  background-color: none;
+}
+
+html{
+  height: 100%;
+  width: 100%;
+}
+
+
+/* ========================================== 
+
+         ↓↓↓↓  MENU DEROULANT CSS ↓↓↓↓↓
+
+============================================== */
+
+
+.container_menu{
+  display: flex;
+  flex-direction: column;
+  margin-left: 5vh;
+  background-color: none;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+
+.choix2, .choix3 , .choix4{
+  display: flex;
+  font-family: 'Inter';
+  font-size: 5rem;
+  cursor: pointer;
+  width: 30%;
+  margin:0px;
+  gap: 30px;
+  width: 100%;
+}
+
+#circle_selector, #circle_selector2, #circle_selector3 {
+  width: 30px;
+  opacity: 0%;
+}
+
+#circle_selected, #circle_selected2, #circle_selected3{
+  width: 30px;
+
+}
+
+
+
+.container_page{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+
+/* ========================================== 
+
+         ↑↑↑↑↑  MENU DEROULANT CSS ↑↑↑↑
+
+============================================== */
+
+
+
+
+/* ========================================== 
+
+   ↓↓↓↓  HIDING CHECK BUTTON AND LABEL INPUT ↓↓↓↓↓
+
+============================================== */
+
+.btn-check, label{
+  display: none;
+}
+
+
+/* ========================================== 
+
+  ↑↑↑↑↑ HIDING CHECK BUTTON AND LABEL INPUT ↑↑↑↑
+
+============================================== */
+
+
+.container-content{
+  right: 0;
+  width: 100%;
+  align-items: baseline;
+  margin-right: 4vh;
+}
+
+
+input[type=text]{
+  border: darkgray 2px solid;
+  border-radius: 50px;
+  text-align: left;
+  padding: 20px;
+  width: 100%;
+  background-color: none;
+  background: none;
+  color: rgb(255, 255, 255);
+  height: 60px;
+  outline: none;
+}
+
+input[type=text]:focus,input[type=text]:hover {
+  outline: white;
+  border: white 2px solid;
+}
+
+.wrapper_container_search{
+  position: relative;
+}
+
+
+.wrapper_container_search i{ 
+position: absolute; 
+right: 25px; 
+top: 23px;
+color: gray; 
+font-size: 1rem;
+} 

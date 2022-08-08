@@ -3,7 +3,7 @@
             <img class="logo_minia" src="/images/logo_planete.svg" alt="logo_minia">
             <nav style="align-self: center">
                 <ul class="nav_links">
-                    <li><a href="home.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>">HOME</a></li>
+                    <li><a href="../home.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>">HOME</a></li>
                     <li><a href="#">SERIES</a></li>
                     <li><a href="#">FILMS</a></li>
                     <li><a href="search.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>">RECHERCHE</a></li>

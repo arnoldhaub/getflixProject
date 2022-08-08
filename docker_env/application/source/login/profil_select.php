@@ -86,17 +86,7 @@ $requete->execute(array($_GET['email']));
                     <a href="../Home/home.php?id=<?php echo $donnees['id']?>&email=<?php echo $donnees['email']?>">
                             <div class="container">
                                 <div class="row">
-                    <?php
-                            if ($donnees['categorie']=='adulte')
-                            {
-                                echo '<img class="w-25 mb-4" src="../images/adulte.png" alt="profil">';
-                            }
-                            else
-                            {
-                                echo '<img class="w-25 mb-4" src="../images/enfant.png" alt="profil">';
-                            }
-                            
-                    ?>
+                    <img class="w-25 mb-4" src="<?php echo $donnees['image'] ?>" alt="profil">
                             <h1 class="mt-2 col text-center align-self-center"><?php echo $donnees['pseudo']?> <span style="font-size:20px"><?php echo $donnees['categorie']?></span></h1>
                             
                             

@@ -33,6 +33,43 @@ include "../api/api/info.php";
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"  media="screen">
         <link href="./styles/styles_movie_preview.css" rel="stylesheet">
         <link href="./styles/styles_nav_footer.css" rel="stylesheet"> 
+        <style>
+            .modal-dialog {
+                max-width: 800px;
+                margin: 30px auto;
+            }
+            .modal-body {
+            position:relative;
+            padding:0px;
+            }
+            .close {
+            position:absolute;
+            right:-30px;
+            top:0;
+            z-index:999;
+            font-size:2rem;
+            font-weight: normal;
+            color:#fff;
+            opacity:1;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+  var $videoSrc;
+  $(".video-btn").click(function() {
+    $videoSrc = $(this).data("src");
+  });
+  $("#myModal").on("shown.bs.modal", function(e) {
+    $("#video").attr(
+      "src",
+      $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0"
+    );
+  });
+  $("#myModal").on("hide.bs.modal", function(e) {
+    $("#video").attr("src", ""); // Remove the video source.
+  });
+});
+        </script>
     </head>
     <body>  
 <!-----------------------------------------------------------------------
@@ -98,18 +135,20 @@ include "../api/api/info.php";
                 </div>
 
                 <div class="buttonsMovie">
-                    <button class="play" id="playButton" data-toggle="modal" data-target="#watch2"><i class="fa-solid fa-play" id="fa-play"></i>LECTURE</button>
+                    <button type="button" class="play video-btn" id="playButton" data-toggle="modal" data-src=""  data-target="#myModal"><i class="fa-solid fa-play" id="fa-play"></i>LECTURE</button>
                 </div>
                 <!-- MODAL  -->
-                <div id="watch2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" data-backdrop="false"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            </div>
                             <div class="modal-body">
-                                <iframe id="watch3" src="https://www.youtube.com/embed/<?php echo $infoMovie->videos->results[0]->key;?>" allow="autoplay;" allowfullscreen>
-                                </iframe>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>        
+                                        <!-- 16:9 aspect ratio -->
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<?php echo $infoMovie->videos->results[0]->key;?>" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                                </div>
                             </div>
                         </div>
                     </div>

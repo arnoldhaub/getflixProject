@@ -69,50 +69,8 @@ if (!empty($_POST['pseudo'])) {
                 </div>
             </div>
             <!-- End - 1ere emplacement vide avec l'icon plus -->
-
-            <!-- Start section choix des image de profil -->
-            <div class="third_img_userprofil_choices">
-                <h1>Choose your profil picture</h1>
-                <div class="box_picture1">
-                    <div class="box1">
-                        <h2>Super hero</h2>
-                        <a href="#">
-                            <img src="../images/enfant.png" alt="user avatard" />
-                        </a>
-                        <a href="#">
-                            <img src="../images/enfant.png" alt="user avatard" />
-                        </a>
-                        <a href="#">
-                            <img src="../images/enfant.png" alt="user avatard" />
-                        </a>
-                        <a href="#">
-                            <img src="../images/enfant.png" alt="user avatard" />
-                        </a>
-                        <a href="#">
-                            <img src="../images/enfant.png" alt="user avatard" />
-                        </a>
-                        <h2>Basic Avatard</h2>
-                        <a href="#">
-                            <img src="../images/enfant.png" alt="user avatard" />
-                        </a>
-                        <a href="#">
-                            <img src="../images/enfant.png" alt="user avatard" />
-                        </a>
-                        <a href="#">
-                            <img src="../images/enfant.png" alt="user avatard" />
-                        </a>
-                        <a href="#">
-                            <img src="../images/enfant.png" alt="user avatard" />
-                        </a>
-                        <a href="#">
-                            <img src="../images/enfant.png" alt="user avatard" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- End code choix des image de profil -->
         </div>
-        <!-- <script src="styles/nordine.js"></script> -->
+
         <!-- //////////////////////////////////////////////////////// -->
         <!-- /////////////////// END REDESIGN NORDINE /////////////// -->
         <!-- //////////////////////////////////////////////////////// -->
@@ -197,11 +155,65 @@ if (!empty($_POST['pseudo'])) {
             </div>
             <!-- </div> -->
         </div>
+        <!-- Start section choix des image de profil -->
+        <div class="third_img_userprofil_choices">
+            <h1>Choose your profil picture</h1>
+            <div class="box_picture1">
+                <div class="box1">
+                    <a href="#">
+                        <img src="../images/user_pic/1.png" alt="user avatard" />
+                    </a>
+                    <a href="#">
+                        <img src="../images/user_pic/2.png" alt="user avatard" />
+                    </a>
+                    <a href="#">
+                        <img src="../images/user_pic/3.png" alt="user avatard" />
+                    </a>
+                    <a href="#">
+                        <img src="../images/user_pic/4.png" alt="user avatard" />
+                    </a>
+                    <a href="#">
+                        <img src="../images/user_pic/5.png" alt="user avatard" />
+                    </a>
+                    <a href="#">
+                        <img src="../images/user_pic/6.png" alt="user avatard" />
+                    </a>
+                    <a href="#">
+                        <img src="../images/user_pic/7.png" alt="user avatard" />
+                    </a>
+                    <a href="#">
+                        <img src="../images/user_pic/8.png" alt="user avatard" />
+                    </a>
+                    <a href="#">
+                        <img src="../images/user_pic/9.png" alt="user avatard" />
+                    </a>
+                    <a href="#">
+                        <img src="../images/user_pic/10.png" alt="user avatard" />
+                    </a>
+                    <a href="#">
+                        <img src="../images/user_pic/11.png" alt="user avatard" />
+                    </a>
+                    <a href="#">
+                        <img src="../images/user_pic/12.png" alt="user avatard" />
+                    </a>
+                    <a href="#">
+                        <img src="../images/user_pic/13.png" alt="user avatard" />
+                    </a>
+                    <a href="#">
+                        <img src="../images/user_pic/14.png" alt="user avatard" />
+                    </a>
+                    <a href="#">
+                        <img src="../images/user_pic/15.png" alt="user avatard" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- End code choix des image de profil -->
         <div class="disclaimer">
             <p class="txt1" style="font-size: 20px;">Sci-Fi streaming Solution</p>
         </div>
     </div>
-
+    <script src="styles/nordine.js"></script>
 </body>
 
 <footer>

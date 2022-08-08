@@ -373,17 +373,16 @@ p.txt1 {
 /* Start 3eme section choix des foto de profil utilisateur */
 
 .third_img_userprofil_choices {
-  display: none;
-  position: relative;
+  position: absolute;
   flex-direction: column;
   width: 600px;
-  backdrop-filter: blur(0.75vw);
+  backdrop-filter: blur(1vw);
   background-color: rgba(255, 255, 255, 0.06);
   border-radius: 20px;
   height: 500px;
   overflow: hidden;
   box-sizing: border-box;
-  margin-top: 30px;
+  margin: 30px;
 }
 .third_img_userprofil_choices h1 {
   text-align: center;

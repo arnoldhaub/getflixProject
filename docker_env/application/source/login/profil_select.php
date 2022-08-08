@@ -99,54 +99,50 @@ if (!empty($_POST['pseudo'])) {
 
             <!-- Start section choix des image de profil -->
             <div class="third_img_userprofil_choices">
-                <div class="container_userpicture">
-                    <h1>Choose your profil picture</h1>
-                    <div class="box_picture1">
-                        <section class="box1">
-                            <h2>Super hero</h2>
-                            <a href="#">
-                                <img src="../images/enfant.png" alt="user avatard" />
-                            </a>
-                            <a href="#">
-                                <img src="../images/enfant.png" alt="user avatard" />
-                            </a>
-                            <a href="#">
-                                <img src="../images/enfant.png" alt="user avatard" />
-                            </a>
-                            <a href="#">
-                                <img src="../images/enfant.png" alt="user avatard" />
-                            </a>
-                            <a href="#">
-                                <img src="../images/enfant.png" alt="user avatard" />
-                            </a>
-                            <h2>Basic Avatard</h2>
-                            <a href="#">
-                                <img src="../images/enfant.png" alt="user avatard" />
-                            </a>
-                            <a href="#">
-                                <img src="../images/enfant.png" alt="user avatard" />
-                            </a>
-                            <a href="#">
-                                <img src="../images/enfant.png" alt="user avatard" />
-                            </a>
-                            <a href="#">
-                                <img src="../images/enfant.png" alt="user avatard" />
-                            </a>
-                            <a href="#">
-                                <img src="../images/enfant.png" alt="user avatard" />
-                            </a>
-                        </section>
+                <h1>Choose your profil picture</h1>
+                <div class="box_picture1">
+                    <div class="box1">
+                        <h2>Super hero</h2>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard" />
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard" />
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard" />
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard" />
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard" />
+                        </a>
+                        <h2>Basic Avatard</h2>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard" />
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard" />
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard" />
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard" />
+                        </a>
+                        <a href="#">
+                            <img src="../images/enfant.png" alt="user avatard" />
+                        </a>
                     </div>
                 </div>
-                <!-- End code choix des image de profil -->
             </div>
+            <!-- End code choix des image de profil -->
         </div>
-        <script src="styles/nordine.js"></script>
+        <!-- <script src="styles/nordine.js"></script> -->
         <!-- //////////////////////////////////////////////////////// -->
         <!-- /////////////////// END REDESIGN NORDINE /////////////// -->
         <!-- //////////////////////////////////////////////////////// -->
-
-
 
         <div class="guillaume_box">
             <!-- <div class="guillaume_box"> -->
@@ -159,50 +155,67 @@ if (!empty($_POST['pseudo'])) {
             $requete = $db->query("SELECT COUNT(*) AS nbPseudo FROM profile WHERE email='$email'");
             $nbDePseudos = $requete->fetch();
             if ($nbDePseudos[0] < 4) { ?>
-                <form method="post">
-                    <div class="buttons1">
-                        <input type="text" class="Register0_loginForm" name="pseudo" label="Register" id="Register0_loginForm" placeholder="ADD YOUR PSEUDO" /></button><br>
+                <div class="buttons1">
+                    <form method="post">
+                        <!-- /////// NORDINE - START CODE AJOUTER ICI //////// -->
+                        <!-- J'ai ajouter l'image de profil utilisateur relier a la BDD -->
+                        <div class="img_creat_username_box">
+                            <?php
+                            if ($donnees['categorie'] == 'adulte') {
+                                echo '<img class="w-25 mb-4 profile-pic-image" src="../images/adulte.png" alt="profil">';
+                            } else {
+                                echo '<img class="w-25 mb-4 profile-pic-image" src="../images/enfant.png" alt="profil" style="width: 60px;">';
+                            }
+                            ?>
+                        </div>
+                        <!-- /////// NORDINE - END CODE AJOUTER ICI //////// -->
+                    <div class="who_are_you_form">
+                    <input type="text" class="Register0_loginForm" name="pseudo" label="Register" id="Register0_loginForm" placeholder="ADD YOUR PSEUDO" /></button><br>
                         <select class="form-select mb-2" name="categorie" aria-label="Default select example">
                             <option selected value="adulte">Adulte</option>
                             <option value="enfant">Enfant</option>
                         </select>
                         <button type="submit" class="Register_loginEnter" name="RegisterEnter" label="Register" id="RegisterRegister_loginEnter">CREATE</button>
-                    </div>
-                </form>
+                    
+                    </div>    
+                    </form>
+                </div>
             <?php   }
             $requete = $db->prepare('SELECT * FROM profile WHERE email = ?');
             $requete->execute(array($_GET['email']));
             ?>
 
-            <div class="profile">
+            <div class="guillaume_box">
                 <ul class="profile-content">
                     <?php
-                    while ($donnees = $requete->fetch()) { ?>
+                    while ($donnees = $requete->fetch()) {
+                    ?>
                         <li>
-                            <a class="fa-solid fa-trash-can" href="profil_delete.php?id=<?php echo $donnees['id'] ?>&email=<?php echo $donnees['email'] ?>" style="text-decoration:none; opacity:0.2; color:white"></a>
                             <a href="catalogue.php">
-                                <div class="profile-pic">
-                                    <div class="row">
-                                        <?php
-                                        if ($donnees['categorie'] == 'adulte') {
-                                            echo '<img class="w-25 mb-4 profile-pic-image" src="../images/adulte.png" alt="profil">';
-                                        } else {
-                                            echo '<img class="w-25 mb-4" src="../images/enfant.png" alt="profil">';
-                                        }
-                                        ?>
-                                        <h1 class="mt-2 col text-center align-self-center profile-name"><?php echo $donnees['pseudo'] ?> <span style="font-size:20px"><?php echo $donnees['categorie'] ?></span></h1>
-                                    </div>
-                                </div>
+                                <div class="profile-pic"">
+                                        <a class=" fa-solid fa-trash-can" href="profil_delete.php?id=<?php echo $donnees['id'] ?>&email=<?php echo $donnees['email'] ?>" style="">
                             </a>
-                        </li>
-                    <?php   } ?>
-                </ul>
+                            <div class=" row">
+                                <?php
+                                if ($donnees['categorie'] == 'adulte') {
+                                    echo '<img class="w-25 mb-4 profile-pic-image" src="../images/adulte.png" alt="profil">';
+                                } else {
+                                    echo '<img class="w-25 mb-4 profile-pic-image" src="../images/enfant.png" alt="profil" style="width: 60px;">';
+                                }
+                                ?>
+                                <h1 class="mt-2 col text-center align-self-center profile-name"><?php echo $donnees['pseudo'] ?> <span style="font-size:20px"><?php echo $donnees['categorie'] ?></span></h1>
+                            </div>
             </div>
-            <div class="disclaimer">
-                <p class="txt1">Sci-Fi streaming Solution</p>
-            </div>
-            <!-- </div> -->
+            </a>
+            </li>
+        <?php } ?>
+        </ul>
         </div>
+        <!-- </div> -->
+    </div>
+    <div class="disclaimer">
+        <p class="txt1" style="font-size: 20px;">Sci-Fi streaming Solution</p>
+    </div>
     </div>
 
 </body>

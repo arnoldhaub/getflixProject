@@ -70,33 +70,6 @@ if (!empty($_POST['pseudo'])) {
             </div>
             <!-- End - 1ere emplacement vide avec l'icon plus -->
 
-            <!-- Start - custome section Who are you ?  -->
-            <div class="seconde_who_are_you">
-                <div class="img_who_are_you">
-                    <div class="profile-pic">
-                        <div class="icon-pen">
-                            <a href="#">
-                                <i class="fa-solid fa-pen"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="userinfo_who_are_you">
-                    <form action="#" methode="POST">
-                        <h1>Who are you ?</h1>
-                        <input type="text" name="name" value="Enter your name here" required />
-                        <select class="form-select mb-2" name="categorie" aria-label="Default select example">
-                            <option selected value="adulte">Adulte</option>
-                            <option value="enfant">Enfant</option>
-                        </select>
-                        <div class="userinfo_btn">
-                            <button type="submit">Save</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- End - custome section Who are you ?  -->
-
             <!-- Start section choix des image de profil -->
             <div class="third_img_userprofil_choices">
                 <h1>Choose your profil picture</h1>
@@ -163,21 +136,23 @@ if (!empty($_POST['pseudo'])) {
                             <?php
                             if ($donnees['categorie'] == 'adulte') {
                                 echo '<img class="w-25 mb-4 profile-pic-image" src="../images/adulte.png" alt="profil">';
-                            } else {
+                            } elseif ($donnees['categorie'] == 'enfant') {
                                 echo '<img class="w-25 mb-4 profile-pic-image" src="../images/enfant.png" alt="profil" style="width: 60px;">';
+                            } else {
+                                echo '<img class="w-25 mb-4 profile-pic-image" src="../images/default_user.jpg" alt="profil" style="cursor: pointer">';
                             }
                             ?>
                         </div>
                         <!-- /////// NORDINE - END CODE AJOUTER ICI //////// -->
-                    <div class="who_are_you_form">
-                    <input type="text" class="Register0_loginForm" name="pseudo" label="Register" id="Register0_loginForm" placeholder="ADD YOUR PSEUDO" /></button><br>
-                        <select class="form-select mb-2" name="categorie" aria-label="Default select example">
-                            <option selected value="adulte">Adulte</option>
-                            <option value="enfant">Enfant</option>
-                        </select>
-                        <button type="submit" class="Register_loginEnter" name="RegisterEnter" label="Register" id="RegisterRegister_loginEnter">CREATE</button>
-                    
-                    </div>    
+                        <div class="who_are_you_form">
+                            <input type="text" class="Register0_loginForm" name="pseudo" label="Register" id="Register0_loginForm" placeholder="ADD YOUR PSEUDO" /></button><br>
+                            <select class="form-select mb-2" name="categorie" aria-label="Default select example">
+                                <option selected value="adulte">Adulte</option>
+                                <option value="enfant">Enfant</option>
+                            </select>
+                            <button type="submit" class="Register_loginEnter" name="RegisterEnter" label="Register" id="RegisterRegister_loginEnter">CREATE</button>
+
+                        </div>
                     </form>
                 </div>
             <?php   }
@@ -192,30 +167,39 @@ if (!empty($_POST['pseudo'])) {
                     ?>
                         <li>
                             <a href="catalogue.php">
-                                <div class="profile-pic"">
-                                        <a class=" fa-solid fa-trash-can" href="profil_delete.php?id=<?php echo $donnees['id'] ?>&email=<?php echo $donnees['email'] ?>" style="">
+                                <div class="profile-pic">
+                                    <a class=" fa-solid fa-trash-can" href="profil_delete.php?id=<?php echo $donnees['id'] ?>&email=<?php echo $donnees['email'] ?>" style="">
+                                        <a class=" fa-solid fa-pen" href="profil_modif.php?id=<?php echo $donnees['id'] ?>&email=<?php echo $donnees['email'] ?>" style="">
+                                        </a>
+                                        <div class=" row">
+                                            <?php
+                                            if ($donnees['categorie'] == 'adulte') {
+                                                echo '<img class="w-25 mb-4 profile-pic-image" src="../images/adulte.png" alt="profil">';
+                                            } elseif ($donnees['categorie'] == 'enfant') {
+                                                echo '<img class="w-25 mb-4 profile-pic-image" src="../images/enfant.png" alt="profil">';
+                                            } else {
+                                                echo '<img class="w-25 mb-4 profile-pic-image" src="../images/default_user.jpg" alt="profil" style="">';
+                                            }
+                                            ?>
+                                            <h1 class="mt-2 col text-center align-self-center profile-name"><?php echo $donnees['pseudo'] ?> <span style="font-size:20px"><?php echo $donnees['categorie'] ?></span></h1>
+                                        </div>
+                                        <!-- <div class="row_default">
+                                            <?php
+                                            echo '<img class="w-25 mb-4 profile-pic-image" src="../images/default_user.jpg" alt="profil" style="">';
+                                            ?>
+                                            <h1 class="mt-2 col text-center align-self-center profile-name">Add user</h1>
+                                        </div> -->
+                                </div>
                             </a>
-                            <div class=" row">
-                                <?php
-                                if ($donnees['categorie'] == 'adulte') {
-                                    echo '<img class="w-25 mb-4 profile-pic-image" src="../images/adulte.png" alt="profil">';
-                                } else {
-                                    echo '<img class="w-25 mb-4 profile-pic-image" src="../images/enfant.png" alt="profil" style="width: 60px;">';
-                                }
-                                ?>
-                                <h1 class="mt-2 col text-center align-self-center profile-name"><?php echo $donnees['pseudo'] ?> <span style="font-size:20px"><?php echo $donnees['categorie'] ?></span></h1>
-                            </div>
+                        </li>
+                    <?php } ?>
+                </ul>
             </div>
-            </a>
-            </li>
-        <?php } ?>
-        </ul>
+            <!-- </div> -->
         </div>
-        <!-- </div> -->
-    </div>
-    <div class="disclaimer">
-        <p class="txt1" style="font-size: 20px;">Sci-Fi streaming Solution</p>
-    </div>
+        <div class="disclaimer">
+            <p class="txt1" style="font-size: 20px;">Sci-Fi streaming Solution</p>
+        </div>
     </div>
 
 </body>
@@ -224,3 +208,6 @@ if (!empty($_POST['pseudo'])) {
 </footer>
 
 </html>
+
+
+<!-- //////////////////////////////////// -->

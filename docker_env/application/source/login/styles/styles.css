@@ -358,99 +358,6 @@ p.txt1 {
 
 /* End - 1st new user, emplacement vide avec le plus */
 
-/* Start 2ed who are you ?   */
-
-.seconde_who_are_you {
-  display: none;
-  width: 600px;
-  backdrop-filter: blur(0.75vw);
-  background-color: rgba(255, 255, 255, 0.06);
-  border-radius: 20px;
-  height: 300px;
-  overflow: hidden;
-  margin-top: 30px;
-}
-
-.img_who_are_you {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 200px;
-  margin-left: 20px;
-}
-
-.userinfo_who_are_you {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 400px;
-}
-
-.userinfo_who_are_you form {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-}
-
-.userinfo_who_are_you form h1 {
-  text-align: center;
-}
-
-.userinfo_who_are_you form input {
-  border-radius: 20px;
-  height: 40px;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-.userinfo_who_are_you form select {
-  border-radius: 20px;
-  height: 40px;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-.userinfo_who_are_you form button {
-  border-radius: 20px;
-  height: 40px;
-}
-
-.userinfo_who_are_you form button:hover {
-  background: #282828;
-  transition: background-color 250ms;
-  color: white;
-  cursor: pointer;
-}
-
-.userinfo_btn {
-  display: flex;
-}
-
-.userinfo_who_are_you form button {
-  width: 100%;
-}
-
-.seconde_who_are_you .img_who_are_you .profile-pic {
-  background-color: rgba(24, 22, 22, 0.188);
-  width: 11rem;
-  height: 11rem;
-  border-radius: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 5px solid white;
-  cursor: pointer;
-}
-
-.seconde_who_are_you .img_who_are_you .profile-pic .icon-pen i {
-  color: white;
-  font-size: 40px;
-}
-
-.seconde_who_are_you .img_who_are_you .profile-pic .icon-pen i:hover {
-  color: gray;
-}
-
 /* Section Javascript - class pour transition */
 
 .transition_none {
@@ -566,7 +473,6 @@ p.txt1 {
 /* Start - Merge avec le code de guillaume  */
 
 /* Start - form */
-
 .guillaume_box .buttons1 {
   backdrop-filter: blur(0.75vw);
   background-color: rgba(255, 255, 255, 0.2);
@@ -661,6 +567,18 @@ p.txt1 {
   flex-wrap: wrap;
 }
 
+.row_default {
+  position: relative;
+  height: 300px;
+  width: 300px;
+  backdrop-filter: blur(0.75vw);
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 2px 2px 10px black;
+  border-radius: 20px;
+  margin-left: 330px;
+  cursor: pointer;
+}
+
 .guillaume_box .profile-pic {
   position: relative;
   height: 300px;
@@ -696,7 +614,7 @@ p.txt1 {
   font-size: 30px;
 }
 
-.guillaume_box .fa-solid {
+.guillaume_box .fa-solid.fa-trash-can {
   color: white;
   position: absolute;
   top: 30px;
@@ -708,11 +626,36 @@ p.txt1 {
   color: red;
 }
 
+.guillaume_box .fa-solid.fa-pen {
+  color: white;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 30px;
+}
+
+.guillaume_box .fa-solid.fa-pen:hover {
+  color: blue;
+}
+
 .guillaume_box .profile-pic .row img {
   width: 100px;
 }
 
 /* End - user card  */
+
+/* Start - user box par defaut  */
+
+/* .row_default {
+  width: 400px;
+  height: 400px;
+  border: 5px solid blue;
+  background: yellow;
+  margin-left: 350px;
+  border-radius: 20px;
+} */
+
+/* Start - user box par defaut  */
 
 /* End - Merge avec le code de guillaume  */
 

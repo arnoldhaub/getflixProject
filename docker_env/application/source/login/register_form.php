@@ -55,7 +55,7 @@
 		// sending
 		$req = $db->prepare("INSERT INTO user(email, password, secret) VALUES (?,?,?)");
 		$req->execute(array($email,$password,$secret));
-		header('location: register_form.php?success=1');
+		header('location: profil_select.php?email='.$email.'');
 		exit();
 
 	}

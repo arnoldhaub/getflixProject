@@ -101,16 +101,13 @@
 
 <!-- Here we check if the user is connected. If yes, no need to ask him to suscribe -->
 <?php if (isset($_SESSION['connect']))
-			{ ?>
-					<h1>Bienvenue <?php echo $pseudo ?></h1>
-			<?php
-				if (isset($_GET['success']))
+			{ 	if (isset($_GET['success']))
 						{
 							echo'<div class="alert success">You are connected.</div>';
 						}
 			?>
-					<p> On se mate quoi aujourd'hui ?</p>
-					<small><a href="logout.php">Deconnexion</a></small>
+					<p><a href="profil_select.php?email=<?php $email ?> ">Ready to take off ?</a></p><br>
+					<small><a href="logout.php">Disconnect</a></small>
 
 	<?php	} else { 
                     if (isset($_GET['error'])) {

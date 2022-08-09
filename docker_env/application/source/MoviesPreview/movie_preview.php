@@ -33,6 +33,7 @@ include "../api/api/info.php";
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"  media="screen">
         <link href="./styles/styles_movie_preview.css" rel="stylesheet">
         <link href="./styles/styles_nav_footer.css" rel="stylesheet"> 
+        <link href="./styles/comments_styles.css" rel="stylesheet">
         <style>
             .modal-dialog {
                 max-width: 800px;
@@ -172,7 +173,7 @@ include "../api/api/info.php";
                         <?php
                         foreach ($moviesRecommandations->results as $p) { 
                             if (!empty($p->poster_path && $p->backdrop_path)) {
-                                echo  "<div class='swiper-slide'>
+                                echo  "<div class='swiper-slide' id='first-swiper'>
                                 <a href='movie_preview.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                             </div>";
                             }
@@ -188,12 +189,15 @@ include "../api/api/info.php";
 <!-----------------------------------------------------------------------
                      COMMENTS
 ------------------------------------------------------------------------->
-        <?php 
-            $request = $db ->prepare('SELECT * FROM comments WHERE id_film = ?');
+    
+
+     
+     <?php 
+            $request = $db ->prepare('SELECT * FROM comments WHERE id_film = ? ORDER BY id DESC');
             $request ->execute(array($id));
             $comment = $request->fetchAll();
             
-            if(isset($_POST['commentaires'], $_POST['pseudo']))
+            if(isset($_POST['commentaires']))
             {
                 $commentaire =htmlspecialchars($_POST['commentaires']);
                 $pseudo = htmlspecialchars($_POST['pseudo']);
@@ -205,21 +209,62 @@ include "../api/api/info.php";
             }
             
         ?>
-        <div name="com">
-            <?php
-               foreach($comment as $comment)
-            {?>
-            <p> <?= $comment['date'],' ', $comment['pseudo'], ' ' ,$comment['commentaires']; ?> </p>
-            <?php
-            }?>
-        </div>
-        <div name="form_com">
-            <form method="POST">
-                <input type="text" placeholder="pseudo" name="pseudo"><br/>
-                <input type="text" placeholder="votre commentaire" name="commentaires"><br/> 
-                <button type="submit">envoyer</button>
-            </form>
-        </div>
+                                        
+                                <div class="com_container">
+                                             <div class="container_comments_all">
+                                                         <div class="container">
+                                                             <p class="title_slide_comments">Comments about "<?php echo $infoMovie->title; ?>"</p>
+                                                             <div class="swiper-container">
+                                                                 <div class="swiper-wrapper">
+                                                         <?php
+                                                           foreach($comment as $comment)
+                                                        { echo "<div class='swiper-slide' id='commentSwiper'>
+                                                        "?>
+                                                        
+                                                                        
+                                                                                             <div class="test">
+
+
+                                                                                                             <img src="../images/CN.jpg" id="UserCommentImage">
+
+                                                                                                             <div class="infos_comments">
+                                                                                                                             <span class="pseudo">User</span>
+                                                                                                                             <span><?= $comment['date'] ?></span>
+
+                                                                                                             </div>
+
+                                                                                             </div>
+                                                                                             
+                                                                                             <div class="test2">
+                                                                                           
+                                                                                              <p class="comment_itself"> 
+                                                                                              <?= $comment['pseudo'], ' ' ,$comment['commentaires']; ?> </p>
+                                                                                             </div>
+                                                                        
+                                                                </div>
+                                                                         <?php
+                                                                         }?>
+                                                                </div>
+                                                             </div>
+                                                                         
+                                                        </div>
+                                            </div>
+                                </div>
+        
+                                 <div class="container_comment">
+                                     <p class="title_slide_comments">Post a review about "<?php echo $infoMovie->title; ?>"</p>
+                                                  <div class="form_com">
+                                                            
+                                                                      <form method="POST" id="formPost">
+                                                                          <textarea type="text" placeholder="max 200 carac." name="commentaires" id="commentForm"></textarea></br>  
+                                                                          <button type="submit">Post Comment</button>
+                                                                      </form>
+
+
+                                                 </div>
+                                </div>
+                                                 
+                                                         
 <!-----------------------------------------------------------------------
                      FOOTER
 ------------------------------------------------------------------------->
@@ -247,6 +292,6 @@ include "../api/api/info.php";
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="./movie_preview_script.js"></script>
-        <script src="/Home/script.js"></script>
+        <script src="./js_comment.js"></script>
     </body>
 </html>

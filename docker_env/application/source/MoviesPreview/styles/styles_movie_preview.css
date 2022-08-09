@@ -184,6 +184,7 @@ margin-left: 4vh;
 
 
 
+<<<<<<< HEAD
 
 /* width */
 ::-webkit-scrollbar {
@@ -272,3 +273,42 @@ margin-left: 4vh;
 .swiper-slide{margin-right: 0.1vh;}
 #first-swiper{margin: 0px;}
 }
+=======
+/* CSS GUILLAUME */
+/* header */
+#listePseudos{
+    padding-right: 1.5rem;
+    padding-left: 2rem;
+    display: none;
+    position: absolute;
+    width: auto;
+    height: auto;
+    float: left;
+    top: 3rem;
+    right: 1.5rem;
+    z-index: 1;
+    background-color:black;
+    opacity: 0.7;
+    padding-top: 1.5rem;
+    border-radius: 5%;
+    background-color: black;
+  }
+  
+  #fleche
+  {
+    margin-left: 0.4rem;
+  }
+  
+  #photoListeProfil
+  {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.4rem;
+  }
+   
+  #sectionUser
+  {
+    position: relative;
+    display: inline-block;
+  }
+>>>>>>> 713c65011deb766929a1a3ac10d6d7bfe8fe4cb6

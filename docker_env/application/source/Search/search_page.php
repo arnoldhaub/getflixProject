@@ -1,4 +1,7 @@
 <?php
+//======================================================================
+//                  SEARCH INFORMATION
+//======================================================================
 include("../api/api/info.php");
     // FORMULAIRE - Prise d'informations
     @$keywords=str_replace(' ','%20',$_GET["keywords"]);
@@ -31,8 +34,10 @@ include("../api/api/info.php");
         <link href="./styles/styles_search_page.css" rel="stylesheet">
         <link href="./styles/styles_nav_footer.css" rel="stylesheet">
     </head>
-
-<body>  
+<!-----------------------------------------------------------------------
+                     HEADER + MENU
+------------------------------------------------------------------------->
+    <body>  
         <header>
             <img class="logo" src="/images/logo.svg" alt="logo">
             <img class="logo_minia" src="/images/logo_planete.svg" alt="logo_minia">
@@ -60,122 +65,121 @@ include("../api/api/info.php");
                 <img class="userImage" name="userImage" src="/images/CN.jpg" alt="userImage">
             </div>
         </header>
-            <div class="container_page">
-                <div class="container_menu">
-                    <p class="choix2"><img src="../images/select_circle.svg" id="circle_selector"><img src="../images/select_circle_selected.svg" id="circle_selected"> FILM </p>
-                    <p class="choix3"><img src="../images/select_circle.svg" id="circle_selector2"><img src="../images/select_circle_selected.svg" id="circle_selected2"> SERIES </p>
-                    <p class="choix4"><img src="../images/select_circle.svg" id="circle_selector3"><img src="../images/select_circle_selected.svg" id="circle_selected3"> SHORT </p>
-                </div>
 
-                <div class="container-content" id="container-content">
-                            <form name="fo" method="get" action="" id="searchBar">
-
-
-                                <div class="wrapper_container_search">
-                                <input type="text" name="keywords" pattern=".{3,}" id="input_Search"  oninvalid="this.setCustomValidity('Field must contain min. 3 characters')" value="<?php echo str_replace('%20',' ',$keywords)?>" placeholder="Write what you are you looking for...">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                                </div>
-                                <input type="submit" name="submit" hidden/>
-
-
-
-                                <input type="radio" class="btn-check" name="type" value="movie" id="movie" autocomplete="off" required <?php if(@$type == "movie"){echo "checked";} ?> >
-
-
-                                <input type="radio" class="btn-check" name="type" value="serie" id="serie" autocomplete="off" <?php if(@$type == "serie"){echo "checked";} ?>>
-
-
-
-                            </form>
-                </div>
-
-
+<!-----------------------------------------------------------------------
+                     WEBSITE
+------------------------------------------------------------------------->
+        <div class="container_page">
+             <div class="container_menu">
+                <p class="choix2"><img src="../images/select_circle.svg" id="circle_selector"><img src="../images/select_circle_selected.svg" id="circle_selected"> FILM </p>
+                <p class="choix3"><img src="../images/select_circle.svg" id="circle_selector2"><img src="../images/select_circle_selected.svg" id="circle_selected2"> SERIES </p>
+                <p class="choix4"><img src="../images/select_circle.svg" id="circle_selector3"><img src="../images/select_circle_selected.svg" id="circle_selected3"> SHORT </p>
             </div>
 
-            <?php if(@$searchResult==true) { ?>
-                <div id="resultats">
-                    <p id="nbr"><?=@$count." ".($count > 1 ? "results found":"No result, try again.") ?></p>
-                        <div class='swiper-container'>
-                                                 <div class='swiper-wrapper'>
+            <div class="container-content" id="container-content">
+                <form name="fo" method="get" action="" id="searchBar">
+                    <div class="wrapper_container_search">
+                        <input type="text" name="keywords" pattern=".{3,}" id="input_Search"  oninvalid="this.setCustomValidity('Field must contain min. 3 characters')" value="<?php echo str_replace('%20',' ',$keywords)?>" placeholder="Write what you are you looking for...">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input type="submit" name="submit" hidden/>
+                    <input type="radio" class="btn-check" name="type" value="movie" id="movie" autocomplete="off" required <?php if(@$type == "movie"){echo "checked";} ?> >
+                    <input type="radio" class="btn-check" name="type" value="serie" id="serie" autocomplete="off" <?php if(@$type == "serie"){echo "checked";} ?>>
+                </form>
+            </div>
+        </div>
 
-                                <?php 
-                                    if($type == "movie"){
-                                        for($i = $searchKeywordsMovie->page; $i < $searchKeywordsMovie->total_pages;$i++){
-                                        
-                                            $page = $i;
-                                            include("../api/api/search.php");
-                                            foreach($searchKeywordsMovie->results as $p){
-                                                if (!empty($p->poster_path)) {
+<!-----------------------------------------------------------------------
+                     AFFICHAGE RESULTATS DE RECHERCHE
+------------------------------------------------------------------------->
+        <?php if(@$searchResult==true) { ?>
+            <div id="resultats">
+                <p id="nbr"><?=@$count." ".($count > 1 ? "results found":"No result, try again.") ?></p>
+<!--------------------------------------------------------
+                            SI FILM :
+---------------------------------------------------------->
+                    <?php 
+                        if($type == "movie"){
+                            for($i = $searchKeywordsMovie->page; $i < $searchKeywordsMovie->total_pages;$i++){
+                                 echo '<div class="container">
+                                            <div class="swiper-container">
+                                                <div class="swiper-wrapper">';
+                                                    $page = $i;
+                                                    include("../api/api/search.php");
+                                                    foreach($searchKeywordsMovie->results as $p){
+                                                        if (!empty($p->poster_path)) {
                                                     
-                                                    echo    "<div class='swiper-slide' style='text-align: center;'>
-                                                                <a href='movie.php?id=".$p->id."'>
-                                                                    <img src='".$imgurl_300 . $p->poster_path . "'>
-                                                                </a>";
-                                                    echo    "   <br>
-                                                                <a href='movie.php?id=".$p->id."'>" .$p->title. "</a>
-                                                            </div>";
-                                                }
-                                               
-                                            }
-                                        }
-                                        // Avec titre et description de 200 charactères.
-                                        // foreach($searchKeywordsMovie->results as $p){
-                                        //     echo    "<li><a href='movie.php?id=".$p->id."'>" .$p->title. "</a> | <br>".substr($p->overview, 0,200 );
-                                        //     if(strlen($p->overview) > 200)
-                                        //         { echo '(...)';}
-                                        //     echo    "</li>";  
-                                        // }
+                                            echo    "<div class='swiper-slide'>
+                                                        <a href='../MoviesPreview/movie_preview.php?id=".$p->id."'>
+                                                            <img src='".$imgurl_300 . $p->poster_path . "'>
+                                                        </a>
+                                                    </div>";
+                                                        }
+                                                    // Pour afficher tutre des film à la ligne
+                                                    // <br><a href='../MoviesPreview/movie_preview.php?id=".$p->id."'>" .$p->name. "</a>
+                                                    }
+                                            echo    '<div class="swiper-button-next"></div>
+                                                     <div class="swiper-button-prev"></div>
+                                                </div>
+                                            </div>
+                                        </div>';
+                            }
+                        }
+//--------------------------------------------------------
+//                            SI SERIE :
+//----------------------------------------------------------                                 
+                        else if($type == "serie"){
+                            for($i = $searchKeywordsMovie->page; $i < $searchKeywordsMovie->total_pages;$i++){
+                                echo '<div class="container">
+                                            <div class="swiper-container">
+                                                <div class="swiper-wrapper">';
+                                                    $page = $i;
+                                                    include("../api/api/search.php");
+
+                                                    foreach($searchKeywordsSerie->results as $p){
+                                                        if (!empty($p->poster_path)) {
+                                                echo    "<div class='swiper-slide' style='text-align: center;'>
+                                                            <a href='../MoviesPreview/serie.php?id=".$p->id."'>
+                                                                <img src='".$imgurl_300 . $p->poster_path . "'>
+                                                            </a> 
+                                                        </div>";  
+                                                        }
+                                                    // Pour afficher tutre des série à la ligne
+                                                    // <br><a href='../MoviesPreview/serie.php?id=".$p->id."'>" .$p->name. "</a>
+                                                    }
+                                                echo    '<div class="swiper-button-next"></div>
+                                                        <div class="swiper-button-prev"></div>
+                                                </div>
+                                            </div>
+                                        </div>';
                                     }
-                                    
-                                    else if($type == "serie"){
-                                        for($i = $searchKeywordsMovie->page; $i < $searchKeywordsMovie->total_pages;$i++){
-                                            $page = $i;
-                                            include("../api/api/search.php");
-                                            foreach($searchKeywordsSerie->results as $p){
-                                                if (!empty($p->poster_path)) {
-                                                    echo    "<div class='swiper-slide' style='text-align: center;'>
-                                                                <a href='serie.php?id=".$p->id."'>
-                                                                    <img src='".$imgurl_300 . $p->poster_path . "'>
-                                                                </a>";
-                                                    echo    "   <br>
-                                                                <a href='serie.php?id=".$p->id."'>" .$p->name. "</a>
-                                                            </div>";  
-                                                }
-                                                
-                                            }
-                                    }
-                                }
+                                }?>
+          
+            </div> 
+        <?php }?>
+    </body> 
+<!-----------------------------------------------------------------------
+                     FOOTER
+------------------------------------------------------------------------->
+    <footer>
+        <div class="footer_div">
+            <img class="logo_bottom" src="/images/logo.svg" alt="logo"> 
+        </div>
+        <div>
+            <img class="logo_resp_bottom" src="/images/logo_planete_resp.svg" alt="logo">
+        </div>
+        <div class="span_div">
+            <span class="span_footer">SCI-FI STREAMING SOLUTION</span>
+            <span class="span_footer">CREDITS & COOKIES</span>
+            <span class="span_footer">NOVA 2022©</span>
+            <span class="span_footer">ACCESSIBILITY</span>
+            <span class="span_footer">REPORT A BUG</span>
+        </div>
+    </footer> 
 
-            
-                                ?>
-                            </div>
-                        </div>
-                </div> 
-            <?php }?>
-</body> 
-
-        <footer>
-            <div class="footer_div">
-                <img class="logo_bottom" src="/images/logo.svg" alt="logo"> 
-                </div>
-            <div>
-                <img class="logo_resp_bottom" src="/images/logo_planete_resp.svg" alt="logo">
-            </div>
-           <div class="span_div">
-                <span class="span_footer">SCI-FI STREAMING SOLUTION</span>
-                <span class="span_footer">CREDITS & COOKIES</span>
-                <span class="span_footer">NOVA 2022©</span>
-                <span class="span_footer">ACCESSIBILITY</span>
-                <span class="span_footer">REPORT A BUG</span>
-            </div>
-        </footer> 
-
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-        </style>
-
-
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+    </style>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js"></script>

@@ -6,14 +6,14 @@
                     <li><a href="../Home/home.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>">HOME</a></li>
                     <li><a href="#">SERIES</a></li>
                     <li><a href="#">FILMS</a></li>
-                    <li><a href="search.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>">RECHERCHE</a></li>
+                    <li><a href="../Home/search.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>">RECHERCHE</a></li>
                 </ul>
 
                 <ul class="nav_links_responsive">
-                    <li><a href="home.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"><i class="fa-solid fa-house"></i></a></li>
+                    <li><a href="../Home/home.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"><i class="fa-solid fa-house"></i></a></li>
                     <li><a href="#"><i class="fa-solid fa-film"></i></i></a></li>
                     <li><a href="#"><i class="fa-solid fa-tv"></i></i></a></li>
-                    <li><a href="search.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"></a><i class="fa-solid fa-magnifying-glass"></i></i></a></li>
+                    <li><a href="../Home/search.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"></a><i class="fa-solid fa-magnifying-glass"></i></i></a></li>
                 </ul>
             </nav>
 
@@ -48,7 +48,7 @@
                     <div class="container">
                         <div style="flex-wrap:nowrap" class="row">
                 <img id="photoListeProfil" src="../images/adulte.png" alt="profil">
-                <a style="color:white" href="home.php?id_pseudo=<?php echo $donnees[1]?>&email=<?php echo $email?>"><?php echo $donnees[0] ?>
+                <a style="color:white" href="../Home/home.php?id_pseudo=<?php echo $donnees[1]?>&email=<?php echo $email?>"><?php echo $donnees[0] ?>
                 </a>
                         </div>
                     </div>

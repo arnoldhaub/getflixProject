@@ -82,21 +82,11 @@ $requete->execute(array($_GET['email']));
             while ($donnees = $requete->fetch())
             { ?>
                     <li>
-                    <a class="fa-solid fa-trash-can" href="profil_delete.php?id=<?php echo $donnees['id']?>&email=<?php echo $donnees['email']?>"style="text-decoration:none; opacity:0.2; color:white"></a>
-                    <a href="../Home/home.php?id=<?php echo $donnees['id']?>&email=<?php echo $donnees['email']?>">
+                    <a class="fa-solid fa-trash-can" href="profil_delete.php?id_pseudo=<?php echo $donnees['id_pseudo']?>&email=<?php echo $donnees['email']?>"style="text-decoration:none; opacity:0.2; color:white"></a>
+                    <a href="../Home/home.php?id_pseudo=<?php echo $donnees['id_pseudo']?>&email=<?php echo $donnees['email']?>">
                             <div class="container">
                                 <div class="row">
-                    <?php
-                            if ($donnees['categorie']=='adulte')
-                            {
-                                echo '<img class="w-25 mb-4" src="../images/adulte.png" alt="profil">';
-                            }
-                            else
-                            {
-                                echo '<img class="w-25 mb-4" src="../images/enfant.png" alt="profil">';
-                            }
-                            
-                    ?>
+                    <img class="w-25 mb-4" src="<?php echo $donnees['image'] ?>" alt="profil">
                             <h1 class="mt-2 col text-center align-self-center"><?php echo $donnees['pseudo']?> <span style="font-size:20px"><?php echo $donnees['categorie']?></span></h1>
                             
                             

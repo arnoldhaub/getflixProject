@@ -58,12 +58,12 @@ const swiper = new Swiper(".swiper-container", {
   }
 });
 
-let movieTrailer = document.getElementById('videoTrailer');
+// let movieTrailer = document.getElementById('videoTrailer');
 
-movieTrailer.addEventListener("mouseenter", function (event) {
-  event.target.style.backgroundColor = "purple";
+// movieTrailer.addEventListener("mouseenter", function (event) {
+//   event.target.style.backgroundColor = "purple";
 
-});
+// });
 
 
 

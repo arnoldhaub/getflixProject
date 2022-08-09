@@ -3,17 +3,17 @@
             <img class="logo_minia" src="/images/logo_planete.svg" alt="logo_minia">
             <nav style="align-self: center">
                 <ul class="nav_links">
-                    <li><a href="home.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>">HOME</a></li>
+                    <li><a href="../Home/home.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>">HOME</a></li>
                     <li><a href="#">SERIES</a></li>
                     <li><a href="#">FILMS</a></li>
-                    <li><a href="search.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>">RECHERCHE</a></li>
+                    <li><a href="../Home/search.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>">RECHERCHE</a></li>
                 </ul>
 
                 <ul class="nav_links_responsive">
-                    <li><a href="home.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"><i class="fa-solid fa-house"></i></a></li>
+                    <li><a href="../Home/home.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"><i class="fa-solid fa-house"></i></a></li>
                     <li><a href="#"><i class="fa-solid fa-film"></i></i></a></li>
                     <li><a href="#"><i class="fa-solid fa-tv"></i></i></a></li>
-                    <li><a href="search.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"></a><i class="fa-solid fa-magnifying-glass"></i></i></a></li>
+                    <li><a href="../Home/search.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"></a><i class="fa-solid fa-magnifying-glass"></i></i></a></li>
                 </ul>
             </nav>
 
@@ -23,8 +23,8 @@
 
             <?php
             require('../src/connect.php');
-            $id_pseudo = $_GET["id"];
-            $requete = $db->query("SELECT PSEUDO FROM profile WHERE id='$id_pseudo'");
+            $id_pseudo = $_GET["id_pseudo"];
+            $requete = $db->query("SELECT PSEUDO FROM profile WHERE id_pseudo='$id_pseudo'");
             $pseudoActif = $requete->fetch();
             
             ?>
@@ -41,14 +41,14 @@
             <div id=listePseudos>
             <?php
             $email = $_GET["email"];
-            $requete2 = $db->query("SELECT PSEUDO,ID FROM profile WHERE email='$email'");
+            $requete2 = $db->query("SELECT PSEUDO,ID_PSEUDO FROM profile WHERE email='$email'");
             while($donnees = $requete2->fetch())
                     { ?>
                 <li class="mb-3 " style="list-style-type:none">
                     <div class="container">
                         <div style="flex-wrap:nowrap" class="row">
                 <img id="photoListeProfil" src="../images/adulte.png" alt="profil">
-                <a style="color:white" href="home.php?id=<?php echo $donnees[1]?>&email=<?php echo $email?>"><?php echo $donnees[0] ?>
+                <a style="color:white" href="../Home/home.php?id_pseudo=<?php echo $donnees[1]?>&email=<?php echo $email?>"><?php echo $donnees[0] ?>
                 </a>
                         </div>
                     </div>

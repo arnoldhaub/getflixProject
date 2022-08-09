@@ -210,13 +210,12 @@ margin-right: 1vh;
 
 /* ↓ FOOTER ↓ */
 footer {
-position: absolute;
 display: flex;
 align-items: center;
 flex-direction: row; 
 height: 100px;
 justify-content: center;
-bottom: 0; 
+bottom: 0;
 width: 100%;
 gap: 3vh;
 background: #06060f;

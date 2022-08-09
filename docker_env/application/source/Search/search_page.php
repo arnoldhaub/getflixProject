@@ -109,7 +109,7 @@ include("../api/api/info.php");
                                                     foreach($searchKeywordsMovie->results as $p){
                                                         if (!empty($p->poster_path)) {
                                                     
-                                            echo    "<div class='swiper-slide'>
+                                            echo    "<div class='swiper-slide' id='first-swiper'>
                                                         <a href='../MoviesPreview/movie_preview.php?id=".$p->id."'>
                                                             <img src='".$imgurl_300 . $p->poster_path . "'>
                                                         </a>
@@ -138,7 +138,7 @@ include("../api/api/info.php");
 
                                                     foreach($searchKeywordsSerie->results as $p){
                                                         if (!empty($p->poster_path)) {
-                                                echo    "<div class='swiper-slide' style='text-align: center;'>
+                                                echo    "<div class='swiper-slide' id='first-swiper' style='text-align: center;'>
                                                             <a href='../MoviesPreview/serie.php?id=".$p->id."'>
                                                                 <img src='".$imgurl_300 . $p->poster_path . "'>
                                                             </a> 
@@ -187,5 +187,5 @@ include("../api/api/info.php");
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="./search_page.js"></script>
-<script src="../Home/script.js"></script>
+<script src="./js_comment.js"></script>
 </html>

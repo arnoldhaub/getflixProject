@@ -25,26 +25,27 @@ include "../api/api/info.php";
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"  media="screen">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <link href="./styles/styles_movie_preview.css" rel="stylesheet">
         <link href="./styles/styles_nav_footer.css" rel="stylesheet"> 
         <style>
             .modal-dialog {
-                max-width: 800px;
+                max-width: 1024px;
                 margin: 30px auto;
             }
             .modal-body {
-            position:relative;
-            padding:0px;
+                position:relative;
+                padding:0px;
             }
             .close {
-            position:absolute;
-            right:-30px;
-            top:0;
-            z-index:999;
-            font-size:2rem;
-            font-weight: normal;
-            color:#fff;
-            opacity:1;
+                position:absolute;
+                right:-30px;
+                top:0;
+                z-index:999;
+                font-size:2rem;
+                font-weight: normal;
+                color:#fff;
+                opacity:1;
             }
         </style>
         <script>
@@ -56,7 +57,7 @@ include "../api/api/info.php";
                 $("#myModal").on("shown.bs.modal", function(e) {
                     $("#video").attr(
                         "src",
-                        $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0"
+                        $videoSrc + "?autoplay=1&amp;showinfo=0"
                     );
                 });
                 $("#myModal").on("hide.bs.modal", function(e) {
@@ -64,14 +65,6 @@ include "../api/api/info.php";
                 });
             });
 
-            function toggleVideo(state) {
-                // if state == 'hide', hide. Else: show video
-                var div = document.getElementById("myModal");
-                var iframe = div.getElementsByTagName("iframe")[0].contentWindow;
-                div.style.display = state == 'hide' ? 'none' : '';
-                func = state == 'hide' ? 'pauseVideo' : 'playVideo';
-                iframe.postMessage('{"event":"command","func":"' + func + '","args":""}','*');
-            }
         </script>
     </head>
     <body>  
@@ -142,7 +135,9 @@ include "../api/api/info.php";
                     <div class="buttonsMovie">
                         <button type="button" class="play video-btn" id="playButton" data-toggle="modal" data-src="https://www.youtube.com/embed/<?php echo $infoSerie->videos->results[0]->key;?>"  data-target="#myModal"><i class="fa-solid fa-play" id="fa-play"></i>LECTURE</button>
                     </div>
-                    <!-- MODAL  -->
+<!----------------------------------------------
+                     MODAL
+------------------------------------------------>
                     <div class="modal fade" data-backdrop="false"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                             <div class="modal-content">
@@ -155,7 +150,7 @@ include "../api/api/info.php";
 
                                             <!-- 16:9 aspect ratio -->
                                     <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                                        <iframe class="embed-responsive-item" src="" id="video"  allow="autoplay" allowfullscreen></iframe>
                                     </div>
                                 </div>
                             </div>
@@ -175,28 +170,38 @@ include "../api/api/info.php";
         <?php
         if (!empty($infoSerie->seasons)) {
             foreach($infoSerie->seasons as $p){
-                $season = $p->season_number;
-                echo    '<div class="container_movie">
-                            <div class="container">
-                                <p class="title_slide">'.$p->name.'</p>
-                                <div class="swiper-container">
-                                    <div class="swiper-wrapper">';
-                
-                include "../api/api/episodeInfo.php"; 
-                foreach($episodeInfo->episodes as $i){
-                    echo                '<div class="swiper-slide">
-                                            <a href="episode.php?id='.$id.'&season='.$i->season_number. '&ep='.$i->episode_number.'">
-                                            <img src="' . $imgurl_500 . $i->still_path . '"></a>
-                                            <p><b>Episode '.$i->episode_number.' -</b> '. $i->name .'<br>
-                                        </div>';
-                }
-                echo                '<div class="swiper-button-next"></div>
-                                    <div class="swiper-button-prev"></div>
+                if($p->episode_count > 0){
+                    $season = $p->season_number;
+                    echo    '<div class="container_movie">
+                                <div class="container">
+                                    <p class="title_slide">'.$p->name.'</p>
+                                    <div class="swiper-container">
+                                        <div class="swiper-wrapper">';
+                    
+                    include "../api/api/episodeInfo.php"; 
+                    foreach($episodeInfo->episodes as $i){
+                        $ep = $i->episode_number;
+                        include "../api/api/episodeInfo.php";
+                        echo                '<div class="swiper-slide">';
+                        if(!empty($episodeDetails->videos->results[0])){ // Si vidéo répertoriée, afficher
+                            echo                '<a class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/'.$episodeDetails->videos->results[0]->key.'" data-target="#myModal">';
+                        }
+                        else{ // Sinon afficher celle de la série
+                            echo                '<a class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/'.$infoSerie->videos->results[0]->key.'"  data-target="#myModal">';
+                        }
+                        // '<a href="episode.php?id='.$id.'&season='.$i->season_number. '&ep='.$i->episode_number.'">
+                            echo                    '<img src="' . $imgurl_500 . $i->still_path . '"></a>
+                                                <p><b>Episode '.$i->episode_number.' -</b> '. $i->name .'<br>
+                                            </div>';
+                    }
+                    echo                '<div class="swiper-button-next"></div>
+                                        <div class="swiper-button-prev"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>';
-                        
+                            </div>';
+                            
+                    }
                 }
             
             }
@@ -250,7 +255,7 @@ include "../api/api/info.php";
             @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
         </style>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="./movie_preview_script.js"></script>

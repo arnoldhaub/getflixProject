@@ -3,7 +3,7 @@
 
 if(isset($id, $season)) {
     $ct = curl_init();
-    curl_setopt($ct, CURLOPT_URL, "https://api.themoviedb.org/3/tv/$id/season/$season?api_key=$key&language=en-US"); 
+    curl_setopt($ct, CURLOPT_URL, "https://api.themoviedb.org/3/tv/$id/season/$season?api_key=$key&language=en-US&append_to_response=videos"); 
     curl_setopt($ct, CURLOPT_RETURNTRANSFER, TRUE);
     curl_setopt($ct, CURLOPT_HEADER, FALSE);
     curl_setopt($ct, CURLOPT_HTTPHEADER, array("Accept: application/json"));

@@ -23,8 +23,8 @@
 
             <?php
             require('../src/connect.php');
-            $id_pseudo = $_GET["id"];
-            $requete = $db->query("SELECT PSEUDO FROM profile WHERE id='$id_pseudo'");
+            $id_pseudo = $_GET["id_pseudo"];
+            $requete = $db->query("SELECT PSEUDO FROM profile WHERE id_pseudo='$id_pseudo'");
             $pseudoActif = $requete->fetch();
             
             ?>
@@ -41,14 +41,14 @@
             <div id=listePseudos>
             <?php
             $email = $_GET["email"];
-            $requete2 = $db->query("SELECT PSEUDO,ID FROM profile WHERE email='$email'");
+            $requete2 = $db->query("SELECT PSEUDO,ID_PSEUDO FROM profile WHERE email='$email'");
             while($donnees = $requete2->fetch())
                     { ?>
                 <li class="mb-3 " style="list-style-type:none">
                     <div class="container">
                         <div style="flex-wrap:nowrap" class="row">
                 <img id="photoListeProfil" src="../images/adulte.png" alt="profil">
-                <a style="color:white" href="home.php?id=<?php echo $donnees[1]?>&email=<?php echo $email?>"><?php echo $donnees[0] ?>
+                <a style="color:white" href="home.php?id_pseudo=<?php echo $donnees[1]?>&email=<?php echo $email?>"><?php echo $donnees[0] ?>
                 </a>
                         </div>
                     </div>

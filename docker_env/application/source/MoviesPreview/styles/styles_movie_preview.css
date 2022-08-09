@@ -184,7 +184,6 @@ margin-left: 4vh;
 
 
 
-<<<<<<< HEAD
 
 /* width */
 ::-webkit-scrollbar {
@@ -273,7 +272,7 @@ margin-left: 4vh;
 .swiper-slide{margin-right: 0.1vh;}
 #first-swiper{margin: 0px;}
 }
-=======
+
 /* CSS GUILLAUME */
 /* header */
 #listePseudos{
@@ -311,4 +310,4 @@ margin-left: 4vh;
     position: relative;
     display: inline-block;
   }
->>>>>>> 713c65011deb766929a1a3ac10d6d7bfe8fe4cb6
+

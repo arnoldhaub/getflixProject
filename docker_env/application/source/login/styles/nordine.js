@@ -1,12 +1,12 @@
 // Start - code JS pour transition de first_new_user vers seconde_who_are_you
 
 // let first = document.querySelector(".first_new_user");
-// let seconde = document.querySelector(".seconde_who_are_you");
 // let penIcon = document.querySelector(".icon-pen");
+let seconde = document.querySelector(".seconde_who_are_you");
 let defaultPic = document.querySelector(".img_creat_username_box");
 let third = document.querySelector(".third_img_userprofil_choices");
 let userAvatard = [...document.querySelectorAll(".box1 img")];
-console.log("hello");
+
 third.classList.add("transition_none");
 defaultPic.addEventListener("click", () => {
   third.classList.remove("transition_none");

@@ -45,36 +45,6 @@ if (!empty($_POST['pseudo'])) {
                 <rect x="0.118" y="0.11" fill="none" width="115.712" height="106.615" />
             </svg>
         </div>
-
-        <!-- //////////////////////////////////////////////////////// -->
-        <!-- /////////////////// START REDESIGN NORDINE ///////////// -->
-        <!-- //////////////////////////////////////////////////////// -->
-
-        <div class="nordine_box">
-            <!-- Start - 1ere emplacement vide avec l'icon plus -->
-            <div class="first_new_user">
-                <div class="profiles">
-                    <div class="profile">
-                        <div class="profile-content">
-                            <div class="profile-pic">
-                                <div class="icon-plus">
-                                    <a href="#">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <h3 class="profile-name">ADD NEW USER</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End - 1ere emplacement vide avec l'icon plus -->
-        </div>
-
-        <!-- //////////////////////////////////////////////////////// -->
-        <!-- /////////////////// END REDESIGN NORDINE /////////////// -->
-        <!-- //////////////////////////////////////////////////////// -->
-
         <div class="guillaume_box">
             <!-- <div class="guillaume_box"> -->
             <h1>Who are you ? </h1>
@@ -155,60 +125,6 @@ if (!empty($_POST['pseudo'])) {
             </div>
             <!-- </div> -->
         </div>
-        <!-- Start section choix des image de profil -->
-        <div class="third_img_userprofil_choices">
-            <h1>Choose your profil picture</h1>
-            <div class="box_picture1">
-                <div class="box1">
-                    <a href="#">
-                        <img src="../images/user_pic/1.png" alt="user avatard" />
-                    </a>
-                    <a href="#">
-                        <img src="../images/user_pic/2.png" alt="user avatard" />
-                    </a>
-                    <a href="#">
-                        <img src="../images/user_pic/3.png" alt="user avatard" />
-                    </a>
-                    <a href="#">
-                        <img src="../images/user_pic/4.png" alt="user avatard" />
-                    </a>
-                    <a href="#">
-                        <img src="../images/user_pic/5.png" alt="user avatard" />
-                    </a>
-                    <a href="#">
-                        <img src="../images/user_pic/6.png" alt="user avatard" />
-                    </a>
-                    <a href="#">
-                        <img src="../images/user_pic/7.png" alt="user avatard" />
-                    </a>
-                    <a href="#">
-                        <img src="../images/user_pic/8.png" alt="user avatard" />
-                    </a>
-                    <a href="#">
-                        <img src="../images/user_pic/9.png" alt="user avatard" />
-                    </a>
-                    <a href="#">
-                        <img src="../images/user_pic/10.png" alt="user avatard" />
-                    </a>
-                    <a href="#">
-                        <img src="../images/user_pic/11.png" alt="user avatard" />
-                    </a>
-                    <a href="#">
-                        <img src="../images/user_pic/12.png" alt="user avatard" />
-                    </a>
-                    <a href="#">
-                        <img src="../images/user_pic/13.png" alt="user avatard" />
-                    </a>
-                    <a href="#">
-                        <img src="../images/user_pic/14.png" alt="user avatard" />
-                    </a>
-                    <a href="#">
-                        <img src="../images/user_pic/15.png" alt="user avatard" />
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- End code choix des image de profil -->
         <div class="disclaimer">
             <p class="txt1" style="font-size: 20px;">Sci-Fi streaming Solution</p>
         </div>

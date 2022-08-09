@@ -86,7 +86,13 @@ include "../api/api/info.php";
                     </div>
 
                     <div class="infosMovie">
-                        <button disabled>18+</button>
+                        <button disabled>
+                            <?php 
+                            include "../api/api/age_rating.php"; 
+                            $key = array_search('NL', $serieAgeRating);
+                            echo $key;  ?>
+                            
+                        </button>
                         <button disabled>VO</button>
                         <button disabled>VOSTFR</button>
                         <p><?php echo substr($infoSerie->first_air_date, 0, 4)." | ".$infoSerie->number_of_seasons; if($infoSerie->number_of_seasons > 1){ echo " seasons";}else{ echo " season";}?></p> 
@@ -158,16 +164,17 @@ include "../api/api/info.php";
                     foreach($episodeInfo->episodes as $i){
                         $ep = $i->episode_number;
                         include "../api/api/episodeInfo.php";
-                        echo                '<div class="swiper-slide">';
+                        echo                '<div class="swiper-slide" style="text-align:center;">';
                         if(!empty($episodeDetails->videos->results[0])){ // Si vidéo répertoriée, afficher
-                            echo                '<a class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/'.$episodeDetails->videos->results[0]->key.'" data-target="#myModal">';
+                            echo                '<a class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/'.$episodeDetails->videos->results->key.'" data-target="#myModal">';
                         }
                         else{ // Sinon afficher celle de la série
                             echo                '<a class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/'.$infoSerie->videos->results[0]->key.'"  data-target="#myModal">';
                         }
                         // '<a href="episode.php?id='.$id.'&season='.$i->season_number. '&ep='.$i->episode_number.'">
-                            echo                    '<img src="' . $imgurl_500 . $i->still_path . '"></a>
-                                                <p><b>Episode '.$i->episode_number.' -</b> '. $i->name .'<br>
+                            echo                    '<img src="' . $imgurl_500 . $i->still_path . '" style="object-fit: cover;"></a>
+                                                <p><b>Episode '.$i->episode_number.' -</b> '. $i->name .'</p><hr><p>'.$episodeDetails->overview.'</p>
+
                                             </div>';
                     }
                     echo                '<div class="swiper-button-next"></div>

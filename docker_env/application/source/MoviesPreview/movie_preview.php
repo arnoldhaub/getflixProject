@@ -191,7 +191,7 @@ include "../api/api/info.php";
         </div>
         <div name="form_com">
             <form method="POST">
-                <input type="text" placeholder="pseudo" name="pseudo"><br/>
+                <input type="text" placeholder="<?php echo $pseudoActif[0] ?>" name="pseudo"><br/>
                 <input type="text" placeholder="votre commentaire" name="commentaires"><br/> 
                 <button type="submit">envoyer</button>
             </form>

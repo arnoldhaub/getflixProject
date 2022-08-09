@@ -102,7 +102,7 @@
                     foreach ($moviesLatest->results as $p) { // RECENT SF MOVIE
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
+                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
                         </div>";
                         }
                     } ?>
@@ -122,7 +122,7 @@
                     foreach ($moviesTopRated->results as $p) { // TOP-RATED SF MOVIE
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
+                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
                         </div>";
                         }
                     } ?>
@@ -143,7 +143,7 @@
                     foreach ($moviesPopular->results as $p) { // POPULAR SF MOVIE
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='../MoviesPreview/movie_preview.php?id=".$p->id.'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']."'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                         </div>";
                         }
                     } ?>
@@ -170,7 +170,7 @@
                     foreach ($seriesLatest->results as $p) { // SF & FANTAST - SERIES
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/serie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                         </div>";
                         }
                     } ?>
@@ -191,7 +191,7 @@
                     foreach ($seriesTopRated->results as $p) { // TOP RATED - SF & FANTAST - SERIES
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/serie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                         </div>";
                         }
                     } ?>
@@ -212,7 +212,7 @@
                     foreach ($seriesPopular->results as $p) { // POPULAR - SF & FANTAST - SERIES
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/serie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                         </div>";
                         }
                     } ?>

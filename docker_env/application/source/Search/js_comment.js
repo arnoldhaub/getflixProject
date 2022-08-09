@@ -86,3 +86,20 @@ const swiper = new Swiper(".swiper-container", {
     
   }
 });
+
+
+// JS GUILLAUME
+// HEADER
+
+let champPseudo = document.getElementById('sectionUser');
+
+champPseudo.onmouseover = () => {
+  document.getElementById('fleche').className = "fa-solid fa-angle-up";
+  document.getElementById('listePseudos').style.display = "block";
+
+}
+
+champPseudo.onmouseout = () => {
+  document.getElementById('fleche').className = "fa-solid fa-angle-down";
+  document.getElementById('listePseudos').style.display = "none";
+}

@@ -163,11 +163,10 @@
                                     <a class=" fa-solid fa-trash-can" href="profil_delete.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">
                                         <a class=" fa-solid fa-pen" href="profil_modif.php?id_pseudo=<?php echo $donnees['_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">
                                         </a>
-                                        <div class=" row">
+                                        <div class="row">
                                                 <a href="../Home/home.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>">
-                                                <img class="w-25 mb-4 profile-pic-image" src="<?php echo $donnees['image'] ?>" alt="profil">
-                                            
-                                            <h1 class="mt-2 col text-center align-self-center profile-name"><?php echo $donnees['pseudo'] ?> <span style="font-size:20px"><?php echo $donnees['categorie'] ?></span></h1>
+                                                <img class="w-50 mb-4 profile-pic-image" src="<?php echo $donnees['image'] ?>" alt="profil">
+                                            <h1 class="mt-4 col text-center align-self-center profile-name"><?php echo $donnees['pseudo'] ?> <span style="font-size:20px"><?php echo $donnees['categorie'] ?></span></h1>
                                         </div>
                                 </div>
                             </a>

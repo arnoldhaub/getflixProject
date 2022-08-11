@@ -8,12 +8,11 @@
         $image = htmlspecialchars($_POST['brandtype']);
 		
 		// // sending (ajouter les droits/accès Adulte ou enfant)
-		// $req = $db->prepare("INSERT INTO profile(pseudo, categorie, email, image) VALUES (?, ?, ?, ?)");
-        // UPDATE `profile` SET `pseudo`=$pseudo,`categorie`=$categorie,`email`=[value-4],`image`=[value-5] WHERE `id_pseudo`=$_GET['id_pseudo']
-		// $req->execute(array($pseudo, $categorie, $_GET['email'],$image));
-		
-        // header('location: profil_select.php?email='.$_GET['email'].'');
-	}
+		$req = $db->prepare("INSERT INTO profile(pseudo, categorie, email, image) VALUES (?, ?, ?, ?)");
+        $req->execute(array($pseudo, $categorie, $_GET['email'],$image));
+
+        header('location: profil_select.php?email=' . $_GET['email'] . '');
+        }
 
 ?>
 

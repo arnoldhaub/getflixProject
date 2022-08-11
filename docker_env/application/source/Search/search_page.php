@@ -16,7 +16,7 @@ include("../api/api/info.php");
         }
         else if($type == "serie"){
             $count = $searchKeywordsSerie->total_results;
-        }
+        } 
 
         $searchResult= true; // si true => Affichage des résultats
 
@@ -85,6 +85,7 @@ include("../api/api/info.php");
                     <input type="submit" name="submit" hidden/>
                     <input type="radio" class="btn-check" name="type" value="movie" id="movie" autocomplete="off" required <?php if(@$type == "movie"){echo "checked";} ?> >
                     <input type="radio" class="btn-check" name="type" value="serie" id="serie" autocomplete="off" <?php if(@$type == "serie"){echo "checked";} ?>>
+                    <input type="radio" class="btn-check" name="type" value="short" id="short" autocomplete="off" <?php if(@$type == "short"){echo "checked";} ?>>
                 </form>
             </div>
         </div>
@@ -157,6 +158,7 @@ include("../api/api/info.php");
           
             </div> 
         <?php }?>
+
     </body> 
 <!-----------------------------------------------------------------------
                      FOOTER
@@ -188,4 +190,6 @@ include("../api/api/info.php");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="./search_page.js"></script>
 <script src="./js_comment.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+<script src="https://malsup.github.io/jquery.form.js"></script> 
 </html>

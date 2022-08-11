@@ -11,11 +11,9 @@ color: white;
 
 body{
   background-color: none;
-  position: relative;
 }
 
 html{
-  position: relative;
   height: 100%;
   width: 100%;
 }
@@ -101,7 +99,6 @@ html{
 .container-content{
   align-items: baseline;
   margin-right: 4vh;
-  opacity: 0%;
   width: 100%;
 }
 

@@ -137,7 +137,7 @@ include "../api/api/info.php";
                         foreach ($moviesRecommandations->results as $p) { 
                             if (!empty($p->poster_path && $p->backdrop_path)) {
                                 echo  "<div class='swiper-slide' id='first-swiper'>
-                                <a href='movie_preview.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                                <a href='movie_preview.php?id=".$p->id.'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']."'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                             </div>";
                             }
                         } ?>
@@ -168,7 +168,7 @@ include "../api/api/info.php";
                 
                 $push = $db ->prepare('INSERT INTO `comments` (`id`, `id_film`, `pseudo`, `commentaires`, `date`) VALUES (NULL, ?, ?, ?, CURRENT_TIMESTAMP)');
                 $push->execute(array($id_film, $pseudo, $commentaire));
-                //header('location: movie_preview.php');
+                echo "<meta http-equiv='refresh' content='0'>";
             }
             
         ?>

@@ -61,15 +61,7 @@ if (!empty($_POST['pseudo'])) {
                         <!-- /////// NORDINE - START CODE AJOUTER ICI //////// -->
                         <!-- J'ai ajouter l'image de profil utilisateur relier a la BDD -->
                         <div class="img_creat_username_box">
-                            <?php
-                            if ($donnees['categorie'] == 'adulte') {
-                                echo '<img class="w-25 mb-4 profile-pic-image" src="../images/adulte.png" alt="profil">';
-                            } elseif ($donnees['categorie'] == 'enfant') {
-                                echo '<img class="w-25 mb-4 profile-pic-image" src="../images/enfant.png" alt="profil" style="width: 60px;">';
-                            } else {
-                                echo '<img class="w-25 mb-4 profile-pic-image" src="../images/default_user.jpg" alt="profil" style="cursor: pointer">';
-                            }
-                            ?>
+                            <img class="w-25 mb-4 profile-pic-image default_image" src="../images/default_user.jpg" alt="profil" style="cursor: pointer">
                         </div>
                         <!-- /////// NORDINE - END CODE AJOUTER ICI //////// -->
                         <div class="who_are_you_form">
@@ -78,6 +70,76 @@ if (!empty($_POST['pseudo'])) {
                                 <option selected value="adulte">Adulte</option>
                                 <option value="enfant">Enfant</option>
                             </select>
+                            <div class="third_img_userprofil_choices">
+                                <h1>Choose your profil picture</h1>
+                                <div class="box_picture1">
+                                    <div class="box1">
+                                        <div class="container9">
+                                            <div class="col">
+                                                <div class="row">
+                                                    <input type="radio" name="brandtype" id="4" class="hidetx" value="1">
+                                                    <label for="4" class="lbl-radio">
+                                                        <div class="display-box">
+                                                            <img src="../images/user_pic/4.png" alt="default image" srcset="">
+                                                        </div>
+                                                        <h4 class="paper-title">Story Bots<h4>
+                                                    </label>
+                                                </div>
+                                                <div class="row">
+                                                    <input type="radio" name="brandtype" id="12" class="hidetx" value="12">
+                                                    <label for="12" class="lbl-radio">
+                                                        <div class="display-box">
+                                                            <img src="../images/user_pic/12.png" alt="" srcset="">
+                                                        </div>
+                                                        <h4 class="paper-title">Arcane Vi<h4>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row">
+                                                    <input type=" radio" name="brandtype" id="3" class="hidetx" value="1">
+                                                    <label for="3" class="lbl-radio">
+                                                        <div class="display-box">
+                                                            <img src="../images/user_pic/3.png" alt="" srcset="">
+                                                        </div>
+                                                        <h4 class="paper-title">Junior<h4>
+                                                    </label>
+                                                </div>
+                                                <div class="row">
+                                                    <input type=" radio" name="brandtype" id="9" class="hidetx" value="9">
+                                                    <label for="9" class="lbl-radio">
+                                                        <div class="display-box">
+                                                            <img src="../images/user_pic/9.png" alt="" srcset="">
+                                                        </div>
+                                                        <h4 class="paper-title">Squid game<h4>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row">
+                                                    <input type=" radio" name="brandtype" id="5" class="hidetx" value="1">
+                                                    <label for="5" class="lbl-radio">
+                                                        <div class="display-box">
+                                                            <img src="../images/user_pic/5.png" alt="" srcset="">
+                                                        </div>
+                                                        <h4 class="paper-title">Naruto<h4>
+                                                    </label>
+                                                </div>
+                                                <div class="row">
+                                                    <input type="radio" name="brandtype" id="8" class="hidetx" value="8">
+                                                    <label for="8" class="lbl-radio">
+                                                        <div class="display-box">
+                                                            <img src="../images/user_pic/8.png" alt="" srcset="">
+                                                        </div>
+                                                        <h4 class="paper-title">Omar Sy<h4>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End code choix des image de profil -->
+                            </div>
                             <button type="submit" class="Register_loginEnter" name="RegisterEnter" label="Register" id="RegisterRegister_loginEnter">CREATE</button>
 
                         </div>
@@ -94,29 +156,21 @@ if (!empty($_POST['pseudo'])) {
                     while ($donnees = $requete->fetch()) {
                     ?>
                         <li>
-                            <a href="catalogue.php">
+                            <a href="../Home/home.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>">
                                 <div class="profile-pic">
-                                    <a class=" fa-solid fa-trash-can" href="profil_delete.php?id=<?php echo $donnees['id'] ?>&email=<?php echo $donnees['email'] ?>" style="">
-                                        <a class=" fa-solid fa-pen" href="profil_modif.php?id=<?php echo $donnees['id'] ?>&email=<?php echo $donnees['email'] ?>" style="">
+                                    <a class=" fa-solid fa-trash-can" href="profil_delete.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">
+                                        <a class=" fa-solid fa-pen" href="profil_modif.php?id_pseudo=<?php echo $donnees['_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">
                                         </a>
                                         <div class=" row">
                                             <?php
                                             if ($donnees['categorie'] == 'adulte') {
                                                 echo '<img class="w-25 mb-4 profile-pic-image" src="../images/adulte.png" alt="profil">';
-                                            } elseif ($donnees['categorie'] == 'enfant') {
-                                                echo '<img class="w-25 mb-4 profile-pic-image" src="../images/enfant.png" alt="profil">';
                                             } else {
-                                                echo '<img class="w-25 mb-4 profile-pic-image" src="../images/default_user.jpg" alt="profil" style="">';
+                                                echo '<img class="w-25 mb-4 profile-pic-image" src="../images/enfant.png" alt="profil">';
                                             }
                                             ?>
                                             <h1 class="mt-2 col text-center align-self-center profile-name"><?php echo $donnees['pseudo'] ?> <span style="font-size:20px"><?php echo $donnees['categorie'] ?></span></h1>
                                         </div>
-                                        <!-- <div class="row_default">
-                                            <?php
-                                            echo '<img class="w-25 mb-4 profile-pic-image" src="../images/default_user.jpg" alt="profil" style="">';
-                                            ?>
-                                            <h1 class="mt-2 col text-center align-self-center profile-name">Add user</h1>
-                                        </div> -->
                                 </div>
                             </a>
                         </li>
@@ -125,14 +179,15 @@ if (!empty($_POST['pseudo'])) {
             </div>
             <!-- </div> -->
         </div>
-        <div class="disclaimer">
-            <p class="txt1" style="font-size: 20px;">Sci-Fi streaming Solution</p>
-        </div>
-    </div>
-    <script src="styles/nordine.js"></script>
+        <!-- Start section choix des image de profil -->
+
+        <script src="styles/nordine.js"></script>
 </body>
 
 <footer>
+    <div class="disclaimer">
+        <p class="txt1" style="font-size: 20px;">Sci-Fi streaming Solution</p>
+    </div>
 </footer>
 
 </html>

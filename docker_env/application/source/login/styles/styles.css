@@ -21,14 +21,8 @@ h1 {
   color: white;
 }
 
-/* //////////////////////////////////////////// */
-/* /// NORDINE - Dans container1 ////////////// */
-/* // J'ai desactiver position fixed ////////// */
-/* // et modif heigt:100% en min-hight:100vh // */
-/* // pour avoir une page responsive  ///////// */
-/* //////////////////////////////////////////// */
-
 .container1 {
+  /* NORDINE - J'ai desactiver fixed */
   /* position: fixed; */
   padding: 0;
   margin: 0;
@@ -39,8 +33,8 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* height: 100%; */
-  min-height: 100vh;
+  /* NORDINE - j'ai changer 100% en 100vh */
+  height: 100vh;
   width: 100%;
 }
 
@@ -291,49 +285,6 @@ p.txt1 {
 
 /* End - Section Javascript - class pour transition */
 
-/* Start 3eme section choix des foto de profil utilisateur */
-
-.third_img_userprofil_choices {
-  position: absolute;
-  flex-direction: column;
-  width: 600px;
-  backdrop-filter: blur(1vw);
-  background-color: rgba(255, 255, 255, 0.06);
-  border-radius: 20px;
-  height: 500px;
-  overflow: hidden;
-  box-sizing: border-box;
-  margin: 30px;
-}
-.third_img_userprofil_choices h1 {
-  text-align: center;
-  margin-top: 20px;
-}
-.box_picture1 h2 {
-  text-align: left;
-  margin-left: 30px;
-  color: white;
-  margin-top: 20px;
-}
-.box_picture1 .box1 {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  list-style-type: none;
-  text-align: center;
-  margin-top: 30px;
-}
-.box_picture1 .box1 a {
-  gap: 10px;
-}
-.box_picture1 .box1 a img {
-  height: 100px;
-  width: 100px;
-  cursor: pointer;
-}
-
-/* End 3eme section choix des foto de profil utilisateur */
-
 .profile .modif-icon {
   position: absolute;
   left: 50%;
@@ -364,7 +315,7 @@ p.txt1 {
   box-shadow: 2px 2px 10px black;
   width: 500px;
   height: 300px;
-  border-radius: 30px;
+  border-radius: 7px;
   margin: 0 20px;
   position: relative;
   display: grid;
@@ -394,7 +345,8 @@ p.txt1 {
   height: 50px;
 }
 
-.guillaume_box .buttons1 img {
+/* /////////// ICI ///////////// */
+.guillaume_box .buttons1 .default_image {
   border: 3px solid white;
   position: absolute;
   top: 50%;
@@ -406,7 +358,7 @@ p.txt1 {
 .guillaume_box .buttons1 form select,
 .guillaume_box .buttons1 form button {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 7px;
   height: 30px;
   margin-left: 40px;
 }
@@ -459,7 +411,7 @@ p.txt1 {
   backdrop-filter: blur(0.75vw);
   background-color: rgba(255, 255, 255, 0.2);
   box-shadow: 2px 2px 10px black;
-  border-radius: 20px;
+  border-radius: 7px;
   margin-left: 330px;
   cursor: pointer;
 }
@@ -471,8 +423,9 @@ p.txt1 {
   backdrop-filter: blur(0.75vw);
   background-color: rgba(255, 255, 255, 0.2);
   box-shadow: 2px 2px 10px black;
-  border-radius: 20px;
+  border-radius: 7px;
   margin: 30px;
+  cursor: pointer;
 }
 
 .guillaume_box .profile-pic li {
@@ -528,6 +481,131 @@ p.txt1 {
 }
 
 /* End - user card  */
+
+/* START - IMG BOX BUTTON RADIO DESIN */
+
+.radio {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* END - IMG BOX BUTTON RADIO DESIN */
+
+/* Start 3eme section choix des foto de profil utilisateur */
+
+.third_img_userprofil_choices {
+  position: absolute;
+  flex-direction: column;
+  width: 600px;
+  background-color: black;
+  box-shadow: 2px 2px 10px black;
+  border-radius: 7px;
+  height: 500px;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 30px;
+}
+
+.third_img_userprofil_choices h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.box_picture1 .box1 img {
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+/* End 3eme section choix des foto de profil utilisateur */
+
+/* Start - bouton radio */
+
+.container9 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin-left: 50px;
+}
+
+.container9 img {
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.container9 .col {
+  margin-right: 10px;
+}
+
+.app-paper {
+  max-width: 300px;
+  width: 100%;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0px 5px 12px -6px rgba(0, 0, 0, 0.4);
+  border-radius: 7px;
+  padding: 20px;
+  position: relative;
+  font-family: sans-serif;
+}
+
+.app-paper:before {
+  content: "";
+  position: absolute;
+  bottom: -50px;
+  left: 5%;
+  width: 90%;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 50%;
+  filter: blur(10px);
+}
+
+.hidetx {
+  display: none;
+}
+
+.paper-title {
+  font-size: 15px;
+  color: white;
+  margin-top: 3px;
+}
+
+.lbl-radio {
+  text-align: center;
+  box-shadow: 0px 4px 12px -4px rgba(0, 0, 0, 0.35);
+  padding: -20px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  border-radius: 7px;
+  margin-top: 20px;
+  height: 130px;
+}
+
+.display-box .size {
+  font-weight: 600;
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
+}
+
+.display-box .price {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+input[type="radio"]:checked + .lbl-radio {
+  border-color: #286ab0;
+}
+
+/* End - bouton radio */
 
 /* End - Merge avec le code de guillaume  */
 

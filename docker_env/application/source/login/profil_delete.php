@@ -1,14 +1,14 @@
 <?php
 include('../src/connect.php');
 
-if (isset($_GET['id']) AND !empty($_GET['id']))
+if (isset($_GET['id_pseudo']) AND !empty($_GET['id_pseudo']))
 {
-    $getid = $_GET['id'];
-    $recupLine = $db->prepare('SELECT * FROM profile WHERE id= ?');
+    $getid = $_GET['id_pseudo'];
+    $recupLine = $db->prepare('SELECT * FROM profile WHERE id_pseudo= ?');
     $recupLine->execute(array($getid));
 
     if($recupLine->rowCount()>0){
-        $suppressionLigne = $db->prepare('DELETE FROM profile WHERE id = ?');
+        $suppressionLigne = $db->prepare('DELETE FROM profile WHERE id_pseudo = ?');
         $suppressionLigne->execute(array($getid));
         header('location: profil_select.php?email='.$_GET['email'].'');
     }

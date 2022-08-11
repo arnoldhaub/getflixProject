@@ -33,33 +33,10 @@ include("../api/api/info.php");
 
 
     <body>
-        <header>
-            <img class="logo" src="images/logo.svg" alt="logo">
-            <img class="logo_minia" src="images/logo_planete.svg" alt="logo_minia">
-            <nav>
-                <ul class="nav_links">
-                    <li><a href="#"><i class="fa-solid fa-house"></i> HOME</a></li>
-                    <li><a href="#"><i class="fa-solid fa-film"></i></i> FILMS</a></li>
-                    <li><a href="#"><i class="fa-solid fa-tv"></i></i> SERIES</a></li>
-                    <li><a href="#"></a><i class="fa-solid fa-magnifying-glass"></i></i> RECHERCHE</a></li>
-                </ul>
-
-                <ul class="nav_links_responsive">
-                    <li><a href="#"><i class="fa-solid fa-house"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-film"></i></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-tv"></i></i></a></li>
-                    <li><a href="#"></a><i class="fa-solid fa-magnifying-glass"></i></i></a></li>
-                </ul>
-            </nav>
-
-            <!--   <div class="searchbar">
-                        <input type="text" name="searchBar" placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i>
-            </div> -->
-            <div class="user">
-                <p class="p_username">USER</p>
-                <img class="userImage" name="userImage" src="images/CN.jpg" alt="userImage">
-            </div>
-        </header>
+        
+    <?php   
+    include('header.php');
+    ?>
 
         <div class="container_content">
             <div class="jumbotron"></div>
@@ -109,7 +86,7 @@ include("../api/api/info.php");
                                     if($type == "movie"){
                                         for($i = $searchKeywordsMovie->page; $i < $searchKeywordsMovie->total_pages;$i++){
                                             $page = $i;
-                                            include("api/search.php");
+                                            include("../api/api/search.php");
                                             foreach($searchKeywordsMovie->results as $p){
                                                 if (!empty($p->poster_path)) {
                                                     
@@ -136,7 +113,7 @@ include("../api/api/info.php");
                                     else if($type == "serie"){
                                         for($i = $searchKeywordsMovie->page; $i < $searchKeywordsMovie->total_pages;$i++){
                                             $page = $i;
-                                            include("api/search.php");
+                                            include("../api/api/search.php");
                                             foreach($searchKeywordsSerie->results as $p){
                                                 if (!empty($p->poster_path)) {
                                                     echo    "<div class='swiper-slide' style='text-align: center;'>
@@ -162,10 +139,10 @@ include("../api/api/info.php");
 
         <footer>
             <div class="footer_div">
-                <img class="logo_bottom" src="images/logo.svg" alt="logo"> 
+                <img class="logo_bottom" src="../images/logo.svg" alt="logo"> 
                 </div>
             <div>
-                <img class="logo_resp_bottom" src="images/logo_planete_resp.svg" alt="logo">
+                <img class="logo_resp_bottom" src="../images/logo_planete_resp.svg" alt="logo">
             </div>
            <div class="span_div">
                 <span class="span_footer">SCI-FI STREAMING SOLUTION</span>

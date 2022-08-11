@@ -20,6 +20,8 @@ include "../api/api/seriesRecommandations.php";
 include "../api/api/movie_info.php"; 
 include "../api/api/serie_info.php"; 
 
+include "../api/api/latest.php"; 
+
 
 
 

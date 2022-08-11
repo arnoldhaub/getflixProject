@@ -28,8 +28,8 @@ include "../api/api/info.php";
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <link href="./styles/styles_movie_preview.css" rel="stylesheet">
         <link href="./styles/styles_nav_footer.css" rel="stylesheet"> 
+        <link href="./styles/comments_styles.css" rel="stylesheet">
         <style>
-
             .modal-body {
                 position:relative;
                 padding:0px;
@@ -52,7 +52,6 @@ include "../api/api/info.php";
                     $("#video").attr("src", ""); // Remove the video source.
                 });
             });
-
         </script>
     </head>
     <body>  
@@ -113,11 +112,9 @@ include "../api/api/info.php";
                         <div class="modal-dialog modal-dialog-centered modal-fullscreen" role="document">
                             <div class="modal-content">
                                 <div class="modal-body">
-                                    <a href="javascript:;" onClick="toggleVideo('hide');">
-                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></span></button>    
-                                     </a>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></span></button>    
 
-                                            <!-- 16:9 aspect ratio -->
+                                        <!-- 16:9 aspect ratio -->
                                     <div class="ratio ratio-16x9">
                                         <iframe class="embed-responsive-item" src="" id="video"  allow="autoplay" allowfullscreen></iframe>
                                     </div>
@@ -189,7 +186,7 @@ include "../api/api/info.php";
                         <?php
                         foreach ($seriesRecommandations->results as $p) { 
                             if (!empty($p->poster_path && $p->backdrop_path)) {
-                                echo  "<div class='swiper-slide'>
+                                echo  "<div class='swiper-slide' id='first-swiper'>
                                 <a href='serie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                             </div>";
                             }
@@ -202,6 +199,77 @@ include "../api/api/info.php";
                 </div>
             </div>         
         </div>
+
+<!-----------------------------------------------------------------------
+                     COMMENTS
+------------------------------------------------------------------------->
+    
+
+     
+<?php 
+            $request = $db ->prepare('SELECT * FROM comments WHERE id_serie = ? ORDER BY id DESC');
+            $request ->execute(array($id));
+            $comment = $request->fetchAll();
+            
+            if(isset($_POST['commentaires']))
+            {
+                $commentaire =htmlspecialchars($_POST['commentaires']);
+                $pseudo = htmlspecialchars($_POST['pseudo']);
+                $id_serie = htmlspecialchars($id);
+                
+                $push = $db ->prepare('INSERT INTO `comments` (`id`, `id_serie`, `pseudo`, `commentaires`, `date`) VALUES (NULL, ?, ?, ?, CURRENT_TIMESTAMP)');
+                $push->execute(array($id_serie, $pseudo, $commentaire));
+                //header('location: movie_preview.php');
+            }
+            
+        ?>
+
+                                        
+        <div class="com_container">
+            <div class="container_comments_all">
+                <div class="container">
+                    <p class="title_slide_comments">Comments about "<?php echo $infoSerie->name; ?>"</p>
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <?php
+                            foreach($comment as $comment){ 
+                                echo "<div class='swiper-slide' id='commentSwiper'>
+                            "?>
+                                                                                                  
+                                <div class="test">
+                                    <img src="../images/CN.jpg" id="UserCommentImage">
+                                    <div class="infos_comments">
+                                        <span class="pseudo">User</span>
+                                        <span><?= $comment['date'] ?></span>
+                                    </div>
+                                </div>   
+
+                                <div class="test2">
+                                    <p class="comment_itself">
+                                        <?= $comment['pseudo'], ' ' ,$comment['commentaires']; ?> 
+                                    </p>
+                                </div>
+                                                                        
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container_comment">
+            <p class="title_slide_comments">Post a review about "<?php echo $infoSerie->name; ?>"</p>
+                <div class="form_com">
+                                                            
+                    <form method="POST" id="formPost">
+                        <textarea type="text" placeholder="max 200 carac." name="commentaires" id="commentForm"></textarea></br>  
+                        <button type="submit">Post Comment</button>
+                    </form>
+                </div>
+        </div>
+                                                 
+             
 <!-----------------------------------------------------------------------
                      FOOTER
 ------------------------------------------------------------------------->

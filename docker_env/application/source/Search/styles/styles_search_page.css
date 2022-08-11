@@ -321,6 +321,7 @@ margin-bottom: 5vh;
   padding-top: 1.5rem;
   border-radius: 5%;
   background-color: black;
+  overflow:visible;
 }
 
 #fleche
@@ -339,4 +340,5 @@ margin-bottom: 5vh;
 {
   position: relative;
   display: inline-block;
+  overflow: visible;
 }

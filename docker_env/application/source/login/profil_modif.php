@@ -27,10 +27,10 @@
         $image = htmlspecialchars($_POST['brandtype']);
 		
 		// modififcation
-		// $req = $db->prepare("UPDATE INTO profile(pseudo, categorie, email, image) VALUES (?, ?, ?, ?)");
-		// $req->execute(array($pseudo, $categorie, $_GET['email'],$image));
+		$req = $db->prepare('UPDATE profile SET (pseudo, categorie, image) VALUES (?, ?, ?) WHERE email=$_GET["email"]');
+		$req->execute(array($pseudo, $categorie,$image));
 		
-        // header('location: profil_select.php?email='.$_GET['email'].'');
+        header('location: profil_select.php?email='.$_GET['email'].'');
 	}
 
 

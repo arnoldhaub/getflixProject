@@ -207,7 +207,7 @@ include "../api/api/info.php";
 
      
 <?php 
-            $request = $db ->prepare('SELECT * FROM comments WHERE id_serie = ? ORDER BY id DESC');
+            $request = $db ->prepare('SELECT * FROM comments WHERE id_film = ? ORDER BY id DESC');
             $request ->execute(array($id));
             $comment = $request->fetchAll();
             
@@ -215,10 +215,10 @@ include "../api/api/info.php";
             {
                 $commentaire =htmlspecialchars($_POST['commentaires']);
                 $pseudo = htmlspecialchars($_POST['pseudo']);
-                $id_serie = htmlspecialchars($id);
+                $id_film = htmlspecialchars($id);
                 
-                $push = $db ->prepare('INSERT INTO `comments` (`id`, `id_serie`, `pseudo`, `commentaires`, `date`) VALUES (NULL, ?, ?, ?, CURRENT_TIMESTAMP)');
-                $push->execute(array($id_serie, $pseudo, $commentaire));
+                $push = $db ->prepare('INSERT INTO `comments` (`id`, `id_film`, `pseudo`, `commentaires`, `date`) VALUES (NULL, ?, ?, ?, CURRENT_TIMESTAMP)');
+                $push->execute(array($id_film, $pseudo, $commentaire));
                 //header('location: movie_preview.php');
             }
             

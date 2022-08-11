@@ -3,16 +3,16 @@
             <img class="logo_minia" src="/images/logo_planete.svg" alt="logo_minia">
             <nav style="align-self: center">
                 <ul class="nav_links">
-                    <li><a href="../Home/home.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>">HOME</a></li>
-                    <li><a href="#">SERIES</a></li>
-                    <li><a href="#">FILMS</a></li>
+                <li><a href="../Home/home.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>">HOME</a></li>
+                    <li><a href="../Home/home.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>#ancre_serie">SERIES</a></li>
+                    <li><a href="../Home/home.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>#ancre_film">FILMS</a></li>
                     <li><a href="../Home/search.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>">RECHERCHE</a></li>
                 </ul>
 
                 <ul class="nav_links_responsive">
-                    <li><a href="../Home/home.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"><i class="fa-solid fa-house"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-film"></i></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-tv"></i></i></a></li>
+                <li><a href="../Home/home.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"><i class="fa-solid fa-house"></i></a></li>
+                    <li><a href="../Home/home.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>#ancre_film"><i class="fa-solid fa-film"></i></i></a></li>
+                    <li><a href="../Home/home.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>#ancre_serie"><i class="fa-solid fa-tv"></i></i></a></li>
                     <li><a href="../Home/search.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"></a><i class="fa-solid fa-magnifying-glass"></i></i></a></li>
                 </ul>
             </nav>

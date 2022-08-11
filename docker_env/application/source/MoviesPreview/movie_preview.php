@@ -182,20 +182,19 @@ include "../api/api/info.php";
                         <div class="swiper-wrapper">
                             <?php
                             foreach($comment as $comment){ 
-                                echo "<div class='swiper-slide' id='commentSwiper'>
-                            "?>
-                                                                                                  
+                                echo "<div class='swiper-slide' id='commentSwiper'>";
+                                    ?>                                                              
                                 <div class="test">
-                                    <img src="../images/CN.jpg" id="UserCommentImage">
+                                    <img src="<?php echo $pseudoActif[1]?>" id="UserCommentImage">
                                     <div class="infos_comments">
-                                        <span class="pseudo">User</span>
+                                        <span class="pseudo"><?php echo $comment['pseudo'] ?></span>
                                         <span><?= $comment['date'] ?></span>
                                     </div>
                                 </div>   
 
                                 <div class="test2">
                                     <p class="comment_itself">
-                                        <?= $comment['pseudo'], ' ' ,$comment['commentaires']; ?> 
+                                        <?=$comment['commentaires']; ?> 
                                     </p>
                                 </div>
                                                                         
@@ -208,10 +207,11 @@ include "../api/api/info.php";
         </div>
         
         <div class="container_comment">
-            <p class="title_slide_comments">Post a review about "<?php echo $infoMovie->title; ?>"</p>
+            <p class="title_slide_comments"><?php echo$pseudoActif[0]?>, Post a review about "<?php echo $infoMovie->title; ?>"</p>
                 <div class="form_com">
                                                             
                     <form method="POST" id="formPost">
+                        <input style="display:none" name="pseudo" value="<?php echo$pseudoActif[0]?>"> 
                         <textarea type="text" placeholder="max 200 carac." name="commentaires" id="commentForm"></textarea></br>  
                         <button type="submit">Post Comment</button>
                     </form>

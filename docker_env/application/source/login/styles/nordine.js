@@ -23,4 +23,8 @@ userAvatard.forEach((element) => {
   });
 });
 
+
+
+
 // End- Animation JS pour passer de seconde_who_are_you à third_img_userprofil_choices au clic sur l'icion stylo
+

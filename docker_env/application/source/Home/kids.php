@@ -33,30 +33,42 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" <?php echo 'src="'.$imgurl.$latestMovie->results[0]->backdrop_path.'" alt="'.$imgurl.$latestMovie->results[0]->original_title.'"';?>>
+                    <img class="d-block w-100" <?php $page = 1; include "../api/api/age_rating.php"; echo 'src="'.$imgurl.$movieForKids->results[0]->backdrop_path.'" alt="'.$imgurl.$movieForKids->results[0]->original_title.'"';?>>
                     <div class="carousel-caption d-none d-md-block">
-                        <h5><?php echo $latestMovie->results[0]->title; ?></h5>
-                        <p><?php echo substr($latestMovie->results[0]->overview, 0,250 )." (...)"; 
-                            if(strlen($latestMovie->results[1]->overview) > 250)
-                                    { echo '(...)';} ?></p>
+                        <h5><?php echo $movieForKids->results[0]->title; ?></h5>
+                        <p><?php echo substr($movieForKids->results[0]->overview, 0,250 ); 
+                            if(strlen($movieForKids->results[0]->overview) > 250)
+                                    { echo '(...)';} ?>
+                        </p>
+                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $movieForKids->results[0]->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'>"; ?>
+                            <button type="button" class="btn play"><i class="fa-solid fa-play" id="fa-play"></i>PLAY !</button>
+                        </a>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" <?php echo 'src="'.$imgurl.$latestMovie->results[1]->backdrop_path.'" alt="'.$imgurl.$latestMovie->results[1]->original_title.'"';?>>
+                    <img class="d-block w-100" <?php echo 'src="'.$imgurl.$movieForKids->results[1]->backdrop_path.'" alt="'.$imgurl.$movieForKids->results[1]->original_title.'"';?>>
                     <div class="carousel-caption d-none d-md-block">
-                        <h5><?php echo $latestMovie->results[1]->title; ?></h5>
-                        <p><?php echo substr($latestMovie->results[1]->overview, 0,250 );
-                            if(strlen($latestMovie->results[1]->overview) > 250)
-                                    { echo '(...)';} ?></p>
+                        <h5><?php echo $movieForKids->results[1]->title; ?></h5>
+                        <p><?php echo substr($movieForKids->results[1]->overview, 0,250 );
+                            if(strlen($movieForKids->results[1]->overview) > 250)
+                                    { echo '(...)';} ?>
+                        </p>
+                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $movieForKids->results[1]->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'>"; ?>
+                            <button type="button" class="btn play"><i class="fa-solid fa-play" id="fa-play"></i>PLAY !</button>
+                        </a>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" <?php echo 'src="'.$imgurl.$latestMovie->results[2]->backdrop_path.'" alt="'.$imgurl.$latestMovie->results[2]->original_title.'"';?>>
+                    <img class="d-block w-100" <?php echo 'src="'.$imgurl.$movieForKids->results[2]->backdrop_path.'" alt="'.$imgurl.$movieForKids->results[2]->original_title.'"';?>>
                     <div class="carousel-caption d-none d-md-block">
-                        <h5><?php echo $latestMovie->results[2]->title; ?></h5>
-                        <p><?php echo substr($latestMovie->results[2]->overview, 0,250 )." (...)";
-                            if(strlen($latestMovie->results[2]->overview) > 250)
-                            { echo '(...)';} ?></p>
+                        <h5><?php echo $movieForKids->results[2]->title; ?></h5>
+                        <p><?php echo substr($movieForKids->results[2]->overview, 0,250 );
+                            if(strlen($movieForKids->results[2]->overview) > 250)
+                            { echo '(...)';} ?>
+                        </p>
+                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $movieForKids->results[2]->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'>"; ?>
+                            <button type="button" class="btn play"><i class="fa-solid fa-play" id="fa-play"></i>PLAY !</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -76,15 +88,13 @@
                                     MOVIES
         //======================================================================-->
 
-        <p class="title_slide">Nouveauté</p>
+        <p class="title_slide">Movies selection · 1 </p>
         <div class="container">
             <div class="swiper-container">
               
                 <div class="swiper-wrapper">
 
                     <?php
-                    $page = 1;
-                    include "../api/api/age_rating.php";
                     foreach ($movieForKids->results as $p) { // RECENT SF MOVIE
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
@@ -99,7 +109,7 @@
             </div>
         </div>
 
-        <p class="title_slide">Incontournables</p>
+        <p class="title_slide">Movies selection · 2</p>
         <div class="container">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -117,12 +127,12 @@
 
                 </div>
                 <!-- Add Arrows -->
-                <div class="swiper-button-next">></div>
-                <div class="swiper-button-prev"><</div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
 
-        <p class="title_slide">Populaires</p>
+        <p class="title_slide">Movies selection · 3</p>
         <div class="container">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -150,7 +160,7 @@
                                     SERIES
         //======================================================================-->
 
-        <p class="title_slide">Nouveauté</p>
+        <p class="title_slide">TV series selection · 1</p>
         <div class="container">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -173,7 +183,7 @@
             </div>
         </div>
 
-        <p class="title_slide">Incontournables</p>
+        <p class="title_slide">TV series selection · 2</p>
         <div class="container">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -196,7 +206,7 @@
             </div>
         </div>
 
-        <p class="title_slide">Populaires</p>
+        <p class="title_slide">TV series selection · 3</p>
         <div class="container">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
@@ -214,8 +224,8 @@
 
                 </div>
                 <!-- Add Arrows -->
-                <div class="swiper-button-next">></div>
-                <div class="swiper-button-prev"><</div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
 

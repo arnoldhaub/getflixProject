@@ -15,6 +15,9 @@
 
 
     <body>  
+<!-----------------------------------------------------------------------
+                     HEADER + MENU
+-------------------------------------------------------------------------> 
     <?php   
     include('header.php');
     ?>
@@ -37,7 +40,11 @@
                         <h5><?php echo $latestMovie->results[0]->title; ?></h5>
                         <p><?php echo substr($latestMovie->results[0]->overview, 0,250 )." (...)"; 
                             if(strlen($latestMovie->results[1]->overview) > 250)
-                                    { echo '(...)';} ?></p>
+                                    { echo '(...)';} ?>
+                        </p>
+                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $latestMovie->results[0]->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'>"; ?>
+                            <button type="button" class="btn play"><i class="fa-solid fa-play" id="fa-play"></i>PLAY !</button>
+                        </a>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -46,7 +53,11 @@
                         <h5><?php echo $latestMovie->results[1]->title; ?></h5>
                         <p><?php echo substr($latestMovie->results[1]->overview, 0,250 );
                             if(strlen($latestMovie->results[1]->overview) > 250)
-                                    { echo '(...)';} ?></p>
+                                    { echo '(...)';} ?>
+                        </p>
+                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $latestMovie->results[1]->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'>"; ?>
+                            <button type="button" class="btn play"><i class="fa-solid fa-play" id="fa-play"></i>PLAY !</button>
+                        </a>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -55,7 +66,11 @@
                         <h5><?php echo $latestMovie->results[2]->title; ?></h5>
                         <p><?php echo substr($latestMovie->results[2]->overview, 0,250 )." (...)";
                             if(strlen($latestMovie->results[2]->overview) > 250)
-                            { echo '(...)';} ?></p>
+                            { echo '(...)';} ?>
+                        </p>
+                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $latestMovie->results[2]->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'>"; ?>
+                            <button type="button" class="btn play"><i class="fa-solid fa-play" id="fa-play"></i>PLAY !</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -107,6 +122,15 @@
                         }
                     } ?>
 
+                    <?php
+                    foreach ($moviesLatest2->results as $p) { // RECENT SF MOVIE
+                        if (!empty($p->poster_path && $p->backdrop_path)) {
+                            echo  "<div class='swiper-slide'>
+                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
+                        </div>";
+                        }
+                    } ?>
+
                 </div>
                 <!-- Add Arrows -->
             
@@ -129,8 +153,8 @@
 
                 </div>
                 <!-- Add Arrows -->
-                <div class="swiper-button-next">></div>
-                <div class="swiper-button-prev"><</div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
 
@@ -219,8 +243,8 @@
 
                 </div>
                 <!-- Add Arrows -->
-                <div class="swiper-button-next">></div>
-                <div class="swiper-button-prev"><</div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
 

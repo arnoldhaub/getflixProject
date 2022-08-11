@@ -15,7 +15,7 @@
 		// check email syntax
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL))
 		{
-			header('location: login_form.php?error=1&message=Email adress invalid');
+			header('location: login_form.php?error=1&message=Email adress invalid. Please try again.');
 			exit ();
 		}
 
@@ -57,7 +57,7 @@
 				exit ();
 			}
 			else {
-				header('location: login_form.php?error=1&message=Impossible to connect, try again!');
+				header('location: login_form.php?error=1&message=Your login or password dont match. Try again.');
 				exit();
 			}	
 		}
@@ -100,18 +100,7 @@
         <h1 class="txtHello">Hello sunshine!</h1>
 
 <!-- Here we check if the user is connected. If yes, no need to ask him to suscribe -->
-<?php if (isset($_SESSION['connect']))
-			{ 	?>
-					<p><a href="profil_select.php?email=<?php echo $_SESSION['email'] ?> ">GO !</a></p><br>
-					<small><a href="logout.php">Disconnect</a></small>
 
-	<?php	} else { 
-                    if (isset($_GET['error'])) {
-					    if (isset($_GET['message'])) {
-						    echo'<div class="alert error">'.htmlspecialchars($_GET['message']).'</div>';
-					}
-				}
-?>
 
     <form method="post" action=login_form.php>
     <div class="buttons1_loginForm">
@@ -121,7 +110,36 @@
     <div class="container2">
             <button type="submit" class="Register_loginEnter" name="RegisterEnter" label="Register" id="RegisterRegister_loginEnter">Login</button>	
     </div>
-	<label id="option"><input type="checkbox" name="auto" checked />Remember me</label></button>
+<?php if (isset($_SESSION['connect']))
+
+			{ 	?>
+					<p><a href="profil_select.php?email=<?php echo $_SESSION['email'] ?> ">GO !</a></p><br>
+					<small><a href="logout.php">Disconnect</a></small>
+
+	<?php	} else { 
+                    if (isset($_GET['error'])) {
+					    if (isset($_GET['message'])) {
+						    echo'<div class="alert_error">'.htmlspecialchars($_GET['message']).'</div>';
+					}
+				}
+?>
+
+
+	
+
+	  <section title=".slideThree">
+    <!-- .slideThree -->
+    <div class="slideThree" id="option">  
+      <input type="checkbox" value="None" id="slideThree" name="auto"/>
+      <label for="slideThree"></label>
+    </div>
+	<p class ="toggle_remember">REMEMBER ME toggle OFF</p>
+    <!-- end .slideThree -->
+  </section>
+  
+</button>
+
+
     </form>
     
     <div class="arrowBack" onclick="location.href='./../index.php'">
@@ -153,10 +171,8 @@
 
 
 </body>
-<script>
-
-
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src='./script/script.js'></script>
 
 
 <footer>

@@ -82,7 +82,7 @@
                                         <div class="container9">
                                             <div class="col">
                                                 <div class="row">
-                                                    <input type="radio" name="brandtype" id="4" class="hidetx" value="../images/user_pic/4.png">
+                                                    <input type="radio" name="brandtype" id="4" class="hidetx" value="../images/user_pic/4.png" checked>
                                                     <label for="4" class="lbl-radio">
                                                         <div class="display-box">
                                                             <img src="../images/user_pic/4.png" alt="default image" srcset="">
@@ -150,6 +150,8 @@
                         </div>
                     </form>
                 </div>
+
+                <small><a href="logout.php">Log Out</a></small>
             <?php   }
             $requete = $db->prepare('SELECT * FROM profile WHERE email = ?');
             $requete->execute(array($_GET['email']));
@@ -161,7 +163,6 @@
                     while ($donnees = $requete->fetch()) {
                     ?>
                         <li>
-                            
                                 <div class="profile-pic">
                                     <a class=" fa-solid fa-trash-can" href="profil_delete.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">
                                         <a class=" fa-solid fa-pen" href="profil_modif.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">

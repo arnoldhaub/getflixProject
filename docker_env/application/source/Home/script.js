@@ -76,6 +76,7 @@ let champPseudo = document.getElementById('sectionUser');
 champPseudo.onmouseover = () => {
   document.getElementById('fleche').className = "fa-solid fa-angle-up";
   document.getElementById('listePseudos').style.display = "block";
+  document.getElementById('listePseudos').style.zIndex = "2";
 
 }
 

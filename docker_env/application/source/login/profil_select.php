@@ -147,6 +147,8 @@
                         </div>
                     </form>
                 </div>
+
+                <small><a href="logout.php">Log Out</a></small>
             <?php   }
             $requete = $db->prepare('SELECT * FROM profile WHERE email = ?');
             $requete->execute(array($_GET['email']));
@@ -158,7 +160,6 @@
                     while ($donnees = $requete->fetch()) {
                     ?>
                         <li>
-                            
                                 <div class="profile-pic">
                                     <a class=" fa-solid fa-trash-can" href="profil_delete.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">
                                         <a class=" fa-solid fa-pen" href="profil_modif.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">

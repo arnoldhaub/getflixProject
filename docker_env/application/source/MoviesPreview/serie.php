@@ -166,7 +166,7 @@ include "../api/api/info.php";
                         include "../api/api/episodeInfo.php";
                         echo                '<div class="swiper-slide" style="text-align:center;">';
                         if(!empty($episodeDetails->videos->results[0])){ // Si vidéo répertoriée, afficher
-                            echo                '<a class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/'.$episodeDetails->videos->results->key.'" data-target="#myModal">';
+                            echo                '<a class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/'.$episodeDetails->videos->results[0]->key.'" data-target="#myModal">';
                         }
                         else{ // Sinon afficher celle de la série
                             echo                '<a class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/'.$infoSerie->videos->results[0]->key.'"  data-target="#myModal">';

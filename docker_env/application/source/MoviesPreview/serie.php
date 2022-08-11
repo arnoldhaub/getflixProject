@@ -21,7 +21,7 @@ include "../api/api/info.php";
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edege">
-        <title>Serie</title>
+        <title>TV serie · <?php echo $infoSerie->name; ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -137,13 +137,18 @@ include "../api/api/info.php";
         <br><br><br><br><br><br><br><br><br><p>testooooo</p>
         <?php
             if (!empty($infoSerie->seasons)) {
-                echo '<select name="which_season">';
+                echo    '<div class="dropdown-center">
+                            <button class="btn dropdown-toggle play" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                '.$infoSerie->seasons[0]->name.'
+                            </button>
+                            <ul class="dropdown-menu">';
                 foreach($infoSerie->seasons as $p){
                     if($p->episode_count > 0){
-                        echo '<option value="'.$p->season_number.'">'.$p->name.'</option>';
+                        echo    '<li><a class="dropdown-item" value="'.$p->season_number.'">'.$p->name.'</a></li>';
                     }
                 }
-                echo '</select>';
+                echo        '</ul>
+                        </div>';
             }
         
 

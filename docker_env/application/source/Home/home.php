@@ -92,7 +92,7 @@
                                     MOVIES
         //======================================================================-->
 
-        <p class="title_slide">Nouveauté</p>
+        <p id="ancre_film" class="title_slide">Nouveauté</p>
         <div class="container">
             <div class="swiper-container">
               
@@ -160,7 +160,7 @@
                                     SERIES
         //======================================================================-->
 
-        <p class="title_slide">Nouveauté</p>
+        <p id="ancre_serie" class="title_slide">Nouveauté</p>
         <div class="container">
             <div class="swiper-container">
                 <div class="swiper-wrapper">

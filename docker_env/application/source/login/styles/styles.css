@@ -114,11 +114,12 @@ html {
 }
 
 .buttons1 {
-    display: flex;
+ display: none;
     flex-direction: column;
     margin: 1.5%;
     align-items: center;
     justify-content: center;
+   
 }
 
 .Register0{

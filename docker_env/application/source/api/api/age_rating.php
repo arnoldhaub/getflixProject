@@ -34,6 +34,7 @@ if(isset($key, $page)) {
     $movieForKids = json_decode($response);
 }
 
+
 if(isset($key, $page)) {
     $ct = curl_init();
     curl_setopt($ct, CURLOPT_URL, "https://api.themoviedb.org/3/discover/tv?api_key=$key&certification_country=US&certification.lte=G&with_genres=10762,16&include_adult=false&sort_by=popularity.desc&include_video=true&page=$page"); 

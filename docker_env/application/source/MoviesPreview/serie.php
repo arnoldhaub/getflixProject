@@ -21,7 +21,7 @@ include "../api/api/info.php";
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edege">
-        <title>Movie</title>
+        <title>Serie</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -133,8 +133,70 @@ include "../api/api/info.php";
 <!-----------------------------------------------------------------------
                      DISPLAY SEASONS + EPISODE
 ------------------------------------------------------------------------->
+        <div class="container_movie">
+        <br><br><br><br><br><br><br><br><br><p>testooooo</p>
         <?php
-        if (!empty($infoSerie->seasons)) {
+            if (!empty($infoSerie->seasons)) {
+                echo '<select name="which_season">';
+                foreach($infoSerie->seasons as $p){
+                    if($p->episode_count > 0){
+                        echo '<option value="'.$p->season_number.'">'.$p->name.'</option>';
+                    }
+                }
+                echo '</select>';
+            }
+        
+
+
+
+
+                // foreach($infoSerie->seasons as $p){
+                //     if($p->episode_count > 0){
+                //         $season = $p->season_number;
+                //         echo    '<div class="container_movie">
+                //                     <div class="container">
+                //                         <p class="title_slide">'.$p->name.'</p>
+                //                         <div class="swiper-container">
+                //                             <div class="swiper-wrapper">';
+                        
+                //         include "../api/api/episodeInfo.php"; 
+                //         foreach($episodeInfo->episodes as $i){
+                //             $ep = $i->episode_number;
+                //             include "../api/api/episodeInfo.php";
+                //             echo                '<div class="swiper-slide" id="first-swiper" style="text-align:center;">';
+                //             if(!empty($episodeDetails->videos->results[0])){ // Si vidéo répertoriée, afficher
+                //                 echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$episodeDetails->videos->results[0]->key.'" data-bs-target="#myModal">';
+                //             }
+                //             else{ // Sinon afficher celle de la série
+                //                 echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$infoSerie->videos->results[0]->key.'"  data-bs-target="#myModal">';
+                //             }
+                //             // '<a href="episode.php?id='.$id.'&season='.$i->season_number. '&ep='.$i->episode_number.'">
+                //                 echo                    '<img src="' . $imgurl_500 . $i->still_path . '" style="object-fit: cover;"></a>
+                //                                     <p><b>Episode '.$i->episode_number.' -</b> '. $i->name .'</p><hr><p>'.$episodeDetails->overview.'</p>
+    
+                //                                 </div>';
+                //         }
+                //         echo                    '<div class="swiper-button-next"></div>
+                //                                 <div class="swiper-button-prev"></div>
+                //                             </div>
+                //                         </div>
+                //                     </div>
+                //                 </div>';
+                                
+                //         }
+                //     }
+                
+                // }
+            ?>
+            </div>
+
+
+
+
+
+
+
+        <!-- if (!empty($infoSerie->seasons)) {
             foreach($infoSerie->seasons as $p){
                 if($p->episode_count > 0){
                     $season = $p->season_number;
@@ -148,7 +210,7 @@ include "../api/api/info.php";
                     foreach($episodeInfo->episodes as $i){
                         $ep = $i->episode_number;
                         include "../api/api/episodeInfo.php";
-                        echo                '<div class="swiper-slide" style="text-align:center;">';
+                        echo                '<div class="swiper-slide" id="first-swiper" style="text-align:center;">';
                         if(!empty($episodeDetails->videos->results[0])){ // Si vidéo répertoriée, afficher
                             echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$episodeDetails->videos->results[0]->key.'" data-bs-target="#myModal">';
                         }
@@ -161,8 +223,8 @@ include "../api/api/info.php";
 
                                             </div>';
                     }
-                    echo                '<div class="swiper-button-next"></div>
-                                        <div class="swiper-button-prev"></div>
+                    echo                    '<div class="swiper-button-next"></div>
+                                            <div class="swiper-button-prev"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -172,7 +234,7 @@ include "../api/api/info.php";
                 }
             
             }
-        ?>
+        ?> -->
 
 <!-----------------------------------------------------------------------
                      SERIES RECOMMANDATIONS
@@ -293,7 +355,6 @@ include "../api/api/info.php";
             @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
         </style>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js"></script>
-        
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
         <script src="./movie_preview_script.js"></script>

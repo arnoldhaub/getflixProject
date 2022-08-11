@@ -345,6 +345,29 @@ margin-right: 3.4vh;
 /* ↑ CONTENT BODY ↑ */
 
 
+.play {
+  padding: 10px;
+  width: 150px;
+  border-radius: 7px;
+  border: none;
+  background-color: transparent;
+  outline: 1px solid white;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+
+
+.play:hover{
+  background-color: rgb(255, 255, 255);
+  color: #27242B;
+}
+
+.fa-play{
+  color: #ffffff;
+  margin-right: 10px;
+  }
 
 /* ↓ FOOTER ↓ */
 footer {

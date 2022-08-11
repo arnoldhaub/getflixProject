@@ -367,7 +367,12 @@ margin-right: 3.4vh;
 .fa-play{
   color: #ffffff;
   margin-right: 10px;
-  }
+}
+
+.fa-play:hover{
+  color: #27242B;
+}
+  
 
 /* ↓ FOOTER ↓ */
 footer {

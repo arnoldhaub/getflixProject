@@ -156,8 +156,9 @@
                 <div class="swiper-wrapper">
 
                     <?php
-                    include "../api/api/info.php";
-                    foreach ($seriesLatest->results as $p) { // SF & FANTAST - SERIES
+                    $page = 1;
+                    include "../api/api/age_rating.php";
+                    foreach ($serieForKids->results as $p) { // SF & FANTAST - SERIES
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
                             <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
@@ -178,7 +179,9 @@
                 <div class="swiper-wrapper">
 
                     <?php
-                    foreach ($seriesTopRated->results as $p) { // TOP RATED - SF & FANTAST - SERIES
+                    $page += 1;
+                    include "../api/api/age_rating.php";
+                    foreach ($serieForKids->results as $p) { // SF & FANTAST - SERIES
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
                             <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
@@ -199,7 +202,9 @@
                 <div class="swiper-wrapper">
 
                     <?php
-                    foreach ($seriesPopular->results as $p) { // POPULAR - SF & FANTAST - SERIES
+                    $page += 1;
+                    include "../api/api/age_rating.php";
+                    foreach ($serieForKids->results as $p) { // SF & FANTAST - SERIES
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
                             <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>

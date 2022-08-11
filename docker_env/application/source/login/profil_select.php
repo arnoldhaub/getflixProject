@@ -79,7 +79,7 @@
                                         <div class="container9">
                                             <div class="col">
                                                 <div class="row">
-                                                    <input type="radio" name="brandtype" id="4" class="hidetx" value="../images/user_pic/4.png">
+                                                    <input type="radio" name="brandtype" id="4" class="hidetx" value="../images/user_pic/4.png" checked>
                                                     <label for="4" class="lbl-radio">
                                                         <div class="display-box">
                                                             <img src="../images/user_pic/4.png" alt="default image" srcset="">

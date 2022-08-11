@@ -24,7 +24,7 @@
             <?php
             require('../src/connect.php');
             $id_pseudo = $_GET["id_pseudo"];
-            $requete = $db->query("SELECT PSEUDO FROM profile WHERE id_pseudo='$id_pseudo'");
+            $requete = $db->query("SELECT PSEUDO, IMAGE FROM profile WHERE id_pseudo='$id_pseudo'");
             $pseudoActif = $requete->fetch();
             
             ?>
@@ -33,7 +33,7 @@
 
             <div class="user mb-2">
                 <p class="p_username"><?php echo $pseudoActif[0] ?></p>
-                <img class="userImage" name="userImage" src="/images/CN.jpg" alt="userImage">
+                <img class="userImage" name="userImage" src="<?php echo $pseudoActif[1]?>" alt="userImage">
                 <i id="fleche" class="fa-solid fa-angle-down"></i>
             </div>
 
@@ -41,13 +41,13 @@
             <div id=listePseudos>
             <?php
             $email = $_GET["email"];
-            $requete2 = $db->query("SELECT PSEUDO,ID_PSEUDO FROM profile WHERE email='$email'");
+            $requete2 = $db->query("SELECT PSEUDO,ID_PSEUDO,IMAGE FROM profile WHERE email='$email'");
             while($donnees = $requete2->fetch())
                     { ?>
                 <li class="mb-3 " style="list-style-type:none">
                     <div class="container">
                         <div style="flex-wrap:nowrap" class="row">
-                <img id="photoListeProfil" src="../images/adulte.png" alt="profil">
+                <img id="photoListeProfil" src="<?php echo $donnees[2]?>" alt="profil">
                 <a style="color:white" href="../Home/home.php?id_pseudo=<?php echo $donnees[1]?>&email=<?php echo $email?>"><?php echo $donnees[0] ?>
                 </a>
                         </div>
@@ -60,7 +60,7 @@
                     <div class="container">
                         <div style="flex-wrap:nowrap" class="row">
                 
-                <i class="fa-solid fa-pen"></i>
+                <i class="fa-solid fa-gear"></i>
                 <a style="color:white" href="../login/profil_select.php?email=<?php echo $_GET['email'] ?>" class="ml-2">Settings</a>
                 </a>
                         </div>

@@ -5,10 +5,11 @@
 		// variables
 		$pseudo = htmlspecialchars($_POST['pseudo']);
         $categorie = htmlspecialchars($_POST['categorie']);
+        $image = htmlspecialchars($_POST['image']);
 		
 		// sending (ajouter les droits/accès Adulte ou enfant)
-		$req = $db->prepare("INSERT INTO profile(pseudo, categorie, email) VALUES (?, ?, ?)");
-		$req->execute(array($pseudo, $categorie, $_GET['email']));
+		$req = $db->prepare("INSERT INTO profile(pseudo, categorie, email,image) VALUES (?, ?, ?, ?)");
+		$req->execute(array($pseudo, $categorie, $_GET['email'],$image));
 		
         header('location: profil_select.php?email='.$_GET['email'].'');
 	}

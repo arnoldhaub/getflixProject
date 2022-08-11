@@ -60,7 +60,7 @@
                     <div class="container">
                         <div style="flex-wrap:nowrap" class="row">
                 
-                <i class="fa-solid fa-pen"></i>
+                <i class="fa-solid fa-gear"></i>
                 <a style="color:white" href="../login/profil_select.php?email=<?php echo $_GET['email'] ?>" class="ml-2">Settings</a>
                 </a>
                         </div>

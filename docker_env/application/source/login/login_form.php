@@ -111,12 +111,9 @@
             <button type="submit" class="Register_loginEnter" name="RegisterEnter" label="Register" id="RegisterRegister_loginEnter">Login</button>	
     </div>
 <?php if (isset($_SESSION['connect']))
-			{ 	if (isset($_GET['success']))
-						{
-							echo'<div class="alert_success">You are connected.</div>';
-						}
-			?>
-					<p><a href="profil_select.php?email=<?php $email ?> ">Ready to take off ?</a></p><br>
+
+			{ 	?>
+					<p><a href="profil_select.php?email=<?php echo $_SESSION['email'] ?> ">GO !</a></p><br>
 					<small><a href="logout.php">Disconnect</a></small>
 
 	<?php	} else { 

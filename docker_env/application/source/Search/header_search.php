@@ -6,14 +6,14 @@
                 <li><a href="../Home/home.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>">HOME</a></li>
                     <li><a href="../Home/home.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>#ancre_serie">SERIES</a></li>
                     <li><a href="../Home/home.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>#ancre_film">FILMS</a></li>
-                    <li><a href="../Home/search.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>">RECHERCHE</a></li>
+                    <li><a href="../Search/search_page.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>">RECHERCHE</a></li>
                 </ul>
 
                 <ul class="nav_links_responsive">
                 <li><a href="../Home/home.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"><i class="fa-solid fa-house"></i></a></li>
                     <li><a href="../Home/home.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>#ancre_film"><i class="fa-solid fa-film"></i></i></a></li>
                     <li><a href="../Home/home.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>#ancre_serie"><i class="fa-solid fa-tv"></i></i></a></li>
-                    <li><a href="../Home/search.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"></a><i class="fa-solid fa-magnifying-glass"></i></i></a></li>
+                    <li><a href="search.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"></a><i class="fa-solid fa-magnifying-glass"></i></i></a></li>
                 </ul>
             </nav>
 
@@ -23,7 +23,7 @@
 
             <?php
             require('../src/connect.php');
-            $id_pseudo = $_GET["id_pseudo"];
+            $id_pseudo = $_SESSION['pseudo'];
             $requete = $db->query("SELECT PSEUDO, IMAGE FROM profile WHERE id_pseudo='$id_pseudo'");
             $pseudoActif = $requete->fetch();
             
@@ -40,7 +40,7 @@
 
             <div id=listePseudos>
             <?php
-            $email = $_GET["email"];
+            $email = $_SESSION['email'];
             $requete2 = $db->query("SELECT PSEUDO,ID_PSEUDO,IMAGE FROM profile WHERE email='$email'");
             while($donnees = $requete2->fetch())
                     { ?>

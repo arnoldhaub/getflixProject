@@ -1,4 +1,7 @@
 <?php
+
+
+
 	if (!empty($_POST['pseudo']))
 	{
 		include('../src/connect.php');
@@ -108,7 +111,7 @@
                                                     </label>
                                                 </div>
                                                 <div class="row">
-                                                    <input type="radio" name="brandtype" id="9" class="hidetx" value="../images/user_pic/9.png">
+                                                    <input type="radio" name="brandtype" id="9" class="hidetx" value="../images/user_pic/9.png checked">
                                                     <label for="9" class="lbl-radio">
                                                         <div class="display-box">
                                                             <img src="../images/user_pic/9.png" alt="" srcset="">

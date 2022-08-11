@@ -1,16 +1,18 @@
 <?php
-if (!empty($_POST['pseudo'])) {
-    include('../src/connect.php');
-    // variables
-    $pseudo = htmlspecialchars($_POST['pseudo']);
-    $categorie = htmlspecialchars($_POST['categorie']);
-
-    // sending (ajouter les droits/accès Adulte ou enfant)
-    $req = $db->prepare("INSERT INTO profile(pseudo, categorie, email) VALUES (?, ?, ?)");
-    $req->execute(array($pseudo, $categorie, $_GET['email']));
-
-    header('location: profil_select.php?email=' . $_GET['email'] . '');
-}
+	if (!empty($_POST['pseudo']))
+	{
+		include('../src/connect.php');
+		// variables
+		$pseudo = htmlspecialchars($_POST['pseudo']);
+        $categorie = htmlspecialchars($_POST['categorie']);
+        $image = htmlspecialchars($_POST['brandtype']);
+		
+		// sending (ajouter les droits/accès Adulte ou enfant)
+		$req = $db->prepare("INSERT INTO profile(pseudo, categorie, email,brandtype) VALUES (?, ?, ?, ?)");
+		$req->execute(array($pseudo, $categorie, $_GET['email'],$image));
+		
+        header('location: profil_select.php?email='.$_GET['email'].'');
+	}
 
 ?>
 

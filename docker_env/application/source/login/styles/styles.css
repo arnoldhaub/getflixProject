@@ -114,7 +114,7 @@ html {
 }
 
 .buttons1 {
- display: none;
+    display: flex;
     flex-direction: column;
     margin: 1.5%;
     align-items: center;

@@ -14,6 +14,13 @@ if (empty($_GET['id'])) {
 //======================================================================
 
 $id = $_GET['id'];
+if(!isset($_GET['page'])){
+    $page = 1;
+}
+else{
+    $page = $_GET['page'];
+}
+
 include "../api/api/info.php";
  
 ?>
@@ -134,21 +141,59 @@ include "../api/api/info.php";
                      DISPLAY SEASONS + EPISODE
 ------------------------------------------------------------------------->
         <div class="container_movie">
-        <br><br><br><br><br><br><br><br><br><p>testooooo</p>
+
+            <!-- DROPDOWN - SELECTION DE LA SAISON -->
         <?php
             if (!empty($infoSerie->seasons)) {
-                echo    '<div class="dropdown-center">
+                echo    '<div class="dropdown-center" style="margin-left: 4vh;">
                             <button class="btn dropdown-toggle play" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                '.$infoSerie->seasons[0]->name.'
+                                Which season?
                             </button>
                             <ul class="dropdown-menu">';
                 foreach($infoSerie->seasons as $p){
                     if($p->episode_count > 0){
-                        echo    '<li><a class="dropdown-item" value="'.$p->season_number.'">'.$p->name.'</a></li>';
+                        echo    '<li <?php if(@$type == "serie"){echo "checked";}><a class="dropdown-item" href="../MoviesPreview/serie.php?id='. $id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email'].'&page='.$p->season_number. '" value="'.$p->season_number.'">'.$p->name.'</a></li>';
                     }
                 }
                 echo        '</ul>
                         </div>';
+
+                        // SI SAISON SELECTIONNÉ, AFFICHER LES ÉPISODES
+                if(isset($page)){
+                    $season = $page;
+                    echo    '<div class="container_serie">
+                                    <div class="container">
+                                        <p class="title_slide">'.$infoSerie->seasons[$season]->name.'</p>
+                                        <div class="swiper-container">
+                                            <div class="swiper-wrapper">';
+                                            include "../api/api/episodeInfo.php"; 
+                                            foreach($episodeInfo->episodes as $i){
+                                                $ep = $i->episode_number;
+                                                include "../api/api/episodeInfo.php";
+                                                echo                '<div class="swiper-slide" id="first-swiper" style="text-align:center;">';
+                                                if(!empty($episodeDetails->videos->results[0])){ // Si vidéo répertoriée, afficher
+                                                    echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$episodeDetails->videos->results[0]->key.'" data-bs-target="#myModal">';
+                                                }
+                                                else{ // Sinon afficher celle de la série
+                                                    echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$infoSerie->videos->results[0]->key.'"  data-bs-target="#myModal">';
+                                                }
+                                                // '<a href="episode.php?id='.$id.'&season='.$i->season_number. '&ep='.$i->episode_number.'">
+                                                    echo                    '<img src="' . $imgurl_500 . $i->still_path . '" style="object-fit: cover;"></a>
+                                                                        <p><b>Episode '.$i->episode_number.' -</b> '. $i->name .'</p><hr><p>'.$episodeDetails->overview.'</p>
+                        
+                                                                    </div>';
+                                            }
+                                            echo                    '<div class="swiper-button-next"></div>
+                                                                    <div class="swiper-button-prev"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>';
+                                                    
+                                    
+
+
+                }
             }
         
 
@@ -244,7 +289,7 @@ include "../api/api/info.php";
 <!-----------------------------------------------------------------------
                      SERIES RECOMMANDATIONS
 ------------------------------------------------------------------------->
-        <div class="container_movie">
+        <div class="container_recommended">
             <div class="container">
                 <p class="title_slide">You are going to like...</p>  
                 <div class="swiper-container">
@@ -330,7 +375,7 @@ include "../api/api/info.php";
                 <div class="form_com">
                                                             
                     <form method="POST" id="formPost">
-                        <textarea type="text" placeholder="max 200 carac." name="commentaires" id="commentForm"></textarea></br>  
+                        <textarea type="text" placeholder="Share your opinion with others! (You  have 200 characters.)" name="commentaires" id="commentForm"></textarea></br>  
                         <button type="submit">Post Comment</button>
                     </form>
                 </div>

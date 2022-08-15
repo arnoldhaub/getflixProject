@@ -212,7 +212,7 @@ include "../api/api/info.php";
                                                             
                     <form method="POST" id="formPost">
                         <input style="display:none" name="pseudo" value="<?php echo$pseudoActif[0]?>"> 
-                        <textarea type="text" placeholder="max 200 carac." name="commentaires" id="commentForm"></textarea></br>  
+                        <textarea type="text" placeholder="Share your opinion with others! (You  have 200 characters.)" name="commentaires" id="commentForm"></textarea></br>  
                         <button type="submit">Post Comment</button>
                     </form>
                 </div>

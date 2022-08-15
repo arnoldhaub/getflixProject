@@ -8,13 +8,21 @@ const FadeOnlyOut = (elem) => {
         elem.css(fadeOpacityIn);
     }
 
-$('#addButton').hide();
 $('#container_form').hide();
-$('.profile_select').css('opacity','0%');
-$('#Calque_1.test').hide()
-$('#Calque_2.test').hide()
-$('#Calque_3.test').hide()
-$('#Calque_4.test').hide() // hide le pen de que la page est load
+$('#redirectMe2').hide();
+$('#redirectMe4').hide();
+$('#redirectMe6').hide();
+$('#redirectMe8').hide();
+
+
+
+    $('#addButton').hide();
+    $('.profile_select').css('opacity', '0%');
+    $('#Calque_1.test').hide()
+    $('#Calque_2.test').hide()
+    $('#Calque_3.test').hide()
+    $('#Calque_4.test').hide() // hide le pen de que la page est load
+
 
 
 $('#addButton').click(function () { //appeaars when there's no account
@@ -37,6 +45,19 @@ $(document).ready(function () {
             $('#Calque_2.test').show();
             $('#Calque_3.test').show();
             $('#Calque_4.test').show();
+            $('#edit').html('Finish');
+
+            $('#redirectMe1').hide(); //les redirects s'affiche et se cachent pr modifier de a href dans image_profile
+            $('#redirectMe2').show();
+             $('#redirectMe3').hide();
+            $('#redirectMe4').show();
+             $('#redirectMe5').hide();
+            $('#redirectMe6').show();
+             $('#redirectMe7').hide();
+            $('#redirectMe8').show();
+            
+
+
             $('#addButton').show();
             clickInstance++;
             console.log(clickInstance);
@@ -44,11 +65,20 @@ $(document).ready(function () {
            
         
         } else {
+            $('#redirectMe1').show(); //les redirects s'affiche et se cachent pr modifier de a href dans image_profile
+            $('#redirectMe2').hide();
+             $('#redirectMe3').show();
+            $('#redirectMe4').hide();
+             $('#redirectMe5').show();
+            $('#redirectMe6').hide();
+             $('#redirectMe7').show();
+            $('#redirectMe8').hide();
             $('#Calque_1.test').hide();
             $('#Calque_2.test').hide();
             $('#Calque_3.test').hide();
             $('#Calque_4.test').hide();
             $('#addButton').hide();
+            $('#edit').html('Edit');
             clickInstance++;
             console.log(clickInstance);   
         }
@@ -73,55 +103,21 @@ $(window).on('load', function () {
 /* click on pen for editing username etc */
 
 $('#Calque_1.test').click(function () {
-    $('.profil_un').animate({
-        opacity: '0%',
-        display: 'none'
-    },
-        500);
-    $('.profil_un').hide();
-    $('#container_form').show();
-    $('#addButton').hide();
-     $('#edit').hide();
-
-
+    
 });
 
 $('#Calque_2.test').click(function () {
-    $('.profil_un').animate({
-        opacity: '0%',
-        display: 'none'
-    },
-        500);
-    $('.profil_un').hide();
-    $('#container_form').show();
-     $('#addButton').hide();
-     $('#edit').hide();
+
 
 });
 
 $('#Calque_3.test').click(function () {
-    $('.profil_un').animate({
-        opacity: '0%',
-        display: 'none'
-    },
-        500);
-    $('.profil_un').hide();
-    $('#container_form').show();
-     $('#addButton').hide();
-     $('#edit').hide();
+
 
 });
 
 $('#Calque_4.test').click(function () {
-    $('.profil_un').animate({
-        opacity: '0%',
-        display: 'none'
-    },
-        500);
-    $('.profil_un').hide();
-    $('#container_form').show();
-     $('#addButton').hide();
-     $('#edit').hide();
+ 
 
 });
 

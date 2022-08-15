@@ -37,6 +37,7 @@
             $requete = $db->query("SELECT COUNT(*) AS nbPseudo FROM profile WHERE email='$email'");
             $nbDePseudos = $requete->fetch();
             $i = 0;
+            $a = 0;
             if ($nbDePseudos[0] < 5) { 
         ?>
         
@@ -95,7 +96,10 @@
                                            <div class="image_profile" style="text-align: center;">
 
 
-                                                    <a href="../Home/home.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" id="width_image">
+                                                    <a href='../Home/home.php?id_pseudo=<?php echo $donnees["id_pseudo"] ?>&email=<?php echo $donnees["email"] ?>' id='<?php $a++; echo "redirectMe$a";?>'>
+                                                        <img class="profil1" src="../images/user_pic/4.png" alt="default image" style="cursor: pointer"></img>
+                                                    </a>
+                                                    <a href='./edit_form.php?id_pseudo=<?php echo $donnees["id_pseudo"] ?>&email=<?php echo $donnees["email"] ?>' id='<?php $a++; echo "redirectMe$a";?>'>
                                                         <img class="profil1" src="../images/user_pic/4.png" alt="default image" style="cursor: pointer"></img>
                                                     </a>
                                                     <svg class="test" version="1.1" id="<?php $i++; echo "Calque_$i";?>"  x="0px" y="0px" width="582.8px" height="582.8px" viewBox="0 0 582.8 582.8" style="enable-background:new 0 0 582.8 582.8;">
@@ -141,20 +145,24 @@
                                         </div>
                             </div>
 
-                            
+                            <div class="edit_buttons">
                             <?php if ($nbDePseudos[0] > 0){
                           
                                     echo'
-                                    <div class="edit_buttons">
-                                    <button class="modif_button" label="edit" id="edit">Edit</button> <button class="modif_button" label="edit" id="addButton">Add</button>
-                                    </div>';
+                                    
+                                    <button class="modif_button" label="edit" id="edit">Edit</button> ';
+                                     if ($nbDePseudos[0] < 4){
+                                               echo'<button class="modif_button" label="edit" id="addButton">Add</button>';
+                                               
+                                        }
+                                        
                         
                                 };
 
-                               
+                              
                                         
                             ?> 
-                        
+                             </div>
                             
                             
     </div>

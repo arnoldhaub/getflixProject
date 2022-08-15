@@ -59,6 +59,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="./styles/profil_select.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e48c77929d.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.svg">
 </head>
 
 <body>

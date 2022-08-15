@@ -1,7 +1,7 @@
 <?php
-    $id = $_GET['id_pseudo'];
+    $id = $_GET['id'];
 
-	if (!empty($_GET['id_pseudo']))
+	if (!empty($_GET['id']))
 	{
         // Connexion à la base de données
         require('../src/connect.php');
@@ -46,8 +46,17 @@
 
 <body>
     <div class="container1">
+
         <h1>Update your profile information</h1>
-        <div id="container_form">
+
+        <div id="container_form_edit">
+
+
+            <div class="choose_your_image">
+            <img src="../images/user_pic/4.png" id="changeThis" alt="default image" srcset="">
+            </div>
+
+
             <form action='' method="post" id="form_profil">
                 <input type="text" name="pseudo" placeholder="Add your pseudo" value="<?php echo $infosProfil['pseudo']; ?>"></input>
                 <select class="form-select" name="categorie">
@@ -55,14 +64,64 @@
                     <option value="adulte" <?php if($infosProfil['categorie'] == 'adulte'){ echo "selected";} ?>>Adulte</option>
                     <option value="enfant" <?php if($infosProfil['categorie'] == 'enfant'){ echo "selected";} ?>>Enfant</option>
                 </select>
+                 
                 <button type="submit" name="RegisterEnter" id="subButton">Submit</button>
+               
             </form>
-                                                <!-- <form action="" method="get">
-                                                    <a class="" href="profil_delete.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">
-                                                    <button>Delete</button></a> 
-                                                    <form> -->
+                                               
         </div>
+
+        <a class="" href="profil_delete.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">
+        <button>Delete</button>
+        </a>
+
+
+         <div id="container_form_images">
+                
+                <form action='' method="post" id="containerImages">
+
+
+                <div class="row_images">
+                        <input type="radio" id="1" name="brandtype" value="./url">
+                        <img src="../images/user_pic/4.png" alt="" style="border-radius: 250px">
+                        <input type="radio" id="2" name="brandtype" value="./url">
+                        <img src="../images/user_pic/4.png" alt="" style="border-radius: 250px">
+                        <input type="radio" id="3" name="brandtype" value="./url">
+                        <img src="../images/user_pic/4.png" alt="" style="border-radius: 250px">
+                </div>
+
+                <div class="row_images">
+                        <input type="radio" id="4" name="brandtype" value="./url">
+                        <img src="../images/user_pic/4.png" alt="" style="border-radius: 250px">
+                        <input type="radio" id="5" name="brandtype" value="./url">
+                        <img src="../images/user_pic/4.png" alt="" style="border-radius: 250px">
+                        <input type="radio" id="6" name="brandtype" value="./url">
+                        <img src="../images/user_pic/4.png" alt="" style="border-radius: 250px">
+                </div>
+
+                <div class="row_images">
+                        <input type="radio" id="7" name="brandtype" value="./url">
+                        <img src="../images/user_pic/4.png" alt="" style="border-radius: 250px">
+                        <input type="radio" id="8" name="brandtype" value="./url">
+                        <img src="../images/user_pic/4.png" alt="" style="border-radius: 250px">
+                        <input type="radio" id="9" name="brandtype" value="./url">
+                        <img src="../images/user_pic/4.png" alt="" style="border-radius: 250px">
+                </div>
+                
+                
+                </form>
+                                               
+        </div>
+
+        <button id="LetMeOut">Let Me Out</button>
+
+        
+
+
+
     </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="./script/script_edit_form.js"></script>
 
 </html>

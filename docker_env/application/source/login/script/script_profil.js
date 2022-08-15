@@ -122,6 +122,33 @@ $('#Calque_4.test').click(function () {
 });
 
 
+// ARNOLD QUI ESSAYE LE JS 
+
+$('#container_form_images').hide();
+
+$('#changeThis').click(function () {
+    $('#container_form').hide();
+    $('#container_form_edit').hide();
+    $('#container_form_images').show();
+    $('#LetMeOut').show();
+
+    
+
+});
+
+$('input').click(function () {
+    var checked = document.querySelector('input[name="brandtype"]:checked').value;
+    document.getElementById("changeThis").src=checked;
+    document.getElementById("0").value=checked;
+    $('#container_form').show();
+    $('#container_form_edit').show();
+    $('#container_form_images').hide();
+    $('#LetMeOut').hide();
+
+
+});
+
+
 
 
  

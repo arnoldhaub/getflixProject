@@ -1,7 +1,7 @@
 <?php
     $id = $_GET['id_pseudo'];
 
-	if (!empty($_GET['id']))
+	if (!empty($_GET['id_pseudo']))
 	{
         // Connexion à la base de données
         require('../src/connect.php');

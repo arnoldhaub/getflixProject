@@ -87,7 +87,7 @@
                                                
         </div>
 
-        <a class="" href="profil_delete.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">
+        <a class="" href="profil_delete.php?id_pseudo=<?php echo $infosProfil['id_pseudo'] ?>&email=<?php echo $infosProfil['email'] ?>" style="">
             <button>Delete</button>
         </a>
 

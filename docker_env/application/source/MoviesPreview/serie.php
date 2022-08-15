@@ -15,7 +15,7 @@ if (empty($_GET['id'])) {
 
 $id = $_GET['id'];
 if(!isset($_GET['page'])){
-    $page = 1;
+    $page = 0;
 }
 else{
     $page = $_GET['page'];
@@ -160,10 +160,11 @@ include "../api/api/info.php";
 
                         // SI SAISON SELECTIONNÉ, AFFICHER LES ÉPISODES
                 if(isset($page)){
-                    $season = $page;
+                    if($page == 0){$season = 1;}
+                    else{$season = $page;}
                     echo    '<div class="container_serie">
                                     <div class="container">
-                                        <p class="title_slide">'.$infoSerie->seasons[$season]->name.'</p>
+                                        <p class="title_slide">'.$infoSerie->seasons[$page]->name.'</p>
                                         <div class="swiper-container">
                                             <div class="swiper-wrapper">';
                                             include "../api/api/episodeInfo.php"; 

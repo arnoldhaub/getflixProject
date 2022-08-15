@@ -1,5 +1,5 @@
 <?php
-    $id = $_GET['id'];
+    $id = $_GET['id_pseudo'];
 
 	if (!empty($_GET['id']))
 	{

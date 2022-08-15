@@ -31,7 +31,7 @@
 
             <div id="sectionUser">
 
-            <div class="user mb-2">
+            <div class="user">
                 <p class="p_username"><?php echo $pseudoActif[0] ?></p>
                 <img class="userImage" name="userImage" src="<?php echo $pseudoActif[1]?>" alt="userImage">
                 <i id="fleche" class="fa-solid fa-angle-down"></i>

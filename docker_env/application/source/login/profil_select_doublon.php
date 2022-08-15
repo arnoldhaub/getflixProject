@@ -74,22 +74,8 @@
             
             <div class="profil_un" id="<?php echo $donnees['id_pseudo'] ?>">
                 <div class="image_profile" style="text-align: center;">
-
-                    <?php 
-                    // Si ENFANT => HOME/KIDS 
-                    // Si ADULTE => HOME/HOME
-                        if($donnees['categorie'] == "enfant" ){
-
-                            echo "<a href='../Home/kids.php?id_pseudo=".$donnees["id_pseudo"]. "&email=".$donnees['email']."&id=";
-                            $a++; 
-                            echo "redirectMe$a '>";
-                        }
-                        else {
-                            echo "<a href='../Home/home.php?id_pseudo=".$donnees["id_pseudo"]. "&email=".$donnees['email']."&id=";
-                            $a++; 
-                            echo "redirectMe$a '>";
-                        }
-                    ?>
+                    
+                    <a href='<?php  if($donnees['categorie'] == "enfant" ){ echo '../Home/kids.php';}else{ echo '../Home/home.php';}?>?id_pseudo=<?php echo $donnees["id_pseudo"] ?>&email=<?php echo $donnees["email"] ?>' id='<?php $a++; echo "redirectMe$a";?>'>
                         <img class="profil1" src="<?php if(!empty($donnees['image'])){echo $donnees['image'];}else{echo '../images/user_pic/4.png';} ?>" alt="Profile image" style="cursor: pointer"></img>
                     </a>
                     <a href='./edit_form.php?id_pseudo=<?php echo $donnees["id_pseudo"] ?>&email=<?php echo $donnees["email"] ?>' id='<?php $a++; echo "redirectMe$a";?>'>

@@ -3,17 +3,17 @@
             <img class="logo_minia" src="/images/logo_planete.svg" alt="logo_minia">
             <nav style="align-self: center">
                 <ul class="nav_links">
-                    <li><a href="../Home/home.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>">HOME</a></li>
+                    <li><a href="../Home/home.php?id_pseudo=<?php echo $_GET['id_pseudo']?>">HOME</a></li>
                     <li><a href="#ancre_serie">SERIES</a></li>
                     <li><a href="#ancre_film">FILMS</a></li>
-                    <li><a href="../Search/search_page.php?id_pseudo=<?php echo $_GET['id_pseudo']?>&email=<?php echo $_GET['email']?>">RECHERCHE</a></li>
+                    <li><a href="../Search/search_page.php?id_pseudo=<?php echo $_GET['id_pseudo']?>">RECHERCHE</a></li>
                 </ul>
 
                 <ul class="nav_links_responsive">
-                    <li><a href="home.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"><i class="fa-solid fa-house"></i></a></li>
+                    <li><a href="home.php?id=<?php echo $_GET['id']?>"><i class="fa-solid fa-house"></i></a></li>
                     <li><a href="#ancre_film"><i class="fa-solid fa-film"></i></i></a></li>
                     <li><a href="#ancre_serie"><i class="fa-solid fa-tv"></i></i></a></li>
-                    <li><a href="search.php?id=<?php echo $_GET['id']?>&email=<?php echo $_GET['email']?>"></a><i class="fa-solid fa-magnifying-glass"></i></i></a></li>
+                    <li><a href="search.php?id=<?php echo $_GET['id']?>"></a><i class="fa-solid fa-magnifying-glass"></i></i></a></li>
                 </ul>
             </nav>
 
@@ -40,15 +40,14 @@
 
             <div id=listePseudos>
             <?php
-            $email = $_GET["email"];
-            $requete2 = $db->query("SELECT PSEUDO,ID_PSEUDO,IMAGE FROM profile WHERE email='$email'");
+            $requete2 = $db->query("SELECT PSEUDO,ID_PSEUDO,IMAGE FROM profile WHERE email='$userEmail'");
             while($donnees = $requete2->fetch())
                     { ?>
                 <li class="mb-3 " style="list-style-type:none">
                     <div class="container">
                         <div style="flex-wrap:nowrap" class="row">
                 <img id="photoListeProfil" src="<?php echo $donnees[2]?>" alt="profil">
-                <a style="color:white" href="home.php?id_pseudo=<?php echo $donnees[1]?>&email=<?php echo $email?>"><?php echo $donnees[0] ?>
+                <a style="color:white" href="home.php?id_pseudo=<?php echo $donnees[1]?>"><?php echo $donnees[0] ?>
                 </a>
                         </div>
                     </div>
@@ -61,7 +60,7 @@
                         <div style="flex-wrap:nowrap" class="row">
                 
                 <i class="fa-solid fa-pen"></i>
-                <a style="color:white" href="../login/profil_select.php?email=<?php echo $_GET['email'] ?>" class="ml-2">Settings</a>
+                <a style="color:white" href="../login/profil_select.php" class="ml-2">Settings</a>
                 </a>
                         </div>
                     </div>

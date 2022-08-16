@@ -1,6 +1,23 @@
 <?php
+    // On prolonge la session
+    session_start();
+    $userEmail = $_SESSION['email'];
+    $_SESSION['userID'] = $_GET['id_pseudo'];
+
+    // On teste si la variable de session existe et contient une valeur
+    if (empty($_SESSION['email'])) {
+        // Si inexistante ou nulle, on redirige vers le formulaire de login
+        header('Location: ../index.php');
+        exit();
+    }
     include "../api/api/info.php";
 ?>
+<!-- SCRIPT - Masquer information GET dans URL -->
+<script>    
+    if(typeof window.history.pushState == 'function') {
+        window.history.pushState({}, "Hide", '<?php echo $_SERVER['PHP_SELF'];?>');
+    }
+</script>
 <!DOCTYPE html>
 
     <head>
@@ -42,7 +59,7 @@
                             if(strlen($latestMovie->results[1]->overview) > 250)
                                     { echo '(...)';} ?>
                         </p>
-                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $latestMovie->results[0]->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'>"; ?>
+                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $latestMovie->results[0]->id .'&id_pseudo='.$_GET['id_pseudo']. "'>"; ?>
                             <button type="button" class="btn play"><i class="fa-solid fa-play" id="fa-play"></i>PLAY !</button>
                         </a>
                     </div>
@@ -55,7 +72,7 @@
                             if(strlen($latestMovie->results[1]->overview) > 250)
                                     { echo '(...)';} ?>
                         </p>
-                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $latestMovie->results[1]->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'>"; ?>
+                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $latestMovie->results[1]->id .'&id_pseudo='.$_GET['id_pseudo']. "'>"; ?>
                             <button type="button" class="btn play"><i class="fa-solid fa-play" id="fa-play"></i>PLAY !</button>
                         </a>
                     </div>
@@ -68,7 +85,7 @@
                             if(strlen($latestMovie->results[2]->overview) > 250)
                             { echo '(...)';} ?>
                         </p>
-                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $latestMovie->results[2]->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'>"; ?>
+                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $latestMovie->results[2]->id .'&id_pseudo='.$_GET['id_pseudo']. "'>"; ?>
                             <button type="button" class="btn play"><i class="fa-solid fa-play" id="fa-play"></i>PLAY !</button>
                         </a>
                     </div>
@@ -91,18 +108,6 @@
 </div>
   
 
-        <!-- <div class="container_content2">
-        <h4>Nouveau sur NovaFlix</h4>
-            <ul class="ListBox">
-                <li class="box1"></li>
-                <li class="box1"></li>
-                <li class="box1"></li>
-                <li class="box1"></li>
-                <li class="box1"></li>
-                <li class="box1"></li>
-            </ul>
-        -->
-
         <!-- ======================================================================
                                     MOVIES
         //======================================================================-->
@@ -117,7 +122,7 @@
                     foreach ($moviesLatest->results as $p) { // RECENT SF MOVIE
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
+                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo']. "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
                         </div>";
                         }
                     } ?>
@@ -126,7 +131,7 @@
                     foreach ($moviesLatest2->results as $p) { // RECENT SF MOVIE
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
+                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo']. "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
                         </div>";
                         }
                     } ?>
@@ -146,7 +151,7 @@
                     foreach ($moviesTopRated->results as $p) { // TOP-RATED SF MOVIE
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
+                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo']. "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
                         </div>";
                         }
                     } ?>
@@ -167,7 +172,7 @@
                     foreach ($moviesPopular->results as $p) { // POPULAR SF MOVIE
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/movie_preview.php?id=".$p->id.'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']."'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='../MoviesPreview/movie_preview.php?id=".$p->id.'&id_pseudo='.$_GET['id_pseudo']."'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                         </div>";
                         }
                     } ?>
@@ -194,7 +199,7 @@
                     foreach ($seriesLatest->results as $p) { // SF & FANTAST - SERIES
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                         </div>";
                         }
                     } ?>
@@ -215,7 +220,7 @@
                     foreach ($seriesTopRated->results as $p) { // TOP RATED - SF & FANTAST - SERIES
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                         </div>";
                         }
                     } ?>
@@ -236,7 +241,7 @@
                     foreach ($seriesPopular->results as $p) { // POPULAR - SF & FANTAST - SERIES
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                         </div>";
                         }
                     } ?>

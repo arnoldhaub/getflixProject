@@ -1,5 +1,14 @@
 <?php
+// On prolonge la session
+session_start();
+$userEmail = $_SESSION['email'];
 
+// On teste si la variable de session existe et contient une valeur
+if (empty($_SESSION['email'])) {
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: ../index.php');
+    exit();
+}
 
 
 	if (!empty($_POST['pseudo']))
@@ -12,9 +21,9 @@
 		
 		// // sending (ajouter les droits/accès Adulte ou enfant)
 		$req = $db->prepare("INSERT INTO profile(pseudo, categorie, email, image) VALUES (?, ?, ?, ?)");
-        $req->execute(array($pseudo, $categorie, $_GET['email'],$image));
+        $req->execute(array($pseudo, $categorie, $userEmail,$image));
 
-        header('location: profil_select.php?email=' . $_GET['email'] . ''); // everything already taken
+        header('location: profil_select.php'); // everything already taken
         }
 
 ?>
@@ -57,8 +66,7 @@
             <?php
             require('../src/connect.php');
             // Calcul du nombres de pseudos de l'adresse mail
-            $email = htmlspecialchars($_GET['email']);
-            $requete = $db->query("SELECT COUNT(*) AS nbPseudo FROM profile WHERE email='$email'");
+            $requete = $db->query("SELECT COUNT(*) AS nbPseudo FROM profile WHERE email='$userEmail'");
             $nbDePseudos = $requete->fetch();
             if ($nbDePseudos[0] < 4) {  // everything already taken?> 
                 <div class="buttons1">
@@ -154,7 +162,7 @@
                 <small><a href="logout.php">Log Out</a></small>
             <?php   }
             $requete = $db->prepare('SELECT * FROM profile WHERE email = ?');
-            $requete->execute(array($_GET['email'])); // everything already taken
+            $requete->execute(array($userEmail)); // everything already taken
             ?>
 
             <div class="guillaume_box">

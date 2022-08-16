@@ -1,3 +1,14 @@
+<?php
+
+	session_start();
+    // On teste si la variable de session existe et contient une valeur
+    if (!empty($_SESSION['email'])) {
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: login/profil_select_doublon.php');
+    exit();
+}
+
+?>
 <!DOCTYPE html>
     <head>
         <title>NOVA · Welcome on board</title>

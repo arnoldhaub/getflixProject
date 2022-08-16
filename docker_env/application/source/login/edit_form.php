@@ -1,4 +1,15 @@
 <?php
+    // On prolonge la session
+    session_start();
+    $userEmail = $_SESSION['email'];
+
+    // On teste si la variable de session existe et contient une valeur
+    if (empty($_SESSION['email'])) {
+        // Si inexistante ou nulle, on redirige vers le formulaire de login
+        header('Location: ../index.php');
+        exit();
+    }
+
     $id = $_GET['id_pseudo'];
 
 	if (!empty($_GET['id_pseudo']))
@@ -30,7 +41,7 @@
 
     
 		
-        header('location: profil_select_doublon.php?email=' . $infosProfil['email'] . '');
+        header('location: profil_select_doublon.php');
 	    }
 
 
@@ -75,7 +86,7 @@
                                                
         </div>
 
-        <a class="" href="profil_delete.php?id_pseudo=<?php echo $infosProfil['id_pseudo'] ?>&email=<?php echo $infosProfil['email'] ?>" style="">
+        <a class="" href="profil_delete.php?id_pseudo=<?php echo $infosProfil['id_pseudo'] ?>" style="">
             <button>Delete</button>
         </a>
 

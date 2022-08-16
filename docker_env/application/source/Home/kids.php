@@ -1,4 +1,15 @@
 <?php
+    // On prolonge la session
+    session_start();
+    $userEmail = $_SESSION['email'];
+
+    // On teste si la variable de session existe et contient une valeur
+    if (empty($_SESSION['email'])) {
+        // Si inexistante ou nulle, on redirige vers le formulaire de login
+        header('Location: ../index.php');
+        exit();
+    }
+    
     include "../api/api/info.php";
 ?>
 <!DOCTYPE html>
@@ -40,7 +51,7 @@
                             if(strlen($movieForKids->results[0]->overview) > 250)
                                     { echo '(...)';} ?>
                         </p>
-                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $movieForKids->results[0]->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'>"; ?>
+                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $movieForKids->results[0]->id .'&id_pseudo='.$_GET['id_pseudo']. "'>"; ?>
                             <button type="button" class="btn play"><i class="fa-solid fa-play" id="fa-play"></i>PLAY !</button>
                         </a>
                     </div>
@@ -53,7 +64,7 @@
                             if(strlen($movieForKids->results[1]->overview) > 250)
                                     { echo '(...)';} ?>
                         </p>
-                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $movieForKids->results[1]->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'>"; ?>
+                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $movieForKids->results[1]->id .'&id_pseudo='.$_GET['id_pseudo']. "'>"; ?>
                             <button type="button" class="btn play"><i class="fa-solid fa-play" id="fa-play"></i>PLAY !</button>
                         </a>
                     </div>
@@ -66,7 +77,7 @@
                             if(strlen($movieForKids->results[2]->overview) > 250)
                             { echo '(...)';} ?>
                         </p>
-                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $movieForKids->results[2]->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'>"; ?>
+                        <?php echo "<a href='../MoviesPreview/movie_preview.php?id=" . $movieForKids->results[2]->id .'&id_pseudo='.$_GET['id_pseudo']. "'>"; ?>
                             <button type="button" class="btn play"><i class="fa-solid fa-play" id="fa-play"></i>PLAY !</button>
                         </a>
                     </div>
@@ -98,7 +109,7 @@
                     foreach ($movieForKids->results as $p) { // RECENT SF MOVIE
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
+                            <a href='../MoviesPreview/movie_preview.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo']. "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
                         </div>";
                         }
                     } ?>
@@ -120,7 +131,7 @@
                         foreach ($movieForKids->results as $p) { // RECENT SF MOVIE
                             if (!empty($p->poster_path && $p->backdrop_path)) {
                                 echo  "<div class='swiper-slide'>
-                                <a href='../MoviesPreview/movie_preview.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
+                                <a href='../MoviesPreview/movie_preview.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo']. "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
                             </div>";
                             }
                     } ?>
@@ -143,7 +154,7 @@
                         foreach ($movieForKids->results as $p) { // RECENT SF MOVIE
                             if (!empty($p->poster_path && $p->backdrop_path)) {
                                 echo  "<div class='swiper-slide'>
-                                <a href='../MoviesPreview/movie_preview.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
+                                <a href='../MoviesPreview/movie_preview.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo']. "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
                             </div>";
                             }
                     } ?>
@@ -171,7 +182,7 @@
                     foreach ($serieForKids->results as $p) { // SF & FANTAST - SERIES
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                         </div>";
                         }
                     } ?>
@@ -194,7 +205,7 @@
                     foreach ($serieForKids->results as $p) { // SF & FANTAST - SERIES
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                         </div>";
                         }
                     } ?>
@@ -217,7 +228,7 @@
                     foreach ($serieForKids->results as $p) { // SF & FANTAST - SERIES
                         if (!empty($p->poster_path && $p->backdrop_path)) {
                             echo  "<div class='swiper-slide'>
-                            <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                            <a href='../MoviesPreview/serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                         </div>";
                         }
                     } ?>

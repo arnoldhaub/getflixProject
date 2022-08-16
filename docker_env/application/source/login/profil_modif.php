@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier</title>
-    <link rel="stylesheet" href="style.css">
+    <title>NOVA · Update your profile</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
@@ -18,20 +18,19 @@
     $requete = $db->query("SELECT pseudo FROM profile WHERE id_pseudo='$id_pseudo'");
     $pseudoActif = $requete->fetch();
 
-    if (!empty($_POST['pseudo']))
-	{
-		include('../src/connect.php');
-		// variables
-		$pseudo = htmlspecialchars($_POST['pseudo']);
+    if (!empty($_POST['pseudo'])) {
+        include('../src/connect.php');
+        // variables
+        $pseudo = htmlspecialchars($_POST['pseudo']);
         $categorie = htmlspecialchars($_POST['categorie']);
         $image = htmlspecialchars($_POST['brandtype']);
-		
-		// modififcation
-		$req = $db->prepare('UPDATE profile SET (pseudo, categorie, image) VALUES (?, ?, ?) WHERE email=$_GET["email"]');
-		$req->execute(array($pseudo, $categorie,$image));
-		
-        header('location: profil_select.php?email='.$_GET['email'].'');
-	}
+
+        // modififcation
+        $req = $db->prepare('UPDATE profile SET (pseudo, categorie, image) VALUES (?, ?, ?) WHERE email=$_GET["email"]');
+        $req->execute(array($pseudo, $categorie, $image));
+
+        header('location: profil_select.php?email=' . $_GET['email'] . '');
+    }
 
 
     ?>

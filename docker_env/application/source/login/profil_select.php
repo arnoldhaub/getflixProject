@@ -176,7 +176,7 @@ if (empty($_SESSION['email'])) {
                                         <a class=" fa-solid fa-pen" href="profil_modif.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">
                                         </a>
                                         <div class="row">
-                                                <a href="../Home/home.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>">
+                                                <a href="../home.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>">
                                                 <img class="w-25 mb-4 profile-pic-image" src="<?php echo $donnees['image'] ?>" alt="profil">
                                             <h1 class="mt-4 col text-center align-self-center profile-name"><?php echo $donnees['pseudo'] ?> <span style="font-size:20px"><?php echo $donnees['categorie'] ?></span></h1>
                                         </div>
@@ -195,7 +195,7 @@ if (empty($_SESSION['email'])) {
 
 <footer>
     <div class="disclaimer">
-        <p class="txt1" style="font-size: 20px;">Sci-Fi streaming Solution</p>
+        <p class="txt1">Sci-Fi streaming Solution</p>
     </div>
 </footer>
 

@@ -34,7 +34,7 @@ if (!empty($_POST['pseudo'])) {
     <title>NOVA · Select a profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link href="./styles/profil_select.css" rel="stylesheet">
+    <link href="styles/profil_select.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../images/favicon.svg">
 
 </head>
@@ -88,9 +88,9 @@ if (!empty($_POST['pseudo'])) {
                     <div class="image_profile" style="text-align: center;">
 
                         <a href='<?php if ($donnees['categorie'] == "enfant") {
-                                        echo '../Home/kids.php';
+                                        echo '../home_kids.php';
                                     } else {
-                                        echo '../Home/home.php';
+                                        echo '../home.php';
                                     } ?>?id_pseudo=<?php echo $donnees["id_pseudo"] ?>' id='<?php $a++;
                                                                                             echo "redirectMe$a"; ?>'>
                             <img class="profil1" src="<?php if (!empty($donnees['image'])) {
@@ -99,7 +99,7 @@ if (!empty($_POST['pseudo'])) {
                                                             echo '../images/user_pic/4.png';
                                                         } ?>" alt="Profile image" style="cursor: pointer"></img>
                         </a>
-                        <a href='./edit_form.php?id_pseudo=<?php echo $donnees["id_pseudo"] ?>' id='<?php $a++;
+                        <a href='/edit_form.php?id_pseudo=<?php echo $donnees["id_pseudo"] ?>' id='<?php $a++;
                                                                                                     echo "redirectMe$a"; ?>'>
                             <img class="profil1" src="<?php if (!empty($donnees['image'])) {
                                                             echo $donnees['image'];
@@ -221,6 +221,6 @@ if (!empty($_POST['pseudo'])) {
     </div>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src='./script/script_profil.js'></script>
+<script src='script/script_profil.js'></script>
 
 </html>

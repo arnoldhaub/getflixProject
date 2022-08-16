@@ -1,13 +1,19 @@
 <?php
 
-//======================================================================
-// SECURITY - ID VERIFICATION // BACK TO MOVIES INDEX
-//======================================================================
+// On prolonge la session
+session_start();
+$userEmail = $_SESSION['email'];
 
-if (empty($_GET['id'])) {
-    header("location: index.php");
+if ($_GET['id_pseudo']) {
+    $_SESSION['pseudo'] = $_GET['id_pseudo'];
 }
 
+// On teste si la variable de session existe et contient une valeur
+if (empty($_SESSION['email'])) {
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: ../index.php');
+    exit();
+}
 
 //======================================================================
 // FETCH ALL INFORMATION FROM THE API && PUT ID IN VARIABLE
@@ -24,6 +30,7 @@ else{
 include "../api/api/info.php";
  
 ?>
+
 <!DOCTYPE html>
     <head>
         <meta charset="utf-8">
@@ -152,7 +159,7 @@ include "../api/api/info.php";
                             <ul class="dropdown-menu">';
                 foreach($infoSerie->seasons as $p){
                     if($p->episode_count > 0){
-                        echo    '<li <?php if(@$type == "serie"){echo "checked";}><a class="dropdown-item" href="../MoviesPreview/serie.php?id='. $id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email'].'&page='.$p->season_number. '" value="'.$p->season_number.'">'.$p->name.'</a></li>';
+                        echo    '<li <?php if(@$type == "serie"){echo "checked";}><a class="dropdown-item" href="../MoviesPreview/serie.php?id='. $id .'&id_pseudo='.$_SESSION['pseudo'].'&page='.$p->season_number. '" value="'.$p->season_number.'">'.$p->name.'</a></li>';
                     }
                 }
                 echo        '</ul>
@@ -300,7 +307,7 @@ include "../api/api/info.php";
                         foreach ($seriesRecommandations->results as $p) { 
                             if (!empty($p->poster_path && $p->backdrop_path)) {
                                 echo  "<div class='swiper-slide' id='first-swiper'>
-                                <a href='serie.php?id=" . $p->id .'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']. "'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                                <a href='serie.php?id=" . $p->id .'&id_pseudo='.$_SESSION['pseudo']."'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                             </div>";
                             }
                         } ?>

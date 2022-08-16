@@ -1,5 +1,20 @@
 <?php
 
+// On prolonge la session
+session_start();
+$userEmail = $_SESSION['email'];
+
+if ($_GET['id_pseudo']) {
+    $_SESSION['pseudo'] = $_GET['id_pseudo'];
+}
+
+// On teste si la variable de session existe et contient une valeur
+if (empty($_SESSION['email'])) {
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: ../index.php');
+    exit();
+}
+
 //======================================================================
 // connexion DB
 //======================================================================
@@ -23,6 +38,7 @@ $id = $_GET['id'];
 include "../api/api/info.php";
  
 ?>
+
 <!DOCTYPE html>
     <head>
         <meta charset="utf-8">
@@ -137,7 +153,7 @@ include "../api/api/info.php";
                         foreach ($moviesRecommandations->results as $p) { 
                             if (!empty($p->poster_path && $p->backdrop_path)) {
                                 echo  "<div class='swiper-slide' id='first-swiper'>
-                                <a href='movie_preview.php?id=".$p->id.'&id_pseudo='.$_GET['id_pseudo'].'&email='.$_GET['email']."'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                                <a href='movie_preview.php?id=".$p->id.'&id_pseudo='.$_SESSION['pseudo']."'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                             </div>";
                             }
                         } ?>

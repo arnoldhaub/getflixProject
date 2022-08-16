@@ -44,12 +44,15 @@
 ?>
         
     <div class="container1">
+
+        <h1>Who are you ?</h1>
+
         <?php   }
         $requete = $db->prepare('SELECT * FROM profile WHERE email = ?');
         $requete->execute(array($_GET['email']));
         ?>
         
-        <h1>Who are you ?</h1>
+        
         <div class="profile_select">
             <?php if ($nbDePseudos[0] == 0){
                 echo    '<svg class="buttonAdd" version="1.1" id="buttonAdd" x="0px" y="0px"
@@ -96,94 +99,105 @@
                     </svg> <!-- pen svg for editing -->
 
 
+                </div>
+                <p class="name_User"><?php echo $donnees['pseudo'] ?></p>
+                <!-- <a class="" href="profil_delete.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">Delete</button> -->                          
             </div>
-            <p class="name_User"><?php echo $donnees['pseudo'] ?></p>
-            <!-- <a class="" href="profil_delete.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">Delete</button> -->
-                                          
-                                            
-        </div>
-        <?php } ?>
-        <div id="container_form">
+            <?php } ?>
+
+            <div id="container_form">
                        
-            <form action='' method="post" id="form_profil">
-            <div class="choose_your_image">
-                <img src="../images/user_pic/4.png" id="changeThis" alt="Profile's image" srcset="">
-                <input type="radio" id="0" name="imageProfile" value="../images/user_pic/4.png" checked>
-            </div>
-                <input type="text" name="pseudo" placeholder="Add your pseudo"></input>
-                <select class="form-select" name="categorie">
-                    <option value="" disabled selected hidden > Select your option</option>
-                    <option value="adulte">Adulte</option>
-                    <option value="enfant">Enfant</option>
-                </select>
-                <button type="submit" name="RegisterEnter" id="subButton">Submit</button>
-            </form>
-            <!-- <form action="" method="get">
-                <a class="" href="profil_delete.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">
-                    <button>Delete</button></a> 
-                </form> -->
-        </div>
-    </div>
-
-    <div id="container_form_images">
-        
-        <form action='' method="post" id="containerImages">
-        <h1>Choose a profile picture</h1>
-                    <div class="row_images">
-                            <input type="radio" id="4" name="brandtype" value="../images/user_pic/4.png" >
-                                <img src="../images/user_pic/4.png" alt="" style="border-radius: 250px">
-                            <input type="radio" id="2" name="brandtype" value="../images/user_pic/2.png">
-                                <img src="../images/user_pic/2.png" alt="" style="border-radius: 250px">
-                            <input type="radio" id="3" name="brandtype" value="../images/user_pic/3.png">
-                                <img src="../images/user_pic/3.png" alt="" style="border-radius: 250px">
+                <form action='' method="post" id="form_profil">
+                    <div class="choose_your_image">
+                        <input type="radio" id="imageProfile" name="imageProfile" value="../images/user_pic/4.png" checked>
+                        <img src="../images/user_pic/4.png" id="changeThis" alt="Profile's image" srcset="">
                     </div>
-
-                    <div class="row_images">
-                            <input type="radio" id="10" name="brandtype" value="../images/user_pic/10.png">
-                                <img src="../images/user_pic/10.png" alt="" style="border-radius: 250px">
-                            <input type="radio" id="5" name="brandtype" value="../images/user_pic/5.png">
-                                <img src="../images/user_pic/5.png" alt="" style="border-radius: 250px">
-                            <input type="radio" id="6" name="brandtype" value="../images/user_pic/6.png">
-                                <img src="../images/user_pic/6.png" alt="" style="border-radius: 250px">
-                    </div>
-
-                    <div class="row_images">
-                            <input type="radio" id="7" name="brandtype" value="../images/user_pic/7.png">
-                                <img src="../images/user_pic/7.png" alt="" style="border-radius: 250px">
-                            <input type="radio" id="12" name="brandtype" value="../images/user_pic/12.png">
-                                <img src="../images/user_pic/12.png" alt="" style="border-radius: 250px">
-                            <input type="radio" id="11" name="brandtype" value="../images/user_pic/11.png">
-                                <img src="../images/user_pic/11.png" alt="" style="border-radius: 250px">
-                    </div>
-                    <button type="submit" name="changeImage" id="subButton">Submit</button>
-
-                
+                    <input type="text" name="pseudo" placeholder="Add your pseudo"></input>
+                    <select class="form-select" name="categorie">
+                        <option value="" disabled selected hidden > Select your option</option>
+                        <option value="adulte">Adulte</option>
+                        <option value="enfant">Enfant</option>
+                    </select>
+                    <button type="submit" name="RegisterEnter" id="subButton">Submit</button>
                 </form>
+                <!-- <form action="" method="get">
+                    <a class="" href="profil_delete.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">
+                        <button>Delete</button></a> 
+                    </form> -->
+            </div>
+ 
+
+            <div id="container_form_images">
+                <form action='' method="post" id="containerImages">
+                    <div class="row_images">
+                        <input type="radio" id="4" name="brandtype" value="../images/user_pic/4.png" >
+                            <label for="4">
+                                <img src="../images/user_pic/4.png" alt="" style="border-radius: 250px">
+                            </label>
+                        <input type="radio" id="2" name="brandtype" value="../images/user_pic/2.png">
+                            <label for="2">
+                                <img src="../images/user_pic/2.png" alt="" style="border-radius: 250px">
+                            </label>
+                        <input type="radio" id="3" name="brandtype" value="../images/user_pic/3.png">
+                            <label for="3">
+                                <img src="../images/user_pic/3.png" alt="" style="border-radius: 250px">
+                            </label>
+                    </div>
+
+                    <div class="row_images">
+                        <input type="radio" id="10" name="brandtype" value="../images/user_pic/10.png">
+                            <label for="10">
+                                <img src="../images/user_pic/10.png" alt="" style="border-radius: 250px">
+                            </label>
+                        <input type="radio" id="5" name="brandtype" value="../images/user_pic/5.png">
+                            <label for="5">
+                                <img src="../images/user_pic/5.png" alt="" style="border-radius: 250px">
+                            </label>
+                        <input type="radio" id="6" name="brandtype" value="../images/user_pic/6.png">
+                            <label for="6">
+                                <img src="../images/user_pic/6.png" alt="" style="border-radius: 250px">
+                            </label>
+                    </div>
+
+                    <div class="row_images">
+                        <input type="radio" id="7" name="brandtype" value="../images/user_pic/7.png">
+                            <label for="7">
+                                <img src="../images/user_pic/7.png" alt="" style="border-radius: 250px">
+                            </label>
+                        <input type="radio" id="12" name="brandtype" value="../images/user_pic/12.png">
+                            <label for="12">
+                                <img src="../images/user_pic/12.png" alt="" style="border-radius: 250px">
+                            </label>
+                        <input type="radio" id="11" name="brandtype" value="../images/user_pic/11.png">
+                            <label for="11">
+                                <img src="../images/user_pic/11.png" alt="" style="border-radius: 250px">
+                            </label>
+                    </div> 
+                </form>
+            </div>
         </div>
 
-                
-       
-
-
-    <div class="edit_buttons">
-        <?php if ($nbDePseudos[0] > 0){
-            echo    '<button class="modif_button" label="edit" id="edit">Edit</button> ';
+        <div class="edit_buttons">
+            <?php 
+            if ($nbDePseudos[0] > 0){
+                echo    '<button class="modif_button" label="edit" id="edit">Edit</button> ';
                     if ($nbDePseudos[0] < 4){
                         echo'<button class="modif_button" label="edit" id="addButton">Add</button>';
                     }
-                };
-                
+            };           
+            ?>
+        </div>
+    
+        <?php 
+        $requete = $db->prepare('SELECT * FROM profile WHERE email = ?');
+        $requete->execute(array($_GET['email']));
         ?>
+        
     </div>
-</div>
-<?php 
-    $requete = $db->prepare('SELECT * FROM profile WHERE email = ?');
-    $requete->execute(array($_GET['email']));
- ?>
 </body>
 <footer>
     <div class="disclaimer">
-        <p class="txt1" style="font-size: 20px;">Sci-Fi streaming Solution</p>
+        <p class="txt1">Sci-Fi streaming Solution</p>
     </div>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

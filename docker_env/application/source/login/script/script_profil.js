@@ -123,12 +123,13 @@ $('#Calque_4.test').click(function () {
 
 
 // ARNOLD QUI ESSAYE LE JS 
-
+$('#imageProfile').hide();
 $('#container_form_images').hide();
 
 $('#changeThis').click(function () {
+
+    document.querySelector("h1").textContent="Choose a profile picture";
     $('#container_form').hide();
-    $('#container_form_edit').hide();
     $('#container_form_images').show();
     $('#LetMeOut').show();
 
@@ -136,12 +137,13 @@ $('#changeThis').click(function () {
 
 });
 
-$('input').click(function () {
+$('#containerImages').click(function () {
+    document.querySelector("h1").textContent="Who are you ?";
     var checked = document.querySelector('input[name="brandtype"]:checked').value;
     document.getElementById("changeThis").src=checked;
-    document.getElementById("0").value=checked;
+    document.getElementById("imageProfile").value=checked;
+
     $('#container_form').show();
-    $('#container_form_edit').show();
     $('#container_form_images').hide();
     $('#LetMeOut').hide();
 

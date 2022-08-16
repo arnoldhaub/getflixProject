@@ -26,12 +26,17 @@ h1 {
 /* form for editing profiles */
 
 #container_form{
-position: relative;
-border: 1px solid white;
-overflow: hidden;
-border-radius: 7px;
-width: 400px;
-}
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    border: 1px solid white;
+    overflow: hidden;
+    border-radius: 7px;
+    width: 500px;
+    }
+
+
 
 
 #form_profil{
@@ -166,6 +171,10 @@ margin: 5px;
 margin-left: -3px;
 color: white;
 } 
+
+input[type="radio"][name="brandtype"], input[type="radio"][name="imageProfile"]{
+    visibility:hidden;
+}
 
 /* container de tous les profils */
 

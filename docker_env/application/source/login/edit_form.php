@@ -17,10 +17,11 @@
 		// On reprend les variables du form
 		$pseudo = htmlspecialchars($_POST['pseudo']);
         $categorie = htmlspecialchars($_POST['categorie']);
+        $image = htmlspecialchars($_POST['imageProfile']);
 		
 		// Modification de la base de données
         
-		$updateProfil = "UPDATE profile SET pseudo='$pseudo', categorie='$categorie' WHERE id_pseudo='$id'";
+		$updateProfil = "UPDATE profile SET pseudo='$pseudo', categorie='$categorie', image='$image' WHERE id_pseudo='$id'";
         $updateExecution = $db->exec($updateProfil);
         
         // // Mise à jour des informations
@@ -31,22 +32,7 @@
 		
         header('location: profil_select_doublon.php?email=' . $infosProfil['email'] . '');
 	    }
-//--------- MISE À JOURS DE : IMAGE PROFIL ---------//
-        if (!empty($_POST['brandtype'])){
-            include('../src/connect.php');
 
-            // On reprend les variables du form
-            $image = htmlspecialchars($_POST['brandtype']);
-            
-            // Modification de la base de données
-            
-            $updateProfil = "UPDATE profile SET image='$image' WHERE id_pseudo='$id'";
-            $updateExecution = $db->exec($updateProfil);
-            
-                
-            header('location: edit_form.php?id_pseudo='.$id. '?email=' . $infosProfil['email'] . '');
-
-        }
 
     }
 
@@ -69,11 +55,13 @@
 
         <div id="container_form_edit">
 
-            <div class="choose_your_image">
-            <img src="<?php echo $infosProfil['image']; ?>" id="changeThis" alt="Profile's image" srcset="">
-            </div>
+            
 
             <form action='' method="post" id="form_profil">
+            <div class="choose_your_image">
+                <input type="radio" id="imageProfile" name="imageProfile" value="<?php echo $infosProfil['image']; ?>" checked>
+                <img src="<?php echo $infosProfil['image']; ?>" id="changeThis" alt="Profile's image" srcset="">
+            </div>
                 <input type="text" name="pseudo" placeholder="Add your pseudo" value="<?php echo $infosProfil['pseudo']; ?>"></input>
                 <select class="form-select" name="categorie">
                     <option value="" disabled selected hidden > Select your option</option>
@@ -98,34 +86,49 @@
 
                     <div class="row_images">
                             <input type="radio" id="4" name="brandtype" value="../images/user_pic/4.png" <?php if($infosProfil['image'] == '../images/user_pic/4.png'){ echo "checked";} ?> >
-                                <img src="../images/user_pic/4.png" alt="" style="border-radius: 250px">
+                                <label for="4">
+                                    <img src="../images/user_pic/4.png" alt="" style="border-radius: 250px">
+                                </label>
                             <input type="radio" id="2" name="brandtype" value="../images/user_pic/2.png" <?php if($infosProfil['image'] == '../images/user_pic/2.png'){ echo "checked";} ?>>
-                                <img src="../images/user_pic/2.png" alt="" style="border-radius: 250px">
+                                <label for="2">
+                                    <img src="../images/user_pic/2.png" alt="" style="border-radius: 250px">
+                                </label>
                             <input type="radio" id="3" name="brandtype" value="../images/user_pic/3.png" <?php if($infosProfil['image'] == '../images/user_pic/3.png'){ echo "checked";} ?>>
-                                <img src="../images/user_pic/3.png" alt="" style="border-radius: 250px">
+                                <label for="3">
+                                    <img src="../images/user_pic/3.png" alt="" style="border-radius: 250px">
+                                </label>
                     </div>
 
                     <div class="row_images">
                             <input type="radio" id="10" name="brandtype" value="../images/user_pic/10.png" <?php if($infosProfil['image'] == '../images/user_pic/10.png'){ echo "checked";} ?>>
-                                <img src="../images/user_pic/10.png" alt="" style="border-radius: 250px">
+                                <label for="10">
+                                    <img src="../images/user_pic/10.png" alt="" style="border-radius: 250px">
+                                </label>
                             <input type="radio" id="5" name="brandtype" value="../images/user_pic/5.png" <?php if($infosProfil['image'] == '../images/user_pic/5.png'){ echo "checked";} ?>>
-                                <img src="../images/user_pic/5.png" alt="" style="border-radius: 250px">
+                                <label for="5">
+                                    <img src="../images/user_pic/5.png" alt="" style="border-radius: 250px">
+                                </label>
                             <input type="radio" id="6" name="brandtype" value="../images/user_pic/6.png" <?php if($infosProfil['image'] == '../images/user_pic/6.png'){ echo "checked";} ?>>
-                                <img src="../images/user_pic/6.png" alt="" style="border-radius: 250px">
+                                <label for="6">
+                                    <img src="../images/user_pic/6.png" alt="" style="border-radius: 250px">
+                                </label>
                     </div>
 
                     <div class="row_images">
                             <input type="radio" id="7" name="brandtype" value="../images/user_pic/7.png" <?php if($infosProfil['image'] == '../images/user_pic/7.png'){ echo "checked";} ?>>
-                                <img src="../images/user_pic/7.png" alt="" style="border-radius: 250px">
+                                <label for="7">
+                                    <img src="../images/user_pic/7.png" alt="" style="border-radius: 250px">
+                                </label>
                             <input type="radio" id="12" name="brandtype" value="../images/user_pic/12.png" <?php if($infosProfil['image'] == '../images/user_pic/12.png'){ echo "checked";} ?>>
-                                <img src="../images/user_pic/12.png" alt="" style="border-radius: 250px">
+                                <label for="12">
+                                    <img src="../images/user_pic/12.png" alt="" style="border-radius: 250px">
+                                </label>
                             <input type="radio" id="11" name="brandtype" value="../images/user_pic/11.png" <?php if($infosProfil['image'] == '../images/user_pic/11.png'){ echo "checked";} ?>>
-                                <img src="../images/user_pic/11.png" alt="" style="border-radius: 250px">
+                                <label for="11">
+                                    <img src="../images/user_pic/11.png" alt="" style="border-radius: 250px">
+                                </label>
                     </div>
-                    
-                    <button type="submit" name="changeImage" id="subButton">Submit</button>
 
-                
                 </form>
                                                
         </div>

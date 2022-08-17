@@ -2,8 +2,9 @@
 
 	session_start();
     // On teste si la variable de session existe et contient une valeur
-    if (!empty($_SESSION['email'])) {
-    // Si inexistante ou nulle, on redirige vers le formulaire de login
+
+    if (!empty($_SESSION['connect'])) {
+    // Si existante, on redirige vers page profil
     header('Location: login/profil_select_doublon.php');
     exit();
 }
@@ -15,7 +16,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link href="styles/styles.css" rel="stylesheet">
+        <link href="login/styles/styles.css" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="images/favicon.svg">
     </head>
     <body>

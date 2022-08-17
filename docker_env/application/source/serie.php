@@ -73,7 +73,7 @@ include "api/info.php";
 <!-----------------------------------------------------------------------
                      HEADER + MENU
 ------------------------------------------------------------------------->
-<?php   
+    <?php   
     include('src/header.php');
     ?>
 <!-----------------------------------------------------------------------
@@ -160,7 +160,7 @@ include "api/info.php";
                             <ul class="dropdown-menu">';
                 foreach($infoSerie->seasons as $p){
                     if($p->episode_count > 0){
-                        echo    '<li <?php if(@$type == "serie"){echo "checked";}><a class="dropdown-item" href="../MoviesPreview/serie.php?id='. $id .'&id_pseudo='.$_SESSION['pseudo'].'&page='.$p->season_number. '" value="'.$p->season_number.'">'.$p->name.'</a></li>';
+                        echo    '<li <?php if(@$type == "serie"){echo "checked";}><a class="dropdown-item" href="serie.php?id='. $id .'&id_pseudo='.$_SESSION['pseudo'].'&page='.$p->season_number. '" value="'.$p->season_number.'">'.$p->name.'</a></li>';
                     }
                 }
                 echo        '</ul>
@@ -187,7 +187,8 @@ include "api/info.php";
                                                     echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$infoSerie->videos->results[0]->key.'"  data-bs-target="#myModal">';
                                                 }
                                                 // '<a href="episode.php?id='.$id.'&season='.$i->season_number. '&ep='.$i->episode_number.'">
-                                                    echo                    '<img src="' . $imgurl_500 . $i->still_path . '" style="object-fit: cover;"></a>
+                                                    echo                    '<img src="';if($i->still_path != null){ echo $imgurl_500 . $i->still_path;} else{echo "images/picturetocome.png";}
+                                                    echo                        '" style="object-fit: cover;"></a>
                                                                         <p><b>Episode '.$i->episode_number.' -</b> '. $i->name .'</p><hr><p>'.$episodeDetails->overview.'</p>
                         
                                                                     </div>';

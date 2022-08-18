@@ -13,7 +13,25 @@ if (empty($_SESSION['email'])) {
     header('Location: index.php');
     exit();
 }
+else{
+    // VERIFICATION ANTI KIDS
+    require('src/connect.php');
+    $requete = $db->prepare('SELECT categorie FROM profile WHERE id_pseudo = ?');
+    $requete->execute(array($_SESSION['pseudo']));
+    $KidOrNot = $requete->fetch();
+
+    // SI ENFANT => Go to home_kids.php
+    if($KidOrNot["categorie"] == "enfant"){
+        header('Location: home_kids.php');
+        exit();
+    }
+
+}
 include "api/info.php";
+
+
+
+
 ?>
 <!-- SCRIPT - Masquer information GET dans URL -->
 <script>    
@@ -32,12 +50,17 @@ include "api/info.php";
 
 
 <body>
+
     <!-----------------------------------------------------------------------
                      HEADER + MENU
 ------------------------------------------------------------------------->
     <?php
     include('src/header.php');
     ?>
+
+    <!-----------------------------------------------------------------------
+                     WEBSITE
+------------------------------------------------------------------------->
 
     <div class="bootstrap-iso">
         <div id="carouselHome" class="carousel slide" data-ride="carousel">
@@ -269,7 +292,6 @@ include "api/info.php";
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
-    <script src="js/script_video.js"></script>
 </body>
 
 </html>

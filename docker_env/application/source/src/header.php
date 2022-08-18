@@ -1,7 +1,7 @@
 <header>
     <img class="logo" src="images/logo.svg" alt="logo">
     <img class="logo_minia" src="images/logo_planete.svg" alt="logo_minia">
-    <nav style="align-self: center">
+    <nav style="align-self: center;">
         <ul class="nav_links">
             <li><a href="home.php">HOME</a></li>
             <li><a href="home.php#ancre_serie">SERIES</a></li>
@@ -11,9 +11,9 @@
 
         <ul class="nav_links_responsive">
             <li><a href="home.php"><i class="fa-solid fa-house"></i></a></li>
-            <li><a href="home.php#ancre_film"><i class="fa-solid fa-film"></i></i></a></li>
-            <li><a href="home.php#ancre_serie"><i class="fa-solid fa-tv"></i></i></a></li>
-            <li><a href="search.php"></a><i class="fa-solid fa-magnifying-glass"></i></i></a></li>
+            <li><a href="home.php#ancre_film"><i class="fa-solid fa-film"></i></a></li>
+            <li><a href="home.php#ancre_serie"><i class="fa-solid fa-tv"></i></a></li>
+            <li><a href="search.php"></a><i class="fa-solid fa-magnifying-glass"></i></a></li>
         </ul>
     </nav>
 
@@ -42,7 +42,7 @@
             <?php
             $requete2 = $db->query("SELECT PSEUDO,ID_PSEUDO,IMAGE FROM profile WHERE email='$userEmail'");
             while ($donnees = $requete2->fetch()) { ?>
-                <li class="mb-3 " style="list-style-type:none">
+                <li class="mb-3">
                     <div class="container">
                         <div style="flex-wrap:nowrap" class="row">
                             <img id="photoListeProfil" src="<?php echo $donnees[2] ?>" alt="profil">
@@ -54,7 +54,7 @@
             <?php   }
             ?>
             <hr style="height:1px">
-            <li class="mb-3" style="list-style-type:none">
+            <li class="mb-3">
                 <div class="container">
                     <div style="flex-wrap:nowrap" class="row">
 
@@ -65,7 +65,7 @@
                 </div>
             </li>
 
-            <li class="mb-3" style="list-style-type:none">
+            <li class="mb-3">
                 <div class="container">
                     <div style="flex-wrap:nowrap" class="row">
                         <i class="fa-solid fa-share-from-square"></i>

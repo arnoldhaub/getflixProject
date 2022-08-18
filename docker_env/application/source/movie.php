@@ -46,41 +46,24 @@ include "api/info.php";
     <?php include "src/head_meta_tags.php"; ?>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <link href="styles/styles_general.css" rel="stylesheet">
     <link href="styles/styles_movie_preview.css" rel="stylesheet">
     <link href="styles/comments_styles.css" rel="stylesheet">
     <style>
-        .modal-body {
-            position: relative;
-            padding: 0px;
-            background-color: #06060f;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
     </style>
-    <script>
-        $(document).ready(function() {
-            var $videoSrc;
-            $(".video-btn").click(function() {
-                $videoSrc = $(this).data("src");
-            });
-            $("#myModal").on("shown.bs.modal", function(e) {
-                $("#video").attr(
-                    "src",
-                    $videoSrc + "?autoplay=1&amp;showinfo=0"
-                );
-            });
-            $("#myModal").on("hide.bs.modal", function(e) {
-                $("#video").attr("src", ""); // Remove the video source.
-            });
-        });
-    </script>
 </head>
 
 <body>
+
     <!-----------------------------------------------------------------------
                      HEADER + MENU
 ------------------------------------------------------------------------->
     <?php
     include('src/header.php');
     ?>
+
+    
     <!-----------------------------------------------------------------------
                      WEBSITE
 ------------------------------------------------------------------------->
@@ -210,17 +193,15 @@ include "api/info.php";
                             </div>
 
                     </div>
-                <?php } ?>
+                    <?php } ?>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <div class="container_comment">
         <p class="title_slide_comments"><?php echo $pseudoActif[0] ?>Post a review about "<?php echo $infoMovie->title; ?>"</p>
         <div class="form_com">
-
             <form method="POST" id="formPost">
                 <input style="display:none" name="pseudo" value="<?php echo $pseudoActif[0] ?>">
                 <textarea type="text" placeholder="Share your opinion with others! (You  have 200 characters.)" name="commentaires" id="commentForm"></textarea></br>
@@ -237,9 +218,7 @@ include "api/info.php";
     include "src/footer.php";
     ?>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-    </style>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>

@@ -33,17 +33,12 @@ include "api/info.php";
 
 <!DOCTYPE html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edege">
         <title>NOVA · <?php echo $infoSerie->name; ?></title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <?php include "src/head_meta_tags.php"; ?>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <link href="styles/styles_movie_preview.css" rel="stylesheet">
-        <link href="styles/styles_nav_footer.css" rel="stylesheet"> 
         <link href="styles/comments_styles.css" rel="stylesheet">
-        <link rel="icon" type="image/x-icon" href="images/favicon.svg">
         <style>
             .modal-body {
                 position:relative;
@@ -151,7 +146,7 @@ include "api/info.php";
         <div class="container_movie">
 
             <!-- DROPDOWN - SELECTION DE LA SAISON -->
-        <?php
+            <?php
             if (!empty($infoSerie->seasons)) {
                 echo    '<div class="dropdown-center" style="margin-left: 4vh;">
                             <button class="btn dropdown-toggle play" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -160,7 +155,7 @@ include "api/info.php";
                             <ul class="dropdown-menu">';
                 foreach($infoSerie->seasons as $p){
                     if($p->episode_count > 0){
-                        echo    '<li <?php if(@$type == "serie"){echo "checked";}><a class="dropdown-item" href="serie.php?id='. $id .'&id_pseudo='.$_SESSION['pseudo'].'&page='.$p->season_number. '" value="'.$p->season_number.'">'.$p->name.'</a></li>';
+                        echo    '<li <?php if(@$type == "serie"){echo "checked";}><a class="dropdown-item" href="serie.php?id='. $id .'&page='.$p->season_number. '" value="'.$p->season_number.'">'.$p->name.'</a></li>';
                     }
                 }
                 echo        '</ul>
@@ -248,7 +243,7 @@ include "api/info.php";
                 
                 // }
             ?>
-            </div>
+        </div>
 
 
 
@@ -309,7 +304,7 @@ include "api/info.php";
                         foreach ($seriesRecommandations->results as $p) { 
                             if (!empty($p->poster_path && $p->backdrop_path)) {
                                 echo  "<div class='swiper-slide' id='first-swiper'>
-                                <a href='serie.php?id=" . $p->id .'&id_pseudo='.$_SESSION['pseudo']."'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                                <a href='serie.php?id=" . $p->id ."'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
                             </div>";
                             }
                         } ?>
@@ -328,7 +323,7 @@ include "api/info.php";
     
 
      
-<?php 
+        <?php 
             $request = $db ->prepare('SELECT * FROM comments WHERE id_film = ? ORDER BY id DESC');
             $request ->execute(array($id));
             $comment = $request->fetchAll();

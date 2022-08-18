@@ -48,13 +48,9 @@ if (!empty($_GET['id_pseudo'])) {
 <!DOCTYPE html>
 
 <head>
-    <meta charset="utf-8">
     <title>NOVA · Edit your profile</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="./styles/profil_select.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/e48c77929d.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/x-icon" href="../images/favicon.svg">
+    <?php include "../src/head_meta_tags.php"; ?>
+    <link href="styles/profil_select.css" rel="stylesheet">
 </head>
 
 <body>
@@ -64,13 +60,12 @@ if (!empty($_GET['id_pseudo'])) {
 
         <div id="container_form_edit">
 
-
+            <div class="choose_your_image">
+                <img src="<?php echo $infosProfil['image']; ?>" id="changeThis" alt="Profile's image" srcset="">
+            </div>
 
             <form action='' method="post" id="form_profil">
-                <div class="choose_your_image">
-                    <input type="radio" id="imageProfile" name="imageProfile" value="<?php echo $infosProfil['image']; ?>" checked>
-                    <img src="<?php echo $infosProfil['image']; ?>" id="changeThis" alt="Profile's image" srcset="">
-                </div>
+                <input type="radio" id="imageProfile" name="imageProfile" value="<?php echo $infosProfil['image']; ?>" checked>
                 <input type="text" name="pseudo" placeholder="Add your pseudo" value="<?php echo $infosProfil['pseudo']; ?>"></input>
                 <select class="form-select" name="categorie">
                     <option value="" disabled selected hidden> Select your option</option>

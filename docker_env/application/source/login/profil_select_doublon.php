@@ -30,12 +30,9 @@ if (!empty($_POST['pseudo'])) {
 <!DOCTYPE html>
 
 <head>
-    <meta charset="utf-8">
     <title>NOVA · Select a profile</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <?php include "../src/head_meta_tags.php"; ?>
     <link href="styles/profil_select.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="../images/favicon.svg">
 
 </head>
 
@@ -99,7 +96,7 @@ if (!empty($_POST['pseudo'])) {
                                                             echo '../images/user_pic/4.png';
                                                         } ?>" alt="Profile image" style="cursor: pointer"></img>
                         </a>
-                        <a href='/edit_form.php?id_pseudo=<?php echo $donnees["id_pseudo"] ?>' id='<?php $a++;
+                        <a href='edit_form.php?id_pseudo=<?php echo $donnees["id_pseudo"] ?>' id='<?php $a++;
                                                                                                     echo "redirectMe$a"; ?>'>
                             <img class="profil1" src="<?php if (!empty($donnees['image'])) {
                                                             echo $donnees['image'];
@@ -131,11 +128,12 @@ if (!empty($_POST['pseudo'])) {
 
             <div id="container_form">
 
-                <form action='' method="post" id="form_profil">
-                    <div class="choose_your_image">
-                        <input type="radio" id="imageProfile" name="imageProfile" value="../images/user_pic/4.png" checked>
+                <div class="choose_your_image">
                         <img src="../images/user_pic/4.png" id="changeThis" alt="Profile's image" srcset="">
                     </div>
+
+                <form action='' method="post" id="form_profil">
+                    <input type="radio" id="imageProfile" name="imageProfile" value="../images/user_pic/4.png" checked>
                     <input type="text" name="pseudo" placeholder="Add your pseudo"></input>
                     <select class="form-select" name="categorie">
                         <option value="" disabled selected hidden> Select your option</option>

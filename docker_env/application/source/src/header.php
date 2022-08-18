@@ -3,17 +3,17 @@
     <img class="logo_minia" src="images/logo_planete.svg" alt="logo_minia">
     <nav style="align-self: center">
         <ul class="nav_links">
-            <li><a href="home.php?id_pseudo=<?php echo $_SESSION['pseudo'] ?>">HOME</a></li>
-            <li><a href="home.php?id_pseudo=<?php echo $_SESSION['pseudo'] ?>#ancre_serie">SERIES</a></li>
-            <li><a href="home.php?id_pseudo=<?php echo $_SESSION['pseudo'] ?>#ancre_film">FILMS</a></li>
-            <li><a href="search.php?id_pseudo=<?php echo $_SESSION['pseudo'] ?>">RECHERCHE</a></li>
+            <li><a href="home.php">HOME</a></li>
+            <li><a href="home.php#ancre_serie">SERIES</a></li>
+            <li><a href="home.php#ancre_film">FILMS</a></li>
+            <li><a href="search.php">RECHERCHE</a></li>
         </ul>
 
         <ul class="nav_links_responsive">
-            <li><a href="home.php?id_pseudo=<?php echo $_SESSION['pseudo'] ?>"><i class="fa-solid fa-house"></i></a></li>
-            <li><a href="home.php#ancre_film?id_pseudo=<?php echo $_SESSION['pseudo'] ?>"><i class="fa-solid fa-film"></i></i></a></li>
-            <li><a href="home.php#ancre_serie?id_pseudo=<?php echo $_SESSION['pseudo'] ?>"><i class="fa-solid fa-tv"></i></i></a></li>
-            <li><a href="search.php?id_pseudo=<?php echo $_SESSION['pseudo'] ?>"></a><i class="fa-solid fa-magnifying-glass"></i></i></a></li>
+            <li><a href="home.php"><i class="fa-solid fa-house"></i></a></li>
+            <li><a href="home.php#ancre_film"><i class="fa-solid fa-film"></i></i></a></li>
+            <li><a href="home.php#ancre_serie"><i class="fa-solid fa-tv"></i></i></a></li>
+            <li><a href="search.php"></a><i class="fa-solid fa-magnifying-glass"></i></i></a></li>
         </ul>
     </nav>
 
@@ -38,7 +38,7 @@
         </div>
 
 
-        <div id=listePseudos>
+        <div id="listePseudos">
             <?php
             $requete2 = $db->query("SELECT PSEUDO,ID_PSEUDO,IMAGE FROM profile WHERE email='$userEmail'");
             while ($donnees = $requete2->fetch()) { ?>
@@ -58,7 +58,7 @@
                 <div class="container">
                     <div style="flex-wrap:nowrap" class="row">
 
-                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-gear"></i>
                         <a style="color:white" href="login/profil_select.php" class="ml-2">Settings</a>
                         </a>
                     </div>

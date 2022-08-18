@@ -71,16 +71,35 @@ const swiper = new Swiper(".swiper-container", {
 // JS GUILLAUME
 // HEADER
 
-let champPseudo = document.getElementById('sectionUser');
+// let champPseudo = document.getElementById('sectionUser');
 
-champPseudo.onmouseover = () => {
-  document.getElementById('fleche').className = "fa-solid fa-angle-up";
-  document.getElementById('listePseudos').style.display = "block";
-  document.getElementById('listePseudos').style.zIndex = "2";
+// champPseudo.onmouseover = () => {
+//   document.getElementById('fleche').className = "fa-solid fa-angle-up";
+//   document.getElementById('listePseudos').style.display = "block";
+//   document.getElementById('listePseudos').style.zIndex = "5";
 
-}
+// }
 
-champPseudo.onmouseout = () => {
-  document.getElementById('fleche').className = "fa-solid fa-angle-down";
-  document.getElementById('listePseudos').style.display = "none";
-}
+// champPseudo.onmouseout = () => {
+//   document.getElementById('fleche').className = "fa-solid fa-angle-down";
+//   document.getElementById('listePseudos').style.display = "none";
+// }
+
+// MODIF ARNOLD - Hover navbar
+
+$("#sectionUser").hover(
+  //Hover;
+  function () {
+      clearTimeout(closeTimeout);
+      document.getElementById('listePseudos').style.display = "block";
+      document.getElementById('listePseudos').style.zIndex = "5";
+      document.getElementById('fleche').className = "fa-solid fa-angle-up";
+  },
+  //Hoverout;
+  function () {
+      closeTimeout = setTimeout(function () {
+        document.getElementById('listePseudos').style.display = "none";
+        document.getElementById('listePseudos').style.zIndex = "1";
+        document.getElementById('fleche').className = "fa-solid fa-angle-down";
+      }, 1000);
+  });

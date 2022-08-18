@@ -25,7 +25,8 @@ $('#redirectMe8').hide();
 
 
 
-$('#addButton').click(function () { //appeaars when there's no account
+$('#addButton').click(function () {
+    $('h1').hide();///appeaars when there's no account
     $('#container_form').show();
     $('#addButton').hide();
     $('.profil_un').hide();
@@ -34,6 +35,16 @@ $('#addButton').click(function () { //appeaars when there's no account
     
     
 });
+function getBack(){
+    $('.arrowBack').click(function () {
+         $('h1').show()
+        $('#container_form').hide();
+        $('#addButton').show();
+        $('.profil_un').show();
+        $('#edit').show();
+    });
+}
+
     
     
 $(document).ready(function () {

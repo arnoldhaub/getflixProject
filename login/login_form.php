@@ -164,10 +164,4 @@ if (!empty($_POST['email'] && !empty($_POST['password']))) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src='script/script.js'></script>
 
-
-<footer>
-
-
-</footer>
-
 </html>

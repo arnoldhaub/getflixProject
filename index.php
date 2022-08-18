@@ -50,11 +50,10 @@
                         <button type="button_register" class="Register0" name="Register" label="Register" id="Register" onclick="location.href='login/register_form.php'">Register</button><br>
                         <button type="button_login" class="Register1" name="Register" label="Register" id="Register" onclick="location.href='login/login_form.php'">Login</button>            
                 </div>
-                <footer>
-                    <div class="disclaimer">
-                        <p class="txt1">Sci-Fi streaming Solution</p>
-                    </div>
-                </footer>
+                
+                <div class="disclaimer">
+                    <p class="txt1">Sci-Fi streaming Solution</p>
+                </div>
         </div>
 
     </body>

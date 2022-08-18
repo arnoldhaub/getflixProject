@@ -1,4 +1,5 @@
 # N O V A - WATCH ME (if you can)! :vhs:	
+![Logo](nova.png)
 
 - **Repository:** `getflixProject`
 - **Type of Challenge:**  `Consolidation`
@@ -17,7 +18,10 @@
  
 ## Project's page :
 
+https://novaflix.herokuapp.com
+
 How to use: (work in progress) :movie_camera:	
+
 
 ## What is the project ?
 
@@ -64,7 +68,8 @@ As you surely have read, we have 12 days to set up everything in group of four.
 - PHP
 
 ## Mockups :
-Ici faut rajouter des print figma ;)
+![First](view1.png)
+![Second](view%202.png)
 
 ## Pending things to do :
 coming soon..

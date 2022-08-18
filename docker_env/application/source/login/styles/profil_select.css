@@ -33,7 +33,7 @@ h1 {
     border: 1px solid white;
     overflow: hidden;
     border-radius: 7px;
-    width: 500px;
+    width: auto;
     }
 
 
@@ -45,7 +45,8 @@ h1 {
     padding: 30px;
     border-radius: 7px;
     gap: 20px;
-  
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -57,6 +58,7 @@ h1 {
     outline: none;
     border-radius: 7px;
     color: white;
+
 }
 .form-select:invalid {
 color: gray; 
@@ -93,6 +95,7 @@ select.form-select{
     5px 5px,
     0px 1.5em;
   background-repeat: no-repeat;
+  width: 100%;
 
 }
 
@@ -130,6 +133,7 @@ which fucking pissed me off for like an hour fucking select icon */
     outline: none;
     border: 2px solid white;
     border-radius: 7px;
+    width: 100%;
 }
 /* form for editig profiles */
 
@@ -174,6 +178,7 @@ color: white;
 
 input[type="radio"][name="brandtype"], input[type="radio"][name="imageProfile"]{
     visibility:hidden;
+    display: none;
 }
 
 /* container de tous les profils */
@@ -327,7 +332,7 @@ position: relative;
 border: 1px solid white;
 overflow: hidden;
 border-radius: 7px;
-width: 500px;
+width: auto;
 }
 
 .choose_your_image{
@@ -350,12 +355,13 @@ border-radius: 300px;
 display: flex;
 flex-direction: row;
 justify-content: center;
+align-items: center;
 position: relative;
 border: 1px solid white;
 overflow: hidden;
 border-radius: 7px;
-padding: 30px;
-width: auto;  
+width: auto; 
+padding: 30px;  
 }
 
 
@@ -363,23 +369,41 @@ width: auto;
     display: flex;
     flex-direction: column;
     border-radius: 7px;
+    align-items: center;
+    justify-content: center;
     gap: 20px;
+
 }
 
-.rowImages{
+.row_images{
     display: flex;
     flex-direction: row;
-    padding: 30px;
     border-radius: 7px;
     gap: 20px;
 }
 
-.rowImages img{
-  border-radius: 250px;
+.row_images input > label > img{
+   border-radius: 250px;
+   width: auto;
 }
 
+.row_images  > label{
+     margin: 0;
+ }
 
 
+
+.arrowBack{
+ display: flex;
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 50px;
+ height: auto;
+ max-width: 100%;
+ margin-top: 4vh;
+ margin-left: 4vh;
+ }
 
 
 

@@ -166,6 +166,19 @@ if (!empty($_GET['id_pseudo'])) {
 
 
     </div>
+    <div class="arrowBack" onclick="location.href='profil_select.php' ">
+             <svg version="1.1" id="Calque_1"   x="0px" y="0px"
+ 	         width="97.411px" height="97.68px" viewBox="0 0 97.411 97.68" enable-background="new 0 0 97.411 97.68" xml:space="preserve">
+ 			<g>
+ 				<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M54.735,74.105c0.674,0.674,1.744,0.674,2.418,0l2.418-2.418
+ 					c0.674-0.674,0.674-1.744,0-2.418L39.262,48.963L59.57,28.655c0.674-0.674,0.674-1.744,0-2.418l-2.418-2.418
+ 					c-0.674-0.674-1.744-0.674-2.418,0L30.808,47.746c-0.674,0.674-0.674,1.744,0,2.418L54.735,74.105z"/>
+ 				<path fill="none" stroke="#FFFFFF" stroke-width="6" stroke-miterlimit="10" d="M81.373,95.944H16.039
+ 					c-7.941,0-14.438-6.497-14.438-14.438V16.173c0-7.941,6.497-14.438,14.438-14.438h65.334c7.941,0,14.438,6.497,14.438,14.438
+ 					v65.334C95.81,89.447,89.313,95.944,81.373,95.944z"/>
+ 			</g>
+             </svg>
+ 	</div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="script/script_edit_form.js"></script>

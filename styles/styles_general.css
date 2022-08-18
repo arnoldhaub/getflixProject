@@ -365,7 +365,7 @@ position: relative;
 
 
 /* ↓ FOOTER ↓ */
-footer {
+.footer {
     display: flex;
     align-items: center;
     flex-direction: row;

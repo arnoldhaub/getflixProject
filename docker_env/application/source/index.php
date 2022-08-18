@@ -5,7 +5,7 @@
 
     if (!empty($_SESSION['connect'])) {
     // Si existante, on redirige vers page profil
-    header('Location: login/profil_select_doublon.php');
+    header('Location: login/profil_select.php');
     exit();
 }
 

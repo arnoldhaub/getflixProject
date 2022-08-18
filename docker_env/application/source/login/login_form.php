@@ -46,7 +46,7 @@ if (!empty($_POST['email'] && !empty($_POST['password']))) {
 				setcookie('auth', $user['secret'], time() + 364 * 24 * 3600, '/', null, false, true);
 			}
 			// ci dessous il faudra mettre le le lien vers le catalogue une fois logger
-			header("location: profil_select_doublon.php");
+			header("location: profil_select.php");
 			exit();
 		} else {
 			header('location: login_form.php?error=1&message=Your login or password dont match. Try again.');

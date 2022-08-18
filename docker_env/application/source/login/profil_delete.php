@@ -20,7 +20,7 @@ if (isset($_GET['id_pseudo']) AND !empty($_GET['id_pseudo']))
     if($recupLine->rowCount()>0){
         $suppressionLigne = $db->prepare('DELETE FROM profile WHERE id_pseudo = ?');
         $suppressionLigne->execute(array($getid));
-        header('location: profil_select_doublon.php');
+        header('location: profil_select.php');
     }
     else{echo 'aucun membre trouvé';}
 }

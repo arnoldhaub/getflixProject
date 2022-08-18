@@ -40,7 +40,7 @@ if (!empty($_GET['id_pseudo'])) {
 
 
 
-        header('location: profil_select_doublon.php');
+        header('location: profil_select.php');
     }
 }
 

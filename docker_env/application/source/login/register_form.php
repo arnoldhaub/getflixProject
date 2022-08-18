@@ -49,7 +49,7 @@ if (!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['pass
 	// sending
 	$req = $db->prepare("INSERT INTO user(email, password, secret) VALUES (?,?,?)");
 	$req->execute(array($email, $password, $secret));
-	header('location: profil_select_doublon.php?email=' . $email . '');
+	header('location: profil_select.php?email=' . $email . '');
 	exit();
 }
 ?>

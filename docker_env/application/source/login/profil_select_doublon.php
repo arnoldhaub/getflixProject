@@ -101,9 +101,20 @@
 
                 </div>
                 <p class="name_User"><?php echo $donnees['pseudo'] ?></p>
-                <!-- <a class="" href="profil_delete.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">Delete</button> -->                          
+                                         
             </div>
             <?php } ?>
+            <?php if ($nbDePseudos[0] < 4){
+             echo'  <div class="add_div">
+                      <div class="add_image">
+                            <img src="../images/add_button.svg">
+                      </div>
+                      <p class="name_User">New User</p>
+                    </div>';
+                    };
+            ?>        
+            
+            
 
             <div id="container_form">
                  <div class="choose_your_image">
@@ -182,10 +193,7 @@
             <?php 
             if ($nbDePseudos[0] > 0){
                 echo    '<button class="modif_button" label="edit" id="edit">Edit</button> ';
-                    if ($nbDePseudos[0] < 4){
-                        echo'<button class="modif_button" label="edit" id="addButton">Add</button>';
-                    }
-            };           
+            };
             ?>
         </div>
     

@@ -135,6 +135,29 @@ which fucking pissed me off for like an hour fucking select icon */
     border-radius: 7px;
     width: 100%;
 }
+
+#delButton{
+    padding: 10px;
+    background-color: transparent;
+    outline: none;
+    border:none;        
+    border-radius: 100px;
+    width: 100%;
+
+}
+
+#delButton:hover{
+    cursor: pointer;
+}
+
+.X_WHITE{
+    width: auto;
+    max-width: 60px;
+}
+.X_RED{
+    width: auto;
+    max-width: 60px;
+}
 /* form for editig profiles */
 
 
@@ -225,7 +248,33 @@ input[type="radio"][name="brandtype"], input[type="radio"][name="imageProfile"]{
     z-index: 0;
     margin-right: 0;
 }
+
+.add_div img{
+    display: flex;
+    border-radius: 120px;
+    width: 90%; /* change this for the width */
+    padding: 10px;
+    position: relative;
+    z-index: 0;
+    margin-right: 0;
+}
+
+.add_div {
+    display: flex;
+    flex-direction: column;
+}
+
+.add_image{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
 /* profil image */
+
+
+
 #Calque_3.test span{
 display: none;
 }
@@ -243,6 +292,7 @@ display: none;
 #delButton{
     padding: 10px;
 }
+
 
 
 /* SVG PEN css pour le center */

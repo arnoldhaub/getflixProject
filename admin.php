@@ -109,10 +109,10 @@ include "api/info.php";
                         <td>
                             <i class="fa fa-trash fa-2x text-danger" 
                             data-toggle="modal" 
-                            data-target="#exampleModal<?php echo $user['id']; ?>"> 
+                            data-target="#deleteUser<?php echo $user['id']; ?>"> 
                             </i>
                             
-                                <div class="modal fade" id="exampleModal<?php echo $user['id']; ?>" role="dialog">
+                                <div class="modal fade" id="deleteUser<?php echo $user['id']; ?>" role="dialog">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-body bg-dark">
@@ -166,10 +166,10 @@ include "api/info.php";
                         <td>
                             <i class="fa fa-edit fa-2x" 
                             data-toggle="modal" 
-                            data-target="#edit<?php echo $profile['id_pseudo']; ?>"> 
+                            data-target="#editProfile<?php echo $profile['id_pseudo']; ?>"> 
                             </i>
                             
-                                <div class="modal fade" id="edit<?php echo $profile['id_pseudo']; ?>" role="dialog">
+                                <div class="modal fade" id="editProfile<?php echo $profile['id_pseudo']; ?>" role="dialog">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-body bg-dark">
@@ -220,10 +220,10 @@ include "api/info.php";
                         <td>
                             <i class="fa fa-trash fa-2x text-danger" 
                             data-toggle="modal" 
-                            data-target="#exampleModal<?php echo $profile['id_pseudo']; ?>"> 
+                            data-target="#deleteProfile<?php echo $profile['id_pseudo']; ?>"> 
                             </i>
                             
-                                <div class="modal fade" id="exampleModal<?php echo $profile['id_pseudo']; ?>" role="dialog">
+                                <div class="modal fade" id="deleteProfile<?php echo $profile['id_pseudo']; ?>" role="dialog">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-body bg-dark">
@@ -245,6 +245,111 @@ include "api/info.php";
                 </tbody>
                 <tfoot>
                     <th class="text-center" colspan="100%">Add a profile</th>
+                </tfoot>
+            </table>
+    </div>
+
+    <!-- ======================================================================
+                                    Comments - Administration
+        //======================================================================-->
+        <div id="commentAdmin">
+        <h2>Comments' administration</h2>
+        <table class="table table-striped my-3 text-center align-items-center">
+                <thead>
+                    <tr>
+                        <th>ID comment</th>
+                        <th>ID Film/Serie</th>
+                        <th>Pseudo</th>
+                        <th colspan="50%">Commentaire</th>
+                        <th>Date</th>
+                        <th>Éditer</th>
+                        <th>Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody">
+                    <?php while($comment = $commentsDB->fetch()) {?>
+                    <tr>
+                        <th scope="row"><?php echo $comment['id']; ?></th>
+                        <td><?php echo $comment['id_film']; ?></td>
+                        <td><?php echo $comment['pseudo']; ?></td>
+                        <td colspan="50%"><?php echo $comment['commentaires']; ?></td>
+                        <td><?php echo $comment['date']; ?></td>
+                        <td>
+                            <i class="fa fa-edit fa-2x" 
+                            data-toggle="modal" 
+                            data-target="#editComment<?php echo $comment['id']; ?>"> 
+                            </i>
+                            
+                                <div class="modal fade" id="editComment<?php echo $comment['id']; ?>" role="dialog">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-body bg-dark">
+                                                <form role="form" method="POST" action="admin/edit.php">
+                                                    <div class="form-group">
+                                                        <label for="commentID" class="col-form-label">Comment ID</label>
+                                                        <input type="number" class="form-control text-center" name="commentID" id="commentID" value="<?php echo $comment['id'];?>">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="filmID" class="col-form-label">Film/Serie ID</label>
+                                                        <input type="number" class="form-control text-center" name="filmID" id="filmID" value="<?php echo $comment['id_film'];?>">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="pseudo" class="col-form-label">Pseudo</label>
+                                                        <input type="text" class="form-control text-center" name="pseudo" id="pseudo" value="<?php echo $comment['pseudo'];?>">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="comment" class="col-form-label">Comment</label>
+                                                        <textarea type="text" class="form-control text-center" name="comment" id="comment"><?php echo $comment['commentaires']; ?></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="date" class="col-form-label">Date</label>
+                                                        <input type="date" class="form-control text-center" name="date" id="date" value="<?php echo $comment['date'];?>">
+                                                    </div>
+
+                                                    <input type="hidden" id="dbName" name="dbName" value="comments">
+                                                    <input type="hidden" id="originalID" name="originalID" value="<?php echo $comment['id'];?>">
+
+                                                
+                                                    <div class="modal-footer justify-content-center ">
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                                                        <button type="submit" class="btn btn-success">Valider</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            
+                        </td>
+                        <td>
+                            <i class="fa fa-trash fa-2x text-danger" 
+                            data-toggle="modal" 
+                            data-target="#deleteComment<?php echo $comment['id']; ?>"> 
+                            </i>
+                            
+                                <div class="modal fade" id="deleteComment<?php echo $comment['id']; ?>" role="dialog">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-body bg-dark">
+                                                <p>Êtes-vous sûr de vouloir supprimer l'<strong>ID <?php echo $comment['id'];?></strong> ? </p>
+                                                <div class="modal-footer justify-content-center ">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                                                    <a href="admin/delete.php?id=<?php echo $comment['id']; ?>&db=comments">
+                                                    <button class="btn btn-danger" type="button">Supprimer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            
+                        </td>
+                    </tr>
+                    <?php }; ?>
+                </tbody>
+                <tfoot>
+                    <th class="text-center" colspan="100%">Add a comment</th>
                 </tfoot>
             </table>
     </div>

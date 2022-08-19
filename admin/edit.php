@@ -3,6 +3,7 @@
 require_once('../src/connect.php');
 
 if($_POST['dbName'] == "user"){
+
     $id = $_POST['userOriginalID'];
     $newID = $_POST['userID'];
 
@@ -20,6 +21,7 @@ if($_POST['dbName'] == "user"){
 }
 
 if($_POST['dbName'] == "profile"){
+
     $id = $_POST['profileOriginalID'];
     $newID = $_POST['profileID'];
     $pseudo = $_POST['profilePseudo'];
@@ -40,5 +42,25 @@ if($_POST['dbName'] == "profile"){
         header("Location: ../admin.php");
     } else {
         echo "Failed to update the profile of ".$pseudo.", id ".$id;
+    }
+}
+
+if($_POST['dbName'] == "comments"){
+
+    $id = (int)htmlspecialchars($_POST['commentID']);
+    $filmID = (int) htmlspecialchars($_POST['filmID']);
+    $pseudo = htmlspecialchars($_POST['pseudo']);
+    $comment = filter_input(INPUT_POST,"comment", FILTER_SANITIZE_SPECIAL_CHARS);
+    $date = htmlspecialchars($_POST['date']);
+    $originalID = (int)htmlspecialchars($_POST['originalID']);
+    $table = $_POST['dbName'];
+
+    // On supprimme la ligne de la bdd
+    $commentsUpdate = $db->query("UPDATE `$table` SET id='$id', id_film='$filmID', pseudo='$pseudo', commentaires='$comment', date='$date' WHERE id=$originalID");
+
+    if ($commentsUpdate) {
+        header("Location: ../admin.php");
+    } else {
+        echo "Failed to update the comment of ".$pseudo.", for the movie ID ".$originalID;
     }
 }

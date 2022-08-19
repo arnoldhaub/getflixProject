@@ -16,6 +16,13 @@ if (empty($_SESSION['email'])) {
 include "api/info.php";
 ?>
 
+<!-- SCRIPT - Masquer information GET dans URL -->
+<script>    
+    if(typeof window.history.pushState == 'function') {
+        window.history.pushState({}, "Hide", '<?php echo $_SERVER['PHP_SELF'];?>');
+    }
+</script>
+
 <!DOCTYPE html>
 
 <head>

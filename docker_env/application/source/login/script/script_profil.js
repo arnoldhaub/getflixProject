@@ -104,7 +104,6 @@ $(window).on('load', function () {
     console.log('window loaded');
     FadeOnlyIn($(".profile_select"));
     //$('#width_image').animate({ width: "70%" });
-    //$('.profil2').animate({ width: "70%" });
     //$('.profil3').animate({ width: "70%" });
     //$('.profil4').animate({ width: "70%" });
 

@@ -26,6 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link href="./styles/profil_select.css" rel="stylesheet">
+    <link href="./styles/media_queeries.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../images/favicon.svg">
     
 </head>
@@ -79,10 +80,10 @@
             <div class="profil_un" id="<?php echo $donnees['id_pseudo'] ?>">
                 <div class="image_profile" style="text-align: center;">
                     
-                    <a href='<?php  if($donnees['categorie'] == "enfant" ){ echo '../Home/kids.php';}else{ echo '../Home/home.php';}?>?id_pseudo=<?php echo $donnees["id_pseudo"] ?>&email=<?php echo $donnees["email"] ?>' id='<?php $a++; echo "redirectMe$a";?>'>
-                        <img class="profil1" src="<?php if(!empty($donnees['image'])){echo $donnees['image'];}else{echo '../images/user_pic/4.png';} ?>" alt="Profile image" style="cursor: pointer"></img>
+                    <a href='<?php  if($donnees['categorie'] == "enfant" ){ echo '../Home/kids.php';}else{ echo '../Home/home.php';}?>?id_pseudo=<?php echo $donnees["id_pseudo"] ?>&email=<?php echo $donnees["email"] ?>' id='<?php $a++; echo "redirectMe$a";?>' style='align-items: center; justify-content: center; margin: 0; display: flex;'>
+                        <img class="profil1" src="<?php if(!empty($donnees['image'])){echo $donnees['image'];}else{echo '../images/user_pic/4.png';} ?>" alt="Profile image" style="cursor: pointer; align-items: center; justify-content: center; margin: 0; display: flex;"></img>
                     </a>
-                    <a href='./edit_form.php?id_pseudo=<?php echo $donnees["id_pseudo"] ?>&email=<?php echo $donnees["email"] ?>' id='<?php $a++; echo "redirectMe$a";?>'>
+                    <a href='./edit_form.php?id_pseudo=<?php echo $donnees["id_pseudo"] ?>&email=<?php echo $donnees["email"] ?>' id='<?php $a++; echo "redirectMe$a";?>' style='align-items: center; justify-content: center; margin: 0; display: flex;'>
                         <img class="profil1" src="<?php if(!empty($donnees['image'])){echo $donnees['image'];}else{echo '../images/user_pic/4.png';} ?>" alt="Profile image" style="cursor: pointer"></img>
                     </a>
                     <svg class="test" version="1.1" id="<?php $i++; echo "Calque_$i";?>"  x="0px" y="0px" width="582.8px" height="582.8px" viewBox="0 0 582.8 582.8" style="enable-background:new 0 0 582.8 582.8;">
@@ -106,9 +107,9 @@
             <?php } ?>
             <?php if ($nbDePseudos[0] < 4){
              echo'  <div class="add_div">
-                      <div class="add_image">
-                            <img src="../images/add_button.svg">
-                      </div>
+                      
+                            <img src="../images/add_button.svg" >
+                      
                       <p class="name_User">New User</p>
                     </div>';
                     };
@@ -118,13 +119,15 @@
 
             <div id="container_form">
                  <div class="choose_your_image">
-                        <input type="radio" id="imageProfile" name="imageProfile" value="../images/user_pic/4.png" checked>
+                        <input type="radio" id="imageProfile" name="imageProfile" value="../images/user_pic/4.png" checked></input>
                         <img src="../images/user_pic/4.png" id="changeThis" alt="Profile's image" srcset="">
                     </div>
                        
                 <form action='' method="post" id="form_profil">
                    
-                    <input type="text" name="pseudo" placeholder="Add your pseudo"></input>
+                   
+                    <input type="text" name="pseudo" placeholder="" id="changePseudo"></input>
+                    
                     <select class="form-select" name="categorie">
                         <option value="" disabled selected hidden > Select your option</option>
                         <option value="adulte">Adulte</option>
@@ -132,10 +135,7 @@
                     </select>
                     <button type="submit" name="RegisterEnter" id="subButton">Submit</button>
                 </form>
-                <!-- <form action="" method="get">
-                    <a class="" href="profil_delete.php?id_pseudo=<?php echo $donnees['id_pseudo'] ?>&email=<?php echo $donnees['email'] ?>" style="">
-                        <button>Delete</button></a> 
-                    </form> -->
+                
             </div>
  
 
@@ -205,17 +205,15 @@
     </div>
 
     <div class="arrowBack" onclick="getBack()">
-            <svg version="1.1" id="Calque_1"   x="0px" y="0px"
-	         width="97.411px" height="97.68px" viewBox="0 0 97.411 97.68" enable-background="new 0 0 97.411 97.68" xml:space="preserve">
-			<g>
-				<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M54.735,74.105c0.674,0.674,1.744,0.674,2.418,0l2.418-2.418
-					c0.674-0.674,0.674-1.744,0-2.418L39.262,48.963L59.57,28.655c0.674-0.674,0.674-1.744,0-2.418l-2.418-2.418
-					c-0.674-0.674-1.744-0.674-2.418,0L30.808,47.746c-0.674,0.674-0.674,1.744,0,2.418L54.735,74.105z"/>
-				<path fill="none" stroke="#FFFFFF" stroke-width="6" stroke-miterlimit="10" d="M81.373,95.944H16.039
-					c-7.941,0-14.438-6.497-14.438-14.438V16.173c0-7.941,6.497-14.438,14.438-14.438h65.334c7.941,0,14.438,6.497,14.438,14.438
-					v65.334C95.81,89.447,89.313,95.944,81.373,95.944z"/>
-			</g>
-            </svg>
+            <svg version="1.1" id="Calque_1"  x="0px" y="0px"
+	 width="97.4px" height="97.7px" viewBox="0 0 97.4 97.7" style="enable-background:new 0 0 97.4 97.7;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+</style>
+<path class="st0" d="M54.7,74.1c0.7,0.7,1.7,0.7,2.4,0l2.4-2.4c0.7-0.7,0.7-1.7,0-2.4L39.3,49l20.3-20.3c0.7-0.7,0.7-1.7,0-2.4
+	l-2.4-2.4c-0.7-0.7-1.7-0.7-2.4,0L30.8,47.7c-0.7,0.7-0.7,1.7,0,2.4L54.7,74.1z"/>
+</svg>
+
 	</div>
 </body>
 <footer>

@@ -4,10 +4,6 @@
 session_start();
 $userEmail = $_SESSION['email'];
 
-if ($_GET['id_pseudo']) {
-    $_SESSION['pseudo'] = $_GET['id_pseudo'];
-}
-
 // On teste si la variable de session existe et contient une valeur
 if (empty($_SESSION['email'])) {
     // Si inexistante ou nulle, on redirige vers le formulaire de login
@@ -320,48 +316,46 @@ include "api/info.php";
 
                                         
         <div class="com_container">
-            <div class="container_comments_all">
-                <div class="container">
-                    <p class="title_slide_comments">Comments about "<?php echo $infoSerie->name; ?>"</p>
-                    <div class="swiper-container">
-                        <div class="swiper-wrapper">
-                            <?php
-                            foreach($comment as $comment){ 
-                                echo "<div class='swiper-slide' id='commentSwiper'>
-                            "?>
-                                                                                                  
-                                <div class="test">
-                                    <img src="../images/CN.jpg" id="UserCommentImage">
-                                    <div class="infos_comments">
-                                        <span class="pseudo">User</span>
-                                        <span><?= $comment['date'] ?></span>
-                                    </div>
-                                </div>   
+        <div class="container_comments_all">
+            <div class="container">
+                <p class="title_slide_comments">Comments about "<?php echo $infoSerie->name; ?>"</p>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <?php
+                        foreach ($comment as $comment) {
+                            echo "<div class='swiper-slide' id='commentSwiper'>";
+                        ?>
+                            <div class="test">
+                                <img src="<?php echo $pseudoActif[1] ?>" id="UserCommentImage">
+                                <div class="infos_comments">
+                                    <span class="pseudo"><?php echo $comment['pseudo'] ?></span>
+                                    <span><?= $comment['date'] ?></span>
+                                </div>
+                            </div>
 
-                                <div class="test2">
-                                    <p class="comment_itself">
-                                        <?= $comment['pseudo'], ' ' ,$comment['commentaires']; ?> 
-                                    </p>
-                                </div>
-                                                                        
-                                </div>
-                            <?php } ?>
-                        </div>
+                            <div class="test2">
+                                <p class="comment_itself">
+                                    <?= $comment['commentaires']; ?>
+                                </p>
+                            </div>
+
                     </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
-        
-        <div class="container_comment">
-            <p class="title_slide_comments">Post a review about "<?php echo $infoSerie->name; ?>"</p>
-                <div class="form_com">
-                                                            
-                    <form method="POST" id="formPost">
-                        <textarea type="text" placeholder="Share your opinion with others! (You  have 200 characters.)" name="commentaires" id="commentForm"></textarea></br>  
-                        <button type="submit">Post Comment</button>
-                    </form>
-                </div>
+    </div>
+
+    <div class="container_comment">
+        <p class="title_slide_comments"><?php echo $pseudoActif[0] ?> post a review about "<?php echo $infoSerie->name; ?>"</p>
+        <div class="form_com">
+            <form method="POST" id="formPost">
+                <input style="display:none" name="pseudo" value="<?php echo $pseudoActif[0] ?>">
+                <textarea type="text" placeholder="Share your opinion with others! (You  have 200 characters.)" name="commentaires" id="commentForm"></textarea></br>
+                <button type="submit">Post Comment</button>
+            </form>
         </div>
+    </div>
                                                  
              
 <!-----------------------------------------------------------------------
@@ -375,9 +369,11 @@ include "api/info.php";
             @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
         </style>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
         <script src="js/movie_preview_script.js"></script>
+        <script src="js/js_comment.js"></script>
         <script src="js/script.js"></script>
     </body>
 </html>

@@ -4,10 +4,6 @@
 session_start();
 $userEmail = $_SESSION['email'];
 
-if ($_GET['id_pseudo']) {
-    $_SESSION['pseudo'] = $_GET['id_pseudo'];
-}
-
 // On teste si la variable de session existe et contient une valeur
 if (empty($_SESSION['email'])) {
     // Si inexistante ou nulle, on redirige vers le formulaire de login
@@ -200,7 +196,7 @@ include "api/info.php";
     </div>
 
     <div class="container_comment">
-        <p class="title_slide_comments"><?php echo $pseudoActif[0] ?>Post a review about "<?php echo $infoMovie->title; ?>"</p>
+        <p class="title_slide_comments"><?php echo $pseudoActif[0] ?> post a review about "<?php echo $infoMovie->title; ?>"</p>
         <div class="form_com">
             <form method="POST" id="formPost">
                 <input style="display:none" name="pseudo" value="<?php echo $pseudoActif[0] ?>">

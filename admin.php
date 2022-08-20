@@ -14,7 +14,7 @@ if (empty($_SESSION['email'])) {
     exit();
 }
 else{
-    // FECTH data from DATABASE
+    // FECTH data || from DATABASE
     require('src/connect.php');
     $profilesDB = $db->query('SELECT * FROM profile  order by email asc');
     $usersDB = $db->query('SELECT * FROM user');
@@ -51,7 +51,24 @@ include "api/info.php";
     <div class="container_page">
         <h1>WEBSITE - Administration</h1>
     
+    <!-----------------------------------------------------------------------
+                     WEBSITE
+------------------------------------------------------------------------->
 
+        <div id="admin_menu" class="row  d-flex justify-content-around mb-3">
+            <div class="col text-center">
+            <button type="button" class="play video-btn" id="usersAdminInterface"><i class="fa-solid fa-users" id="fa-play"></i><br>Users' administration</button>
+            </div>
+            <div class="col text-center">
+            <button type="button" class="play video-btn" id="profilesAdminInterface"><i class="fa-solid fa-people-group"></i><br>Profiles' administration</button>
+        </div>
+            <div class="col text-center">
+            <button type="button" class="play video-btn" id="commentsAdminInterface"><i class="fa-solid fa-comments"></i><br>Comments' administration</button>
+        </div>
+
+
+
+        </div>
 
 <!-- ======================================================================
                                     Users - Administration
@@ -73,7 +90,7 @@ include "api/info.php";
                         <th scope="row"><?php echo $user['id']; ?></th>
                         <td><?php echo $user['email']; ?></td>
                         <td>
-                            <i class="fa fa-edit fa-2x" 
+                            <i class="fa fa-edit fa-xl" 
                             data-toggle="modal" 
                             data-target="#edit<?php echo $user['id']; ?>"> 
                             </i>
@@ -107,7 +124,7 @@ include "api/info.php";
                             
                         </td>
                         <td>
-                            <i class="fa fa-trash fa-2x text-danger" 
+                            <i class="fa fa-trash fa-xl text-danger" 
                             data-toggle="modal" 
                             data-target="#deleteUser<?php echo $user['id']; ?>"> 
                             </i>
@@ -133,7 +150,33 @@ include "api/info.php";
                     <?php }; ?>
                 </tbody>
                 <tfoot>
-                    <th class="text-center" colspan="100%">Add an user</th>
+                    <th class="text-center" colspan="100%">
+                        <button type="button" class="play video-btn" id="playButton" data-toggle="modal"  data-target="#addUser"><i class="fa-solid fa-user-plus" id="fa-play"></i> Add an user</button>
+                            <div class="modal fade" id="addUser" role="dialog">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-body bg-dark">
+                                            <form role="form" method="POST" action="admin/add.php">
+                                                <div class="form-group">
+                                                    <label for="password" class="col-form-label">User Mail</label>
+                                                    <input data-error="Address not correct" data-success="Perfect!"type="email" class="form-control validate text-center" name="userMail" id="userMail" placeholder="type an email here...">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="userMail" class="col-form-label">User Password</label>
+                                                    <input type="password" class="form-control validate text-center" name="password" id="password" placeholder="type a password here...">
+                                                </div>
+                                                <input type="hidden" id="dbName" name="dbName" value="user">
+                                                
+                                                <div class="modal-footer justify-content-center ">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                                                    <button type="submit" class="btn btn-success">Valider</button>
+                                                    </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </th>
                 </tfoot>
             </table>
     </div>
@@ -164,7 +207,7 @@ include "api/info.php";
                         <td><?php echo $profile['email']; ?></td>
                         <td><?php echo $profile['image']; ?></td>
                         <td>
-                            <i class="fa fa-edit fa-2x" 
+                            <i class="fa fa-edit fa-xl" 
                             data-toggle="modal" 
                             data-target="#editProfile<?php echo $profile['id_pseudo']; ?>"> 
                             </i>
@@ -218,7 +261,7 @@ include "api/info.php";
                             
                         </td>
                         <td>
-                            <i class="fa fa-trash fa-2x text-danger" 
+                            <i class="fa fa-trash fa-xl text-danger" 
                             data-toggle="modal" 
                             data-target="#deleteProfile<?php echo $profile['id_pseudo']; ?>"> 
                             </i>
@@ -244,7 +287,52 @@ include "api/info.php";
                     <?php }; ?>
                 </tbody>
                 <tfoot>
-                    <th class="text-center" colspan="100%">Add a profile</th>
+                    <th class="text-center" colspan="100%">
+                        <button type="button" class="play video-btn" id="playButton" data-toggle="modal"  data-target="#addProfile"><i class="fa-solid fa-user-group" id="fa-play"></i> Add a profile</button>
+                            <div class="modal fade" id="addProfile" role="dialog">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-body bg-dark">
+                                            <form role="form" method="POST" action="admin/add.php">
+                                                <div class="form-group">
+                                                    <?php $takeUsersMail = $db->query('SELECT email FROM user');?>
+                                                        <label for="mail" class="col-form-label">User Mail</label><br>
+                                                        <select class="form-control validate text-center" id="mail" name="mail">
+                                                            <option value="" disabled selected>Select an user email...</option>
+                                                            <?php foreach ($takeUsersMail as $takeUserMail) :?>
+                                                            <option  value="<?php echo $takeUserMail['email'] ?>"><?php echo $takeUserMail['email'] ?></option>
+                                                            <?php endforeach ?>
+                                                        </select>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="profilePseudo" class="col-form-label">Pseudo</label>
+                                                        <input type="text" class="form-control text-center" name="profilePseudo" id="profilePseudo" placeholder="type a pseudo here...">
+                                                    </div>
+                                                <div class="form-group">
+                                                        <label for="profileImage" class="col-form-label">Profile Image</label>
+                                                        <input type="text" class="form-control text-center" name="profileImage" id="profileImage" value="../images/user_pic/4.png">
+                                                </div>
+                                                <p>Catégorie</p>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="categorie" id="categorie1" value="enfant">
+                                                    <label class="form-check-label" for="categorie1">Enfant</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="categorie" id="categorie2" value="adulte">
+                                                    <label class="form-check-label" for="categorie2">Adulte</label>
+                                                </div>
+                                                <input type="hidden" id="dbName" name="dbName" value="profile">
+                                                
+                                                <div class="modal-footer justify-content-center ">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                                                    <button type="submit" class="btn btn-success">Valider</button>
+                                                    </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </th>
                 </tfoot>
             </table>
     </div>
@@ -275,7 +363,7 @@ include "api/info.php";
                         <td colspan="50%"><?php echo $comment['commentaires']; ?></td>
                         <td><?php echo $comment['date']; ?></td>
                         <td>
-                            <i class="fa fa-edit fa-2x" 
+                            <i class="fa fa-edit fa-xl" 
                             data-toggle="modal" 
                             data-target="#editComment<?php echo $comment['id']; ?>"> 
                             </i>
@@ -323,7 +411,7 @@ include "api/info.php";
                             
                         </td>
                         <td>
-                            <i class="fa fa-trash fa-2x text-danger" 
+                            <i class="fa fa-trash fa-xl text-danger" 
                             data-toggle="modal" 
                             data-target="#deleteComment<?php echo $comment['id']; ?>"> 
                             </i>
@@ -349,7 +437,47 @@ include "api/info.php";
                     <?php }; ?>
                 </tbody>
                 <tfoot>
-                    <th class="text-center" colspan="100%">Add a comment</th>
+                    <th class="text-center" colspan="100%">
+                        <button type="button" class="play video-btn" id="playButton" data-toggle="modal"  data-target="#addComment"><i class="fa-solid fa-comment" id="fa-play"></i> Add a comment</button>
+                            <div class="modal fade" id="addComment" role="dialog">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-body bg-dark">
+                                            <form role="form" method="POST" action="admin/add.php">
+                                                <div class="form-group">
+                                                    <label for="filmID" class="col-form-label">Film/Serie ID</label>
+                                                    <input type="number" class="form-control text-center" name="filmID" id="filmID" value="<?php echo $comment['id_film'];?>">
+                                                </div>
+                                                <div class="form-group">
+                                                        <?php $takeProfilesPseudo = $db->query('SELECT pseudo, email, id_pseudo FROM profile');?>
+                                                        <label for="pseudo" class="col-form-label">Profile Pseudo</label><br>
+                                                        <select class="form-control validate text-center" id="pseudo" name="pseudo">
+                                                            <option value="" disabled selected>Select a profile pseudo...</option>
+                                                            <?php foreach ($takeProfilesPseudo as $takeProfilePseudo) :?>
+                                                            <option  value="<?php echo $takeProfilePseudo['pseudo'] ?>"><?php echo $takeProfilePseudo['pseudo']." || from ". $takeProfilePseudo['email'] ?></option>
+                                                            <?php endforeach ?>
+                                                        </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="comment" class="col-form-label">Comment</label>
+                                                    <textarea type="text" class="form-control text-center" name="comment" id="comment" placeholder="type a message here..."></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date" class="col-form-label">Date</label>
+                                                    <input type="date" class="form-control text-center" name="date" id="date" value="<?= date('Y-m-d'); ?>" max="<?= date('Y-m-d'); ?>">
+                                                </div>
+                                                <input type="hidden" id="dbName" name="dbName" value="comments">
+                                                
+                                                <div class="modal-footer justify-content-center ">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                                                    <button type="submit" class="btn btn-success">Valider</button>
+                                                    </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </th>
                 </tfoot>
             </table>
     </div>
@@ -378,6 +506,7 @@ include "api/info.php";
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
+    <script src="js/admin.js"></script>
 </body>
 
 </html>

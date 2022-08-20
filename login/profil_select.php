@@ -23,7 +23,7 @@ if (!empty($_POST['pseudo'])) {
     $req = $db->prepare("INSERT INTO profile(pseudo, categorie, email, image) VALUES (?, ?, ?, ?)");
     $req->execute(array($pseudo, $categorie, $userEmail, $image));
 
-    header('location: profil_select_doublon.php');
+    header('location: profil_select.php');
 }
 
 ?>
@@ -85,7 +85,7 @@ if (!empty($_POST['pseudo'])) {
                 <div class="profil_un" id="<?php echo $donnees['id_pseudo'] ?>">
                     <div class="image_profile" style="text-align: center;">
 
-                        <a href='..home.php?id_pseudo=<?php echo $donnees["id_pseudo"]?>' id='<?php $a++; echo "redirectMe$a";?>' style='align-items: center; justify-content: center; margin: 0; display: flex;'>
+                        <a href='../home.php?id_pseudo=<?php echo $donnees["id_pseudo"]?>' id='<?php $a++; echo "redirectMe$a";?>' style='align-items: center; justify-content: center; margin: 0; display: flex;'>
                             <img class="profil1" src="<?php if(!empty($donnees['image'])){echo $donnees['image'];}else{echo '../images/user_pic/4.png';} ?>" alt="Profile image" style="cursor: pointer; align-items: center; justify-content: center; margin: 0; display: flex;"></img>
                         </a>
                         <a href='edit_form.php?id_pseudo=<?php echo $donnees["id_pseudo"] ?>' id='<?php $a++; echo "redirectMe$a";?>' style='align-items: center; justify-content: center; margin: 0; display: flex;'>
@@ -119,7 +119,6 @@ if (!empty($_POST['pseudo'])) {
 
             <div id="container_form">
                 <div class="choose_your_image">
-                    <input type="radio" id="imageProfile" name="imageProfile" value="../images/user_pic/4.png" checked></input>
                     <img src="../images/user_pic/4.png" id="changeThis" alt="Profile's image" srcset="">
                 </div>
 

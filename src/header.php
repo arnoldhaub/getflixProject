@@ -7,6 +7,7 @@
             <li><a href="home.php#ancre_serie">SERIES</a></li>
             <li><a href="home.php#ancre_film">FILMS</a></li>
             <li><a href="search.php">SEARCH</a></li>
+            <li><a href="admin.php">--- ADMIN</a></li>
         </ul>
 
         <ul class="nav_links_responsive">

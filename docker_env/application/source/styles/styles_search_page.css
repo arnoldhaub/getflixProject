@@ -1,0 +1,299 @@
+body{
+  background-color: none;
+}
+
+html{
+  height: 100%;
+  width: 100%;
+}
+
+
+/* ========================================== 
+
+         ↓↓↓↓  MENU DEROULANT CSS ↓↓↓↓↓
+
+============================================== */
+
+
+.container_menu{
+  display: flex;
+  flex-direction: column;
+  margin-left: 5vh;
+  background-color: none;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-right: 3vh;
+}
+
+.choix2, .choix3 , .choix4{
+  display: flex;
+  font-family: 'Inter';
+  font-size: 5rem;
+  cursor: pointer;
+  width: 30%;
+  margin:0px;
+  gap: 30px;
+  width: 100%;
+}
+
+#circle_selector, #circle_selector2, #circle_selector3 {
+  width: 30px;
+  opacity: 0%;
+}
+
+#circle_selected, #circle_selected2, #circle_selected3{
+  width: 30px;
+
+}
+
+
+
+.container_page{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+
+/* ========================================== 
+
+         ↑↑↑↑↑  MENU DEROULANT CSS ↑↑↑↑
+
+============================================== */
+
+
+
+
+/* ========================================== 
+
+   ↓↓↓↓  HIDING CHECK BUTTON AND LABEL INPUT ↓↓↓↓↓
+
+============================================== */
+
+.btn-check, label{
+  display: none;
+}
+
+
+/* ========================================== 
+
+  ↑↑↑↑↑ HIDING CHECK BUTTON AND LABEL INPUT ↑↑↑↑
+
+============================================== */
+
+
+.container-content{
+  align-items: baseline;
+  margin-right: 4vh;
+  width: 100%;
+}
+
+
+input[type=text]{
+  border: darkgray 2px solid;
+  border-radius: 50px;
+  text-align: left;
+  padding: 20px;
+  width: 800px; /* change this for the media queries */
+  margin-left: auto;
+  background-color: none;
+  background: none;
+  color: rgb(255, 255, 255);
+  height: 60px;
+  outline: none;
+  transition: width 2s;
+
+}
+
+input[type=text]:focus,input[type=text]:hover {
+  outline: white;
+  border: white 2px solid;
+}
+
+.wrapper_container_search{
+  display: flex;
+  position: relative;
+  right: 0;
+  width: 100%;
+}
+
+/* Search icon */
+.wrapper_container_search i{ 
+position: absolute; 
+right: 25px; 
+top: 23px;
+color: gray; 
+font-size: 1rem;
+} 
+/* Search icon */
+
+
+
+
+
+/* ========================================== 
+
+          ↓↓↓↓  SLIDER SEARCH ↓↓↓↓↓
+
+============================================== */
+
+
+.container {
+margin: 0px;
+margin-top: 0px;
+padding: 0px;
+
+}
+.swiper-container {
+  overflow: visible;
+  margin:0;
+  padding: 0;
+
+}
+.swiper-wrapper{
+display: flex;
+flex-direction: row;
+margin-left: 4vh;
+margin-bottom: 5vh;
+}
+
+
+
+.swiper-slide {
+  transition: all 105ms ease-out;
+  border-radius: 15px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  margin-bottom: 1vh;
+  margin: 0;
+  
+}
+
+
+.swiper-slide img {
+  border-radius: 5px;
+  cursor: grab;
+  width: 100%;
+  height: 100%;
+  border: solid 0.1px rgba(255, 255, 255, 0);
+  margin: 0;
+  object-fit: contain;
+}
+
+
+
+
+#nbr {
+  margin-left: 4.3vh;
+}
+
+/* slider SEARCH */
+
+
+/* slider moovie/serie */
+/* slider moovie/serie */
+/* slider moovie/serie */
+
+#first-swiper{
+  padding: 0px;
+  border-radius: 5px;
+  cursor: grab;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: contain;
+}
+
+
+#first-swiper img{
+    width: 8rem;
+}
+
+
+
+
+@media screen and (max-width: 1900px){
+#first-swiper img{width: 12rem;}
+}
+
+
+@media screen and (max-width: 1500px){
+#first-swiper img{width: 14rem;}
+}
+
+@media screen and (max-width: 1200px){
+#first-swiper img{width: 13rem;}
+}
+@media screen and (max-width: 1024px){
+#first-swiper img{width: 11rem;}
+}
+
+@media screen and (max-width: 1000px){
+#first-swiper img{width: 11rem;}
+}
+
+
+@media screen and (max-width: 900px){
+#first-swiper img{width: 9.5rem;}
+}
+
+@media screen and (max-width: 855px){
+#first-swiper img{width: 9.5rem;}
+}
+@media screen and (max-width: 770px){
+#first-swiper img{width: 8.5rem;}
+}
+@media screen and (max-width: 741px){
+#first-swiper img{width: 7rem;}
+}
+
+@media screen and (max-width: 587px){
+#first-swiper img{width: 6.5rem;}
+}
+
+@media screen and (max-width: 489px){
+#first-swiper img{width: 6rem;}
+}
+
+@media screen and (max-width: 450px){
+#first-swiper img{width: 8rem;}
+}
+
+@media screen and (max-width: 430px){
+#first-swiper img{width: 7rem;}
+}
+
+
+/* slider moovie/serie */
+/* slider moovie/serie */
+/* slider moovie/serie */
+
+/* CSS GUILLAUME */
+/* header */
+#listePseudos{
+  padding-right: 1.5rem;
+  padding-left: 2rem;
+  display: none;
+  position: absolute;
+  width: auto;
+  height: auto;
+  float: left;
+  top: 3rem;
+  right: 1.5rem;
+  z-index: 1;
+  background-color:black;
+  opacity: 0.7;
+  padding-top: 1.5rem;
+  border-radius: 5%;
+  background-color: black;
+  overflow:visible;
+}
+ 
+#sectionUser
+{
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+}

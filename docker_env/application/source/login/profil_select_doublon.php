@@ -133,7 +133,7 @@
                         <option value="adulte">Adulte</option>
                         <option value="enfant">Enfant</option>
                     </select>
-                    <button type="submit" name="RegisterEnter" id="subButton">Submit</button>
+                    <button type="submit" name="RegisterEnter" id="subButton">Create New User</button>
                 </form>
                 
             </div>
@@ -206,13 +206,13 @@
 
     <div class="arrowBack" onclick="getBack()">
             <svg version="1.1" id="Calque_1"  x="0px" y="0px"
-	 width="97.4px" height="97.7px" viewBox="0 0 97.4 97.7" style="enable-background:new 0 0 97.4 97.7;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
-</style>
-<path class="st0" d="M54.7,74.1c0.7,0.7,1.7,0.7,2.4,0l2.4-2.4c0.7-0.7,0.7-1.7,0-2.4L39.3,49l20.3-20.3c0.7-0.7,0.7-1.7,0-2.4
-	l-2.4-2.4c-0.7-0.7-1.7-0.7-2.4,0L30.8,47.7c-0.7,0.7-0.7,1.7,0,2.4L54.7,74.1z"/>
-</svg>
+            	 width="97.4px" height="97.7px" viewBox="0 0 97.4 97.7" style="enable-background:new 0 0 97.4 97.7;" xml:space="preserve">
+            <style type="text/css">
+            	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+            </style>
+            <path class="st0" d="M54.7,74.1c0.7,0.7,1.7,0.7,2.4,0l2.4-2.4c0.7-0.7,0.7-1.7,0-2.4L39.3,49l20.3-20.3c0.7-0.7,0.7-1.7,0-2.4
+            	l-2.4-2.4c-0.7-0.7-1.7-0.7-2.4,0L30.8,47.7c-0.7,0.7-0.7,1.7,0,2.4L54.7,74.1z"/>
+            </svg>
 
 	</div>
 </body>

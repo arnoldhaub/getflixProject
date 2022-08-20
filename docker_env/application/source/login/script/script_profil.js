@@ -33,10 +33,31 @@ $('.add_div').click(function () {
     $('.profil_un').hide();
     $('#edit').hide();
 
-
-    
-    
+    function hidingTXTQuery(x) {
+           
+                if (x.matches) {
+                    $('h1').hide();
+                    console.log("test passed");
+                    //$('#subButton').click(function () {
+                    //    $('h1').show();
+                    //});
+                } else {
+                    console.log("test not passed")
+                }
+       
+                
+            }
+    var x = window.matchMedia("(max-width: 375px)"); // mediaQuery iPhone Se
+    hidingTXTQuery(x);
+    x.addEventListener(hidingTXTQuery);   
 });
+
+
+$('.row_images').click(function () { //hide le h1 quand on selectionne une image dans le AddUser
+    $('h1').hide();
+});
+
+
 function getBack(){
     $('.arrowBack').click(function () {
         location.reload(true);
@@ -141,9 +162,7 @@ $('#changeThis').click(function () {
     $('h1').hide()
     $('#container_form').hide();
     $('#container_form_images').show();
-    $('#LetMeOut').show();
 
-    
 
 });
 
@@ -151,16 +170,41 @@ $('#containerImages').click(function () {
     document.querySelector("h1").textContent="Who are you ?";
     var checked = document.querySelector('input[name="brandtype"]:checked').value;
     document.getElementById("changeThis").src=checked;
-    document.getElementById("imageProfile").value=checked;
-    $('h1').show();
+    document.getElementById("imageProfile").value = checked;
     $('#container_form').show();
     $('#container_form_images').hide();
     $('#LetMeOut').hide();
-
-
+    
+     function hidingTXTQuery(x) {
+           
+                if (x.matches) {
+                    $('h1').hide();
+                    console.log("test passed for h1");
+                    //$('#subButton').click(function () {
+                    //    $('h1').show();
+                    //});
+                } else {
+                    $('h1').show();
+                    console.log("test not passed")
+                }
+       
+                
+            }
+    var x = window.matchMedia('(max-width: 375px)'); // mediaQuery iPhone Se
+    hidingTXTQuery(x);
+    x.addEventListener(hidingTXTQuery);   
+    
+    
+    
 });
 
 
 
 
  
+    
+       
+
+//iPhone SE queries for profil_select
+
+

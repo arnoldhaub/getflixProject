@@ -508,7 +508,13 @@ text-align: center;
     .profile_select{margin-left: 4vh;
     margin-right: 4vh;}
     .name_User{font-size: 0.8rem;}
-    #container_form{flex-direction: column;}
-    #form_profil input{width: 100%;}
-    .profile_select{height:100px;}
-    }
+    #container_form{flex-direction: column; margin-left: 4vh; margin-right: 4vh;}
+ #form_profil input{width: 100%;}
+ .profile_select{height:200px;}
+ #edit{width: 300px;}
+ #changeThis{width: 100px;}
+ .choose_your_image{padding:20px 0 20px 0;}
+ #form_profil{width: 250px; padding: 0px 20px 20px 20px; gap: 20px;}
+ .row_images img{width: 100px;}
+ #container_form_images{border: none; width: auto}
+ }

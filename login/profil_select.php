@@ -33,6 +33,7 @@ if (!empty($_POST['pseudo'])) {
     <title>NOVA · Select a profile</title>
     <?php include "../src/head_meta_tags.php"; ?>
     <link href="styles/profil_select.css" rel="stylesheet">
+    <link href="./styles/media_queeries.css" rel="stylesheet">
 
 </head>
 
@@ -84,41 +85,24 @@ if (!empty($_POST['pseudo'])) {
                 <div class="profil_un" id="<?php echo $donnees['id_pseudo'] ?>">
                     <div class="image_profile" style="text-align: center;">
 
-                        <a href='<?php if ($donnees['categorie'] == "enfant") {
-                                        echo '../home_kids.php';
-                                    } else {
-                                        echo '../home.php';
-                                    } ?>?id_pseudo=<?php echo $donnees["id_pseudo"] ?>' id='<?php $a++;
-                                                                                            echo "redirectMe$a"; ?>'>
-                            <img class="profil1" src="<?php if (!empty($donnees['image'])) {
-                                                            echo $donnees['image'];
-                                                        } else {
-                                                            echo '../images/user_pic/4.png';
-                                                        } ?>" alt="Profile image" style="cursor: pointer"></img>
+                        <a href='..home.php?id_pseudo=<?php echo $donnees["id_pseudo"]?>' id='<?php $a++; echo "redirectMe$a";?>' style='align-items: center; justify-content: center; margin: 0; display: flex;'>
+                            <img class="profil1" src="<?php if(!empty($donnees['image'])){echo $donnees['image'];}else{echo '../images/user_pic/4.png';} ?>" alt="Profile image" style="cursor: pointer; align-items: center; justify-content: center; margin: 0; display: flex;"></img>
                         </a>
-                        <a href='edit_form.php?id_pseudo=<?php echo $donnees["id_pseudo"] ?>' id='<?php $a++;
-                                                                                                    echo "redirectMe$a"; ?>'>
-                            <img class="profil1" src="<?php if (!empty($donnees['image'])) {
-                                                            echo $donnees['image'];
-                                                        } else {
-                                                            echo '../images/user_pic/4.png';
-                                                        } ?>" alt="Profile image" style="cursor: pointer"></img>
+                        <a href='edit_form.php?id_pseudo=<?php echo $donnees["id_pseudo"] ?>' id='<?php $a++; echo "redirectMe$a";?>' style='align-items: center; justify-content: center; margin: 0; display: flex;'>
+                            <img class="profil1" src="<?php if(!empty($donnees['image'])){echo $donnees['image'];}else{echo '../images/user_pic/4.png';} ?>" alt="Profile image" style="cursor: pointer"></img>
                         </a>
-                        <svg class="test" version="1.1" id="<?php $i++;
-                                                            echo "Calque_$i"; ?>" x="0px" y="0px" width="582.8px" height="582.8px" viewBox="0 0 582.8 582.8" style="enable-background:new 0 0 582.8 582.8;">
-                            <style type="text/css">
-                                .st0 {
-                                    fill: #FFFFFF;
-                                }
-                            </style>
-                            <path class="st0" d="M52.5,403.9l-7.3,80.6c-1.1,12.5,3,24.9,11.5,34.1c8.5,9.3,20.4,14.5,32.9,14.5c1.3,0,2.7,0,4.1-0.2l80.6-7.3h0
+                        <svg class="test" version="1.1" id="<?php $i++; echo "Calque_$i";?>"  x="0px" y="0px" width="582.8px" height="582.8px" viewBox="0 0 582.8 582.8" style="enable-background:new 0 0 582.8 582.8;">
+                        <style type="text/css">
+                            .st0{fill:#FFFFFF;}
+                        </style>
+                        <path class="st0"   d="M52.5,403.9l-7.3,80.6c-1.1,12.5,3,24.9,11.5,34.1c8.5,9.3,20.4,14.5,32.9,14.5c1.3,0,2.7,0,4.1-0.2l80.6-7.3h0
                                             c21.4-1.9,41.3-11.3,56.5-26.5L438,292l78.5-78.4c13.6-13.6,21.2-32,21.2-51.2c0-19.2-7.6-37.6-21.2-51.2l-49.4-49.4
                                             c-13.6-13.6-32-21.2-51.2-21.2c-19.2,0-37.6,7.6-51.2,21.2l-78.4,78.4L79,347.3C63.8,362.5,54.4,382.5,52.5,403.9L52.5,403.9z
                                             M405.6,102.6c2.7-2.7,6.4-4.2,10.2-4.2c3.8,0,7.5,1.5,10.3,4.2l49.4,49.4c2.7,2.7,4.2,6.4,4.2,10.3c0,3.8-1.5,7.5-4.2,10.2
                                             L438,209.9l-69.9-69.9L405.6,102.6z M110.2,409.1c0.7-7.9,4.2-15.2,9.7-20.8l207.2-207.2L397,251L189.8,458.2
-                                            c-5.6,5.6-12.9,9-20.8,9.7l-64.7,5.9L110.2,409.1z" />
-
-                        </svg> <!-- pen svg for editing -->
+                                            c-5.6,5.6-12.9,9-20.8,9.7l-64.7,5.9L110.2,409.1z"/>
+                                                            
+                    </svg> <!-- pen svg for editing -->
 
 
                     </div>
@@ -127,23 +111,21 @@ if (!empty($_POST['pseudo'])) {
             <?php } ?>
             <?php if ($nbDePseudos[0] < 4){
               echo'  <div class="add_div">
-                       <div class="add_image">
-                             <img src="../images/add_button.svg">
-                       </div>
-                       <p class="name_User">New User</p>
+                        <img src="../images/add_button.svg" >
+                        <p class="name_User">New User</p>
                      </div>';
                      };
              ?>    
 
             <div id="container_form">
-
                 <div class="choose_your_image">
-                        <img src="../images/user_pic/4.png" id="changeThis" alt="Profile's image" srcset="">
-                    </div>
+                    <input type="radio" id="imageProfile" name="imageProfile" value="../images/user_pic/4.png" checked></input>
+                    <img src="../images/user_pic/4.png" id="changeThis" alt="Profile's image" srcset="">
+                </div>
 
                 <form action='' method="post" id="form_profil">
                     <input type="radio" id="imageProfile" name="imageProfile" value="../images/user_pic/4.png" checked>
-                    <input type="text" name="pseudo" placeholder="Add your pseudo"></input>
+                    <input type="text" name="pseudo" placeholder="" id="changePseudo"></input>
                     <select class="form-select" name="categorie">
                         <option value="" disabled selected hidden> Select your option</option>
                         <option value="adulte">Adulte</option>
@@ -218,20 +200,15 @@ if (!empty($_POST['pseudo'])) {
         ?>
 
         <div class="arrowBack" onclick="getBack()">
-            <svg version="1.1" id="Calque_1"   x="0px" y="0px"
- 	         width="97.411px" height="97.68px" viewBox="0 0 97.411 97.68" enable-background="new 0 0 97.411 97.68" xml:space="preserve">
-                <g>
-                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M54.735,74.105c0.674,0.674,1.744,0.674,2.418,0l2.418-2.418
-                        c0.674-0.674,0.674-1.744,0-2.418L39.262,48.963L59.57,28.655c0.674-0.674,0.674-1.744,0-2.418l-2.418-2.418
-                        c-0.674-0.674-1.744-0.674-2.418,0L30.808,47.746c-0.674,0.674-0.674,1.744,0,2.418L54.735,74.105z"/>
-                    <path fill="none" stroke="#FFFFFF" stroke-width="6" stroke-miterlimit="10" d="M81.373,95.944H16.039
-                        c-7.941,0-14.438-6.497-14.438-14.438V16.173c0-7.941,6.497-14.438,14.438-14.438h65.334c7.941,0,14.438,6.497,14.438,14.438
-                        v65.334C95.81,89.447,89.313,95.944,81.373,95.944z"/>
-                </g>
+             <svg version="1.1" id="Calque_1"  x="0px" y="0px"
+ 	            width="97.4px" height="97.7px" viewBox="0 0 97.4 97.7" style="enable-background:new 0 0 97.4 97.7;" xml:space="preserve">
+                <style type="text/css">
+ 	                .st0{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+                </style>
+                <path class="st0" d="M54.7,74.1c0.7,0.7,1.7,0.7,2.4,0l2.4-2.4c0.7-0.7,0.7-1.7,0-2.4L39.3,49l20.3-20.3c0.7-0.7,0.7-1.7,0-2.4
+ 	            l-2.4-2.4c-0.7-0.7-1.7-0.7-2.4,0L30.8,47.7c-0.7,0.7-0.7,1.7,0,2.4L54.7,74.1z"/>
             </svg>
  	    </div>
-
-        </div>
 </body>
 <footer>
     <div class="disclaimer">

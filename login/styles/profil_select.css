@@ -51,7 +51,7 @@ h1 {
 
 
 
-#form_profil input[type="text"], .form-select{
+.form-select{
     padding: 10px;
     background: transparent;
     border: 1px solid white;
@@ -132,9 +132,32 @@ which fucking pissed me off for like an hour fucking select icon */
     color: white;
     outline: none;
     border: 2px solid white;
-    border-radius: 7px;
+    border-radius: 100px;
     width: 100%;
-}
+    font-family: 'Circular';
+     text-transform: uppercase;
+ }
+
+ #subButton:hover{
+     background-color: white;
+     color: rgb(0, 0, 0);
+
+ }
+
+ #changePseudo{
+     padding: 0;
+     color: white;
+     outline: none;
+     border-radius: 7px;
+     background: transparent;
+     border: 1px solid white;
+     padding-top: 10px;
+     padding-bottom: 10px;
+     text-indent: 10px;
+     ;
+
+ }
+
 
 #delButton{
     padding: 10px;
@@ -239,7 +262,10 @@ input[type="radio"][name="brandtype"], input[type="radio"][name="imageProfile"]{
 
 
 /* profil image */
-.profil1, .image_profile a{
+.profil1 img{
+    align-items: center;
+}
+.profil1 {
     display: flex;
     border-radius: 120px;
     width: 90%; /* change this for the width */
@@ -247,8 +273,8 @@ input[type="radio"][name="brandtype"], input[type="radio"][name="imageProfile"]{
     position: relative;
     z-index: 0;
     margin-right: 0;
+    align-items: center;
 }
-
 .add_div img{
     display: flex;
     border-radius: 120px;
@@ -262,6 +288,7 @@ input[type="radio"][name="brandtype"], input[type="radio"][name="imageProfile"]{
 .add_div {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .add_image{
@@ -292,6 +319,10 @@ display: none;
     padding: 10px;
 }
 
+
+a#redirectMe2, a#redi{
+    display: none;
+    }
 
 
 
@@ -356,10 +387,12 @@ display: none;
     padding: 15px;
     background: none;
     border: 1px solid white;
-    border-radius: 7px;
+    border-radius: 200px;
     color: white;
     outline: none;
     width: 120px;
+    font-family: 'Circular';
+    text-transform: uppercase;
 }
 
 .modif_button:hover{
@@ -367,11 +400,6 @@ background-color: white;
 color: black;
 cursor: pointer;
 }
-
-#buttonAdd.buttonAdd {
-}
-
-
 
 /* ADDITION CSS FOR EDIT_FORM.PHP */
 #container_form_edit{
@@ -457,6 +485,8 @@ padding: 30px;
 
 
 
+
+
 /* ADDITION CSS FOR EDIT_FORM.PHP */
 
 
@@ -467,3 +497,18 @@ padding: 30px;
 text-align: center;
 }
 /* FOOTER */
+
+
+@media screen and (max-width: 375px){
+    #Calque_1.test{max-width: 50px;}
+    #Calque_2.test{max-width: 50px;}
+    #Calque_3.test{max-width: 50px;}
+    #Calque_4.test{max-width: 50px;}
+    #Calque_5.test{max-width: 50px;}
+    .profile_select{margin-left: 4vh;
+    margin-right: 4vh;}
+    .name_User{font-size: 0.8rem;}
+    #container_form{flex-direction: column;}
+    #form_profil input{width: 100%;}
+    .profile_select{height:100px;}
+    }

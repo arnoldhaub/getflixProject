@@ -1,0 +1,50 @@
+#admin_menu {
+  padding: 3vh 0;
+}
+
+.container_page {
+  margin-left: 3.4vh;
+  margin-right: 3.4vh;
+}
+.play {
+  padding: 10px;
+  width: 250px;
+  border-radius: 7px;
+  border: none;
+  background-color: white;
+  outline: 1px solid white;
+  color: #27242b;
+  cursor: pointer;
+  text-align: center;
+}
+
+.play:hover {
+  opacity: 0.9;
+}
+
+.fa-admin {
+  color: #27242b;
+  margin-right: 10px;
+}
+
+.fa-admin:hover {
+  color: white;
+}
+
+
+
+
+.add {
+  padding: 10px;
+  width: 250px;
+  border-radius: 7px;
+  border: none;
+  background-color: #27242b;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+.add:hover {
+  opacity: 0.8;
+}

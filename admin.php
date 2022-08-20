@@ -35,6 +35,7 @@ include "api/info.php";
     <title>NOVA · Administration</title>
     <?php include "src/head_meta_tags.php"; ?>
     <link href="styles/styles_home.css" rel="stylesheet">
+    <link href="styles/styles_admin.css" rel="stylesheet">
 </head>
 <body>
 
@@ -49,25 +50,21 @@ include "api/info.php";
                      WEBSITE
 ------------------------------------------------------------------------->
     <div class="container_page">
-        <h1>WEBSITE - Administration</h1>
     
-    <!-----------------------------------------------------------------------
-                     WEBSITE
-------------------------------------------------------------------------->
+<!-- ======================================================================
+                                    MENU - Administration
+        //======================================================================-->
 
-        <div id="admin_menu" class="row  d-flex justify-content-around mb-3">
+        <div id="admin_menu" class="row  d-flex justify-content-around my-4">
             <div class="col text-center">
-            <button type="button" class="play video-btn" id="usersAdminInterface"><i class="fa-solid fa-users" id="fa-play"></i><br>Users' administration</button>
+                <button type="button" class="play video-btn" id="usersAdminInterface"><i class="fa-solid fa-users fa-admin "></i><br>Users' administration</button>
             </div>
             <div class="col text-center">
-            <button type="button" class="play video-btn" id="profilesAdminInterface"><i class="fa-solid fa-people-group"></i><br>Profiles' administration</button>
-        </div>
+                <button type="button" class="play video-btn" id="profilesAdminInterface"><i class="fa-solid fa-people-group fa-admin"></i><br>Profiles' administration</button>
+            </div>
             <div class="col text-center">
-            <button type="button" class="play video-btn" id="commentsAdminInterface"><i class="fa-solid fa-comments"></i><br>Comments' administration</button>
-        </div>
-
-
-
+                <button type="button" class="play video-btn" id="commentsAdminInterface"><i class="fa-solid fa-comments fa-admin"></i><br>Comments' administration</button>
+            </div>
         </div>
 
 <!-- ======================================================================
@@ -90,7 +87,7 @@ include "api/info.php";
                         <th scope="row"><?php echo $user['id']; ?></th>
                         <td><?php echo $user['email']; ?></td>
                         <td>
-                            <i class="fa fa-edit fa-xl" 
+                            <i class="fa fa-edit fa-xl text-warning" 
                             data-toggle="modal" 
                             data-target="#edit<?php echo $user['id']; ?>"> 
                             </i>
@@ -151,7 +148,7 @@ include "api/info.php";
                 </tbody>
                 <tfoot>
                     <th class="text-center" colspan="100%">
-                        <button type="button" class="play video-btn" id="playButton" data-toggle="modal"  data-target="#addUser"><i class="fa-solid fa-user-plus" id="fa-play"></i> Add an user</button>
+                        <button type="button" class="add" id="addUserButton" data-toggle="modal"  data-target="#addUser"><i class="fa-solid fa-user-plus"></i> Add an user</button>
                             <div class="modal fade" id="addUser" role="dialog">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
@@ -207,7 +204,7 @@ include "api/info.php";
                         <td><?php echo $profile['email']; ?></td>
                         <td><?php echo $profile['image']; ?></td>
                         <td>
-                            <i class="fa fa-edit fa-xl" 
+                            <i class="fa fa-edit fa-xl text-warning" 
                             data-toggle="modal" 
                             data-target="#editProfile<?php echo $profile['id_pseudo']; ?>"> 
                             </i>
@@ -288,7 +285,7 @@ include "api/info.php";
                 </tbody>
                 <tfoot>
                     <th class="text-center" colspan="100%">
-                        <button type="button" class="play video-btn" id="playButton" data-toggle="modal"  data-target="#addProfile"><i class="fa-solid fa-user-group" id="fa-play"></i> Add a profile</button>
+                        <button type="button" class="add" id="addProfileButton" data-toggle="modal"  data-target="#addProfile"><i class="fa-solid fa-user-group"></i> Add a profile</button>
                             <div class="modal fade" id="addProfile" role="dialog">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
@@ -363,7 +360,7 @@ include "api/info.php";
                         <td colspan="50%"><?php echo $comment['commentaires']; ?></td>
                         <td><?php echo $comment['date']; ?></td>
                         <td>
-                            <i class="fa fa-edit fa-xl" 
+                            <i class="fa fa-edit fa-xl text-warning" 
                             data-toggle="modal" 
                             data-target="#editComment<?php echo $comment['id']; ?>"> 
                             </i>
@@ -438,7 +435,7 @@ include "api/info.php";
                 </tbody>
                 <tfoot>
                     <th class="text-center" colspan="100%">
-                        <button type="button" class="play video-btn" id="playButton" data-toggle="modal"  data-target="#addComment"><i class="fa-solid fa-comment" id="fa-play"></i> Add a comment</button>
+                        <button type="button" class="add" id="addCommentButton" data-toggle="modal"  data-target="#addComment"><i class="fa-solid fa-comment"></i> Add a comment</button>
                             <div class="modal fade" id="addComment" role="dialog">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">

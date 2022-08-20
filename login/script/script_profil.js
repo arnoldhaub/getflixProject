@@ -13,6 +13,7 @@ $('#redirectMe2').hide();
 $('#redirectMe4').hide();
 $('#redirectMe6').hide();
 $('#redirectMe8').hide();
+$('.add_div').hide();
 
 
 
@@ -25,10 +26,10 @@ $('#redirectMe8').hide();
 
 
 
-$('#addButton').click(function () { 
-    $('h1').hide();///appeaars when there's no account
+$('.add_div').click(function () {
+    $('h1').html('Whats your name?');///appeaars when there's no account
     $('#container_form').show();
-    $('#addButton').hide();
+    $('.add_div').hide();
     $('.profil_un').hide();
     $('#edit').hide();
 
@@ -37,11 +38,7 @@ $('#addButton').click(function () {
 });
 function getBack(){
     $('.arrowBack').click(function () {
-         $('h1').show()
-        $('#container_form').hide();
-        $('#addButton').show();
-        $('.profil_un').show();
-        $('#edit').show();
+        location.reload(true);
     });
 }
 
@@ -52,6 +49,7 @@ $(document).ready(function () {
    var clickInstance = 0;
     $('#edit').click(function () {
         if (clickInstance % 2 == 0) {
+            $('.add_div').show();
             $('#Calque_1.test').show();
             $('#Calque_2.test').show();
             $('#Calque_3.test').show();
@@ -69,7 +67,7 @@ $(document).ready(function () {
             
 
 
-            $('#addButton').show();
+            
             clickInstance++;
             console.log(clickInstance);
             
@@ -139,7 +137,8 @@ $('#container_form_images').hide();
 
 $('#changeThis').click(function () {
 
-    document.querySelector("h1").textContent="Choose a profile picture";
+    document.querySelector("h1").textContent = "Choose a profile picture";
+     $('h1').hide()
     $('#container_form').hide();
     $('#container_form_images').show();
     $('#LetMeOut').show();
@@ -154,6 +153,7 @@ $('#containerImages').click(function () {
     document.getElementById("changeThis").src=checked;
     document.getElementById("imageProfile").value=checked;
 
+    $('h1').show();
     $('#container_form').show();
     $('#container_form_images').hide();
     $('#LetMeOut').hide();

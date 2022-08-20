@@ -1,8 +1,6 @@
-
-
-
 $('#container_form_images').hide();
 $('#LetMeOut').hide();
+$('.svg_red_delete').hide();
 
 
 $('#changeThis').click(function () {
@@ -10,8 +8,7 @@ $('#changeThis').click(function () {
     $('#container_form_edit').hide();
     $('#container_form_images').show();
     $('#LetMeOut').show();
-
-    
+    $('#delButton').hide();
 
 });
 
@@ -31,8 +28,26 @@ $('#containerImages').click(function () {
     $('#container_form_edit').show();
     $('#container_form_images').hide();
     $('#LetMeOut').hide();
-
+    $('#delButton').show();
 
 });
+
+$(document).ready(function () {
+
+    $("#delButton").hover(
+        //MOUSE IN
+        function () {
+            $('.svg_red_delete').show();
+            $('.svg_white_delete').hide();
+        },
+
+        // MOUSE OUT
+        function () {
+            $('.svg_red_delete').hide();
+            $('.svg_white_delete').show();
+
+        });
+
+}); 
 
 

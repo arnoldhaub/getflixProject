@@ -83,9 +83,16 @@ if (!empty($_GET['id_pseudo'])) {
 
         </div>
 
-        <a class="" href="profil_delete.php?id_pseudo=<?php echo $infosProfil['id_pseudo'] ?>" style="">
-            <button>Delete</button>
-        </a>
+        <a class="" href="profil_delete.php?id_pseudo=<?php echo $infosProfil['id_pseudo'] ?>&email=<?php echo $infosProfil['email'] ?>" style="">
+             <button id="delButton">
+                <div class="svg_white_delete">
+                    <img class="X_WHITE" src="../images/X.svg" alt="delete your profile">
+                </div>
+                <div class="svg_red_delete">
+                    <img class="X_RED" src='../images/X_red.svg' alt="delete your profile">
+                </div>
+             </button>
+        </a>    
 
 
         <div id="container_form_images">
@@ -158,8 +165,6 @@ if (!empty($_GET['id_pseudo'])) {
             </form>
 
         </div>
-
-        <button id="LetMeOut">Let Me Out</button>
 
 
 

@@ -125,6 +125,15 @@ if (!empty($_POST['pseudo'])) {
                     <p class="name_User"><?php echo $donnees['pseudo'] ?></p>
                 </div>
             <?php } ?>
+            <?php if ($nbDePseudos[0] < 4){
+              echo'  <div class="add_div">
+                       <div class="add_image">
+                             <img src="../images/add_button.svg">
+                       </div>
+                       <p class="name_User">New User</p>
+                     </div>';
+                     };
+             ?>    
 
             <div id="container_form">
 
@@ -199,9 +208,6 @@ if (!empty($_POST['pseudo'])) {
             <?php
             if ($nbDePseudos[0] > 0) {
                 echo    '<button class="modif_button" label="edit" id="edit">Edit</button> ';
-                if ($nbDePseudos[0] < 4) {
-                    echo '<button class="modif_button" label="edit" id="addButton">Add</button>';
-                }
             };
             ?>
         </div>

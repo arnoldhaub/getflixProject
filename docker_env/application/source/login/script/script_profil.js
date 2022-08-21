@@ -26,31 +26,9 @@ $('.add_div').hide();
 
 
 
-$('.add_div').click(function () {
-    $('h1').html('Whats your name?');///appeaars when there's no account
-    $('#container_form').show();
-    $('.add_div').hide();
-    $('.profil_un').hide();
-    $('#edit').hide();
-
-    function hidingTXTQuery(x) {
-
-        if (x.matches) {
-            $('h1').hide();
-            console.log("test passed");
-            //$('#subButton').click(function () {
-            //    $('h1').show();
-            //});
-        } else {
-            console.log("test not passed")
-        }
 
 
-    }
-var x = window.matchMedia("(max-width: 375px)"); // mediaQuery iPhone Se
-hidingTXTQuery(x);
-x.addEventListener(hidingTXTQuery);   
-});
+
 
 
 $('.row_images').click(function () { //hide le h1 quand on selectionne une image dans le AddUser
@@ -200,7 +178,55 @@ $('#containerImages').click(function () {
 
 
 
+$('.add_div').click(function () {
+    $('h1').html('Whats your name?');///appeaars when there's no account
+    $('#container_form').show();
+    $('.add_div').hide();
+    $('.profil_un').hide();
+    $('#edit').hide();
 
+    function hidingTXTQuerySecond(y) {
+        if (y.matches) {
+            $('h1').hide();
+            console.log("test passed XR Query Hiding H1");
+        } else {
+            console.log("test not passed")
+        }
+    }
+
+var y = window.matchMedia("(max-width: 875px)");
+hidingTXTQuerySecond(y);
+y.addEventListener(hidingTXTQuerySecond); // media query iPhone XR
+  
+});
+
+// fONCTION APPEAR ONLY WHEN NO USER AT ALL (SAME QUE LE ADD USER BASIC) 
+
+$('.add_div_no_user').click(function () {
+    $('h1').html('Whats your name?');///appeaars when there's no account
+    $('#container_form').show();
+    $('.add_div_no_user').hide();
+    $('.profil_un').hide();
+    $('#edit').hide();
+
+
+    function hidingTXTQuery(x) {
+
+        if (x.matches) {
+            $('h1').hide();
+            console.log("test passed SE Query hiding H1");
+        } else {
+            console.log("query not match");
+        }
+        
+
+
+    };
+var x = window.matchMedia("(max-width: 375px)"); // mediaQuery iPhone Se
+hidingTXTQuery(x);
+x.addEventListener(hidingTXTQuery);   
+});
+//FONCTION APPEAR ONLY WHEN NO USER AT ALL (SAME QUE LE ADD USER BASIC) //
 
 
 

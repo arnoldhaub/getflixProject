@@ -61,20 +61,10 @@ if (!empty($_POST['pseudo'])) {
 
         <div class="profile_select">
             <?php if ($nbDePseudos[0] == 0) {
-                echo    '<svg class="buttonAdd" version="1.1" id="buttonAdd" x="0px" y="0px"
-                        width="452px" height="469px" viewBox="0 0 452 469" style="enable-background:new 0 0 452 469;">
-                            <style type="text/css">.st0{fill:#FFFFFF;}</style>
-                            <g>
-                                <path class="st0" d="M138.5,444.5h175c32.5,0,63.6-13,86.6-35.9S436,354.5,436,322V147c0-32.5-13-63.6-35.9-86.6
-                                c-23-23-54.1-35.9-86.6-35.9h-175c-32.5,0-63.6,13-86.6,35.9S16,114.5,16,147v175c0,32.5,13,63.6,35.9,86.6S106,444.5,138.5,444.5
-                                L138.5,444.5z M51,147c0-23.2,9.3-45.4,25.7-61.8s38.6-25.6,61.8-25.7h175c23.2,0,45.4,9.3,61.8,25.7
-                                c16.4,16.4,25.6,38.6,25.7,61.8v175c0,23.2-9.3,45.4-25.7,61.8s-38.6,25.6-61.8,25.7h-175c-23.2,0-45.4-9.3-61.8-25.7
-                                S51,345.2,51,322V147z"/>
-                                <path class="st0" d="M147.2,252h61.2v61.2c0,6.3,3.3,12,8.8,15.2s12.1,3.1,17.5,0s8.8-8.9,8.8-15.2V252h61.3c6.3,0,12-3.3,15.2-8.8
-                                s3.1-12.1,0-17.5s-8.9-8.8-15.2-8.8h-61.3v-61.2c0-6.3-3.3-12-8.8-15.2s-12.1-3.1-17.5,0s-8.8,8.9-8.8,15.2V217h-61.2
-                                c-6.3,0-12,3.3-15.2,8.8s-3.1,12.1,0,17.5S141,252,147.2,252z"/>
-                            </g>
-                        </svg>';
+                echo '<div class="add_div_no_user">
+                        <img src="../images/add_button.svg" >
+                        <p class="name_User">New User</p>
+                     </div>';
             };
             ?>
 
@@ -116,8 +106,9 @@ if (!empty($_POST['pseudo'])) {
                      </div>';
                      };
              ?>    
-
+            
             <div id="container_form">
+                <!--<h1>Who are you ?</h1>-->
                 <div class="choose_your_image">
                     <img src="../images/user_pic/4.png" id="changeThis" alt="Profile's image" srcset="">
                 </div>
@@ -210,9 +201,7 @@ if (!empty($_POST['pseudo'])) {
  	    </div>
 </body>
 <footer>
-    <div class="disclaimer">
-        <p class="txt1">Sci-Fi streaming Solution</p>
-    </div>
+
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src='script/script_profil.js'></script>

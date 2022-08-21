@@ -6,12 +6,12 @@ if($_POST['dbName'] == "user"){
 
     $id = $_POST['userOriginalID'];
     $newID = $_POST['userID'];
-
+    $role = $_POST['role'];
     $email = $_POST['userMail'];
     $table = $_POST['dbName'];
 
     // On supprimme la ligne de la bdd
-    $userUpdate = $db->query("UPDATE `$table` SET id='$newID', email='$email' WHERE id='$id'");
+    $userUpdate = $db->query("UPDATE `$table` SET id='$newID', email='$email', role='$role' WHERE id='$id'");
 
     if ($userUpdate) {
         header("Location: ../admin.php");

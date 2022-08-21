@@ -77,6 +77,7 @@ include "api/info.php";
                     <tr>
                         <th>ID</th>
                         <th>Email</th>
+                        <th>Rôle</th>
                         <th>Éditer</th>
                         <th>Supprimer</th>
                     </tr>
@@ -86,6 +87,7 @@ include "api/info.php";
                     <tr>
                         <th scope="row"><?php echo $user['id']; ?></th>
                         <td><?php echo $user['email']; ?></td>
+                        <td <?php echo ($user['role'] == "administrateur" ? 'bgcolor="goldenrod"' : ($user['role'] == "modérateur" ? 'bgcolor="darkslateblue"': '')); ?>><?php echo $user['role']; ?></td>
                         <td>
                             <i class="fa fa-edit fa-xl text-warning" 
                             data-toggle="modal" 
@@ -105,11 +107,26 @@ include "api/info.php";
                                                         <label for="userMail" class="col-form-label">User Mail</label>
                                                         <input data-error="Address not correct" data-success="Perfect!"type="email" class="form-control validate text-center" name="userMail" id="userMail" value="<?php echo $user['email']; ?>">
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label for="role" class="col-form-label">User Role</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="role" id="role1" value="membre" <?php if($user['role'] == "membre") echo "checked";?>>
+                                                        <label class="form-check-label" for="role1">Membre</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="role" id="role2" value="modérateur" <?php if($user['role'] == "modérateur") echo "checked";?>>
+                                                        <label class="form-check-label" for="role2">Modérateur</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="role" id="role"3 value="administrateur" <?php if($user['role'] == "administrateur") echo "checked";?>>
+                                                        <label class="form-check-label" for="role3">Administrateur</label>
+                                                    </div>
                                                     <input type="hidden" id="dbName" name="dbName" value="user">
                                                     <input type="hidden" id="userOriginalID" name="userOriginalID" value="<?php echo $user['id'];?>">
                                                 
                                                     <div class="modal-footer justify-content-center ">
-                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                                         <button type="submit" class="btn btn-success">Valider</button>
                                                     </div>
                                                 </form>
@@ -132,7 +149,7 @@ include "api/info.php";
                                             <div class="modal-body bg-dark">
                                                 <p>Êtes-vous sûr de vouloir supprimer l'<strong>ID <?php echo $user['id'];?></strong> ? </p>
                                                 <div class="modal-footer justify-content-center ">
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                                     <a href="admin/delete.php?id=<?php echo $user['id']; ?>&db=user">
                                                     <button class="btn btn-danger" type="button">Supprimer</button>
                                                 </div>
@@ -165,7 +182,7 @@ include "api/info.php";
                                                 <input type="hidden" id="dbName" name="dbName" value="user">
                                                 
                                                 <div class="modal-footer justify-content-center ">
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                                     <button type="submit" class="btn btn-success">Valider</button>
                                                     </div>
                                             </form>
@@ -246,7 +263,7 @@ include "api/info.php";
 
                                                 
                                                     <div class="modal-footer justify-content-center ">
-                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                                         <button type="submit" class="btn btn-success">Valider</button>
                                                     </div>
                                                 </form>
@@ -269,7 +286,7 @@ include "api/info.php";
                                             <div class="modal-body bg-dark">
                                                 <p>Êtes-vous sûr de vouloir supprimer l'<strong>ID <?php echo $profile['id_pseudo'];?></strong> ? </p>
                                                 <div class="modal-footer justify-content-center ">
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                                     <a href="admin/delete.php?id=<?php echo $profile['id_pseudo']; ?>&db=profile">
                                                     <button class="btn btn-danger" type="button">Supprimer</button>
                                                 </div>
@@ -321,7 +338,7 @@ include "api/info.php";
                                                 <input type="hidden" id="dbName" name="dbName" value="profile">
                                                 
                                                 <div class="modal-footer justify-content-center ">
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                                     <button type="submit" class="btn btn-success">Valider</button>
                                                     </div>
                                             </form>
@@ -396,7 +413,7 @@ include "api/info.php";
 
                                                 
                                                     <div class="modal-footer justify-content-center ">
-                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                                         <button type="submit" class="btn btn-success">Valider</button>
                                                     </div>
                                                 </form>
@@ -419,7 +436,7 @@ include "api/info.php";
                                             <div class="modal-body bg-dark">
                                                 <p>Êtes-vous sûr de vouloir supprimer l'<strong>ID <?php echo $comment['id'];?></strong> ? </p>
                                                 <div class="modal-footer justify-content-center ">
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                                     <a href="admin/delete.php?id=<?php echo $comment['id']; ?>&db=comments">
                                                     <button class="btn btn-danger" type="button">Supprimer</button>
                                                 </div>
@@ -466,7 +483,7 @@ include "api/info.php";
                                                 <input type="hidden" id="dbName" name="dbName" value="comments">
                                                 
                                                 <div class="modal-footer justify-content-center ">
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                                     <button type="submit" class="btn btn-success">Valider</button>
                                                     </div>
                                             </form>

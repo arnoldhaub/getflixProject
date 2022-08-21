@@ -7,7 +7,13 @@
             <li><a href="home.php#ancre_serie">SERIES</a></li>
             <li><a href="home.php#ancre_film">FILMS</a></li>
             <li><a href="search.php">SEARCH</a></li>
-            <li><a href="admin.php">--- ADMIN</a></li>
+            <?php
+            require('src/connect.php');
+            $userRoleEmail = $_SESSION['email'];
+            $userRole = $db->query('SELECT role FROM user WHERE email = $userRoleEmail');
+            if($userRole['role'] == "modérateur" or "administrateur"){
+                echo '<li><button class="btn btn-dark"><a href="admin.php">ADMIN</a></button></li>';
+            }?>
         </ul>
 
         <ul class="nav_links_responsive">

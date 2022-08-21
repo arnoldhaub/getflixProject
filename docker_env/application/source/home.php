@@ -84,7 +84,7 @@ include "api/info.php";
                             } ?>
                         </p>
                         <?php echo "<a href='movie.php?id=" . $latestMovie->results[0]->id ."'>"; ?>
-                        <button type="button" class="btn play"><i class="fa-solid fa-play" id="fa-play"></i>PLAY !</button>
+                        <button type="button" class="btn_play">WATCH NOW</button>
                         </a>
                     </div>
                 </div>
@@ -98,7 +98,7 @@ include "api/info.php";
                             } ?>
                         </p>
                         <?php echo "<a href='movie.php?id=" . $latestMovie->results[1]->id ."'>"; ?>
-                        <button type="button" class="btn play"><i class="fa-solid fa-play" id="fa-play"></i>PLAY !</button>
+                        <button type="button" class="btn_play">WATCH NOW</button>
                         </a>
                     </div>
                 </div>
@@ -112,7 +112,7 @@ include "api/info.php";
                             } ?>
                         </p>
                         <?php echo "<a href='movie.php?id=" . $latestMovie->results[2]->id ."'>"; ?>
-                        <button type="button" class="btn play"><i class="fa-solid fa-play" id="fa-play"></i>PLAY !</button>
+                        <button type="button" class="btn_play">WATCH NOW</button>
                         </a>
                     </div>
                 </div>

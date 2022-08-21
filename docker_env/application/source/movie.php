@@ -92,7 +92,7 @@ include "api/info.php";
             </div>
 
             <div class="buttonsMovie">
-                <button type="button" class="play video-btn" id="playButton" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/<?php echo $infoMovie->videos->results[0]->key; ?>" data-bs-target="#myModal"><i class="fa-solid fa-play" id="fa-play"></i>LECTURE</button>
+                <button type="button" class="play video-btn" id="playButton" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/<?php echo $infoMovie->videos->results[0]->key; ?>" data-bs-target="#myModal"><i class="fa-solid fa-play" id="fa-play"></i>PLAY</button>
             </div>
             <!-- MODAL  -->
             <div class="modal fade" data-bs-backdrop="false" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -201,7 +201,7 @@ include "api/info.php";
             <form method="POST" id="formPost">
                 <input style="display:none" name="pseudo" value="<?php echo $pseudoActif[0] ?>">
                 <textarea type="text" placeholder="Share your opinion with others! (You  have 200 characters.)" name="commentaires" id="commentForm"></textarea></br>
-                <button type="submit">Post Comment</button>
+                <button type="submit">COMMENT</button>
             </form>
         </div>
     </div>

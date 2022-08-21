@@ -1,5 +1,5 @@
 const swiper = new Swiper(".swiper-container", {
-  slidesPerView: 2,
+  slidesPerView: 5,
   slidesPerGroup: 1,
   centeredSlides: true,
   loop: false,
@@ -9,17 +9,31 @@ const swiper = new Swiper(".swiper-container", {
       },
     breakpoints: {
         100: {
-      slidesPerView: 1,
+      slidesPerView: 3,
       slidesPerGroup: 1,
-      spaceBetween: 5,
+      spaceBetween: 0,
+      centeredSlides: false
+      
+      },
+        400: {
+      slidesPerView: 4,
+      slidesPerGroup: 1,
+      spaceBetween: 40,
+      centeredSlides: false
+      
+      },
+           462: {
+      slidesPerView: 6,
+      slidesPerGroup: 1,
+      spaceBetween: 40,
       centeredSlides: false
       
     },
     // when window width is >= 600px
     600: {
-      slidesPerView: 1,
+      slidesPerView: 5,
       slidesPerGroup: 1,
-      spaceBetween: 0,
+      spaceBetween: 5,
       centeredSlides: false
       
     },
@@ -30,12 +44,26 @@ const swiper = new Swiper(".swiper-container", {
       spaceBetween: 0,
        centeredSlides: false
       
+      },
+      1000: {
+      slidesPerView:5,
+      slidesPerGroup: 1,
+      spaceBetween: 5,
+       centeredSlides: false
+      
+      },
+        1024: {
+      slidesPerView:5,
+      slidesPerGroup: 1,
+      spaceBetween: 5,
+       centeredSlides: false
+      
     },
     // when window width is >= 1200px
     1200: {
-      slidesPerView: 8,
+      slidesPerView: 5,
       slidesPerGroup: 1,
-      spaceBetween: 3,
+      spaceBetween: 5,
       centeredSlides: false
     },
      
@@ -45,64 +73,16 @@ const swiper = new Swiper(".swiper-container", {
        slidesPerGroup: 1,
        spaceBetween: 5,
        centeredSlides: false
-     },
+      },
+     
      
      // when window width is >= 1800px
     1800: {
-      slidesPerView: 6,
+      slidesPerView: 5,
       slidesPerGroup: 1,
-      spaceBetween: 9,
+      spaceBetween: 5,
       centeredSlides: false
     }
     
   }
 });
-
-// let movieTrailer = document.getElementById('videoTrailer');
-
-// movieTrailer.addEventListener("mouseenter", function (event) {
-//   event.target.style.backgroundColor = "purple";
-
-// });
-
-
-
-
-// JS GUILLAUME
-
-// HEADER
-
-let champPseudo = document.getElementById('sectionUser');
-
-champPseudo.onmouseover = () => {
-  clearTimeout(closeTimeout);
-  document.getElementById('fleche').className = "fa-solid fa-angle-up";
-  document.getElementById('listePseudos').style.display = "block";
-
-}
-
-champPseudo.onmouseout = () => {
-  closeTimeout = setTimeout(function () {
-    document.getElementById('fleche').className = "fa-solid fa-angle-down";
-    document.getElementById('listePseudos').style.display = "none";
-  }, 1000);
-}
-
-// MODIF ARNOLD - Hover navbar
-
-// $("#sectionUser").hover(
-//   //Hover;
-//   function () {
-//       clearTimeout(closeTimeout);
-//       document.getElementById('listePseudos').style.display = "block";
-//       document.getElementById('listePseudos').style.zIndex = "5";
-//       document.getElementById('fleche').className = "fa-solid fa-angle-up";
-//   },
-//   //Hoverout;
-//   function () {
-//       closeTimeout = setTimeout(function () {
-//         document.getElementById('listePseudos').style.display = "none";
-//         document.getElementById('listePseudos').style.zIndex = "1";
-//         document.getElementById('fleche').className = "fa-solid fa-angle-down";
-//       }, 1000);
-//   });

@@ -114,13 +114,13 @@ border:rgb(255, 255, 255) 1px solid;
 }
 
  button[type="submit"] {
+    font-family: 'Circular';
     padding: 15px;
     width: 20%;
-    background-color: none;
-    background: none;
+    background: transparent;
     color:rgb(255, 255, 255);
     outline: none;
-    border-radius: 8px;
+    border-radius: 100px;
     border: 1px solid white;
     right: 0;
     

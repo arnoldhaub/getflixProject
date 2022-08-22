@@ -118,8 +118,8 @@ if (!empty($_POST['pseudo'])) {
                     <input type="text" name="pseudo" placeholder="" id="changePseudo"></input>
                     <select class="form-select" name="categorie" required>
                         <option value="" disabled selected hidden> Select your option</option>
-                        <option value="adulte">Adulte</option>
-                        <option value="enfant">Enfant</option>
+                        <option value="adulte">Adult</option>
+                        <option value="enfant">Kid</option>
                     </select>
                     <button type="submit" name="RegisterEnter" id="subButton">Create New User</button>
                 </form>

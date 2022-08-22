@@ -1,7 +1,18 @@
 $(window).on("load", function () {
-    $("#usersAdmin").show();
+    var role = sessionStorage.getItem("role");
+    console.log(role);
+
+    if(role  == "administrateur"){
+    $("#usersAdmin").hide();
     $("#profilesAdmin").hide();
     $("#commentAdmin").hide();
+    }
+
+    else{
+        $("#usersAdmin").hide();
+        $("#profilesAdmin").hide();
+        $("#commentAdmin").show();
+        }
 });
 
 $("#usersAdminInterface").click(function () {

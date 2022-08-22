@@ -3,10 +3,6 @@
 session_start();
 $userEmail = $_SESSION['email'];
 
-if ($_GET['id_pseudo']) {
-    $_SESSION['pseudo'] = $_GET['id_pseudo'];
-}
-
 // On teste si la variable de session existe et contient une valeur
 if (empty($_SESSION['email'])) {
     // Si inexistante ou nulle, on redirige vers le formulaire de login
@@ -56,12 +52,15 @@ include "api/info.php";
         //======================================================================-->
 
         <div id="admin_menu" class="row  d-flex justify-content-around my-4">
+            <?php 
+            if($_SESSION['role']  == "administrateur"): ?>  
             <div class="col text-center">
                 <button type="button" class="play video-btn" id="usersAdminInterface"><i class="fa-solid fa-users fa-admin "></i><br>Users' administration</button>
             </div>
             <div class="col text-center">
                 <button type="button" class="play video-btn" id="profilesAdminInterface"><i class="fa-solid fa-people-group fa-admin"></i><br>Profiles' administration</button>
             </div>
+            <?php endif ?>
             <div class="col text-center">
                 <button type="button" class="play video-btn" id="commentsAdminInterface"><i class="fa-solid fa-comments fa-admin"></i><br>Comments' administration</button>
             </div>
@@ -101,29 +100,29 @@ include "api/info.php";
                                                 <form role="form" method="POST" action="admin/edit.php">
                                                     <div class="form-group">
                                                         <label for="userID" class="col-form-label">User ID</label>
-                                                        <input type="number" class="form-control text-center" name="userID" id="userID" value="<?php echo $user['id'];?>">
+                                                        <input type="number" class="form-control text-center" name="userID"  value="<?php echo $user['id'];?>">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="userMail" class="col-form-label">User Mail</label>
-                                                        <input data-error="Address not correct" data-success="Perfect!"type="email" class="form-control validate text-center" name="userMail" id="userMail" value="<?php echo $user['email']; ?>">
+                                                        <input data-error="Address not correct" data-success="Perfect!"type="email" class="form-control validate text-center" name="userMail"  value="<?php echo $user['email']; ?>">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="role" class="col-form-label">User Role</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="role" id="role1" value="membre" <?php if($user['role'] == "membre") echo "checked";?>>
+                                                        <input class="form-check-input" type="radio" name="role" value="membre" <?php if($user['role'] == "membre") echo "checked";?>>
                                                         <label class="form-check-label" for="role1">Membre</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="role" id="role2" value="modérateur" <?php if($user['role'] == "modérateur") echo "checked";?>>
+                                                        <input class="form-check-input" type="radio" name="role" value="modérateur" <?php if($user['role'] == "modérateur") echo "checked";?>>
                                                         <label class="form-check-label" for="role2">Modérateur</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="role" id="role"3 value="administrateur" <?php if($user['role'] == "administrateur") echo "checked";?>>
+                                                        <input class="form-check-input" type="radio" name="role" value="administrateur" <?php if($user['role'] == "administrateur") echo "checked";?>>
                                                         <label class="form-check-label" for="role3">Administrateur</label>
                                                     </div>
-                                                    <input type="hidden" id="dbName" name="dbName" value="user">
-                                                    <input type="hidden" id="userOriginalID" name="userOriginalID" value="<?php echo $user['id'];?>">
+                                                    <input type="hidden" name="dbName" value="user">
+                                                    <input type="hidden" name="userOriginalID" value="<?php echo $user['id'];?>">
                                                 
                                                     <div class="modal-footer justify-content-center ">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
@@ -173,11 +172,26 @@ include "api/info.php";
                                             <form role="form" method="POST" action="admin/add.php">
                                                 <div class="form-group">
                                                     <label for="password" class="col-form-label">User Mail</label>
-                                                    <input data-error="Address not correct" data-success="Perfect!"type="email" class="form-control validate text-center" name="userMail" id="userMail" placeholder="type an email here...">
+                                                    <input data-error="Address not correct" data-success="Perfect!"type="email" class="form-control validate text-center" name="userMail" placeholder="type an email here...">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="userMail" class="col-form-label">User Password</label>
-                                                    <input type="password" class="form-control validate text-center" name="password" id="password" placeholder="type a password here...">
+                                                    <input type="password" class="form-control validate text-center" name="password" placeholder="type a password here...">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="role" class="col-form-label">User Role</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="role" value="membre" <?php if($user['role'] == "membre") echo "checked";?>>
+                                                    <label class="form-check-label" for="role1">Membre</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="role" value="modérateur" <?php if($user['role'] == "modérateur") echo "checked";?>>
+                                                    <label class="form-check-label" for="role2">Modérateur</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="role" value="administrateur" <?php if($user['role'] == "administrateur") echo "checked";?>>
+                                                    <label class="form-check-label" for="role3">Administrateur</label>
                                                 </div>
                                                 <input type="hidden" id="dbName" name="dbName" value="user">
                                                 
@@ -233,33 +247,33 @@ include "api/info.php";
                                                 <form role="form" method="POST" action="admin/edit.php">
                                                     <div class="form-group">
                                                         <label for="profileID" class="col-form-label">Profile ID</label>
-                                                        <input type="number" class="form-control text-center" name="profileID" id="profileID" value="<?php echo $profile['id_pseudo'];?>">
+                                                        <input type="number" class="form-control text-center" name="profileID" value="<?php echo $profile['id_pseudo'];?>">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="profilePseudo" class="col-form-label">Pseudo</label>
-                                                        <input type="text" class="form-control text-center" name="profilePseudo" id="profilePseudo" value="<?php echo $profile['pseudo'];?>">
+                                                        <input type="text" class="form-control text-center" name="profilePseudo"  value="<?php echo $profile['pseudo'];?>">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="userMail" class="col-form-label">User Mail</label>
-                                                        <input data-error="Address not correct" data-success="Perfect!"type="email" class="form-control validate text-center" name="userMail" id="userMail" value="<?php echo $profile['email']; ?>">
+                                                        <input data-error="Address not correct" data-success="Perfect!"type="email" class="form-control validate text-center" name="userMail" value="<?php echo $profile['email']; ?>">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="profileImage" class="col-form-label">Profile Image</label>
-                                                        <input type="text" class="form-control text-center" name="profileImage" id="profileImage" value="<?php echo $profile['image'];?>">
+                                                        <input type="text" class="form-control text-center" name="profileImage"  value="<?php echo $profile['image'];?>">
                                                     </div>
                                                     <p>Catégorie</p>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="categorie" id="categorie1" value="enfant" <?php if($profile['categorie'] == "enfant") echo "checked";?>>
+                                                        <input class="form-check-input" type="radio" name="categorie"  value="enfant" <?php if($profile['categorie'] == "enfant") echo "checked";?>>
                                                         <label class="form-check-label" for="categorie1">Enfant</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="categorie" id="categorie2" value="adulte" <?php if($profile['categorie'] == "adulte") echo "checked";?>>
+                                                        <input class="form-check-input" type="radio" name="categorie" value="adulte" <?php if($profile['categorie'] == "adulte") echo "checked";?>>
                                                         <label class="form-check-label" for="categorie2">Adulte</label>
                                                     </div>
 
-                                                    <input type="hidden" id="dbName" name="dbName" value="profile">
-                                                    <input type="hidden" id="profileOriginalID" name="profileOriginalID" value="<?php echo $profile['id_pseudo'];?>">
-                                                    <input type="hidden" id="profileOriginalEmail" name="profileOriginalEmail" value="<?php echo $profile['email'];?>">
+                                                    <input type="hidden" name="dbName" value="profile">
+                                                    <input type="hidden" name="profileOriginalID" value="<?php echo $profile['id_pseudo'];?>">
+                                                    <input type="hidden"  name="profileOriginalEmail" value="<?php echo $profile['email'];?>">
 
                                                 
                                                     <div class="modal-footer justify-content-center ">
@@ -320,22 +334,22 @@ include "api/info.php";
                                                 </div>
                                                 <div class="form-group">
                                                         <label for="profilePseudo" class="col-form-label">Pseudo</label>
-                                                        <input type="text" class="form-control text-center" name="profilePseudo" id="profilePseudo" placeholder="type a pseudo here...">
+                                                        <input type="text" class="form-control text-center" name="profilePseudo"  placeholder="type a pseudo here...">
                                                     </div>
                                                 <div class="form-group">
                                                         <label for="profileImage" class="col-form-label">Profile Image</label>
-                                                        <input type="text" class="form-control text-center" name="profileImage" id="profileImage" value="../images/user_pic/4.png">
+                                                        <input type="text" class="form-control text-center" name="profileImage" value="../images/user_pic/4.png">
                                                 </div>
                                                 <p>Catégorie</p>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="categorie" id="categorie1" value="enfant">
+                                                    <input class="form-check-input" type="radio" name="categorie" value="enfant">
                                                     <label class="form-check-label" for="categorie1">Enfant</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="categorie" id="categorie2" value="adulte">
+                                                    <input class="form-check-input" type="radio" name="categorie" value="adulte">
                                                     <label class="form-check-label" for="categorie2">Adulte</label>
                                                 </div>
-                                                <input type="hidden" id="dbName" name="dbName" value="profile">
+                                                <input type="hidden" name="dbName" value="profile">
                                                 
                                                 <div class="modal-footer justify-content-center ">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
@@ -389,27 +403,27 @@ include "api/info.php";
                                                 <form role="form" method="POST" action="admin/edit.php">
                                                     <div class="form-group">
                                                         <label for="commentID" class="col-form-label">Comment ID</label>
-                                                        <input type="number" class="form-control text-center" name="commentID" id="commentID" value="<?php echo $comment['id'];?>">
+                                                        <input type="number" class="form-control text-center" name="commentID"  value="<?php echo $comment['id'];?>">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="filmID" class="col-form-label">Film/Serie ID</label>
-                                                        <input type="number" class="form-control text-center" name="filmID" id="filmID" value="<?php echo $comment['id_film'];?>">
+                                                        <input type="number" class="form-control text-center" name="filmID"  value="<?php echo $comment['id_film'];?>">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="pseudo" class="col-form-label">Pseudo</label>
-                                                        <input type="text" class="form-control text-center" name="pseudo" id="pseudo" value="<?php echo $comment['pseudo'];?>">
+                                                        <input type="text" class="form-control text-center" name="pseudo" value="<?php echo $comment['pseudo'];?>">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="comment" class="col-form-label">Comment</label>
-                                                        <textarea type="text" class="form-control text-center" name="comment" id="comment"><?php echo $comment['commentaires']; ?></textarea>
+                                                        <textarea type="text" class="form-control text-center" name="comment"><?php echo $comment['commentaires']; ?></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="date" class="col-form-label">Date</label>
-                                                        <input type="date" class="form-control text-center" name="date" id="date" value="<?php echo $comment['date'];?>">
+                                                        <input type="date" class="form-control text-center" name="date" value="<?php echo $comment['date'];?>">
                                                     </div>
 
-                                                    <input type="hidden" id="dbName" name="dbName" value="comments">
-                                                    <input type="hidden" id="originalID" name="originalID" value="<?php echo $comment['id'];?>">
+                                                    <input type="hidden"  name="dbName" value="comments">
+                                                    <input type="hidden" name="originalID" value="<?php echo $comment['id'];?>">
 
                                                 
                                                     <div class="modal-footer justify-content-center ">
@@ -460,12 +474,12 @@ include "api/info.php";
                                             <form role="form" method="POST" action="admin/add.php">
                                                 <div class="form-group">
                                                     <label for="filmID" class="col-form-label">Film/Serie ID</label>
-                                                    <input type="number" class="form-control text-center" name="filmID" id="filmID" value="<?php echo $comment['id_film'];?>">
+                                                    <input type="number" class="form-control text-center" name="filmID" value="<?php echo $comment['id_film'];?>">
                                                 </div>
                                                 <div class="form-group">
                                                         <?php $takeProfilesPseudo = $db->query('SELECT pseudo, email, id_pseudo FROM profile');?>
                                                         <label for="pseudo" class="col-form-label">Profile Pseudo</label><br>
-                                                        <select class="form-control validate text-center" id="pseudo" name="pseudo">
+                                                        <select class="form-control validate text-center"  name="pseudo">
                                                             <option value="" disabled selected>Select a profile pseudo...</option>
                                                             <?php foreach ($takeProfilesPseudo as $takeProfilePseudo) :?>
                                                             <option  value="<?php echo $takeProfilePseudo['pseudo'] ?>"><?php echo $takeProfilePseudo['pseudo']." || from ". $takeProfilePseudo['email'] ?></option>
@@ -474,13 +488,13 @@ include "api/info.php";
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="comment" class="col-form-label">Comment</label>
-                                                    <textarea type="text" class="form-control text-center" name="comment" id="comment" placeholder="type a message here..."></textarea>
+                                                    <textarea type="text" class="form-control text-center" name="comment" placeholder="type a message here..."></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="date" class="col-form-label">Date</label>
-                                                    <input type="date" class="form-control text-center" name="date" id="date" value="<?= date('Y-m-d'); ?>" max="<?= date('Y-m-d'); ?>">
+                                                    <input type="date" class="form-control text-center" name="date"  value="<?= date('Y-m-d'); ?>" max="<?= date('Y-m-d'); ?>">
                                                 </div>
-                                                <input type="hidden" id="dbName" name="dbName" value="comments">
+                                                <input type="hidden"  name="dbName" value="comments">
                                                 
                                                 <div class="modal-footer justify-content-center ">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>

@@ -39,6 +39,7 @@ if (!empty($_POST['email'] && !empty($_POST['password']))) {
 		if ($password == $user['password']) {
 			$_SESSION['connect'] 	= 1;
 			$_SESSION['email']		= $user['email'];
+			$_SESSION['role'] 		= $user['role'];
 
 			// gestion des cookis (se souvenir de moi)
 			if (isset($_POST['auto'])) {

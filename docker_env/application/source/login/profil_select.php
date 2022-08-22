@@ -3,13 +3,13 @@
 session_start();
 $userEmail = $_SESSION['email'];
 
+
 // On teste si la variable de session existe et contient une valeur
 if (empty($_SESSION['email'])) {
     // Si inexistante ou nulle, on redirige vers le formulaire de login
     header('Location: ../index.php');
     exit();
 }
-
 
 
 if (!empty($_POST['pseudo'])) {
@@ -33,7 +33,7 @@ if (!empty($_POST['pseudo'])) {
     <title>NOVA · Select a profile</title>
     <?php include "../src/head_meta_tags.php"; ?>
     <link href="styles/profil_select.css" rel="stylesheet">
-    <link href="./styles/media_queeries.css" rel="stylesheet">
+    <link href="styles/media_queries.css" rel="stylesheet">
 
 </head>
 

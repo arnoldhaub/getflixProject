@@ -76,8 +76,9 @@ include "api/info.php";
                     <thead>
                         <tr>
                             <th>ID comment</th>
-                            <th>ID Film/Serie</th>
-                            <th>Pseudo</th>
+                            <th>Film/Serie</th>
+                            <th>ID | Nom du film</th>
+                            <th>ID | Pseudo</th>
                             <th colspan="50%">Commentaire</th>
                             <th>Date</th>
                             <th>Éditer</th>
@@ -88,8 +89,9 @@ include "api/info.php";
                         <?php while($comment = $commentsDB->fetch()) {?>
                         <tr>
                             <th scope="row"><?php echo $comment['id']; ?></th>
-                            <td><?php echo $comment['id_film']; ?></td>
-                            <td><?php echo $comment['pseudo']; ?></td>
+                            <td><?php echo $comment['film_serie']; ?></td>
+                            <td><?php echo $comment['id_film']." | ". $comment['nom_film']; ?></td>
+                            <td><?php echo $comment['id_pseudo']." | ". $comment['pseudo']; ?></td>
                             <td colspan="50%"><?php echo $comment['commentaires']; ?></td>
                             <td><?php echo $comment['date']; ?></td>
                             <td>

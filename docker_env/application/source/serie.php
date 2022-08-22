@@ -308,8 +308,8 @@ include "api/info.php";
                 $pseudo = htmlspecialchars($_POST['pseudo']);
                 $id_film = htmlspecialchars($id);
                 
-                $push = $db ->prepare('INSERT INTO `comments` (`id`, `id_film`, `pseudo`, `commentaires`, `date`) VALUES (NULL, ?, ?, ?, CURRENT_TIMESTAMP)');
-                $push->execute(array($id_film, $pseudo, $commentaire));
+                $push = $db->prepare('INSERT INTO `comments` (`id`, `id_film`, `film_serie`, `nom_film`, `id_pseudo`, `pseudo`, `commentaires`, `date`) VALUES (NULL, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)');
+                $push->execute(array($id_film,'serie', $infoSerie->name, $_SESSION['pseudo'], $pseudo, $commentaire));
                 echo "<meta http-equiv='refresh' content='0'>";
             }
             

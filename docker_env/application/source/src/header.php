@@ -52,8 +52,7 @@
                     <div class="container">
                         <div style="flex-wrap:nowrap" class="row">
                             <img id="photoListeProfil" src="<?php echo $donnees[2] ?>" alt="profil">
-                            <a style="color:white" href="home.php?id_pseudo=<?php echo $donnees[1] ?>"><?php echo $donnees[0] ?>
-                            </a>
+                            <a style="color:white" href="home.php?id_pseudo=<?php echo $donnees[1] ?>"><?php echo $donnees[0] ?></a>
                         </div>
                     </div>
                 </li>

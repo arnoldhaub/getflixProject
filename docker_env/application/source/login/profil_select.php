@@ -116,7 +116,7 @@ if (!empty($_POST['pseudo'])) {
                 <form action='' method="post" id="form_profil">
                     <input type="radio" id="imageProfile" name="imageProfile" value="../images/user_pic/4.png" checked>
                     <input type="text" name="pseudo" placeholder="" id="changePseudo"></input>
-                    <select class="form-select" name="categorie">
+                    <select class="form-select" name="categorie" required>
                         <option value="" disabled selected hidden> Select your option</option>
                         <option value="adulte">Adulte</option>
                         <option value="enfant">Enfant</option>

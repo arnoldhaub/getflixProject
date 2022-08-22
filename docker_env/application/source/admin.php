@@ -16,11 +16,12 @@ else{
     $usersDB = $db->query('SELECT * FROM user');
     $commentsDB = $db->query('SELECT * FROM comments');
 
-    // SI ENFANT => Go to home_kids.php
-    // if($KidOrNot["categorie"] == "enfant"){
-    //     header('Location: home_kids.php');
-    //     exit();
-    // }
+    // SI PAS ADMIN => 
+    if($_SESSION['role']  === "membre"){
+        
+        header('Location: home.php?error=1&message=You are not authorized to be in here');
+        exit();
+    }
 
 }
 include "api/info.php";
@@ -66,12 +67,160 @@ include "api/info.php";
             </div>
         </div>
 
+            <!-- ======================================================================
+                                    Comments - Administration
+        //======================================================================-->
+        <div id="commentAdmin">
+            <h2>Comments' administration</h2>
+            <table class="table table-striped my-3 text-center align-items-center">
+                    <thead>
+                        <tr>
+                            <th>ID comment</th>
+                            <th>ID Film/Serie</th>
+                            <th>Pseudo</th>
+                            <th colspan="50%">Commentaire</th>
+                            <th>Date</th>
+                            <th>Éditer</th>
+                            <th>Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody">
+                        <?php while($comment = $commentsDB->fetch()) {?>
+                        <tr>
+                            <th scope="row"><?php echo $comment['id']; ?></th>
+                            <td><?php echo $comment['id_film']; ?></td>
+                            <td><?php echo $comment['pseudo']; ?></td>
+                            <td colspan="50%"><?php echo $comment['commentaires']; ?></td>
+                            <td><?php echo $comment['date']; ?></td>
+                            <td>
+                                <i class="fa fa-edit fa-xl text-warning" 
+                                data-toggle="modal" 
+                                data-target="#editComment<?php echo $comment['id']; ?>"> 
+                                </i>
+                                
+                                    <div class="modal fade" id="editComment<?php echo $comment['id']; ?>" role="dialog">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-body bg-dark">
+                                                    <form role="form" method="POST" action="admin/edit.php">
+                                                        <div class="form-group">
+                                                            <label for="commentID" class="col-form-label">Comment ID</label>
+                                                            <input type="number" class="form-control text-center" name="commentID"  value="<?php echo $comment['id'];?>">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="filmID" class="col-form-label">Film/Serie ID</label>
+                                                            <input type="number" class="form-control text-center" name="filmID"  value="<?php echo $comment['id_film'];?>">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="pseudo" class="col-form-label">Pseudo</label>
+                                                            <input type="text" class="form-control text-center" name="pseudo" value="<?php echo $comment['pseudo'];?>">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="comment" class="col-form-label">Comment</label>
+                                                            <textarea type="text" class="form-control text-center" name="comment"><?php echo $comment['commentaires']; ?></textarea>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="date" class="col-form-label">Date</label>
+                                                            <input type="date" class="form-control text-center" name="date" value="<?php echo $comment['date'];?>">
+                                                        </div>
+
+                                                        <input type="hidden"  name="dbName" value="comments">
+                                                        <input type="hidden" name="originalID" value="<?php echo $comment['id'];?>">
+
+                                                    
+                                                        <div class="modal-footer justify-content-center ">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                            <button type="submit" class="btn btn-success">Valider</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                
+                            </td>
+                            <td>
+                                <i class="fa fa-trash fa-xl text-danger" 
+                                data-toggle="modal" 
+                                data-target="#deleteComment<?php echo $comment['id']; ?>"> 
+                                </i>
+                                
+                                    <div class="modal fade" id="deleteComment<?php echo $comment['id']; ?>" role="dialog">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-body bg-dark">
+                                                    <p>Êtes-vous sûr de vouloir supprimer l'<strong>ID <?php echo $comment['id'];?></strong> ? </p>
+                                                    <div class="modal-footer justify-content-center ">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                        <a href="admin/delete.php?id=<?php echo $comment['id']; ?>&db=comments">
+                                                        <button class="btn btn-danger" type="button">Supprimer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                
+                            </td>
+                        </tr>
+                        <?php }; ?>
+                    </tbody>
+                    <tfoot>
+                        <th class="text-center" colspan="100%">
+                            <button type="button" class="add" id="addCommentButton" data-toggle="modal"  data-target="#addComment"><i class="fa-solid fa-comment"></i> Add a comment</button>
+                            <div class="modal fade" id="addComment" role="dialog">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-body bg-dark">
+                                            <form role="form" method="POST" action="admin/add.php">
+                                                <div class="form-group">
+                                                    <label for="filmID" class="col-form-label">Film/Serie ID</label>
+                                                    <input type="number" class="form-control text-center" name="filmID" value="<?php echo $comment['id_film'];?>">
+                                                </div>
+                                                <div class="form-group">
+                                                        <?php $takeProfilesPseudo = $db->query('SELECT pseudo, email, id_pseudo FROM profile');?>
+                                                        <label for="pseudo" class="col-form-label">Profile Pseudo</label><br>
+                                                        <select class="form-control validate text-center"  name="pseudo">
+                                                            <option value="" disabled selected>Select a profile pseudo...</option>
+                                                            <?php foreach ($takeProfilesPseudo as $takeProfilePseudo) :?>
+                                                            <option  value="<?php echo $takeProfilePseudo['pseudo'] ?>"><?php echo $takeProfilePseudo['pseudo']." || from ". $takeProfilePseudo['email'] ?></option>
+                                                            <?php endforeach ?>
+                                                        </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="comment" class="col-form-label">Comment</label>
+                                                    <textarea type="text" class="form-control text-center" name="comment" placeholder="type a message here..."></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date" class="col-form-label">Date</label>
+                                                    <input type="date" class="form-control text-center" name="date"  value="<?= date('Y-m-d'); ?>" max="<?= date('Y-m-d'); ?>">
+                                                </div>
+                                                <input type="hidden"  name="dbName" value="comments">
+                                                    
+                                                <div class="modal-footer justify-content-center ">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                    <button type="submit" class="btn btn-success">Valider</button>
+                                                    </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </th>
+                    </tfoot>
+            </table>
+        </div>
+
+
+        <?php if($_SESSION['role']  == "administrateur"): ?>
 <!-- ======================================================================
                                     Users - Administration
         //======================================================================-->
-    <div id="usersAdmin">
-        <h2>Users' administration</h2>
-        <table class="table table-striped my-3 text-center align-items-center">
+        
+        <div id="usersAdmin">
+            <h2>Users' administration</h2>
+            <table class="table table-striped my-3 text-center align-items-center">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -207,11 +356,15 @@ include "api/info.php";
                         </th>
                 </tfoot>
             </table>
-    </div>
+        </div>
+        <?php endif ?>
 
+
+        <?php if($_SESSION['role']  == "administrateur"): ?>
 <!-- ======================================================================
                                     Profiles - Administration
         //======================================================================-->
+       
         <div id="profilesAdmin">
         <h2>Profiles' administration</h2>
         <table class="table table-striped my-3 text-center align-items-center">
@@ -363,160 +516,10 @@ include "api/info.php";
                         </th>
                 </tfoot>
             </table>
-    </div>
-
-    <!-- ======================================================================
-                                    Comments - Administration
-        //======================================================================-->
-        <div id="commentAdmin">
-        <h2>Comments' administration</h2>
-        <table class="table table-striped my-3 text-center align-items-center">
-                <thead>
-                    <tr>
-                        <th>ID comment</th>
-                        <th>ID Film/Serie</th>
-                        <th>Pseudo</th>
-                        <th colspan="50%">Commentaire</th>
-                        <th>Date</th>
-                        <th>Éditer</th>
-                        <th>Supprimer</th>
-                    </tr>
-                </thead>
-                <tbody">
-                    <?php while($comment = $commentsDB->fetch()) {?>
-                    <tr>
-                        <th scope="row"><?php echo $comment['id']; ?></th>
-                        <td><?php echo $comment['id_film']; ?></td>
-                        <td><?php echo $comment['pseudo']; ?></td>
-                        <td colspan="50%"><?php echo $comment['commentaires']; ?></td>
-                        <td><?php echo $comment['date']; ?></td>
-                        <td>
-                            <i class="fa fa-edit fa-xl text-warning" 
-                            data-toggle="modal" 
-                            data-target="#editComment<?php echo $comment['id']; ?>"> 
-                            </i>
-                            
-                                <div class="modal fade" id="editComment<?php echo $comment['id']; ?>" role="dialog">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-body bg-dark">
-                                                <form role="form" method="POST" action="admin/edit.php">
-                                                    <div class="form-group">
-                                                        <label for="commentID" class="col-form-label">Comment ID</label>
-                                                        <input type="number" class="form-control text-center" name="commentID"  value="<?php echo $comment['id'];?>">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="filmID" class="col-form-label">Film/Serie ID</label>
-                                                        <input type="number" class="form-control text-center" name="filmID"  value="<?php echo $comment['id_film'];?>">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="pseudo" class="col-form-label">Pseudo</label>
-                                                        <input type="text" class="form-control text-center" name="pseudo" value="<?php echo $comment['pseudo'];?>">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="comment" class="col-form-label">Comment</label>
-                                                        <textarea type="text" class="form-control text-center" name="comment"><?php echo $comment['commentaires']; ?></textarea>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="date" class="col-form-label">Date</label>
-                                                        <input type="date" class="form-control text-center" name="date" value="<?php echo $comment['date'];?>">
-                                                    </div>
-
-                                                    <input type="hidden"  name="dbName" value="comments">
-                                                    <input type="hidden" name="originalID" value="<?php echo $comment['id'];?>">
-
-                                                
-                                                    <div class="modal-footer justify-content-center ">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                                                        <button type="submit" class="btn btn-success">Valider</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            
-                        </td>
-                        <td>
-                            <i class="fa fa-trash fa-xl text-danger" 
-                            data-toggle="modal" 
-                            data-target="#deleteComment<?php echo $comment['id']; ?>"> 
-                            </i>
-                            
-                                <div class="modal fade" id="deleteComment<?php echo $comment['id']; ?>" role="dialog">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-body bg-dark">
-                                                <p>Êtes-vous sûr de vouloir supprimer l'<strong>ID <?php echo $comment['id'];?></strong> ? </p>
-                                                <div class="modal-footer justify-content-center ">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                                                    <a href="admin/delete.php?id=<?php echo $comment['id']; ?>&db=comments">
-                                                    <button class="btn btn-danger" type="button">Supprimer</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            
-                        </td>
-                    </tr>
-                    <?php }; ?>
-                </tbody>
-                <tfoot>
-                    <th class="text-center" colspan="100%">
-                        <button type="button" class="add" id="addCommentButton" data-toggle="modal"  data-target="#addComment"><i class="fa-solid fa-comment"></i> Add a comment</button>
-                            <div class="modal fade" id="addComment" role="dialog">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-body bg-dark">
-                                            <form role="form" method="POST" action="admin/add.php">
-                                                <div class="form-group">
-                                                    <label for="filmID" class="col-form-label">Film/Serie ID</label>
-                                                    <input type="number" class="form-control text-center" name="filmID" value="<?php echo $comment['id_film'];?>">
-                                                </div>
-                                                <div class="form-group">
-                                                        <?php $takeProfilesPseudo = $db->query('SELECT pseudo, email, id_pseudo FROM profile');?>
-                                                        <label for="pseudo" class="col-form-label">Profile Pseudo</label><br>
-                                                        <select class="form-control validate text-center"  name="pseudo">
-                                                            <option value="" disabled selected>Select a profile pseudo...</option>
-                                                            <?php foreach ($takeProfilesPseudo as $takeProfilePseudo) :?>
-                                                            <option  value="<?php echo $takeProfilePseudo['pseudo'] ?>"><?php echo $takeProfilePseudo['pseudo']." || from ". $takeProfilePseudo['email'] ?></option>
-                                                            <?php endforeach ?>
-                                                        </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="comment" class="col-form-label">Comment</label>
-                                                    <textarea type="text" class="form-control text-center" name="comment" placeholder="type a message here..."></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="date" class="col-form-label">Date</label>
-                                                    <input type="date" class="form-control text-center" name="date"  value="<?= date('Y-m-d'); ?>" max="<?= date('Y-m-d'); ?>">
-                                                </div>
-                                                <input type="hidden"  name="dbName" value="comments">
-                                                
-                                                <div class="modal-footer justify-content-center ">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                                                    <button type="submit" class="btn btn-success">Valider</button>
-                                                    </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </th>
-                </tfoot>
-            </table>
-    </div>
-
-    <!-- ======================================================================
-                                    MOVIES
-        //======================================================================-->
-
-
-
         </div>
+        <?php endif ?>                                                                
+
+    </div>
     <!-----------------------------------------------------------------------
                      FOOTER
 ------------------------------------------------------------------------->    

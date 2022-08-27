@@ -2,47 +2,27 @@
 // On prolonge la session
 session_start();
 
-if ($_GET['id_pseudo']) {
-    $_SESSION['pseudo'] = $_GET['id_pseudo'];
-}
-
 // On teste si la variable de session existe et contient une valeur
 if (empty($_SESSION['email'])) {
     // Si inexistante ou nulle, on redirige vers le formulaire de login
     header('Location: index.php');
     exit();
 }
-else{
-    // VERIFICATION ANTI KIDS
+else {
+    // FECTH data || from DATABASE
     require('src/connect.php');
-    $requete = $db->prepare('SELECT categorie FROM profile WHERE id_pseudo = ?');
-    $requete->execute(array($_SESSION['pseudo']));
-    $KidOrNot = $requete->fetch();
-
-    // SI ENFANT => Go to home_kids.php
-    if($KidOrNot["categorie"] == "enfant"){
-        header('Location: home_kids.php');
-        exit();
-    }
-
+    $profilesDB = $db->query('SELECT * FROM profile  order by email asc');
+    $usersDB = $db->query('SELECT * FROM user');
+    $moviesListingQuery = $db->query('SELECT * FROM listing WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND type="movie"');
+    $seriesListingQuery = $db->query('SELECT * FROM listing WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND type="serie"');
 }
 include "api/info.php";
-
-
-
-
 ?>
-<!-- SCRIPT - Masquer information GET dans URL -->
-<script>    
-    if(typeof window.history.pushState == 'function') {
-        window.history.pushState({}, "Hide", '<?php echo $_SERVER['PHP_SELF'];?>');
-    }
-</script>
 
 <!DOCTYPE html>
 
 <head>
-    <title>NOVA · Home</title>
+    <title>NOVA · Listing</title>
     <?php include "src/head_meta_tags.php"; ?>
     <link href="styles/styles_home.css" rel="stylesheet">
 </head>
@@ -137,37 +117,8 @@ include "api/info.php";
                                     MOVIES
         //======================================================================-->
 
-    <p id="ancre_film" class="title_slide">Nouveauté</p>
-    <div class="container">
-        <div class="swiper-container">
-
-            <div class="swiper-wrapper">
-
-                <?php
-                foreach ($moviesLatest->results as $p) { // RECENT SF MOVIE
-                    if (!empty($p->poster_path && $p->backdrop_path)) {
-                        echo  "<div class='swiper-slide'>
-                            <a href='movie.php?id=" . $p->id . "'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
-                        </div>";
-                    }
-                } ?>
-
-                <?php
-                foreach ($moviesLatest2->results as $p) { // RECENT SF MOVIE
-                    if (!empty($p->poster_path && $p->backdrop_path)) {
-                        echo  "<div class='swiper-slide'>
-                            <a href='movie.php?id=" . $p->id ."'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
-                        </div>";
-                    }
-                } ?>
-
-            </div>
-            <!-- Add Arrows -->
-
-        </div>
-    </div>
-
-    <p class="title_slide">Incontournables</p>
+    <p id="ancre_film" class="title_slide">Movies</p>
+    <?php if(empty($moviesListingQuery->fetch())){echo "<p>You have not added movies to your list yet.</p>";} ?>
     <div class="container">
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -188,33 +139,14 @@ include "api/info.php";
         </div>
     </div>
 
-    <p class="title_slide">Populaires</p>
-    <div class="container">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
 
-                <?php
-                foreach ($moviesPopular->results as $p) { // POPULAR SF MOVIE
-                    if (!empty($p->poster_path && $p->backdrop_path)) {
-                        echo  "<div class='swiper-slide'>
-                            <a href='movie.php?id=" . $p->id ."'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
-                        </div>";
-                    }
-                } ?>
-
-            </div>
-            <!-- Add Arrows -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </div>
-
-
+   
     <!-- ======================================================================
                                     SERIES
         //======================================================================-->
 
-    <p id="ancre_serie" class="title_slide">Nouveauté</p>
+    <p id="ancre_serie" class="title_slide">TV Series</p>
+    <?php if(empty($moviesListingQuery->fetch())){echo "<p>You have not added series to your list yet.</p>";} ?>
     <div class="container">
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -236,47 +168,7 @@ include "api/info.php";
         </div>
     </div>
 
-    <p class="title_slide">Incontournables</p>
-    <div class="container">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-
-                <?php
-                foreach ($seriesTopRated->results as $p) { // TOP RATED - SF & FANTAST - SERIES
-                    if (!empty($p->poster_path && $p->backdrop_path)) {
-                        echo  "<div class='swiper-slide'>
-                            <a href='serie.php?id=" . $p->id ."'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
-                        </div>";
-                    }
-                } ?>
-
-            </div>
-            <!-- Add Arrows -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </div>
-
-    <p class="title_slide">Populaires</p>
-    <div class="container">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-
-                <?php
-                foreach ($seriesPopular->results as $p) { // POPULAR - SF & FANTAST - SERIES
-                    if (!empty($p->poster_path && $p->backdrop_path)) {
-                        echo  "<div class='swiper-slide'>
-                            <a href='serie.php?id=" . $p->id ."'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
-                        </div>";
-                    }
-                } ?>
-
-            </div>
-            <!-- Add Arrows -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </div>
+   
     <?php
     include "src/footer.php";
     ?>

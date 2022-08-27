@@ -15,6 +15,7 @@ if (empty($_SESSION['email'])) {
 //======================================================================
 
 include('src/connect.php');
+$moviesListingQuery = $db->query('SELECT * FROM listing WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND id_film="'.$_GET['id'].'"');
 
 //======================================================================
 // SECURITY - ID VERIFICATION // BACK TO MOVIES INDEX
@@ -40,7 +41,6 @@ include "api/info.php";
     <title>NOVA · <?php echo $infoMovie->title; ?></title>
     <?php include "src/head_meta_tags.php"; ?>
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <link href="styles/styles_general.css" rel="stylesheet">
     <link href="styles/styles_movie_preview.css" rel="stylesheet">
     <link href="styles/comments_styles.css" rel="stylesheet">
@@ -66,7 +66,11 @@ include "api/info.php";
         <img src="<?php echo $imgurl . $infoMovie->backdrop_path; ?>" id="testImage" style="max-width: 100%;">
         <div class="headerMovie">
             <div class="nameMovie">
-                <h1><?php echo $infoMovie->title; ?></h1>
+                <h1><?php echo $infoMovie->title; ?>
+                    <?php if(empty($moviesListingQuery->fetch())){
+                        echo '<a href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=movie&action=add"><i id="notListed" class="fa-regular fa-bookmark fa-fade" style="color:#06060f"></i></a>';}
+                        else { echo '<a href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=movie&action=remove"><i id="listed" class="fa-solid fa-bookmark" style="color:#06060f"></i></a>';} ?></h1>
+                
             </div>
 
             <div class="infosMovie">

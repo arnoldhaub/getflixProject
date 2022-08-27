@@ -54,3 +54,24 @@ champPseudo.onmouseover = () => {
       document.getElementById('listePseudos').style.display = "none";
     }, 1000);
   }
+
+
+// L I S T I N G // 
+
+
+
+$("#notListed").hover(function() {
+    $("#notListed").removeClass("fa-regular fa-fade");
+    $("#notListed").addClass("fa-solid");
+}, function() {
+    $("#notListed").removeClass("fa-solid");
+    $("#notListed").addClass("fa-regular");
+});
+
+$("#listed").hover(function() {
+    $("#listed").removeClass("fa-solid");
+    $("#listed").addClass("fa-regular");
+}, function() {
+    $("#listed").removeClass("fa-regular");
+    $("#listed").addClass("fa-solid");
+});

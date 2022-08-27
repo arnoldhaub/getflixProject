@@ -44,6 +44,7 @@ include "api/info.php";
         <link href="styles/comments_styles.css" rel="stylesheet">
     </head>
     <body>  
+    <script src="Scripts/umd/popper.min.js"></script>
 <!-----------------------------------------------------------------------
                      HEADER + MENU
 ------------------------------------------------------------------------->
@@ -130,152 +131,9 @@ include "api/info.php";
                      DISPLAY SEASONS + EPISODE
 ------------------------------------------------------------------------->
         <div class="container_movie">
-
-            <!-- DROPDOWN - SELECTION DE LA SAISON -->
-            <?php
-            if (!empty($infoSerie->seasons)) {
-                echo    '<div class="dropdown-center" style="margin-left: 4vh;">
-                            <button class="btn dropdown-toggle play" type="button" data-toggle="dropdown" aria-expanded="false">
-                                Which season?
-                            </button>
-                            <ul class="dropdown-menu">';
-                foreach($infoSerie->seasons as $p){
-                    if($p->episode_count > 0){
-                        echo    '<li <?php if(@$type == "serie"){echo "checked";}><a class="dropdown-item" href="serie.php?id='. $id .'&page='.$p->season_number. '" value="'.$p->season_number.'">'.$p->name.'</a></li>';
-                    }
-                }
-                echo        '</ul>
-                        </div>';
-
-                        // SI SAISON SELECTIONNÉ, AFFICHER LES ÉPISODES
-                if(isset($page)){
-                    if($page == 0){$season = 1;}
-                    else{$season = $page;}
-                    echo    '<div class="container_serie">
-                                    <div class="container">
-                                        <p class="title_slide">'.$infoSerie->seasons[$page]->name.'</p>
-                                        <div class="swiper-container">
-                                            <div class="swiper-wrapper">';
-                                            include "api/episodeInfo.php"; 
-                                            foreach($episodeInfo->episodes as $i){
-                                                $ep = $i->episode_number;
-                                                include "api/episodeInfo.php";
-                                                echo                '<div class="swiper-slide" id="first-swiper" style="text-align:center;">';
-                                                if(!empty($episodeDetails->videos->results[0])){ // Si vidéo répertoriée, afficher
-                                                    echo                '<a class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/'.$episodeDetails->videos->results[0]->key.'" data-target="#myModal">';
-                                                }
-                                                else{ // Sinon afficher celle de la série
-                                                    echo                '<a class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/'.$infoSerie->videos->results[0]->key.'"  data-target="#myModal">';
-                                                }
-                                                // '<a href="episode.php?id='.$id.'&season='.$i->season_number. '&ep='.$i->episode_number.'">
-                                                    echo                    '<img src="';if($i->still_path != null){ echo $imgurl_500 . $i->still_path;} else{echo "images/picturetocome.png";}
-                                                    echo                        '" style="object-fit: cover;"></a>
-                                                                        <p><b>Episode '.$i->episode_number.' -</b> '. $i->name .'</p><hr><p>'.$episodeDetails->overview.'</p>
-                        
-                                                                    </div>';
-                                            }
-                                            echo                    '<div class="swiper-button-next"></div>
-                                                                    <div class="swiper-button-prev"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>';
-                                                    
-                                    
-
-
-                }
-            }
-        
-
-
-
-
-                // foreach($infoSerie->seasons as $p){
-                //     if($p->episode_count > 0){
-                //         $season = $p->season_number;
-                //         echo    '<div class="container_movie">
-                //                     <div class="container">
-                //                         <p class="title_slide">'.$p->name.'</p>
-                //                         <div class="swiper-container">
-                //                             <div class="swiper-wrapper">';
-                        
-                //         include "api/episodeInfo.php"; 
-                //         foreach($episodeInfo->episodes as $i){
-                //             $ep = $i->episode_number;
-                //             include "api/episodeInfo.php";
-                //             echo                '<div class="swiper-slide" id="first-swiper" style="text-align:center;">';
-                //             if(!empty($episodeDetails->videos->results[0])){ // Si vidéo répertoriée, afficher
-                //                 echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$episodeDetails->videos->results[0]->key.'" data-bs-target="#myModal">';
-                //             }
-                //             else{ // Sinon afficher celle de la série
-                //                 echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$infoSerie->videos->results[0]->key.'"  data-bs-target="#myModal">';
-                //             }
-                //             // '<a href="episode.php?id='.$id.'&season='.$i->season_number. '&ep='.$i->episode_number.'">
-                //                 echo                    '<img src="' . $imgurl_500 . $i->still_path . '" style="object-fit: cover;"></a>
-                //                                     <p><b>Episode '.$i->episode_number.' -</b> '. $i->name .'</p><hr><p>'.$episodeDetails->overview.'</p>
-    
-                //                                 </div>';
-                //         }
-                //         echo                    '<div class="swiper-button-next"></div>
-                //                                 <div class="swiper-button-prev"></div>
-                //                             </div>
-                //                         </div>
-                //                     </div>
-                //                 </div>';
-                                
-                //         }
-                //     }
-                
-                // }
-            ?>
-        </div>
-
-
-
-
-
-
-
-        <!-- if (!empty($infoSerie->seasons)) {
-            foreach($infoSerie->seasons as $p){
-                if($p->episode_count > 0){
-                    $season = $p->season_number;
-                    echo    '<div class="container_movie">
-                                <div class="container">
-                                    <p class="title_slide">'.$p->name.'</p>
-                                    <div class="swiper-container">
-                                        <div class="swiper-wrapper">';
-                    
-                    include "api/episodeInfo.php"; 
-                    foreach($episodeInfo->episodes as $i){
-                        $ep = $i->episode_number;
-                        include "api/episodeInfo.php";
-                        echo                '<div class="swiper-slide" id="first-swiper" style="text-align:center;">';
-                        if(!empty($episodeDetails->videos->results[0])){ // Si vidéo répertoriée, afficher
-                            echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$episodeDetails->videos->results[0]->key.'" data-bs-target="#myModal">';
-                        }
-                        else{ // Sinon afficher celle de la série
-                            echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$infoSerie->videos->results[0]->key.'"  data-bs-target="#myModal">';
-                        }
-                        // '<a href="episode.php?id='.$id.'&season='.$i->season_number. '&ep='.$i->episode_number.'">
-                            echo                    '<img src="' . $imgurl_500 . $i->still_path . '" style="object-fit: cover;"></a>
-                                                <p><b>Episode '.$i->episode_number.' -</b> '. $i->name .'</p><hr><p>'.$episodeDetails->overview.'</p>
-
-                                            </div>';
-                    }
-                    echo                    '<div class="swiper-button-next"></div>
-                                            <div class="swiper-button-prev"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>';
-                            
-                    }
-                }
+            <?php include ('src/serie_season.php') ?>
             
-            }
-        ?> -->
+        </div>
 
 <!-----------------------------------------------------------------------
                      SERIES RECOMMANDATIONS
@@ -383,7 +241,7 @@ include "api/info.php";
         </style>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="js/movie_preview_script.js"></script>
         <script src="js/js_comment.js"></script>

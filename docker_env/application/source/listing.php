@@ -14,7 +14,7 @@ else {
     $moviesListingVerif = $db->query('SELECT id_film FROM listing WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND type="movie"');
     $moviesListingQuery = $db->query('SELECT id_film FROM listing WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND type="movie" order by date desc');
     $seriesListingVerif = $db->query('SELECT id_film FROM `listing` WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND type="serie"');
-    $seriesListingQuery = $db->query('SELECT id_film FROM `listing` WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND type="serie" order by date asc');
+    $seriesListingQuery = $db->query('SELECT id_film FROM `listing` WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND type="serie" order by date desc');
 }
 include "api/info.php";
 ?>

@@ -106,16 +106,14 @@ include "api/info.php";
                                                 <div class="modal-body bg-dark">
                                                     <form role="form" method="POST" action="admin/edit.php">
                                                         <div class="form-group">
-                                                            <label for="commentID" class="col-form-label">Comment ID</label>
-                                                            <input type="number" class="form-control text-center" name="commentID"  value="<?php echo $comment['id'];?>">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="filmID" class="col-form-label">Film/Serie ID</label>
-                                                            <input type="number" class="form-control text-center" name="filmID"  value="<?php echo $comment['id_film'];?>">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="pseudo" class="col-form-label">Pseudo</label>
-                                                            <input type="text" class="form-control text-center" name="pseudo" value="<?php echo $comment['pseudo'];?>">
+                                                            <?php $profilesPseudo = $db->query('SELECT pseudo, email, id_pseudo FROM profile');?>
+                                                            <label for="id_pseudo" class="col-form-label">Pseudo</label><br>
+                                                            <select class="form-control validate text-center"  name="id_pseudo">
+                                                                <option value="" disabled selected>Select a profile pseudo...</option>
+                                                                <?php foreach ($profilesPseudo as $profilePseudo) :?>
+                                                                <option  value="<?php echo $profilePseudo['id_pseudo'] ?>" <?php if($profilePseudo['id_pseudo'] ==  $comment['id_pseudo']) {echo "selected";} ?>><?php echo $profilePseudo['pseudo']." | ID: ".$profilePseudo['id_pseudo']." | ". $profilePseudo['email'] ?></option>
+                                                                <?php endforeach ?>
+                                                            </select>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="comment" class="col-form-label">Comment</label>

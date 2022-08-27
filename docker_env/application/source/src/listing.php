@@ -42,4 +42,38 @@
         }
     }
 
+
+    // POUR LES S E R I E S 
+    if($_GET['type'] == "serie"){
+
+        // AJOUTER UNE SERIE DANS LA LISTE
+        if($_GET['action'] == "add"){
+
+            $req = $db->prepare("INSERT INTO `listing` ( id_pseudo, id_film, type) VALUES (?,?,?)");
+            $req->execute(array($id_pseudo, $id_film, $type));
+
+            if ($req) {
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                exit();
+            } else {
+                echo "Failed to add the serie to your listing.";
+            }
+        }
+
+        // SUPPRIMER UNE SERIE DE LA LISTE
+        if($_GET['action'] == "remove"){
+
+            $removeFromListing = $db->query("DELETE FROM `listing` WHERE id_pseudo=$id_pseudo AND id_film=$id_film");
+
+            if ($removeFromListing) {
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                exit();
+            } else {
+                echo "Failed to remove the serie to your listing.";
+            }
+        }
+
+    }
+
+
     ?>

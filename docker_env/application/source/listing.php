@@ -11,10 +11,10 @@ if (empty($_SESSION['email'])) {
 else {
     // FECTH data || from DATABASE
     require('src/connect.php');
-    $profilesDB = $db->query('SELECT * FROM profile  order by email asc');
-    $usersDB = $db->query('SELECT * FROM user');
-    $moviesListingQuery = $db->query('SELECT * FROM listing WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND type="movie"');
-    $seriesListingQuery = $db->query('SELECT * FROM listing WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND type="serie"');
+    $moviesListingVerif = $db->query('SELECT id_film FROM listing WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND type="movie"');
+    $moviesListingQuery = $db->query('SELECT id_film FROM listing WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND type="movie" order by date desc');
+    $seriesListingVerif = $db->query('SELECT id_film FROM `listing` WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND type="serie"');
+    $seriesListingQuery = $db->query('SELECT id_film FROM `listing` WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND type="serie" order by date asc');
 }
 include "api/info.php";
 ?>
@@ -118,26 +118,51 @@ include "api/info.php";
         //======================================================================-->
 
     <p id="ancre_film" class="title_slide">Movies</p>
-    <?php if(empty($moviesListingQuery->fetch())){echo "<p>You have not added movies to your list yet.</p>";} ?>
-    <div class="container">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
+    <?php   if(empty($moviesListingVerif->fetch())){
+                echo "<p class='txt_page'>You have not added any movie to your list yet. Here are some of the top-rated movies: </p>"; ?>
 
-                <?php
-                foreach ($moviesTopRated->results as $p) { // TOP-RATED SF MOVIE
-                    if (!empty($p->poster_path && $p->backdrop_path)) {
-                        echo  "<div class='swiper-slide'>
-                            <a href='movie.php?id=" . $p->id ."'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
-                        </div>";
-                    }
-                } ?>
+                    <div class="container">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
 
-            </div>
-            <!-- Add Arrows -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-    </div>
+                                <?php
+                                foreach ($moviesTopRated->results as $p) { // TOP-RATED SF MOVIE
+                                    if (!empty($p->poster_path && $p->backdrop_path)) {
+                                        echo  "<div class='swiper-slide'>
+                                            <a href='movie.php?id=" . $p->id ."'><img src='" . $imgurl_500 . $p->poster_path . "' id='videoTrailer'></a>
+                                        </div>";
+                                    }
+                                } ?>
+
+                            </div>
+                            <!-- Add Arrows -->
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div><?php
+
+            } 
+            else{ ?>
+                <div class="container">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                <?php 
+
+                    foreach ($moviesListingQuery as $movieListed): // TOP-RATED SF MOVIE
+                        $id = $movieListed["id_film"];
+                        include "api/movie_info.php"; 
+                        echo    "<div class='swiper-slide'>
+                                    <a href='movie.php?id=" . $id ."'><img src='" . $imgurl_500 . $infoMovie->poster_path . "' id='videoTrailer'></a>
+                            </div>";
+                    endforeach; ?>
+                        </div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            <?php }?>
+
 
 
    
@@ -146,27 +171,48 @@ include "api/info.php";
         //======================================================================-->
 
     <p id="ancre_serie" class="title_slide">TV Series</p>
-    <?php if(empty($moviesListingQuery->fetch())){echo "<p>You have not added series to your list yet.</p>";} ?>
-    <div class="container">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
+    <?php if(empty($moviesListingVerif->fetch())){
+        echo "<p class='txt_page'>You have not added any serie to your list yet. Here are some of the most popular series: </p>"; ?>
+                <div class="container">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
 
-                <?php
-                include "api/info.php";
-                foreach ($seriesLatest->results as $p) { // SF & FANTAST - SERIES
-                    if (!empty($p->poster_path && $p->backdrop_path)) {
-                        echo  "<div class='swiper-slide'>
-                            <a href='serie.php?id=" . $p->id ."'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
-                        </div>";
-                    }
-                } ?>
+                            <?php
+                            foreach ($seriesPopular->results as $p) { // POPULAR - SF & FANTAST - SERIES
+                                if (!empty($p->poster_path && $p->backdrop_path)) {
+                                    echo  "<div class='swiper-slide'>
+                                        <a href='serie.php?id=" . $p->id ."'><img src='" . $imgurl_500 . $p->poster_path . "'></a>
+                                    </div>";
+                                }
+                            }?>
 
+                        </div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+    <?php }
+    else{ ?>
+        <div class="container">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+        <?php 
+
+            foreach ($seriesListingQuery as $serieListed): // TOP-RATED SF MOVIE
+                $id = $serieListed["id_film"];
+                include "api/serie_info.php"; 
+                echo    "<div class='swiper-slide'>
+                            <a href='serie.php?id=" . $id ."'><img src='" . $imgurl_500 . $infoSerie->poster_path . "' id='videoTrailer'></a>
+                    </div>";
+            endforeach; ?>
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
-            <!-- Add Arrows -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
         </div>
-    </div>
+    <?php }?>
 
    
     <?php

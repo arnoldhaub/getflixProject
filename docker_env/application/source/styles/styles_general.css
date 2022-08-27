@@ -9,6 +9,7 @@
     background-attachment: fixed;
     overflow-x: hidden;
     min-height: 100vh;
+    
   }
   
   * {
@@ -21,6 +22,11 @@
   h1 {
     font-family: "Circular", sans-serif;
     color: rgb(255, 255, 255);
+  }
+
+  .txt_page {
+    margin-left: 4vh;
+    margin-right: 4vh;
   }
 
 /* ↓ NAVBAR ↓*/

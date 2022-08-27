@@ -11,7 +11,7 @@ if (empty($_SESSION['email'])) {
 else{
     // FECTH data || from DATABASE
     require('src/connect.php');
-    $profilesDB = $db->query('SELECT * FROM profile  order by email asc');
+    $profilesDB = $db->query('SELECT * FROM profile order by email asc');
     $usersDB = $db->query('SELECT * FROM user');
     $commentsDB = $db->query('SELECT * FROM comments');
 

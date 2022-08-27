@@ -11,6 +11,14 @@ if (empty($_SESSION['email'])) {
 }
 
 //======================================================================
+// connexion DB
+//======================================================================
+
+include('src/connect.php');
+$seriesListingQuery = $db->query('SELECT id_film FROM listing WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND id_film="'.$_GET['id'].'"');
+
+
+//======================================================================
 // FETCH ALL INFORMATION FROM THE API && PUT ID IN VARIABLE
 //======================================================================
 
@@ -50,7 +58,12 @@ include "api/info.php";
                 <div class="headerMovie">
 
                     <div class="nameMovie">
-                        <h1><?php echo $infoSerie->name; ?></h1>
+                        <h1>
+                            <?php echo $infoSerie->name; ?>
+                            <?php   if(empty($seriesListingQuery->fetch())){
+                                        echo '<a href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=serie&action=add"><i id="notListed" class="fa-regular fa-bookmark fa-fade" style="color:#06060f"></i></a>';}
+                                    else { echo '<a href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=serie&action=remove"><i id="listed" class="fa-solid fa-bookmark" style="color:#06060f"></i></a>';} ?>
+                        </h1>
                     </div>
 
                     <div class="infosMovie">

@@ -137,7 +137,7 @@ include "api/info.php";
                                     MOVIES
         //======================================================================-->
 
-    <p id="ancre_film" class="title_slide">Nouveauté</p>
+    <p id="ancre_film" class="title_slide">Movie · New releases</p>
     <div class="container">
         <div class="swiper-container">
 
@@ -167,7 +167,7 @@ include "api/info.php";
         </div>
     </div>
 
-    <p class="title_slide">Incontournables</p>
+    <p class="title_slide">Movie · Must-see</p>
     <div class="container">
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -188,7 +188,7 @@ include "api/info.php";
         </div>
     </div>
 
-    <p class="title_slide">Populaires</p>
+    <p class="title_slide">Movie · Populars</p>
     <div class="container">
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -214,7 +214,7 @@ include "api/info.php";
                                     SERIES
         //======================================================================-->
 
-    <p id="ancre_serie" class="title_slide">Nouveauté</p>
+    <p id="ancre_serie" class="title_slide">Serie · New releases</p>
     <div class="container">
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -236,7 +236,7 @@ include "api/info.php";
         </div>
     </div>
 
-    <p class="title_slide">Incontournables</p>
+    <p class="title_slide">Serie · Must-see</p>
     <div class="container">
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -257,7 +257,7 @@ include "api/info.php";
         </div>
     </div>
 
-    <p class="title_slide">Populaires</p>
+    <p class="title_slide">Serie · Populars</p>
     <div class="container">
         <div class="swiper-container">
             <div class="swiper-wrapper">

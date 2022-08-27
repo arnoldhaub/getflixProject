@@ -1,7 +1,6 @@
 <?php
 // On prolonge la session
 session_start();
-$userEmail = $_SESSION['email'];
 
 // On teste si la variable de session existe et contient une valeur
 if (empty($_SESSION['email'])) {

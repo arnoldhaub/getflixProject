@@ -46,7 +46,7 @@
 
         <div id="listePseudos">
             <?php
-            $requete2 = $db->query("SELECT PSEUDO,ID_PSEUDO,IMAGE FROM profile WHERE email='$userEmail'");
+            $requete2 = $db->query("SELECT PSEUDO,ID_PSEUDO,IMAGE FROM profile WHERE email='".$_SESSION['email']."'");
             while ($donnees = $requete2->fetch()) { ?>
                 <li class="mb-3">
                     <div class="container">

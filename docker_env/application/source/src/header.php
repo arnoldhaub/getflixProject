@@ -6,20 +6,16 @@
             <li><a href="home.php">HOME</a></li>
             <li><a href="home.php#ancre_serie">SERIES</a></li>
             <li><a href="home.php#ancre_film">FILMS</a></li>
+            <li><a href="listing.php">LISTING</a></li>
             <li><a href="search.php">SEARCH</a></li>
-            <?php if($_SESSION['role']  == "administrateur" or ($_SESSION['role'] =="modérateur")): ?>
-                <li><button class="btn btn-dark"><a href="admin.php">ADMIN</a></button></li>
-            <?php endif?>
         </ul>
 
         <ul class="nav_links_responsive">
             <li><a href="home.php"><i class="fa-solid fa-house"></i></a></li>
             <li><a href="home.php#ancre_film"><i class="fa-solid fa-film"></i></a></li>
             <li><a href="home.php#ancre_serie"><i class="fa-solid fa-tv"></i></a></li>
+            <li><a href="listing.php"><i class="fa-solid fa-solid fa-bookmark"></i></a></li>
             <li><a href="search.php"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-            <?php if($_SESSION['role']  == "administrateur" or ($_SESSION['role'] =="modérateur")): ?>
-                <li><a href="admin.php"><i class="fa-solid fa-user-gear"></i></a></li>
-            <?php endif?>
         </ul>
     </nav>
 
@@ -59,6 +55,18 @@
             <?php   }
             ?>
             <hr style="height:1px">
+            <?php if($_SESSION['role']  == "administrateur" or ($_SESSION['role'] =="modérateur")): ?>
+                <li class="mb-3">
+                <div class="container">
+                    <div style="flex-wrap:nowrap" class="row">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <a style="color:white" href="admin.php" class="ml-2">Admin</a>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <?php endif?>
+
             <li class="mb-3">
                 <div class="container">
                     <div style="flex-wrap:nowrap" class="row">

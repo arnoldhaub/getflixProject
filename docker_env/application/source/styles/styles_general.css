@@ -330,7 +330,7 @@ position: relative;
     cursor: grabbing;
   }
   
-  .swiper-slide:hover {
+  .swiper-slide:hover:not(#second-swiper){
     transform: scale(1.2);
     transition: all 300ms ease-out;
     transition-delay: 0.1ms;

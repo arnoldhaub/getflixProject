@@ -141,7 +141,7 @@ include "api/info.php";
 ------------------------------------------------------------------------->
         <div class="container_recommended">
             <div class="container">
-                <p class="title_slide">You are going to like...</p>  
+                <p class="title_slide" id="title_margin">You are going to like...</p>  
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
 

@@ -4,7 +4,7 @@
             if (!empty($infoSerie->seasons)) { ?>
                 <div class="dropdown" style="margin-left: 4vh;">
                     <button class="btn dropdown-toggle play" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-                            Which season?
+                            SEASON
                     </button>
                     
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton"><?php 
@@ -25,12 +25,12 @@
                                         <p class="title_slide">'.$infoSerie->seasons[$page-1]->name.'</p>
                                         <div class="swiper-container">
                         
-                                            <div class="swiper-wrapper">';
+                                            <div class="swiper-wrapper" id="serie_wrapper">';
                                             include "api/episodeInfo.php"; 
                                             foreach($episodeInfo->episodes as $i){
                                                 $ep = $i->episode_number;
                                                 include "api/episodeInfo.php";
-                                                echo                '<div class="swiper-slide" id="first-swiper" style="text-align:center;">';
+                                                echo                '<div class="swiper-slide" id="second-swiper" style="text-align:center;">';
                                                 if(!empty($episodeDetails->videos->results[0])){ // Si vidéo répertoriée, afficher
                                                     echo                '<a class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/'.$episodeDetails->videos->results[0]->key.'" data-target="#myModal">';
                                                 }
@@ -40,7 +40,8 @@
                                                 // '<a href="episode.php?id='.$id.'&season='.$i->season_number. '&ep='.$i->episode_number.'">
                                                     echo                    '<img src="';if($i->still_path != null){ echo $imgurl_500 . $i->still_path;} else{echo "images/picturetocome.png";}
                                                     echo                        '" style="object-fit: cover;"></a>
-                                                                        <p><b>Episode '.$i->episode_number.' -</b> '. $i->name .'</p><hr><p>'.$episodeDetails->overview.'</p>
+                                                                        <p id="EpTitle"><b>Episode '.$i->episode_number.'</b><br/> '. $i->name .'</p>
+                                                                        <p id="EpDetails">'.$episodeDetails->overview.'</p>
                         
                                                                   </div> ';
                                             }

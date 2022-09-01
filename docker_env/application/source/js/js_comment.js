@@ -17,22 +17,21 @@ const swiper = new Swiper(".swiper-container", {
       
       },
       400: {
-      swiperSlideSize:  300,
-      slidesPerView: 4,
+      slidesPerView: 2,
       slidesPerGroup: 1,
-      spaceBetween: 40,
+      spaceBetween: 0,
       centeredSlides: false,
       },
       462: {
-      slidesPerView: 6,
+      slidesPerView:2,
       slidesPerGroup: 1,
-      spaceBetween: 40,
+      spaceBetween: 0,
       centeredSlides: false
       
     },
     // when window width is >= 600px
     600: {
-      slidesPerView: 5,
+      slidesPerView: 2,
       slidesPerGroup: 1,
       spaceBetween: 5,
       centeredSlides: false
@@ -40,14 +39,14 @@ const swiper = new Swiper(".swiper-container", {
     },
      // when window width is >= 900px
      900: {
-      slidesPerView:5,
+      slidesPerView:2,
       slidesPerGroup: 1,
       spaceBetween: 0,
        centeredSlides: false
       
       },
       1000: {
-      slidesPerView:5,
+      slidesPerView:3,
       slidesPerGroup: 1,
       spaceBetween: 5,
        centeredSlides: false

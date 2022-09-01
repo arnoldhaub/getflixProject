@@ -6,12 +6,12 @@ if($_POST['dbName'] == "user"){
 
     $id = $_POST['userOriginalID'];
     $newID = $_POST['userID'];
-
+    $role = $_POST['role'];
     $email = $_POST['userMail'];
     $table = $_POST['dbName'];
 
     // On supprimme la ligne de la bdd
-    $userUpdate = $db->query("UPDATE `$table` SET id='$newID', email='$email' WHERE id='$id'");
+    $userUpdate = $db->query("UPDATE `$table` SET id='$newID', email='$email', role='$role' WHERE id='$id'");
 
     if ($userUpdate) {
         header("Location: ../admin.php");
@@ -47,16 +47,17 @@ if($_POST['dbName'] == "profile"){
 
 if($_POST['dbName'] == "comments"){
 
-    $id = (int)htmlspecialchars($_POST['commentID']);
-    $filmID = (int) htmlspecialchars($_POST['filmID']);
-    $pseudo = htmlspecialchars($_POST['pseudo']);
+    $id_pseudo = htmlspecialchars($_POST['id_pseudo']);
+    $searchingPseudo = $db->query("SELECT pseudo FROM profile WHERE id_pseudo='$id_pseudo'");
+    $allPseudoInfo = $searchingPseudo->fetch();
+    $pseudo = $allPseudoInfo['pseudo'];
     $comment = filter_input(INPUT_POST,"comment", FILTER_SANITIZE_SPECIAL_CHARS);
     $date = htmlspecialchars($_POST['date']);
     $originalID = (int)htmlspecialchars($_POST['originalID']);
     $table = $_POST['dbName'];
 
     // On supprimme la ligne de la bdd
-    $commentsUpdate = $db->query("UPDATE `$table` SET id='$id', id_film='$filmID', pseudo='$pseudo', commentaires='$comment', date='$date' WHERE id=$originalID");
+    $commentsUpdate = $db->query("UPDATE `$table` SET id_pseudo='$id_pseudo', pseudo='$pseudo', commentaires='$comment', date='$date' WHERE id=$originalID");
 
     if ($commentsUpdate) {
         header("Location: ../admin.php");

@@ -6,6 +6,7 @@ if($_POST['dbName'] == "user"){
 
     $email = htmlspecialchars($_POST['userMail']);
     $password = htmlspecialchars($_POST['password']);
+	$role = htmlspecialchars($_POST['role']);
     $table = htmlspecialchars($_POST['dbName']);
 
     // email adress valid ?
@@ -32,8 +33,8 @@ if($_POST['dbName'] == "user"){
 	$password = "aq1" . sha1($password . "123") . "25";
 
 	// sending
-	$req = $db->prepare("INSERT INTO `$table` (email, password, secret) VALUES (?,?,?)");
-	$req->execute(array($email, $password, $secret));
+	$req = $db->prepare("INSERT INTO `$table` (email, password, secret, role) VALUES (?,?,?,?)");
+	$req->execute(array($email, $password, $secret, $role));
 	header('location: ../admin.php');
 	exit();
 

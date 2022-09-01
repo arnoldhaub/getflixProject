@@ -66,8 +66,8 @@ if (!empty($_GET['id_pseudo'])) {
 
             <form action='' method="post" id="form_profil">
                 <input type="radio" id="imageProfile" name="imageProfile" value="<?php echo $infosProfil['image']; ?>" checked>
-                <input type="text" name="pseudo" placeholder="Add your pseudo" id="changePseudo" value="<?php echo $infosProfil['pseudo']; ?>"></input>
-                <select class="form-select" name="categorie">
+                <input type="text" name="pseudo" placeholder="Add your pseudo" id="changePseudo" value="<?php echo $infosProfil['pseudo']; ?>" required></input>
+                <select class="form-select" name="categorie" required>
                     <option value="" disabled selected hidden> Select your option</option>
                     <option value="adulte" <?php if ($infosProfil['categorie'] == 'adulte') {
                                                 echo "selected";

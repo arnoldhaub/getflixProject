@@ -1,7 +1,7 @@
 $(window).on("load", function () {
-    $("#usersAdmin").show();
+    $("#usersAdmin").hide();
     $("#profilesAdmin").hide();
-    $("#commentAdmin").hide();
+    $("#commentAdmin").show();
 });
 
 $("#usersAdminInterface").click(function () {

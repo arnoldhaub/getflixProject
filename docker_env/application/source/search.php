@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-$userEmail = $_SESSION['email'];
 
 // On teste si la variable de session existe et contient une valeur
 if (empty($_SESSION['email'])) {
@@ -162,6 +161,7 @@ include('src/header.php');
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
     <script src="js/search_page.js"></script>
     <script src="js/js_comment.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>

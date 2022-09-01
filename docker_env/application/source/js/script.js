@@ -86,3 +86,21 @@ const swiper = new Swiper(".swiper-container", {
     
   }
 });
+
+// HEADER -> Menu profil
+
+let champPseudo = document.getElementById('sectionUser');
+
+champPseudo.onmouseover = () => {
+  clearTimeout(closeTimeout);
+  document.getElementById('fleche').className = "fa-solid fa-angle-up";
+  document.getElementById('listePseudos').style.display = "block";
+
+}
+
+champPseudo.onmouseout = () => {
+  closeTimeout = setTimeout(function () {
+    document.getElementById('fleche').className = "fa-solid fa-angle-down";
+    document.getElementById('listePseudos').style.display = "none";
+  }, 1000);
+}

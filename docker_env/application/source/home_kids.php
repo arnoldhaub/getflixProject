@@ -1,7 +1,6 @@
 <?php
 // On prolonge la session
 session_start();
-$userEmail = $_SESSION['email'];
 
 if ($_GET['id_pseudo']) {
     $_SESSION['pseudo'] = $_GET['id_pseudo'];

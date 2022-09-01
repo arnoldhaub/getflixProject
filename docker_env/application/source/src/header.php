@@ -6,15 +6,16 @@
             <li><a href="home.php">HOME</a></li>
             <li><a href="home.php#ancre_serie">SERIES</a></li>
             <li><a href="home.php#ancre_film">FILMS</a></li>
+            <li><a href="listing.php">LISTING</a></li>
             <li><a href="search.php">SEARCH</a></li>
-            <li><a href="admin.php">--- ADMIN</a></li>
         </ul>
 
         <ul class="nav_links_responsive">
             <li><a href="home.php"><i class="fa-solid fa-house"></i></a></li>
             <li><a href="home.php#ancre_film"><i class="fa-solid fa-film"></i></a></li>
             <li><a href="home.php#ancre_serie"><i class="fa-solid fa-tv"></i></a></li>
-            <li><a href="search.php"></a><i class="fa-solid fa-magnifying-glass"></i></a></li>
+            <li><a href="listing.php"><i class="fa-solid fa-solid fa-bookmark"></i></a></li>
+            <li><a href="search.php"><i class="fa-solid fa-magnifying-glass"></i></a></li>
         </ul>
     </nav>
 
@@ -41,20 +42,31 @@
 
         <div id="listePseudos">
             <?php
-            $requete2 = $db->query("SELECT PSEUDO,ID_PSEUDO,IMAGE FROM profile WHERE email='$userEmail'");
+            $requete2 = $db->query("SELECT PSEUDO,ID_PSEUDO,IMAGE FROM profile WHERE email='".$_SESSION['email']."'");
             while ($donnees = $requete2->fetch()) { ?>
                 <li class="mb-3">
                     <div class="container">
                         <div style="flex-wrap:nowrap" class="row">
                             <img id="photoListeProfil" src="<?php echo $donnees[2] ?>" alt="profil">
-                            <a style="color:white" href="home.php?id_pseudo=<?php echo $donnees[1] ?>"><?php echo $donnees[0] ?>
-                            </a>
+                            <a style="color:white" href="home.php?id_pseudo=<?php echo $donnees[1] ?>"><?php echo $donnees[0] ?></a>
                         </div>
                     </div>
                 </li>
             <?php   }
             ?>
             <hr style="height:1px">
+            <?php if($_SESSION['role']  == "administrateur" or ($_SESSION['role'] =="modérateur")): ?>
+                <li class="mb-3">
+                <div class="container">
+                    <div style="flex-wrap:nowrap" class="row">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <a style="color:white" href="admin.php" class="ml-2">Admin</a>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <?php endif?>
+
             <li class="mb-3">
                 <div class="container">
                     <div style="flex-wrap:nowrap" class="row">

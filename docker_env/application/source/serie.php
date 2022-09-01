@@ -2,7 +2,6 @@
 
 // On prolonge la session
 session_start();
-$userEmail = $_SESSION['email'];
 
 // On teste si la variable de session existe et contient une valeur
 if (empty($_SESSION['email'])) {
@@ -10,6 +9,14 @@ if (empty($_SESSION['email'])) {
     header('Location: index.php');
     exit();
 }
+
+//======================================================================
+// connexion DB
+//======================================================================
+
+include('src/connect.php');
+$seriesListingQuery = $db->query('SELECT id_film FROM listing WHERE id_pseudo="'.$_SESSION['pseudo'].'" AND id_film="'.$_GET['id'].'"');
+
 
 //======================================================================
 // FETCH ALL INFORMATION FROM THE API && PUT ID IN VARIABLE
@@ -31,13 +38,13 @@ include "api/info.php";
     <head>
         <title>NOVA · <?php echo $infoSerie->name; ?></title>
         <?php include "src/head_meta_tags.php"; ?>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <link href="styles/styles_general.css" rel="stylesheet">
         <link href="styles/styles_movie_preview.css" rel="stylesheet">
         <link href="styles/comments_styles.css" rel="stylesheet">
     </head>
     <body>  
+    <script src="Scripts/umd/popper.min.js"></script>
 <!-----------------------------------------------------------------------
                      HEADER + MENU
 ------------------------------------------------------------------------->
@@ -52,7 +59,12 @@ include "api/info.php";
                 <div class="headerMovie">
 
                     <div class="nameMovie">
-                        <h1><?php echo $infoSerie->name; ?></h1>
+                        <h1>
+                            <?php echo $infoSerie->name; ?>
+                            <?php   if(empty($seriesListingQuery->fetch())){
+                                        echo '<a href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=serie&action=add"><i id="notListed" class="fa-regular fa-bookmark fa-fade" style="color:#06060f"></i></a>';}
+                                    else { echo '<a href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=serie&action=remove"><i id="listed" class="fa-solid fa-bookmark" style="color:#06060f"></i></a>';} ?>
+                        </h1>
                     </div>
 
                     <div class="infosMovie">
@@ -86,19 +98,21 @@ include "api/info.php";
                     </div>
 
                     <div class="buttonsMovie">
-                        <button type="button" class="play video-btn" id="playButton" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/<?php echo $infoSerie->videos->results[0]->key;?>"  data-bs-target="#myModal"><i class="fa-solid fa-play" id="fa-play"></i>LECTURE</button>
+                        <button type="button" class="play video-btn" id="playButton" data-toggle="modal" data-src="https://www.youtube.com/embed/<?php echo $infoSerie->videos->results[0]->key;?>"  data-target="#myModal"><i class="fa-solid fa-play" id="fa-play"></i>LECTURE</button>
                     </div>
 <!----------------------------------------------
                      MODAL
 ------------------------------------------------>
-                    <div class="modal fade" data-bs-backdrop="false"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-fullscreen" role="document">
+                    <div class="modal fade" data-backdrop="false"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-body">
-                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></span></button>    
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        &times;</span>
+                                    </button>    
 
                                         <!-- 16:9 aspect ratio -->
-                                    <div class="ratio ratio-16x9">
+                                    <div class="embed-responsive embed-responsive-16by9">
                                         <iframe class="embed-responsive-item" src="" id="video"  allow="autoplay" allowfullscreen></iframe>
                                     </div>
                                 </div>
@@ -117,152 +131,9 @@ include "api/info.php";
                      DISPLAY SEASONS + EPISODE
 ------------------------------------------------------------------------->
         <div class="container_movie">
-
-            <!-- DROPDOWN - SELECTION DE LA SAISON -->
-            <?php
-            if (!empty($infoSerie->seasons)) {
-                echo    '<div class="dropdown-center" style="margin-left: 4vh;">
-                            <button class="btn dropdown-toggle play" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Which season?
-                            </button>
-                            <ul class="dropdown-menu">';
-                foreach($infoSerie->seasons as $p){
-                    if($p->episode_count > 0){
-                        echo    '<li <?php if(@$type == "serie"){echo "checked";}><a class="dropdown-item" href="serie.php?id='. $id .'&page='.$p->season_number. '" value="'.$p->season_number.'">'.$p->name.'</a></li>';
-                    }
-                }
-                echo        '</ul>
-                        </div>';
-
-                        // SI SAISON SELECTIONNÉ, AFFICHER LES ÉPISODES
-                if(isset($page)){
-                    if($page == 0){$season = 1;}
-                    else{$season = $page;}
-                    echo    '<div class="container_serie">
-                                    <div class="container">
-                                        <p class="title_slide">'.$infoSerie->seasons[$page]->name.'</p>
-                                        <div class="swiper-container">
-                                            <div class="swiper-wrapper">';
-                                            include "api/episodeInfo.php"; 
-                                            foreach($episodeInfo->episodes as $i){
-                                                $ep = $i->episode_number;
-                                                include "api/episodeInfo.php";
-                                                echo                '<div class="swiper-slide" id="first-swiper" style="text-align:center;">';
-                                                if(!empty($episodeDetails->videos->results[0])){ // Si vidéo répertoriée, afficher
-                                                    echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$episodeDetails->videos->results[0]->key.'" data-bs-target="#myModal">';
-                                                }
-                                                else{ // Sinon afficher celle de la série
-                                                    echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$infoSerie->videos->results[0]->key.'"  data-bs-target="#myModal">';
-                                                }
-                                                // '<a href="episode.php?id='.$id.'&season='.$i->season_number. '&ep='.$i->episode_number.'">
-                                                    echo                    '<img src="';if($i->still_path != null){ echo $imgurl_500 . $i->still_path;} else{echo "images/picturetocome.png";}
-                                                    echo                        '" style="object-fit: cover;"></a>
-                                                                        <p><b>Episode '.$i->episode_number.' -</b> '. $i->name .'</p><hr><p>'.$episodeDetails->overview.'</p>
-                        
-                                                                    </div>';
-                                            }
-                                            echo                    '<div class="swiper-button-next"></div>
-                                                                    <div class="swiper-button-prev"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>';
-                                                    
-                                    
-
-
-                }
-            }
-        
-
-
-
-
-                // foreach($infoSerie->seasons as $p){
-                //     if($p->episode_count > 0){
-                //         $season = $p->season_number;
-                //         echo    '<div class="container_movie">
-                //                     <div class="container">
-                //                         <p class="title_slide">'.$p->name.'</p>
-                //                         <div class="swiper-container">
-                //                             <div class="swiper-wrapper">';
-                        
-                //         include "api/episodeInfo.php"; 
-                //         foreach($episodeInfo->episodes as $i){
-                //             $ep = $i->episode_number;
-                //             include "api/episodeInfo.php";
-                //             echo                '<div class="swiper-slide" id="first-swiper" style="text-align:center;">';
-                //             if(!empty($episodeDetails->videos->results[0])){ // Si vidéo répertoriée, afficher
-                //                 echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$episodeDetails->videos->results[0]->key.'" data-bs-target="#myModal">';
-                //             }
-                //             else{ // Sinon afficher celle de la série
-                //                 echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$infoSerie->videos->results[0]->key.'"  data-bs-target="#myModal">';
-                //             }
-                //             // '<a href="episode.php?id='.$id.'&season='.$i->season_number. '&ep='.$i->episode_number.'">
-                //                 echo                    '<img src="' . $imgurl_500 . $i->still_path . '" style="object-fit: cover;"></a>
-                //                                     <p><b>Episode '.$i->episode_number.' -</b> '. $i->name .'</p><hr><p>'.$episodeDetails->overview.'</p>
-    
-                //                                 </div>';
-                //         }
-                //         echo                    '<div class="swiper-button-next"></div>
-                //                                 <div class="swiper-button-prev"></div>
-                //                             </div>
-                //                         </div>
-                //                     </div>
-                //                 </div>';
-                                
-                //         }
-                //     }
-                
-                // }
-            ?>
-        </div>
-
-
-
-
-
-
-
-        <!-- if (!empty($infoSerie->seasons)) {
-            foreach($infoSerie->seasons as $p){
-                if($p->episode_count > 0){
-                    $season = $p->season_number;
-                    echo    '<div class="container_movie">
-                                <div class="container">
-                                    <p class="title_slide">'.$p->name.'</p>
-                                    <div class="swiper-container">
-                                        <div class="swiper-wrapper">';
-                    
-                    include "api/episodeInfo.php"; 
-                    foreach($episodeInfo->episodes as $i){
-                        $ep = $i->episode_number;
-                        include "api/episodeInfo.php";
-                        echo                '<div class="swiper-slide" id="first-swiper" style="text-align:center;">';
-                        if(!empty($episodeDetails->videos->results[0])){ // Si vidéo répertoriée, afficher
-                            echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$episodeDetails->videos->results[0]->key.'" data-bs-target="#myModal">';
-                        }
-                        else{ // Sinon afficher celle de la série
-                            echo                '<a class="video-btn" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/'.$infoSerie->videos->results[0]->key.'"  data-bs-target="#myModal">';
-                        }
-                        // '<a href="episode.php?id='.$id.'&season='.$i->season_number. '&ep='.$i->episode_number.'">
-                            echo                    '<img src="' . $imgurl_500 . $i->still_path . '" style="object-fit: cover;"></a>
-                                                <p><b>Episode '.$i->episode_number.' -</b> '. $i->name .'</p><hr><p>'.$episodeDetails->overview.'</p>
-
-                                            </div>';
-                    }
-                    echo                    '<div class="swiper-button-next"></div>
-                                            <div class="swiper-button-prev"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>';
-                            
-                    }
-                }
+            <?php include ('src/serie_season.php') ?>
             
-            }
-        ?> -->
+        </div>
 
 <!-----------------------------------------------------------------------
                      SERIES RECOMMANDATIONS
@@ -307,8 +178,8 @@ include "api/info.php";
                 $pseudo = htmlspecialchars($_POST['pseudo']);
                 $id_film = htmlspecialchars($id);
                 
-                $push = $db ->prepare('INSERT INTO `comments` (`id`, `id_film`, `pseudo`, `commentaires`, `date`) VALUES (NULL, ?, ?, ?, CURRENT_TIMESTAMP)');
-                $push->execute(array($id_film, $pseudo, $commentaire));
+                $push = $db->prepare('INSERT INTO `comments` (`id`, `id_film`, `film_serie`, `nom_film`, `id_pseudo`, `pseudo`, `commentaires`, `date`) VALUES (NULL, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)');
+                $push->execute(array($id_film,'serie', $infoSerie->name, $_SESSION['pseudo'], $pseudo, $commentaire));
                 echo "<meta http-equiv='refresh' content='0'>";
             }
             
@@ -370,8 +241,8 @@ include "api/info.php";
         </style>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="js/movie_preview_script.js"></script>
         <script src="js/js_comment.js"></script>
         <script src="js/script.js"></script>

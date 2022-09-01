@@ -14,6 +14,7 @@
     <head>
         <title>NOVA · Welcome on board</title>
         <?php include "src/head_meta_tags.php"; ?>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <link href="login/styles/styles.css" rel="stylesheet">
     </head>
     <body>
@@ -55,6 +56,16 @@
                     <p class="txt1">Sci-Fi streaming Solution</p>
                 </div>
         </div>
-
+<!-----------------------------------------------------------------------
+                     Cookie
+------------------------------------------------------------------------->
+<div class="cookie-disclaimer">
+  <div class="cookie-close accept-cookie close"><i class="fa fa-times"></i></div>
+  <div class="cookie-container">
+    <p>Do you like cookies? 🍪 We use cookies to ensure you get the best experience on our website.</p>
+    <button type="button" class="btn btn-success accept-cookie">Got it!</button>
+  </div>
+</div>
+<script src="js/cookie.js"></script>
     </body>
 </html>

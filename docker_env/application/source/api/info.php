@@ -2,9 +2,9 @@
 
 $key = "01a554c3e281298e66a0ccb62492152f"; // Key unique  du compte TMDB
 
-$imgurl = "http://image.tmdb.org/t/p/original";         // Image des films - taille original.
-$imgurl_500 = "http://image.tmdb.org/t/p/w500"; // Image des films 500px
-$imgurl_300 = "http://image.tmdb.org/t/p/w300"; // Image des films 300px
+$imgurl = "https://image.tmdb.org/t/p/original";         // Image des films - taille original.
+$imgurl_500 = "https://image.tmdb.org/t/p/w500"; // Image des films 500px
+$imgurl_300 = "https://image.tmdb.org/t/p/w300"; // Image des films 300px
 
 
 

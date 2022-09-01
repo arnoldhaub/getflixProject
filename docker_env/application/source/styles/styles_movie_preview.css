@@ -204,11 +204,7 @@ opacity:1;
 
 /* ↓ MEDIA QUERIES ↓*/
 
-@media screen and (max-width: 489px) {
-  #first-swiper img {
-    width: 9rem;
-  }
-}
+
 
 @media screen and (max-width: 1500px) {
   #first-swiper img {
@@ -244,27 +240,25 @@ opacity:1;
 }
 
 @media screen and (max-width: 855px) {
-  #first-swiper img {
-    width: 11rem;
-  }
+  #first-swiper img {width: 10rem;}
+    .swiper-wrapper {gap: 15px;}
 }
 
 @media screen and (max-width: 741px) {
   #first-swiper img {
     width: 9rem;
   }
+    .swiper-wrapper { gap: 5px; }
 }
 
 @media screen and (max-width: 587px) {
-  #first-swiper img {
-    width: 8.5rem;
-  }
+  #first-swiper img {width: 7rem;}
+  .swiper-wrapper { gap: 15px; }
 }
 
 @media screen and (max-width: 489px) {
-  #first-swiper img {
-    width: 9rem;
-  }
+  #first-swiper img {width: 6 rem;}
+  .swiper-wrapper {gap: 15px;}
 }
 
 @media screen and (max-width: 442px) {
@@ -279,10 +273,10 @@ opacity:1;
     margin-top: 66vh;
   }
   #first-swiper img {
-    width: 9rem;
+    width: 7rem;
   }
   .swiper-wrapper {
-    gap: 0px;
+    gap: 5px;
   }
   .nameMovie {
     margin-top: 1vh;

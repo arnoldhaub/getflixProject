@@ -171,7 +171,7 @@ include "api/info.php";
         //======================================================================-->
 
     <p id="ancre_serie" class="title_slide">TV Series</p>
-    <?php if(empty($moviesListingVerif->fetch())){
+    <?php if(empty($seriesListingVerif->fetch())){
         echo "<p class='txt_page'>You have not added any serie to your list yet. Here are some of the most popular series: </p>"; ?>
                 <div class="container">
                     <div class="swiper-container">

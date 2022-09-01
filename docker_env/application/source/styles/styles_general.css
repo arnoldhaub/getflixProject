@@ -24,7 +24,9 @@
   }
 
 /* ↓ NAVBAR ↓*/
-
+ul{
+  padding: 0;
+}
 li, a {
   font-family: "Inter";
   font-weight: 100;
@@ -103,7 +105,7 @@ position: relative;
 */
 
 .user {
-  margin-right: 3vh;
+  margin-right: 4vh;
   display: flex;
   float: right;
   justify-content: space-between;

@@ -67,9 +67,7 @@ include "api/info.php";
         <div class="headerMovie">
             <div class="nameMovie">
                 <h1><?php echo $infoMovie->title; ?>
-                    <?php if(empty($moviesListingQuery->fetch())){
-                        echo '<a href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=movie&action=add"><i id="notListed" class="fa-regular fa-bookmark fa-fade" style="color:#06060f"></i></a>';}
-                        else { echo '<a href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=movie&action=remove"><i id="listed" class="fa-solid fa-bookmark" style="color:#06060f"></i></a>';} ?></h1>
+                    </h1>
                 
             </div>
 
@@ -96,6 +94,10 @@ include "api/info.php";
 
             <div class="buttonsMovie">
                 <button type="button" class="play video-btn" id="playButton" data-toggle="modal" data-src="https://www.youtube.com/embed/<?php echo $infoMovie->videos->results[0]->key; ?>" data-target="#myModal"><i class="fa-solid fa-play" id="fa-play"></i>PLAY</button>
+                <?php if(empty($moviesListingQuery->fetch())){
+                        echo '<a href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=movie&action=add"><i id="notListed" class="fa-solid fa-circle-plus" style="color:#06060f"></i> ADD TO LIST</a>';}
+                        else { echo '<a id="listed" href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=movie&action=remove"><i class="fa-solid fa-book-bookmark"></i></i>BOOKMARKED</a>
+                                     <a id="listed2" href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=movie&action=remove"><i class="fa-solid fa-book-bookmark"></i></i>UNBOOKMARKED</a>';} ?>  
             </div>
             <!-- MODAL  -->
             <div class="modal fade" data-backdrop="false" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -201,7 +203,7 @@ include "api/info.php";
                                 <div class="infos_comments">
                                     <span class="pseudo"><?php echo $comment['pseudo'] ?></span>
                                     <span><?= $comment['date'] ?></span>
-                                </div>
+                                </div>  
                             </div>
 
                             <div class="test2">

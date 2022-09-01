@@ -14,11 +14,7 @@
     font-size: 0.7rem;
 }
 #commentSwiper{
-    width: 500px;
-}
 
-.swiper-slide {
-  transition: all 105ms ease-out;
   border-radius: 7px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   margin: 0;
@@ -30,9 +26,6 @@
 }
 
 
-#commentSwiper{
-    width: 600px;
-}
 .infos_comments{
     display: flex;
     flex-direction: column;

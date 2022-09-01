@@ -196,7 +196,7 @@ include "api/info.php";
                     <div class="swiper-wrapper">
                         <?php
                         foreach ($comment as $comment) {
-                            echo "<div class='swiper-slide' id='commentSwiper'>";
+                            echo "<div class='swiper-slide' id='commentSwiper' style=''>";
                         ?>
                             <div class="test">
                                 <img src="<?php echo $pseudoActif[1] ?>" id="UserCommentImage">
@@ -214,7 +214,7 @@ include "api/info.php";
 
                     </div>
                     <?php } ?>
-                </div>
+                
             </div>
         </div>
     </div>

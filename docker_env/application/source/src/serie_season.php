@@ -24,6 +24,7 @@
                                     <div class="container">
                                         <p class="title_slide">'.$infoSerie->seasons[$page-1]->name.'</p>
                                         <div class="swiper-container">
+                        
                                             <div class="swiper-wrapper">';
                                             include "api/episodeInfo.php"; 
                                             foreach($episodeInfo->episodes as $i){
@@ -41,7 +42,7 @@
                                                     echo                        '" style="object-fit: cover;"></a>
                                                                         <p><b>Episode '.$i->episode_number.' -</b> '. $i->name .'</p><hr><p>'.$episodeDetails->overview.'</p>
                         
-                                                                    </div>';
+                                                                  </div> ';
                                             }
                                             echo                    '<div class="swiper-button-next"></div>
                                                                     <div class="swiper-button-prev"></div>

@@ -1,4 +1,5 @@
 const swiper = new Swiper(".swiper-container", {
+  swiperSlideSize:  6000,
   slidesPerView: 5,
   slidesPerGroup: 1,
   centeredSlides: true,
@@ -15,14 +16,14 @@ const swiper = new Swiper(".swiper-container", {
       centeredSlides: false
       
       },
-        400: {
+      400: {
+      swiperSlideSize:  300,
       slidesPerView: 4,
       slidesPerGroup: 1,
       spaceBetween: 40,
-      centeredSlides: false
-      
+      centeredSlides: false,
       },
-           462: {
+      462: {
       slidesPerView: 6,
       slidesPerGroup: 1,
       spaceBetween: 40,

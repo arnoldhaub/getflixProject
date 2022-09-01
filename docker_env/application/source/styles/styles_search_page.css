@@ -225,13 +225,19 @@ margin-bottom: 5vh;
 
 @media screen and (max-width: 1200px){
 #first-swiper img{width: 13rem;}
+.choix2, .choix3,.choix4{font-size: 3rem;}
+input[type=text]{width:700px;}
 }
 @media screen and (max-width: 1024px){
 #first-swiper img{width: 11rem;}
+.choix2, .choix3,.choix4{font-size: 3rem;}
+input[type=text]{width:500px;}
 }
 
 @media screen and (max-width: 1000px){
 #first-swiper img{width: 11rem;}
+.choix2, .choix3,.choix4{font-size: 3rem;}
+input[type=text]{width:500px;}
 }
 
 
@@ -241,20 +247,40 @@ margin-bottom: 5vh;
 
 @media screen and (max-width: 855px){
 #first-swiper img{width: 9.5rem;}
+input[type=text]{width:400px; padding: 20px; height: 20px;}
+.fa-magnifying-glass{display: none; }
 }
 @media screen and (max-width: 770px){
 #first-swiper img{width: 8.5rem;}
+.choix2, .choix3,.choix4{font-size: 3rem;}
+
 }
 @media screen and (max-width: 741px){
 #first-swiper img{width: 7rem;}
+input[type=text]{width:390px;padding: 20px; height: 10px; margin-left: none;}
+.fa-magnifying-glass{display: none; }
+}
+@media screen and (max-width: 635px){
+#first-swiper img{width: 7rem;}
+input[type=text]{width:320px;padding: 20px; height: 10px; margin-left: none;}
+.fa-magnifying-glass{display: none; }
 }
 
 @media screen and (max-width: 587px){
 #first-swiper img{width: 6.5rem;}
+.choix2, .choix3,.choix4{font-size: 3rem;}
+input[type=text]{width:250px;}
+}
+@media screen and (max-width: 510px){
+#first-swiper img{width: 6.5rem;}
+.choix2, .choix3,.choix4{font-size: 3rem;}
+input[type=text]{width:220px;}
 }
 
 @media screen and (max-width: 489px){
 #first-swiper img{width: 6rem;}
+.choix2, .choix3,.choix4{font-size: 3rem;}
+input[type=text]{width:180px;}
 }
 
 @media screen and (max-width: 450px){
@@ -263,6 +289,12 @@ margin-bottom: 5vh;
 
 @media screen and (max-width: 430px){
 #first-swiper img{width: 7rem;}
+.choix2, .choix3,.choix4{font-size: 1.5rem; gap:5px;}
+.container_menu{margin-right: 2px;}
+input[type=text]{width:200px;padding: 12px; height: 5px; margin-left: 5px;}
+.fa-magnifying-glass{display: none; }
+#circle_selected, #circle_selected2, #circle_selected3{width: 20px;}
+#circle_selector, #circle_selector2, #circle_selector3{width: 20px;}
 }
 
 
@@ -297,3 +329,4 @@ margin-bottom: 5vh;
   display: inline-block;
   overflow: visible;
 }
+

@@ -19,11 +19,7 @@ else{
     $requete->execute(array($_SESSION['pseudo']));
     $KidOrNot = $requete->fetch();
 
-    // SI ENFANT => Go to home_kids.php
-    if($KidOrNot["categorie"] == "enfant"){
-        header('Location: home_kids.php');
-        exit();
-    }
+    
 
 }
 include "api/info.php";
@@ -55,8 +51,11 @@ include "api/info.php";
 ------------------------------------------------------------------------->
     <?php
     include('src/header.php');
-    ?>
-
+    
+    if($KidOrNot["categorie"] == "enfant"){
+        include('src/home_kids.php');
+    }
+    else { ?>
     <!-----------------------------------------------------------------------
                      WEBSITE
 ------------------------------------------------------------------------->
@@ -278,6 +277,7 @@ include "api/info.php";
         </div>
     </div>
     <?php
+    } // END ELSE
     include "src/footer.php";
     ?>
 

@@ -1,0 +1,137 @@
+/* CSS DISPLAY COMMENTS */
+
+.title_slide_comments{
+    margin-top: 4vh;
+    margin-left: 4vh
+}
+.test{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.test span{
+    font-size: 0.7rem;
+}
+#commentSwiper{
+    width: 500px;
+}
+
+.swiper-slide {
+  transition: all 105ms ease-out;
+  border-radius: 7px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  margin: 0;
+  gap: 25px;
+  padding: 10px;
+  background: linear-gradient(180deg, #7b8bb4 0%, rgba(217, 217, 217, 0) 100%);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
+}
+
+
+#commentSwiper{
+    width: 600px;
+}
+.infos_comments{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.pseudo{
+    right: 0;
+    text-align: right;
+}
+
+.comment_itself{
+    width: 200px;
+    height: 100px;
+    overflow: auto;
+    font-size: 0.7rem;
+    padding: 10px;
+}
+
+/* CSS DISPLAY COMMENTS */
+
+/* CSS FORM WHERE I CAN COMMENT */
+.container_comment{
+    flex-direction: row;
+    justify-content: baseline;
+    gap: 10px;
+    margin-left: 4vh;
+    margin-right: 4vh;
+    margin-bottom: 2vh;
+    margin-top: 7vh;
+    margin: auto;
+}
+
+
+.form_com{
+ margin-left: 4vh;
+    margin-right: 3.7vh;
+    margin-top: 2vh;
+    margin-bottom: 9vh;
+}
+
+.UserImage{
+    display: flex;
+    align-items: flex-start;
+}
+
+
+
+#UserCommentImage{
+    width: 50px;
+    border-radius: 100px;
+    align-items: center;
+    flex-shrink: 0;
+    height: auto;
+}
+
+textarea[type=text]{
+border:rgb(255, 255, 255) 1px solid;
+  border-radius: 7px;
+  text-align: left;
+  padding: 20px;
+  width: 100%;/* change this for the media queries */
+  margin-left: auto;
+  background-color: none;
+  background: none;
+  color: rgb(255, 255, 255);
+  height: 200px;
+  outline: none;
+  margin-bottom: 2vh;
+}
+
+.formPost{
+    width: 100%;
+}
+
+#commentForm::placeholder{
+    color: rgba(255, 255, 255, 0.704);
+    top: 0;
+    left: 0;
+}
+
+ button[type="submit"] {
+    font-family: 'Circular';
+    padding: 15px;
+    width: 20%;
+    background: transparent;
+    color:rgb(255, 255, 255);
+    outline: none;
+    border-radius: 100px;
+    border: 1px solid white;
+    right: 0;
+    
+}
+
+button[type="submit"]:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+/* CSS COMMENT WHERE I CAN COMMENT ---- END AREA */
+
+

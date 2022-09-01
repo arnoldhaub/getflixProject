@@ -60,7 +60,7 @@ include('src/header.php');
     <div class="container-content" id="container-content">
         <form name="fo" method="get" action="" id="searchBar">
             <div class="wrapper_container_search">
-                <input type="text" name="keywords" pattern=".{3,}" id="input_Search" oninvalid="this.setCustomValidity('Field must contain min. 3 characters')" value="<?php echo str_replace('%20', ' ', $keywords) ?>" placeholder="Write what you are you looking for...">
+                <input type="text" name="keywords" pattern=".{3,}" id="input_Search" oninvalid="this.setCustomValidity('Field must contain min. 3 characters')" value="<?php echo str_replace('%20', ' ', $keywords) ?>" placeholder="Search">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
             <input type="submit" name="submit" hidden />

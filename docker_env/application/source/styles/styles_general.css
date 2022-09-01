@@ -345,10 +345,25 @@ position: relative;
   }
 
 .buttonsMovie {
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  gap: 15px;
   margin-bottom: 3vh;
   font-family: 'Circular';
   border-radius: 100px;
 }
+
+.buttonsMovie a{
+text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Circular';
+    display: flex;
+  gap: 10px
+}
+
 
 .play{
     padding: 10px;
@@ -360,6 +375,16 @@ position: relative;
     color: white;
     cursor: pointer;
     text-align: center;
+  }
+
+  .fa-circle-plus:before, .fa-plus-circle:before{
+    font-size: 2.5rem;
+    color: white;
+  }
+
+  .fa-book-bookmark:before{
+  font-size: 2.5rem;
+    color: white;
   }
   
   .play:hover {

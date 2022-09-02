@@ -17,6 +17,25 @@ h1 {
   margin-bottom: 10px;
 }
 
+#lottie{
+  display:block;
+  overflow: hidden;
+     text-align: center;
+            opacity: 1;
+            position: relative;
+            background: none;
+}
+
+.container_anim{
+            display: flex;
+            position: relative;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            height: auto;  
+        }
+
 .alert_error {
   color: white;
   text-align: center;

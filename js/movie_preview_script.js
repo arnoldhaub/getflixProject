@@ -1,4 +1,5 @@
 const el = document.getElementById('playButton');
+$("#notListed").css("opacity", "50%");
 
 
 
@@ -58,20 +59,19 @@ champPseudo.onmouseover = () => {
 
 // L I S T I N G // 
 
-
-
+$("#listed2").hide()
 $("#notListed").hover(function() {
-    $("#notListed").removeClass("fa-regular fa-fade");
-    $("#notListed").addClass("fa-solid");
+    $("#notListed").css("opacity", "100%");
 }, function() {
-    $("#notListed").removeClass("fa-solid");
-    $("#notListed").addClass("fa-regular");
+    $("#notListed").css("opacity", "50%");
+   
 });
 
-$("#listed").hover(function() {
-    $("#listed").removeClass("fa-solid");
-    $("#listed").addClass("fa-regular");
+$("#listed").hover(function () {
+    $("#listed").hide();
+    $("#listed2").show();
 }, function() {
-    $("#listed").removeClass("fa-regular");
-    $("#listed").addClass("fa-solid");
+    $("#listed").show();
+    $("#listed2").hide()
+
 });

@@ -60,9 +60,7 @@ include "api/info.php";
                     <div class="nameMovie">
                         <h1>
                             <?php echo $infoSerie->name; ?>
-                            <?php   if(empty($seriesListingQuery->fetch())){
-                                        echo '<a href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=serie&action=add"><i id="notListed" class="fa-regular fa-bookmark fa-fade" style="color:#06060f"></i></a>';}
-                                    else { echo '<a href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=serie&action=remove"><i id="listed" class="fa-solid fa-bookmark" style="color:#06060f"></i></a>';} ?>
+        
                         </h1>
                     </div>
 
@@ -98,6 +96,10 @@ include "api/info.php";
 
                     <div class="buttonsMovie">
                         <button type="button" class="play video-btn" id="playButton" data-toggle="modal" data-src="https://www.youtube.com/embed/<?php echo $infoSerie->videos->results[0]->key;?>"  data-target="#myModal"><i class="fa-solid fa-play" id="fa-play"></i>LECTURE</button>
+                        <?php if(empty($seriesListingQuery->fetch())){
+                        echo '<a href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=serie&action=add"><i id="notListed" class="fa-solid fa-circle-plus" style="color:#06060f"></i> ADD TO LIST</a>';}
+                        else { echo '<a id="listed" href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=serie&action=remove"><i class="fa-solid fa-book-bookmark"></i> BOOKMARKED</a>
+                                     <a id="listed2" href="src/listing.php?id_film='.$id.'&id_pseudo='.$_SESSION['pseudo'].'&type=serie&action=remove"><i class="fa-solid fa-book-bookmark"></i> UNBOOKMARKED</a>';} ?>
                     </div>
 <!----------------------------------------------
                      MODAL
@@ -131,7 +133,7 @@ include "api/info.php";
 ------------------------------------------------------------------------->
         <div class="container_movie">
             <?php include ('src/serie_season.php') ?>
-            
+
         </div>
 
 <!-----------------------------------------------------------------------
@@ -139,7 +141,7 @@ include "api/info.php";
 ------------------------------------------------------------------------->
         <div class="container_recommended">
             <div class="container">
-                <p class="title_slide">You are going to like...</p>  
+                <p class="title_slide" id="title_margin">You are going to like...</p>  
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
 

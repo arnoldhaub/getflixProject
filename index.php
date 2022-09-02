@@ -25,9 +25,9 @@
 
         <div class="container1">
             <div class="container_anim">
-<div id="lottie">
-</div>
-</div>
+            <div id="lottie">
+            </div>
+            </div>
             <!-- <img src="./images/logo.png" class="logo_login" alt="logo planet nova"/> -->
             <div class="logo_div">
                 <svg version="1.1" id="Calque_1" x="0px" y="0px"
@@ -70,6 +70,7 @@
     <button type="button" class="btn btn-success accept-cookie">Got it!</button>
   </div>
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="./js/lottie.js"></script>
 <script src="./js/script_anim.js"></script>
